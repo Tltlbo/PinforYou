@@ -6,47 +6,55 @@
 //
 
 import SwiftUI
+import GoogleSignIn
 
 struct AuthenticatedView: View {
     
     @StateObject var authViewModel : AuthenticationViewModel
     
     var body: some View {
-        VStack (alignment: .leading){
-            
-            HStack {
-                Text("""
-                핀에 오신 걸
-                환영해요!
-                """)
-                .font(.system(size: 30, weight: .bold))
+        
+        NavigationView {
+            VStack (alignment: .leading){
+                
+                HStack {
+                    Text("""
+                    핀에 오신 걸
+                    환영해요!
+                    """)
+                    .font(.system(size: 30, weight: .bold))
+                    
+                    Spacer()
+                }
+                .padding(.leading, 21)
+                .padding(.top, 177)
                 
                 Spacer()
+                
+                
+                
+                NavigationLink {
+                    LoginOptionView()
+                        .environmentObject(authViewModel)
+                        
+                } label: {
+                    RoundedRectangle(cornerRadius: 15)
+                        .frame(width: 352,height: 72)
+                        .overlay {Text("로그인").foregroundColor(.black)}
+                }
+                .padding(20)
+                
+                Button {
+                    //TODO: register
+                } label: {
+                    RoundedRectangle(cornerRadius: 15)
+                        .frame(width: 352,height: 72)
+                        .overlay {Text("회원가입").foregroundColor(.black)}
+                }
+                .padding(.leading, 20)
+                .padding(.bottom, 200)
+                
             }
-            .padding(.leading, 21)
-            .padding(.top, 177)
-            
-            Spacer()
-            
-            Button {
-                //TODO: Login
-            } label: {
-                RoundedRectangle(cornerRadius: 15)
-                    .frame(width: 352,height: 72)
-                    .overlay {Text("로그인").foregroundColor(.black)}
-            }
-            .padding(20)
-            
-            Button {
-                //TODO: register
-            } label: {
-                RoundedRectangle(cornerRadius: 15)
-                    .frame(width: 352,height: 72)
-                    .overlay {Text("회원가입").foregroundColor(.black)}
-            }
-            .padding(.leading, 20)
-            .padding(.bottom, 200)
-            
         }
         
         
@@ -55,5 +63,5 @@ struct AuthenticatedView: View {
 }
 
 #Preview {
-    LoginView()
+    AuthenticatedView(authViewModel: .init(container: .init(services: StubService())))
 }

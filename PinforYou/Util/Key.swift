@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+enum Key : String {
+    case KakaoAppKey = "0bfecbd272c87054185af9b2fc631e2a"
+}

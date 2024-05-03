@@ -8,17 +8,55 @@
 
 /* Begin PBXBuildFile section */
 		4EA35ACF2BCD005E0001508B /* PinforYouApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35ACE2BCD005E0001508B /* PinforYouApp.swift */; };
-		4EA35AD12BCD005E0001508B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35AD02BCD005E0001508B /* ContentView.swift */; };
+		4EA35AD12BCD005E0001508B /* AuthenticatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35AD02BCD005E0001508B /* AuthenticatedView.swift */; };
 		4EA35AD32BCD00600001508B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EA35AD22BCD00600001508B /* Assets.xcassets */; };
 		4EA35AD62BCD00600001508B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EA35AD52BCD00600001508B /* Preview Assets.xcassets */; };
+		4EA35ADF2BCD19280001508B /* LoginOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35ADE2BCD19280001508B /* LoginOptionView.swift */; };
+		4EA35AE22BE144200001508B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4EA35AE12BE144200001508B /* .gitignore */; };
+		4EA35AE62BE232140001508B /* KakaoLoginBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35AE52BE232140001508B /* KakaoLoginBtn.swift */; };
+		4EA35AEA2BE323D30001508B /* randomNonceString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35AE92BE323D30001508B /* randomNonceString.swift */; };
+		4EA35AEC2BE323FC0001508B /* SHA256.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35AEB2BE323FC0001508B /* SHA256.swift */; };
+		4EA35AEF2BE324990001508B /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35AEE2BE324990001508B /* AuthenticationService.swift */; };
+		4EA35AF22BE325A90001508B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35AF12BE325A90001508B /* User.swift */; };
+		4EA35AF42BE326040001508B /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35AF32BE326040001508B /* Service.swift */; };
+		4EA35AF62BE3262D0001508B /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35AF52BE3262D0001508B /* ServiceError.swift */; };
+		4EA35AF82BE326480001508B /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35AF72BE326480001508B /* UserService.swift */; };
+		4EA35AFB2BE326A40001508B /* DBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35AFA2BE326A40001508B /* DBError.swift */; };
+		4EA35AFE2BE326CD0001508B /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35AFD2BE326CD0001508B /* UserObject.swift */; };
+		4EA35B002BE326EA0001508B /* UserDBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35AFF2BE326EA0001508B /* UserDBRepository.swift */; };
+		4EA35B032BE3D9A60001508B /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35B022BE3D9A60001508B /* DIContainer.swift */; };
+		4EA35B062BE3DCA40001508B /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35B052BE3DCA40001508B /* AuthenticationViewModel.swift */; };
+		4EA35B082BE4CAC40001508B /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35B072BE4CAC40001508B /* Key.swift */; };
+		730C6F69986697778218E709 /* Pods_PinforYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28531306F13EC3B74457DB6F /* Pods_PinforYou.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28531306F13EC3B74457DB6F /* Pods_PinforYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinforYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A373425BA1055BA166363E8 /* Pods-PinforYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinforYou.release.xcconfig"; path = "Target Support Files/Pods-PinforYou/Pods-PinforYou.release.xcconfig"; sourceTree = "<group>"; };
 		4EA35ACB2BCD005E0001508B /* PinforYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinforYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EA35ACE2BCD005E0001508B /* PinforYouApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinforYouApp.swift; sourceTree = "<group>"; };
-		4EA35AD02BCD005E0001508B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4EA35AD02BCD005E0001508B /* AuthenticatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedView.swift; sourceTree = "<group>"; };
 		4EA35AD22BCD00600001508B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4EA35AD52BCD00600001508B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4EA35ADE2BCD19280001508B /* LoginOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOptionView.swift; sourceTree = "<group>"; };
+		4EA35AE12BE144200001508B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		4EA35AE32BE147D90001508B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4EA35AE52BE232140001508B /* KakaoLoginBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginBtn.swift; sourceTree = "<group>"; };
+		4EA35AE72BE28D8C0001508B /* PinforYou.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PinforYou.entitlements; sourceTree = "<group>"; };
+		4EA35AE92BE323D30001508B /* randomNonceString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = randomNonceString.swift; sourceTree = "<group>"; };
+		4EA35AEB2BE323FC0001508B /* SHA256.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHA256.swift; sourceTree = "<group>"; };
+		4EA35AEE2BE324990001508B /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		4EA35AF12BE325A90001508B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4EA35AF32BE326040001508B /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		4EA35AF52BE3262D0001508B /* ServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		4EA35AF72BE326480001508B /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		4EA35AFA2BE326A40001508B /* DBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBError.swift; sourceTree = "<group>"; };
+		4EA35AFD2BE326CD0001508B /* UserObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
+		4EA35AFF2BE326EA0001508B /* UserDBRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDBRepository.swift; sourceTree = "<group>"; };
+		4EA35B022BE3D9A60001508B /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		4EA35B052BE3DCA40001508B /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		4EA35B072BE4CAC40001508B /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		5F528BB8266D3D3FCBADB28D /* Pods-PinforYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinforYou.debug.xcconfig"; path = "Target Support Files/Pods-PinforYou/Pods-PinforYou.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,17 +64,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				730C6F69986697778218E709 /* Pods_PinforYou.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		321BF55965B88F5BE35E7EAF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5F528BB8266D3D3FCBADB28D /* Pods-PinforYou.debug.xcconfig */,
+				2A373425BA1055BA166363E8 /* Pods-PinforYou.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		4EA35AC22BCD005E0001508B = {
 			isa = PBXGroup;
 			children = (
+				4EA35AE12BE144200001508B /* .gitignore */,
 				4EA35ACD2BCD005E0001508B /* PinforYou */,
 				4EA35ACC2BCD005E0001508B /* Products */,
+				321BF55965B88F5BE35E7EAF /* Pods */,
+				52703C487EC7B5F9B912F5CE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,8 +102,15 @@
 		4EA35ACD2BCD005E0001508B /* PinforYou */ = {
 			isa = PBXGroup;
 			children = (
+				4EA35B012BE3D9900001508B /* General */,
+				4EA35AF92BE3268F0001508B /* Repository */,
+				4EA35AF02BE3259F0001508B /* Model */,
+				4EA35AED2BE3247F0001508B /* Service */,
+				4EA35AE82BE323B20001508B /* Util */,
+				4EA35AE72BE28D8C0001508B /* PinforYou.entitlements */,
+				4EA35AE32BE147D90001508B /* Info.plist */,
+				4EA35ADC2BCD0AE30001508B /* View */,
 				4EA35ACE2BCD005E0001508B /* PinforYouApp.swift */,
-				4EA35AD02BCD005E0001508B /* ContentView.swift */,
 				4EA35AD22BCD00600001508B /* Assets.xcassets */,
 				4EA35AD42BCD00600001508B /* Preview Content */,
 			);
@@ -67,6 +125,104 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		4EA35ADC2BCD0AE30001508B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4EA35B042BE3DC7E0001508B /* Login */,
+				4EA35ADD2BCD19160001508B /* Authentication */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4EA35ADD2BCD19160001508B /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				4EA35AD02BCD005E0001508B /* AuthenticatedView.swift */,
+				4EA35B052BE3DCA40001508B /* AuthenticationViewModel.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		4EA35AE42BE231C00001508B /* LoginButton */ = {
+			isa = PBXGroup;
+			children = (
+				4EA35AE52BE232140001508B /* KakaoLoginBtn.swift */,
+			);
+			path = LoginButton;
+			sourceTree = "<group>";
+		};
+		4EA35AE82BE323B20001508B /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				4EA35AE92BE323D30001508B /* randomNonceString.swift */,
+				4EA35AEB2BE323FC0001508B /* SHA256.swift */,
+				4EA35B072BE4CAC40001508B /* Key.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		4EA35AED2BE3247F0001508B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				4EA35AEE2BE324990001508B /* AuthenticationService.swift */,
+				4EA35AF32BE326040001508B /* Service.swift */,
+				4EA35AF52BE3262D0001508B /* ServiceError.swift */,
+				4EA35AF72BE326480001508B /* UserService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		4EA35AF02BE3259F0001508B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4EA35AF12BE325A90001508B /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4EA35AF92BE3268F0001508B /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				4EA35AFC2BE326BD0001508B /* DTO */,
+				4EA35AFA2BE326A40001508B /* DBError.swift */,
+				4EA35AFF2BE326EA0001508B /* UserDBRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		4EA35AFC2BE326BD0001508B /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				4EA35AFD2BE326CD0001508B /* UserObject.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		4EA35B012BE3D9900001508B /* General */ = {
+			isa = PBXGroup;
+			children = (
+				4EA35B022BE3D9A60001508B /* DIContainer.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		4EA35B042BE3DC7E0001508B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4EA35ADE2BCD19280001508B /* LoginOptionView.swift */,
+				4EA35AE42BE231C00001508B /* LoginButton */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		52703C487EC7B5F9B912F5CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				28531306F13EC3B74457DB6F /* Pods_PinforYou.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +230,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4EA35AD92BCD00600001508B /* Build configuration list for PBXNativeTarget "PinforYou" */;
 			buildPhases = (
+				85D88774997B87160C4F88DD /* [CP] Check Pods Manifest.lock */,
 				4EA35AC72BCD005E0001508B /* Sources */,
 				4EA35AC82BCD005E0001508B /* Frameworks */,
 				4EA35AC92BCD005E0001508B /* Resources */,
+				3414E36B34DABCEC41ADB7BF /* [CP] Embed Pods Frameworks */,
+				7F136EA984C63906E0B48D98 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -126,19 +285,94 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EA35AD62BCD00600001508B /* Preview Assets.xcassets in Resources */,
+				4EA35AE22BE144200001508B /* .gitignore in Resources */,
 				4EA35AD32BCD00600001508B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3414E36B34DABCEC41ADB7BF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PinforYou/Pods-PinforYou-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PinforYou/Pods-PinforYou-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PinforYou/Pods-PinforYou-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F136EA984C63906E0B48D98 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PinforYou/Pods-PinforYou-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PinforYou/Pods-PinforYou-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PinforYou/Pods-PinforYou-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85D88774997B87160C4F88DD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PinforYou-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		4EA35AC72BCD005E0001508B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EA35AD12BCD005E0001508B /* ContentView.swift in Sources */,
+				4EA35AFB2BE326A40001508B /* DBError.swift in Sources */,
+				4EA35AF62BE3262D0001508B /* ServiceError.swift in Sources */,
+				4EA35AEA2BE323D30001508B /* randomNonceString.swift in Sources */,
+				4EA35AFE2BE326CD0001508B /* UserObject.swift in Sources */,
+				4EA35B062BE3DCA40001508B /* AuthenticationViewModel.swift in Sources */,
+				4EA35ADF2BCD19280001508B /* LoginOptionView.swift in Sources */,
+				4EA35AEC2BE323FC0001508B /* SHA256.swift in Sources */,
+				4EA35B002BE326EA0001508B /* UserDBRepository.swift in Sources */,
+				4EA35B082BE4CAC40001508B /* Key.swift in Sources */,
+				4EA35B032BE3D9A60001508B /* DIContainer.swift in Sources */,
+				4EA35AD12BCD005E0001508B /* AuthenticatedView.swift in Sources */,
+				4EA35AF22BE325A90001508B /* User.swift in Sources */,
+				4EA35AF82BE326480001508B /* UserService.swift in Sources */,
+				4EA35AF42BE326040001508B /* Service.swift in Sources */,
+				4EA35AE62BE232140001508B /* KakaoLoginBtn.swift in Sources */,
 				4EA35ACF2BCD005E0001508B /* PinforYouApp.swift in Sources */,
+				4EA35AEF2BE324990001508B /* AuthenticationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,7 +416,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -197,7 +431,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -245,7 +479,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -254,7 +488,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -266,16 +500,18 @@
 		};
 		4EA35ADA2BCD00600001508B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F528BB8266D3D3FCBADB28D /* Pods-PinforYou.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PinforYou/PinforYou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PinforYou/Preview Content\"";
 				DEVELOPMENT_TEAM = 2G2M8W77TR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = PinforYou/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -295,16 +531,18 @@
 		};
 		4EA35ADB2BCD00600001508B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A373425BA1055BA166363E8 /* Pods-PinforYou.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PinforYou/PinforYou.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PinforYou/Preview Content\"";
 				DEVELOPMENT_TEAM = 2G2M8W77TR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = PinforYou/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

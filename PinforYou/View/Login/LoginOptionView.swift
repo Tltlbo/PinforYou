@@ -7,8 +7,13 @@
 
 import SwiftUI
 import AuthenticationServices
+import GoogleSignInSwift
 
 struct LoginOptionView: View {
+    
+    @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var authViewModel : AuthenticationViewModel
+    
     var body: some View {
         VStack (alignment: .leading){
             
@@ -29,13 +34,22 @@ struct LoginOptionView: View {
             
             VStack(spacing: 40) {
                 HStack(spacing: 90){
-                    Button {
-                        //TODO: Google
-                    } label: {
-                        Circle()
-                            .frame(width: 80,height: 80)
-                            .overlay {Text("구글").foregroundColor(.black)}
-                    }
+//                    Button {
+//                        //TODO: Google
+//                    } label: {
+//                        Circle()
+//                            .frame(width: 80,height: 80)
+//                            .overlay {Text("구글").foregroundColor(.black)}
+//                    }
+                    
+                    GoogleSignInButton(
+                        scheme: .light,
+                        style: .wide,
+                        action: {
+                            authViewModel.send(action: .googleLogin)
+                        }
+                    )
+                    .frame(width: 80)
                     
 //                    Button {
 //                        //TODO: KAKAO
@@ -51,9 +65,9 @@ struct LoginOptionView: View {
                 HStack(spacing:90) {
                 
                 SignInWithAppleButton { request in
-                    //TODO:
+                    authViewModel.send(action: .appleLogin(request))
                 } onCompletion: { result in
-                    //TODO:
+                    authViewModel.send(action: .appleLoginCompletion(result))
                 }
                 .frame(height: 20)
 
