@@ -34,13 +34,6 @@ struct LoginOptionView: View {
             
             VStack(spacing: 40) {
                 HStack(spacing: 90){
-//                    Button {
-//                        //TODO: Google
-//                    } label: {
-//                        Circle()
-//                            .frame(width: 80,height: 80)
-//                            .overlay {Text("구글").foregroundColor(.black)}
-//                    }
                     
                     GoogleSignInButton(
                         scheme: .light,
@@ -51,13 +44,6 @@ struct LoginOptionView: View {
                     )
                     .frame(width: 80)
                     
-//                    Button {
-//                        //TODO: KAKAO
-//                    } label: {
-//                        Circle()
-//                            .frame(width: 80,height: 80)
-//                            .overlay {Text("카카오").foregroundColor(.black)}
-//                    }
                     KakaoLoginBtn()
                     
                 }
