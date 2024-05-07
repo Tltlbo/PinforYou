@@ -7,9 +7,32 @@
 
 import Foundation
 import Combine
+import CoreLocation
+import SwiftUI
 
-func getLocationPermission() -> AnyPublisher<Location, ServiceError> {
-    return Empty().eraseToAnyPublisher()
+func getLocationPermission() async {
     
-    //TODO: 여기서 위치 권한 확인 및 요청
+    let locationManager = CLLocationManager()
+            let authorizationStatus = locationManager.authorizationStatus
+            
+            // 위치 사용 권한 항상 허용되어 있음
+            if authorizationStatus == .authorizedAlways {
+            }
+            // 위치 사용 권한 앱 사용 시 허용되어 있음
+            else if authorizationStatus == .authorizedWhenInUse {
+            }
+            // 위치 사용 권한 거부되어 있음
+            else if authorizationStatus == .denied {
+                // 앱 설정화면으로 이동
+                DispatchQueue.main.async {
+                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                }
+            }
+            // 위치 사용 권한 대기 상태
+            else if authorizationStatus == .restricted || authorizationStatus == .notDetermined {
+                // 권한 요청 팝업창
+                locationManager.requestWhenInUseAuthorization()
+            }
+    
 }
+

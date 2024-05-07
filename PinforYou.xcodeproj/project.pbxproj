@@ -34,6 +34,7 @@
 		4ED576122BE90BDB0034F7A6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576112BE90BDB0034F7A6 /* HomeView.swift */; };
 		4ED576152BE9CD590034F7A6 /* LocationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576142BE9CD590034F7A6 /* LocationPermission.swift */; };
 		4ED576172BE9CE230034F7A6 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576162BE9CE230034F7A6 /* Location.swift */; };
+		4ED576192BEA73AD0034F7A6 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576182BEA73AD0034F7A6 /* LocationService.swift */; };
 		730C6F69986697778218E709 /* Pods_PinforYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28531306F13EC3B74457DB6F /* Pods_PinforYou.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		4ED576112BE90BDB0034F7A6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4ED576142BE9CD590034F7A6 /* LocationPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermission.swift; sourceTree = "<group>"; };
 		4ED576162BE9CE230034F7A6 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		4ED576182BEA73AD0034F7A6 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		5F528BB8266D3D3FCBADB28D /* Pods-PinforYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinforYou.debug.xcconfig"; path = "Target Support Files/Pods-PinforYou/Pods-PinforYou.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -185,6 +187,7 @@
 				4EA35AF32BE326040001508B /* Service.swift */,
 				4EA35AF52BE3262D0001508B /* ServiceError.swift */,
 				4EA35AF72BE326480001508B /* UserService.swift */,
+				4ED576182BEA73AD0034F7A6 /* LocationService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 				4EA35B032BE3D9A60001508B /* DIContainer.swift in Sources */,
 				4EA35AD12BCD005E0001508B /* AuthenticatedView.swift in Sources */,
 				4EA35AF22BE325A90001508B /* User.swift in Sources */,
+				4ED576192BEA73AD0034F7A6 /* LocationService.swift in Sources */,
 				4EA35AF82BE326480001508B /* UserService.swift in Sources */,
 				4EA35AF42BE326040001508B /* Service.swift in Sources */,
 				4EA35AE62BE232140001508B /* KakaoLoginBtn.swift in Sources */,
