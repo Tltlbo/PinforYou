@@ -30,6 +30,8 @@
 		4EA35B1D2BE6302F0001508B /* LoginIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35B1C2BE6302F0001508B /* LoginIntroView.swift */; };
 		4ED576092BE77D0D0034F7A6 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576082BE77D0D0034F7A6 /* MainTabView.swift */; };
 		4ED5760B2BE77D170034F7A6 /* MainTabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5760A2BE77D170034F7A6 /* MainTabType.swift */; };
+		4ED5760F2BE8CD530034F7A6 /* KakaoMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5760E2BE8CD530034F7A6 /* KakaoMapView.swift */; };
+		4ED576122BE90BDB0034F7A6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576112BE90BDB0034F7A6 /* HomeView.swift */; };
 		730C6F69986697778218E709 /* Pods_PinforYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28531306F13EC3B74457DB6F /* Pods_PinforYou.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +64,8 @@
 		4EA35B1C2BE6302F0001508B /* LoginIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginIntroView.swift; sourceTree = "<group>"; };
 		4ED576082BE77D0D0034F7A6 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		4ED5760A2BE77D170034F7A6 /* MainTabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabType.swift; sourceTree = "<group>"; };
+		4ED5760E2BE8CD530034F7A6 /* KakaoMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapView.swift; sourceTree = "<group>"; };
+		4ED576112BE90BDB0034F7A6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5F528BB8266D3D3FCBADB28D /* Pods-PinforYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinforYou.debug.xcconfig"; path = "Target Support Files/Pods-PinforYou/Pods-PinforYou.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +138,7 @@
 		4EA35ADC2BCD0AE30001508B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4ED5760C2BE8CB0B0034F7A6 /* Home */,
 				4ED576072BE77CFB0034F7A6 /* MainTabView */,
 				4EA35B042BE3DC7E0001508B /* Login */,
 				4EA35ADD2BCD19160001508B /* Authentication */,
@@ -230,6 +235,23 @@
 				4ED5760A2BE77D170034F7A6 /* MainTabType.swift */,
 			);
 			path = MainTabView;
+			sourceTree = "<group>";
+		};
+		4ED5760C2BE8CB0B0034F7A6 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4ED5760D2BE8CB250034F7A6 /* Map */,
+				4ED576112BE90BDB0034F7A6 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		4ED5760D2BE8CB250034F7A6 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				4ED5760E2BE8CD530034F7A6 /* KakaoMapView.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 		52703C487EC7B5F9B912F5CE /* Frameworks */ = {
@@ -378,10 +400,12 @@
 				4EA35AEA2BE323D30001508B /* randomNonceString.swift in Sources */,
 				4EA35AFE2BE326CD0001508B /* UserObject.swift in Sources */,
 				4EA35B062BE3DCA40001508B /* AuthenticationViewModel.swift in Sources */,
+				4ED576122BE90BDB0034F7A6 /* HomeView.swift in Sources */,
 				4ED576092BE77D0D0034F7A6 /* MainTabView.swift in Sources */,
 				4EA35ADF2BCD19280001508B /* LoginOptionView.swift in Sources */,
 				4EA35AEC2BE323FC0001508B /* SHA256.swift in Sources */,
 				4EA35B002BE326EA0001508B /* UserDBRepository.swift in Sources */,
+				4ED5760F2BE8CD530034F7A6 /* KakaoMapView.swift in Sources */,
 				4EA35B082BE4CAC40001508B /* Key.swift in Sources */,
 				4EA35B1D2BE6302F0001508B /* LoginIntroView.swift in Sources */,
 				4EA35B032BE3D9A60001508B /* DIContainer.swift in Sources */,
@@ -525,10 +549,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PinforYou/PinforYou.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PinforYou/Preview Content\"";
-				DEVELOPMENT_TEAM = 2G2M8W77TR;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2G2M8W77TR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PinforYou/Info.plist;
@@ -543,6 +569,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Jin.PinforYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Pin;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -556,10 +584,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = PinforYou/PinforYou.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PinforYou/Preview Content\"";
-				DEVELOPMENT_TEAM = 2G2M8W77TR;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2G2M8W77TR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PinforYou/Info.plist;
@@ -574,6 +604,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Jin.PinforYou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Pin;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
