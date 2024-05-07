@@ -32,6 +32,8 @@
 		4ED5760B2BE77D170034F7A6 /* MainTabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5760A2BE77D170034F7A6 /* MainTabType.swift */; };
 		4ED5760F2BE8CD530034F7A6 /* KakaoMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5760E2BE8CD530034F7A6 /* KakaoMapView.swift */; };
 		4ED576122BE90BDB0034F7A6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576112BE90BDB0034F7A6 /* HomeView.swift */; };
+		4ED576152BE9CD590034F7A6 /* LocationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576142BE9CD590034F7A6 /* LocationPermission.swift */; };
+		4ED576172BE9CE230034F7A6 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576162BE9CE230034F7A6 /* Location.swift */; };
 		730C6F69986697778218E709 /* Pods_PinforYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28531306F13EC3B74457DB6F /* Pods_PinforYou.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +68,8 @@
 		4ED5760A2BE77D170034F7A6 /* MainTabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabType.swift; sourceTree = "<group>"; };
 		4ED5760E2BE8CD530034F7A6 /* KakaoMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapView.swift; sourceTree = "<group>"; };
 		4ED576112BE90BDB0034F7A6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		4ED576142BE9CD590034F7A6 /* LocationPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermission.swift; sourceTree = "<group>"; };
+		4ED576162BE9CE230034F7A6 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		5F528BB8266D3D3FCBADB28D /* Pods-PinforYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinforYou.debug.xcconfig"; path = "Target Support Files/Pods-PinforYou/Pods-PinforYou.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +116,7 @@
 		4EA35ACD2BCD005E0001508B /* PinforYou */ = {
 			isa = PBXGroup;
 			children = (
+				4ED576132BE9CD2D0034F7A6 /* Permission */,
 				4EA35B012BE3D9900001508B /* General */,
 				4EA35AF92BE3268F0001508B /* Repository */,
 				4EA35AF02BE3259F0001508B /* Model */,
@@ -188,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				4EA35AF12BE325A90001508B /* User.swift */,
+				4ED576162BE9CE230034F7A6 /* Location.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -252,6 +258,14 @@
 				4ED5760E2BE8CD530034F7A6 /* KakaoMapView.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		4ED576132BE9CD2D0034F7A6 /* Permission */ = {
+			isa = PBXGroup;
+			children = (
+				4ED576142BE9CD590034F7A6 /* LocationPermission.swift */,
+			);
+			path = Permission;
 			sourceTree = "<group>";
 		};
 		52703C487EC7B5F9B912F5CE /* Frameworks */ = {
@@ -405,6 +419,7 @@
 				4EA35ADF2BCD19280001508B /* LoginOptionView.swift in Sources */,
 				4EA35AEC2BE323FC0001508B /* SHA256.swift in Sources */,
 				4EA35B002BE326EA0001508B /* UserDBRepository.swift in Sources */,
+				4ED576172BE9CE230034F7A6 /* Location.swift in Sources */,
 				4ED5760F2BE8CD530034F7A6 /* KakaoMapView.swift in Sources */,
 				4EA35B082BE4CAC40001508B /* Key.swift in Sources */,
 				4EA35B1D2BE6302F0001508B /* LoginIntroView.swift in Sources */,
@@ -414,6 +429,7 @@
 				4EA35AF82BE326480001508B /* UserService.swift in Sources */,
 				4EA35AF42BE326040001508B /* Service.swift in Sources */,
 				4EA35AE62BE232140001508B /* KakaoLoginBtn.swift in Sources */,
+				4ED576152BE9CD590034F7A6 /* LocationPermission.swift in Sources */,
 				4EA35ACF2BCD005E0001508B /* PinforYouApp.swift in Sources */,
 				4ED5760B2BE77D170034F7A6 /* MainTabType.swift in Sources */,
 				4EA35AEF2BE324990001508B /* AuthenticationService.swift in Sources */,
@@ -558,6 +574,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PinforYou/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치를 기반으로 주변 가게 정보를 제공하기 위해 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -593,6 +610,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PinforYou/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치를 기반으로 주변 가게 정보를 제공하기 위해 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
