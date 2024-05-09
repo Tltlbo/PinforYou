@@ -10,7 +10,7 @@ import Combine
 import CoreLocation
 import SwiftUI
 
-func getLocationPermission() async {
+func getLocationPermission()  {
     
     let locationManager = CLLocationManager()
             let authorizationStatus = locationManager.authorizationStatus

@@ -35,6 +35,7 @@
 		4ED576152BE9CD590034F7A6 /* LocationPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576142BE9CD590034F7A6 /* LocationPermission.swift */; };
 		4ED576172BE9CE230034F7A6 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576162BE9CE230034F7A6 /* Location.swift */; };
 		4ED576192BEA73AD0034F7A6 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576182BEA73AD0034F7A6 /* LocationService.swift */; };
+		4ED5761B2BEAFEC10034F7A6 /* KakaoMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5761A2BEAFEC10034F7A6 /* KakaoMapViewModel.swift */; };
 		730C6F69986697778218E709 /* Pods_PinforYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28531306F13EC3B74457DB6F /* Pods_PinforYou.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		4ED576142BE9CD590034F7A6 /* LocationPermission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermission.swift; sourceTree = "<group>"; };
 		4ED576162BE9CE230034F7A6 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		4ED576182BEA73AD0034F7A6 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		4ED5761A2BEAFEC10034F7A6 /* KakaoMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapViewModel.swift; sourceTree = "<group>"; };
 		5F528BB8266D3D3FCBADB28D /* Pods-PinforYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinforYou.debug.xcconfig"; path = "Target Support Files/Pods-PinforYou/Pods-PinforYou.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -259,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				4ED5760E2BE8CD530034F7A6 /* KakaoMapView.swift */,
+				4ED5761A2BEAFEC10034F7A6 /* KakaoMapViewModel.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				4EA35AE62BE232140001508B /* KakaoLoginBtn.swift in Sources */,
 				4ED576152BE9CD590034F7A6 /* LocationPermission.swift in Sources */,
 				4EA35ACF2BCD005E0001508B /* PinforYouApp.swift in Sources */,
+				4ED5761B2BEAFEC10034F7A6 /* KakaoMapViewModel.swift in Sources */,
 				4ED5760B2BE77D170034F7A6 /* MainTabType.swift in Sources */,
 				4EA35AEF2BE324990001508B /* AuthenticationService.swift in Sources */,
 			);

@@ -34,8 +34,8 @@ struct PinforYouApp: App {
 //                .onOpenURL{ url in
 //                    GIDSignIn.sharedInstance.handle(url)
 //                }
-            HomeView()
-                
+            HomeView(kakaoMapViewModel: .init(container: container)) //이거 나중에 MainTabView로 바꿔서
+                .environmentObject(container)
         }
     }
 }
