@@ -24,7 +24,9 @@ class AuthenticationViewModel : ObservableObject {
         case logout
     }
     
-    @Published var authenticationState : AuthenticationState = .unauthenticated
+    @Published var authenticationState : AuthenticationState = .authenticated
+    //임시로 authenticated로 변경
+    
     @Published var isLoading : Bool = false
     
     var userId : String?

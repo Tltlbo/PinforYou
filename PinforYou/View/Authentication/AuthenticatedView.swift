@@ -21,8 +21,8 @@ struct AuthenticatedView: View {
                     .environmentObject(authViewModel)
                 
             case .authenticated:
-                //TODO: main뷰
-                Text("MAIN")
+                MainTabView()
+                    .environmentObject(authViewModel)
             }
         }
         .onAppear {

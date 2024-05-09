@@ -21,7 +21,7 @@ struct MainTabView: View {
                 Group {
                     switch tab {
                     case .home:
-                        Color.blue
+                        HomeView(kakaoMapViewModel: .init(container: container))
                     case .CardList:
                         Color.white
                     case .Event:
@@ -37,12 +37,12 @@ struct MainTabView: View {
                 .tag(tab)
             }
         }
-        .tint(.black)
+        .tint(.white)
     }
     
     // 아직 swiftUI에서는 선택되지 않은 탭의 컬러 변경은 구현되지 X UIKit에 의존해야함.
     init() {
-        UITabBar.appearance().unselectedItemTintColor = UIColor(Color.black)
+        UITabBar.appearance().unselectedItemTintColor = UIColor(Color.gray)
     }
 }
 

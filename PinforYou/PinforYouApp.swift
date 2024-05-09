@@ -24,18 +24,16 @@ struct PinforYouApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            AuthenticatedView(authViewModel: .init(container: container))
-//                .environmentObject(container)
-//                .onOpenURL { url in
-//                    if (AuthApi.isKakaoTalkLoginUrl(url)) {
-//                        _ = AuthController.handleOpenUrl(url: url)
-//                    }
-//                }
-//                .onOpenURL{ url in
-//                    GIDSignIn.sharedInstance.handle(url)
-//                }
-            HomeView(kakaoMapViewModel: .init(container: container)) //이거 나중에 MainTabView로 바꿔서
+            AuthenticatedView(authViewModel: .init(container: container))
                 .environmentObject(container)
+                .onOpenURL { url in
+                    if (AuthApi.isKakaoTalkLoginUrl(url)) {
+                        _ = AuthController.handleOpenUrl(url: url)
+                    }
+                }
+                .onOpenURL{ url in
+                    GIDSignIn.sharedInstance.handle(url)
+                }
         }
     }
 }
