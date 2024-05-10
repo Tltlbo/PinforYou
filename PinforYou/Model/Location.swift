@@ -17,8 +17,8 @@ extension Location {
         .init(longitude: 126.978365, latitude: 37.566691)
     }
     
-    static var loactionstub2 : User {
-        .init(id: "user2_id", name: "김성훈")
+    static var loactionstub2 : Location {
+        .init(longitude: 128.75714469364593, latitude: 35.828704833984375)
     }
 }
 

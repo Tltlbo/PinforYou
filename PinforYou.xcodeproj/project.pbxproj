@@ -36,6 +36,8 @@
 		4ED576172BE9CE230034F7A6 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576162BE9CE230034F7A6 /* Location.swift */; };
 		4ED576192BEA73AD0034F7A6 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576182BEA73AD0034F7A6 /* LocationService.swift */; };
 		4ED5761B2BEAFEC10034F7A6 /* KakaoMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5761A2BEAFEC10034F7A6 /* KakaoMapViewModel.swift */; };
+		4ED5761D2BEC716E0034F7A6 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5761C2BEC716E0034F7A6 /* URL.swift */; };
+		4ED5761F2BED03AE0034F7A6 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5761E2BED03AE0034F7A6 /* Place.swift */; };
 		730C6F69986697778218E709 /* Pods_PinforYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28531306F13EC3B74457DB6F /* Pods_PinforYou.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +76,8 @@
 		4ED576162BE9CE230034F7A6 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		4ED576182BEA73AD0034F7A6 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		4ED5761A2BEAFEC10034F7A6 /* KakaoMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapViewModel.swift; sourceTree = "<group>"; };
+		4ED5761C2BEC716E0034F7A6 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		4ED5761E2BED03AE0034F7A6 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		5F528BB8266D3D3FCBADB28D /* Pods-PinforYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinforYou.debug.xcconfig"; path = "Target Support Files/Pods-PinforYou/Pods-PinforYou.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -178,6 +182,7 @@
 				4EA35AE92BE323D30001508B /* randomNonceString.swift */,
 				4EA35AEB2BE323FC0001508B /* SHA256.swift */,
 				4EA35B072BE4CAC40001508B /* Key.swift */,
+				4ED5761C2BEC716E0034F7A6 /* URL.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 			children = (
 				4EA35AF12BE325A90001508B /* User.swift */,
 				4ED576162BE9CE230034F7A6 /* Location.swift */,
+				4ED5761E2BED03AE0034F7A6 /* Place.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -426,6 +432,7 @@
 				4EA35AEC2BE323FC0001508B /* SHA256.swift in Sources */,
 				4EA35B002BE326EA0001508B /* UserDBRepository.swift in Sources */,
 				4ED576172BE9CE230034F7A6 /* Location.swift in Sources */,
+				4ED5761D2BEC716E0034F7A6 /* URL.swift in Sources */,
 				4ED5760F2BE8CD530034F7A6 /* KakaoMapView.swift in Sources */,
 				4EA35B082BE4CAC40001508B /* Key.swift in Sources */,
 				4EA35B1D2BE6302F0001508B /* LoginIntroView.swift in Sources */,
@@ -433,6 +440,7 @@
 				4EA35AD12BCD005E0001508B /* AuthenticatedView.swift in Sources */,
 				4EA35AF22BE325A90001508B /* User.swift in Sources */,
 				4ED576192BEA73AD0034F7A6 /* LocationService.swift in Sources */,
+				4ED5761F2BED03AE0034F7A6 /* Place.swift in Sources */,
 				4EA35AF82BE326480001508B /* UserService.swift in Sources */,
 				4EA35AF42BE326040001508B /* Service.swift in Sources */,
 				4EA35AE62BE232140001508B /* KakaoLoginBtn.swift in Sources */,

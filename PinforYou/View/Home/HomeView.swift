@@ -25,6 +25,8 @@ struct HomeView: View {
                     .onAppear {
                         getLocationPermission()
                         kakaoMapViewModel.send(action: .getLocation)
+                        kakaoMapViewModel
+                            .send(action: .getPlaceInfo)
                     }
             }
             

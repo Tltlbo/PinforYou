@@ -12,9 +12,11 @@ class KakaoMapViewModel : ObservableObject {
     
     enum Action {
         case getLocation
+        case getPlaceInfo
     }
     
     @Published var Location : Location?
+    @Published var PlaceList : [PlaceModel.Place?] = []
     @Published var isFinished : Bool = false
     
     private var container : DIContainer
@@ -30,15 +32,25 @@ class KakaoMapViewModel : ObservableObject {
             container.services.locationService.getLocation()
                 .sink { [weak self] completion in
                     if case .failure = completion {
-                    
+                        // Alert 띄울까?
                     }
                 } receiveValue: { [weak self] Location in
                     self?.Location = Location
                     self?.isFinished = true
-                    print("되고 있긴 함?")
-                    print("HELLO \(Location.latitude), \(Location.longitude)")
                     
                 }.store(in: &subscriptions)
+            
+        case .getPlaceInfo:
+            container.services.locationService.getPlaceInfo()
+                .sink { [weak self] completion in
+                    if case .failure = completion {
+                        print("실패")
+                    }
+                } receiveValue: { [weak self] PlaceModel in
+                    self?.PlaceList = PlaceModel.PlaceList
+                    //TODO: 여기 기다릴까? isFinished
+                }.store(in: &subscriptions)
+
 
         }
     }
