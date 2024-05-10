@@ -86,7 +86,7 @@ extension LocationService {
                    method: .get,
                    parameters: nil,
                    encoding: URLEncoding.default,
-                   headers: ["Authorization" : "KakaoAK 62aa0e12172bf66934c6c64ad785ded9"])
+                   headers: ["Authorization" : "KakaoAK \(Key.KakaoApiKey)"])
         .validate(statusCode: 200 ..< 300)
         .responseDecodable(of: PlaceModel.self) { [weak self] response in
             guard case .success(let data) = response.result
