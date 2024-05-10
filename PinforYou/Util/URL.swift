@@ -9,5 +9,4 @@ import Foundation
 
 enum APIURL : String {
     case KakaoAPIUrl = "https://dapi.kakao.com/v2/local/search/category.json?"
-    
 }

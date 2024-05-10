@@ -26,7 +26,7 @@ class KakaoMapViewModel : ObservableObject {
         self.container = container
     }
     
-    func send(action : Action) {
+    func send(action : Action, location : Location = .init(longitude: 0, latitude: 0)) {
         switch action {
         case .getLocation:
             container.services.locationService.getLocation()
@@ -41,13 +41,14 @@ class KakaoMapViewModel : ObservableObject {
                 }.store(in: &subscriptions)
             
         case .getPlaceInfo:
-            container.services.locationService.getPlaceInfo()
+            container.services.locationService.getPlaceInfo(location: self.Location ?? .init(longitude: 0, latitude: 0))
                 .sink { [weak self] completion in
                     if case .failure = completion {
                         print("실패")
                     }
                 } receiveValue: { [weak self] PlaceModel in
                     self?.PlaceList = PlaceModel.PlaceList
+                    print(PlaceModel.PlaceList)
                     //TODO: 여기 기다릴까? isFinished
                 }.store(in: &subscriptions)
 

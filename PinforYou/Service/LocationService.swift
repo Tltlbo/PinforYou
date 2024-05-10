@@ -17,7 +17,7 @@ enum LocationError : Error {
 
 protocol LocationServiceType {
     func getLocation() -> AnyPublisher<Location, ServiceError>
-    func getPlaceInfo() -> AnyPublisher<PlaceModel, ServiceError>
+    func getPlaceInfo(location : Location) -> AnyPublisher<PlaceModel, ServiceError>
 }
 
 class LocationService : LocationServiceType {
@@ -36,9 +36,9 @@ class LocationService : LocationServiceType {
         .eraseToAnyPublisher()
     }
     
-    func getPlaceInfo() -> AnyPublisher<PlaceModel, ServiceError> {
+    func getPlaceInfo(location : Location) -> AnyPublisher<PlaceModel, ServiceError> {
         Future { [weak self] promise in
-            self?.getPlaceInfo { result in
+            self?.getPlaceInfo(location: location) { result in
                 switch result {
                 case let .success(PlaceModel):
                     promise(.success(PlaceModel))
@@ -80,17 +80,18 @@ extension LocationService {
         }
     }
     
-    private func getPlaceInfo(completion: @escaping (Result<PlaceModel, Error>) -> Void) {
+    private func getPlaceInfo(location : Location, completion: @escaping (Result<PlaceModel, Error>) -> Void) {
         
-        AF.request("\(APIURL.KakaoAPIUrl.rawValue)category_group_code=MT1,CS2,FD6,CE7,HP8,PM9&radius=300&x=128.75714469364593&y=35.828704833984375",
+        AF.request("\(APIURL.KakaoAPIUrl.rawValue)category_group_code=MT1,CS2,FD6,CE7,HP8,PM9&radius=300&x=\(location.longitude)&y=\(location.latitude)",
                    method: .get,
                    parameters: nil,
                    encoding: URLEncoding.default,
-                   headers: ["Authorization" : "KakaoAK \(Key.KakaoApiKey)"])
+                   headers: ["Authorization" : "KakaoAK \(Key.KakaoApiKey.rawValue)"])
         .validate(statusCode: 200 ..< 300)
         .responseDecodable(of: PlaceModel.self) { [weak self] response in
             guard case .success(let data) = response.result
             else {
+                print(response)
                 return completion(.failure(LocationError.APICallFailed))
             }
             
@@ -99,7 +100,6 @@ extension LocationService {
             
             
         }
-        
         
         
         
@@ -113,7 +113,7 @@ class StubLocationService : LocationServiceType {
         Empty().eraseToAnyPublisher()
     }
     
-    func getPlaceInfo() -> AnyPublisher<PlaceModel, ServiceError> {
+    func getPlaceInfo(location : Location) -> AnyPublisher<PlaceModel, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
 }
