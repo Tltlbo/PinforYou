@@ -69,7 +69,7 @@ extension LocationService {
             checkValue.toggle()
         }
         else {
-            location = .init(longitude: 126.978365, latitude: 37.566691)
+            location = .init(longitude: 128.75273864999835, latitude: 35.8368914751991)
         }
         
         if checkValue {

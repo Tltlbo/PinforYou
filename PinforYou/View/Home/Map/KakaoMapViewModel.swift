@@ -41,7 +41,7 @@ class KakaoMapViewModel : ObservableObject {
                 }.store(in: &subscriptions)
             
         case .getPlaceInfo:
-            container.services.locationService.getPlaceInfo(location: self.Location ?? .init(longitude: 0, latitude: 0))
+            container.services.locationService.getPlaceInfo(location: self.Location ?? .init(longitude: 128.75273864999835, latitude: 35.8368914751991))
                 .sink { [weak self] completion in
                     if case .failure = completion {
                         print("실패")
