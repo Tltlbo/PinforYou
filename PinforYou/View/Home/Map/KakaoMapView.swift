@@ -10,8 +10,7 @@ import KakaoMapsSDK
 
 struct KakaoMapView: UIViewRepresentable {
     @Binding var draw: Bool
-    var Location : Location
-    var placeList : [PlaceModel.Place]
+    @EnvironmentObject var kakaoMapViewModel : KakaoMapViewModel
     
     func makeUIView(context: Self.Context) -> KMViewContainer {
         //need to correct view size
@@ -44,7 +43,7 @@ struct KakaoMapView: UIViewRepresentable {
     }
     
     func makeCoordinator() -> KakaoMapCoordinator {
-        return KakaoMapCoordinator(location: Location, placeList: placeList)
+        return KakaoMapCoordinator(viewModel: kakaoMapViewModel)
     }
     
     /// Cleans up the presented `UIView` (and coordinator) in
@@ -55,11 +54,10 @@ struct KakaoMapView: UIViewRepresentable {
 }
 
 class KakaoMapCoordinator: NSObject, MapControllerDelegate {
-    init(location : Location, placeList : [PlaceModel.Place]) {
+    init(viewModel : KakaoMapViewModel) {
         first = true
         auth = false
-        Location = location
-        self.placeList = placeList
+        self.kakaoMapViewModel = viewModel
         
         
         super.init()
@@ -74,7 +72,9 @@ class KakaoMapCoordinator: NSObject, MapControllerDelegate {
     }
     
     func addViews() {
-        let defaultPosition: MapPoint = MapPoint(longitude: Location.longitude, latitude: Location.latitude)
+        
+        let defaultPosition: MapPoint = MapPoint(longitude: kakaoMapViewModel.Location?.longitude ?? 0.0, latitude: kakaoMapViewModel.Location?.latitude ?? 0.0)
+        
         let mapviewInfo: MapviewInfo = MapviewInfo(viewName: "mapview", viewInfoName: "map", defaultPosition: defaultPosition)
         
         
@@ -130,7 +130,11 @@ class KakaoMapCoordinator: NSObject, MapControllerDelegate {
 //            )   //레이어에 지정한 옵션 및 위치로 POI를 추가한다.
 //            let _ = poi1?.addPoiTappedEventHandler(target: self, handler: KakaoMapCoordinator.poiTappedHandler) // poi tap event handler를 추가한다.
             
-            var locationList = self.placeList.map { MapPoint(longitude: Double($0.longitude)!, latitude: Double($0.latitude)!) }
+            
+            
+            guard let templocationList = kakaoMapViewModel.PlaceList else {return}
+            
+            let locationList = templocationList.map { MapPoint(longitude: Double($0.longitude)!, latitude: Double($0.latitude)!) }
             
             
             
@@ -170,7 +174,7 @@ class KakaoMapCoordinator: NSObject, MapControllerDelegate {
         let mapView: KakaoMap? = controller?.getView("mapview") as? KakaoMap
         mapView?.viewRect = CGRect(origin: CGPoint(x: 0.0, y: 0.0), size: size)
         if first {
-            let cameraUpdate: CameraUpdate = CameraUpdate.make(target: MapPoint(longitude: Location.longitude, latitude: Location.latitude), mapView: mapView!)
+            let cameraUpdate: CameraUpdate = CameraUpdate.make(target: MapPoint(longitude: kakaoMapViewModel.Location?.longitude ?? 0.0, latitude: kakaoMapViewModel.Location?.latitude ?? 0.0), mapView: mapView!)
             mapView?.moveCamera(cameraUpdate)
             first = false
         }
@@ -184,8 +188,7 @@ class KakaoMapCoordinator: NSObject, MapControllerDelegate {
     var container: KMViewContainer?
     var first: Bool
     var auth: Bool
-    var Location : Location
-    var placeList : [PlaceModel.Place]
+    var kakaoMapViewModel : KakaoMapViewModel
 }
 
 

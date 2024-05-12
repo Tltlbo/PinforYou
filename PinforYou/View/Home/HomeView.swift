@@ -9,17 +9,18 @@ import SwiftUI
 
 struct HomeView: View {
     @State var draw: Bool = false   //뷰의 appear 상태를 전달하기 위한 변수.
-    var Location : Location = .init(longitude: 126.978365, latitude: 37.566691)
     @StateObject var kakaoMapViewModel : KakaoMapViewModel
     
         var body: some View {
             
             if kakaoMapViewModel.isFinished && kakaoMapViewModel.PlaceFinshed {
-                KakaoMapView(draw: $draw, Location: kakaoMapViewModel.Location ?? Location, placeList: kakaoMapViewModel.PlaceList ?? PlaceModel.placestub1.PlaceList).onAppear(perform: {
+                KakaoMapView(draw: $draw)
+                    .onAppear(perform: {
                         self.draw = true
                     }).onDisappear(perform: {
                         self.draw = false
                     })/*.frame(maxWidth: .infinity, maxHeight: .infinity)*/
+                    .environmentObject(kakaoMapViewModel)
             } else {
                 ProgressView()
                     .onAppear {
