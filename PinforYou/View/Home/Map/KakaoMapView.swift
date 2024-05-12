@@ -11,6 +11,7 @@ import KakaoMapsSDK
 struct KakaoMapView: UIViewRepresentable {
     @Binding var draw: Bool
     var Location : Location
+    var placeList : [PlaceModel.Place]
     
     func makeUIView(context: Self.Context) -> KMViewContainer {
         //need to correct view size
@@ -43,7 +44,7 @@ struct KakaoMapView: UIViewRepresentable {
     }
     
     func makeCoordinator() -> KakaoMapCoordinator {
-        return KakaoMapCoordinator(location: Location)
+        return KakaoMapCoordinator(location: Location, placeList: placeList)
     }
     
     /// Cleans up the presented `UIView` (and coordinator) in
@@ -54,10 +55,12 @@ struct KakaoMapView: UIViewRepresentable {
 }
 
 class KakaoMapCoordinator: NSObject, MapControllerDelegate {
-    init(location : Location) {
+    init(location : Location, placeList : [PlaceModel.Place]) {
         first = true
         auth = false
         Location = location
+        self.placeList = placeList
+        
         
         super.init()
         
@@ -121,15 +124,30 @@ class KakaoMapCoordinator: NSObject, MapControllerDelegate {
             poiOption.rank = 0
             poiOption.clickable = true // clickable 옵션을 true로 설정한다. default는 false로 설정되어있다.
             
-            let poi1 = layer?.addPoi(option: poiOption, at: MapPoint(longitude: 128.752739, latitude: 35.836891), callback: {(_ poi: (Poi?)) -> Void in
+//            let poi1 = layer?.addPoi(option: poiOption, at: MapPoint(longitude: 128.752739, latitude: 35.836891), callback: {(_ poi: (Poi?)) -> Void in
+//                print("")
+//            }
+//            )   //레이어에 지정한 옵션 및 위치로 POI를 추가한다.
+//            let _ = poi1?.addPoiTappedEventHandler(target: self, handler: KakaoMapCoordinator.poiTappedHandler) // poi tap event handler를 추가한다.
+            
+            var locationList = self.placeList.map { MapPoint(longitude: Double($0.longitude)!, latitude: Double($0.latitude)!) }
+            
+            
+            
+  
+            let poi2 = layer?.addPois(option: poiOption, at: locationList, callback: {(_ pois: ([Poi]?)) -> Void in
                 print("")
+            })
+            
+            guard let pois = poi2 else {return}
+            
+            for poi in pois {
+                let _ = poi.addPoiTappedEventHandler(target: self, handler: KakaoMapCoordinator.poiTappedHandler(_:))
             }
-            )   //레이어에 지정한 옵션 및 위치로 POI를 추가한다.
-            let _ = poi1?.addPoiTappedEventHandler(target: self, handler: KakaoMapCoordinator.poiTappedHandler) // poi tap event handler를 추가한다.
+            
             
             layer?.showAllPois()
             
-            poi1?.show()
         }
         
         // POI 탭 이벤트가 발생하고, 표시하고 있던 Poi를 숨긴다.
@@ -167,6 +185,7 @@ class KakaoMapCoordinator: NSObject, MapControllerDelegate {
     var first: Bool
     var auth: Bool
     var Location : Location
+    var placeList : [PlaceModel.Place]
 }
 
 

@@ -14,8 +14,8 @@ struct HomeView: View {
     
         var body: some View {
             
-            if kakaoMapViewModel.isFinished {
-                KakaoMapView(draw: $draw, Location: kakaoMapViewModel.Location ?? Location).onAppear(perform: {
+            if kakaoMapViewModel.isFinished && kakaoMapViewModel.PlaceFinshed {
+                KakaoMapView(draw: $draw, Location: kakaoMapViewModel.Location ?? Location, placeList: kakaoMapViewModel.PlaceList ?? PlaceModel.placestub1.PlaceList).onAppear(perform: {
                         self.draw = true
                     }).onDisappear(perform: {
                         self.draw = false

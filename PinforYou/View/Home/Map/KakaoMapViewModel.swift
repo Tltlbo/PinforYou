@@ -16,8 +16,9 @@ class KakaoMapViewModel : ObservableObject {
     }
     
     @Published var Location : Location?
-    @Published var PlaceList : [PlaceModel.Place?] = []
+    @Published var PlaceList : [PlaceModel.Place]?
     @Published var isFinished : Bool = false
+    @Published var PlaceFinshed : Bool = false
     
     private var container : DIContainer
     private var subscriptions = Set<AnyCancellable>()
@@ -48,7 +49,8 @@ class KakaoMapViewModel : ObservableObject {
                     }
                 } receiveValue: { [weak self] PlaceModel in
                     self?.PlaceList = PlaceModel.PlaceList
-                    print(PlaceModel.PlaceList)
+                    print(PlaceModel.PlaceList[0].placeName)
+                    self?.PlaceFinshed = true
                     //TODO: 여기 기다릴까? isFinished
                 }.store(in: &subscriptions)
 
