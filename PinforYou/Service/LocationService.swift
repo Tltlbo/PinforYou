@@ -53,7 +53,7 @@ class LocationService : LocationServiceType {
 
 extension LocationService {
     private func getLocation(completion: @escaping (Result<Location, Error>) -> Void) {
-        var locationManager = CLLocationManager()
+        let locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
         let coordinate = locationManager.location?.coordinate
         let latitude = coordinate?.latitude

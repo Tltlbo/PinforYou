@@ -38,6 +38,7 @@
 		4ED5761B2BEAFEC10034F7A6 /* KakaoMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5761A2BEAFEC10034F7A6 /* KakaoMapViewModel.swift */; };
 		4ED5761D2BEC716E0034F7A6 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5761C2BEC716E0034F7A6 /* URL.swift */; };
 		4ED5761F2BED03AE0034F7A6 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5761E2BED03AE0034F7A6 /* Place.swift */; };
+		4ED576252BF3B2190034F7A6 /* PlaceInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576242BF3B2190034F7A6 /* PlaceInfoView.swift */; };
 		730C6F69986697778218E709 /* Pods_PinforYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28531306F13EC3B74457DB6F /* Pods_PinforYou.framework */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		4ED5761A2BEAFEC10034F7A6 /* KakaoMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapViewModel.swift; sourceTree = "<group>"; };
 		4ED5761C2BEC716E0034F7A6 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		4ED5761E2BED03AE0034F7A6 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		4ED576242BF3B2190034F7A6 /* PlaceInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceInfoView.swift; sourceTree = "<group>"; };
 		5F528BB8266D3D3FCBADB28D /* Pods-PinforYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinforYou.debug.xcconfig"; path = "Target Support Files/Pods-PinforYou/Pods-PinforYou.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,6 +126,7 @@
 		4EA35ACD2BCD005E0001508B /* PinforYou */ = {
 			isa = PBXGroup;
 			children = (
+				4ED576202BF254A20034F7A6 /* Extension */,
 				4ED576132BE9CD2D0034F7A6 /* Permission */,
 				4EA35B012BE3D9900001508B /* General */,
 				4EA35AF92BE3268F0001508B /* Repository */,
@@ -257,6 +260,7 @@
 		4ED5760C2BE8CB0B0034F7A6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				4ED576232BF3B1C80034F7A6 /* PlaceInfo */,
 				4ED5760D2BE8CB250034F7A6 /* Map */,
 				4ED576112BE90BDB0034F7A6 /* HomeView.swift */,
 			);
@@ -278,6 +282,21 @@
 				4ED576142BE9CD590034F7A6 /* LocationPermission.swift */,
 			);
 			path = Permission;
+			sourceTree = "<group>";
+		};
+		4ED576202BF254A20034F7A6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		4ED576232BF3B1C80034F7A6 /* PlaceInfo */ = {
+			isa = PBXGroup;
+			children = (
+				4ED576242BF3B2190034F7A6 /* PlaceInfoView.swift */,
+			);
+			path = PlaceInfo;
 			sourceTree = "<group>";
 		};
 		52703C487EC7B5F9B912F5CE /* Frameworks */ = {
@@ -424,6 +443,7 @@
 				4EA35AFB2BE326A40001508B /* DBError.swift in Sources */,
 				4EA35AF62BE3262D0001508B /* ServiceError.swift in Sources */,
 				4EA35AEA2BE323D30001508B /* randomNonceString.swift in Sources */,
+				4ED576252BF3B2190034F7A6 /* PlaceInfoView.swift in Sources */,
 				4EA35AFE2BE326CD0001508B /* UserObject.swift in Sources */,
 				4EA35B062BE3DCA40001508B /* AuthenticationViewModel.swift in Sources */,
 				4ED576122BE90BDB0034F7A6 /* HomeView.swift in Sources */,

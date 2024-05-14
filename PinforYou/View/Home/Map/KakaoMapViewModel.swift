@@ -49,7 +49,6 @@ class KakaoMapViewModel : ObservableObject {
                     }
                 } receiveValue: { [weak self] PlaceModel in
                     self?.PlaceList = PlaceModel.PlaceList
-                    print(PlaceModel.PlaceList[0].placeName)
                     self?.PlaceFinshed = true
                     //TODO: 여기 기다릴까? isFinished
                 }.store(in: &subscriptions)
