@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import AuthenticationServices
 import GoogleSignIn
+import Alamofire
 
 
 
@@ -126,6 +127,21 @@ extension AuthenticationService {
             return
         }
         
+        guard let authrizaitionCode = appleIDCredential.authorizationCode else {return}
+        
+        guard let data = String(data:authrizaitionCode, encoding: .utf8) else {return}
+        
+        print("했음")
+        
+        AF.request("http://pinforyou-apiserver-env-1.eba-qeinjpgf.ap-northeast-2.elasticbeanstalk.com/?\(data)",
+                   method: .post,
+                   parameters: nil,
+                   encoding: URLEncoding.default,
+                   headers: ["Content-Type" : "application/json"])
+        .responseDecodable(of: String.self) { response in
+            
+        }
+        
         
         
         
@@ -170,8 +186,32 @@ extension AuthenticationService {
         
     }
     
-    //MARK: 파이어베이스 인증
-    private func authenticateUserWithFirebase(credential: String/*AuthCredential*/, completion: @escaping (Result<User, Error>) -> Void) {
+    //MARK: 서버에 ios 인가코드 전송
+    private func authenticateUserWithApple(auth_code: String, completion: @escaping (Result<User, Error>) -> Void) {
+        /*Auth.auth().signIn(with: credential) { result, error in
+            if let error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let result else {
+                completion(.failure(AuthenticationError.invaildated))
+                return
+            }
+            
+            let firebaseUser = result.user
+            let user : User = .init(id: firebaseUser.uid,
+                                    name: firebaseUser.displayName ?? "",
+                                    phoneNumber: firebaseUser.phoneNumber,
+                                    profileURL: firebaseUser.photoURL?.absoluteString)
+            completion(.success(user))
+        }
+         */
+        
+        
+    }
+    
+    private func authenticateUserWithFirebase(auth_code: String/*AuthCredential*/, completion: @escaping (Result<User, Error>) -> Void) {
         /*Auth.auth().signIn(with: credential) { result, error in
             if let error {
                 completion(.failure(error))
@@ -194,27 +234,6 @@ extension AuthenticationService {
     }
 }
 
-//class StubAuthenticationService : AuthenticationServiceType {
-//    
-//    func checkAuthenticationState() -> String? {
-//        return nil
-//    }
-//    
-//    func signInWithGoogle() -> AnyPublisher<User, ServiceError> {
-//        Empty().eraseToAnyPublisher()
-//    }
-//    
-//    func handleSignInWithAppleRequest(_ request: ASAuthorizationAppleIDRequest) -> String {
-//        return ""
-//    }
-//    func handleSignInWithAppleCompletion(_ authorization: ASAuthorization, none: String) -> AnyPublisher<User, ServiceError> {
-//        return Empty().eraseToAnyPublisher()
-//    }
-//    
-//    func logout() -> AnyPublisher<Void, ServiceError> {
-//        return Empty().eraseToAnyPublisher()
-//    }
-//}
 
 class StubAuthenticationService : AuthenticationServiceType {
     

@@ -33,7 +33,7 @@ struct LoginIntroView: View {
                 
                 
                 Button {
-                    isPresentedLoginOptionView.toggle()
+                    isPresentedLoginOptionView = true
                 } label: {
                     RoundedRectangle(cornerRadius: 15)
                         .frame(width: 352,height: 72)
@@ -52,12 +52,14 @@ struct LoginIntroView: View {
                 .padding(.leading, 20)
                 .padding(.bottom, 200)
                 
+                .navigationDestination(isPresented: $isPresentedLoginOptionView) {
+                    LoginOptionView()
+                }
+                
             }
         }
-        .navigationDestination(isPresented: $isPresentedLoginOptionView) {
-            LoginOptionView()
-        }
     }
+        
 }
 
 #Preview {
