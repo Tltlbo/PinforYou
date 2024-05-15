@@ -11,13 +11,22 @@ struct PlaceInfoView: View {
     
     @Binding var Place : PlaceModel.Place
     var body: some View {
+        
         VStack {
-            Text(Place.addressName)
-            Text(Place.placeName)
+            HStack {
+                PlaceCell(Place: Place)
+                Spacer()
+            }
+            
+            
+            Spacer()
         }
     }
 }
 
+
+
 #Preview {
-    Text("HELLO")
+    PlaceInfoView(Place: .constant(PlaceModel.placestub1.PlaceList[0]))
+        
 }
