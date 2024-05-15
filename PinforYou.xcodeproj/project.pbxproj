@@ -126,7 +126,6 @@
 		4EA35ACD2BCD005E0001508B /* PinforYou */ = {
 			isa = PBXGroup;
 			children = (
-				4ED576202BF254A20034F7A6 /* Extension */,
 				4ED576132BE9CD2D0034F7A6 /* Permission */,
 				4EA35B012BE3D9900001508B /* General */,
 				4EA35AF92BE3268F0001508B /* Repository */,
@@ -282,13 +281,6 @@
 				4ED576142BE9CD590034F7A6 /* LocationPermission.swift */,
 			);
 			path = Permission;
-			sourceTree = "<group>";
-		};
-		4ED576202BF254A20034F7A6 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extension;
 			sourceTree = "<group>";
 		};
 		4ED576232BF3B1C80034F7A6 /* PlaceInfo */ = {

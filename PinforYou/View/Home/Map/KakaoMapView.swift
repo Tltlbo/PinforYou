@@ -148,6 +148,7 @@ class KakaoMapCoordinator: NSObject, MapControllerDelegate, ObservableObject {
 //            print("")
 //        })
         
+        
         let poi2 = layer?.addPois(option: poiOption, at: locationList, callback: {(_ pois: ([Poi]?)) -> Void in
             print("")
         })
@@ -168,9 +169,6 @@ class KakaoMapCoordinator: NSObject, MapControllerDelegate, ObservableObject {
         let index = Int(param.poiItem.itemID.split(separator: "-")[1])!
         kakaoView.isTapped = true
         kakaoView.tappedPlace = kakaoMapViewModel.PlaceList![index]
-        print(kakaoView.tappedPlace)
-        
-        
         
     }
     
