@@ -10,8 +10,9 @@ import SwiftUI
 struct CardCell: View {
     var body: some View {
         
-        VStack (alignment: .leading) {
+        VStack (alignment: .trailing) {
             HStack {
+                Spacer()
                 Text("나라사랑카드")
                     .font(.system(size: 20))
                     .foregroundStyle(.white)
@@ -24,7 +25,6 @@ struct CardCell: View {
                         .foregroundStyle(.white)
                 }
                 
-                Spacer()
             }
             .frame(height: 20)
             .padding(.bottom, 30)

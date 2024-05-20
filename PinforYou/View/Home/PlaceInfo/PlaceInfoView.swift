@@ -17,37 +17,85 @@ struct PlaceInfoView: View {
     
     var body: some View {
         
-        VStack {
-            HStack {
-                PlaceCell(Place: Place)
-                Spacer()
-            }
+        VStack(spacing: 0){
             
-            Rectangle()
-                .fill(Color.blue)
-                .frame(height: 2)
-                .padding(.bottom, 0)
-            
-            ScrollView(.vertical) {
-                VStack(spacing: 0) {
-                    Rectangle()
-                        .fill(Color.gray)
-                        .frame(height: 1)
-                    
-                    ForEach(testCardList, id: \.self) { card in
-                        CardCell()
-                        
+            NavigationStack {
+                
+                HStack {
+                    PlaceCell(Place: Place)
+                    Spacer()
+                }
+                
+                ScrollView(.vertical) {
+                    VStack(spacing: 0) {
                         Rectangle()
-                            .fill(Color.white)
-                            .frame(height:1)
+                            .fill(Color.gray)
+                            .frame(height: 1)
+                        
+                        ForEach(testCardList, id: \.self) { card in
+                            
+                            NavigationLink {
+                                QRPayView(card: card)
+                            } label: {
+                                CardCell()
+                            }
+
+                            
+                            Rectangle()
+                                .fill(Color.white)
+                                .frame(height:1)
+                        }
+                        
                     }
                     
                 }
             }
-            
-            
-            Spacer()
+            .tint(.black)
         }
+        .padding(.top, 10)
+        
+        HStack {
+            withBtn(option: .with)
+                .padding(.leading , 10)
+            Spacer()
+            withBtn(option: .game)
+                .padding(.trailing, 10)
+        }
+    }
+}
+
+struct withBtn : View {
+    
+    enum selectOption {
+        case game
+        case with
+    }
+    
+    var option : selectOption = .game
+    
+    var body: some View {
+        Button {
+            //바인딩 값에 따라 변경
+        } label: {
+            ZStack {
+                Rectangle()
+                    .frame(width: 150, height: 50)
+                    .clipShape(.rect(cornerRadius: 10))
+                
+                switch option {
+                case .game:
+                    Text("게임 결제")
+                        .foregroundStyle(Color.white)
+                        .font(.system(size: 25))
+                case .with:
+                    Text("함께 결제")
+                        .foregroundStyle(Color.white)
+                        .font(.system(size: 25))
+                }
+                
+            }
+        }
+
     }
 }
 

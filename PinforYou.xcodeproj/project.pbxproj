@@ -42,6 +42,7 @@
 		4ED576282BF502940034F7A6 /* PlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576272BF502940034F7A6 /* PlaceCell.swift */; };
 		4ED5762A2BFA40810034F7A6 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576292BFA40810034F7A6 /* CardCell.swift */; };
 		4ED5762C2BFA488D0034F7A6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5762B2BFA488D0034F7A6 /* Card.swift */; };
+		4ED5762F2BFAD8BD0034F7A6 /* QRPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5762E2BFAD8BD0034F7A6 /* QRPayView.swift */; };
 		730C6F69986697778218E709 /* Pods_PinforYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28531306F13EC3B74457DB6F /* Pods_PinforYou.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,7 @@
 		4ED576272BF502940034F7A6 /* PlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCell.swift; sourceTree = "<group>"; };
 		4ED576292BFA40810034F7A6 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		4ED5762B2BFA488D0034F7A6 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		4ED5762E2BFAD8BD0034F7A6 /* QRPayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPayView.swift; sourceTree = "<group>"; };
 		5F528BB8266D3D3FCBADB28D /* Pods-PinforYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinforYou.debug.xcconfig"; path = "Target Support Files/Pods-PinforYou/Pods-PinforYou.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -266,6 +268,7 @@
 		4ED5760C2BE8CB0B0034F7A6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				4ED5762D2BFAD88F0034F7A6 /* PaymentView */,
 				4ED576232BF3B1C80034F7A6 /* PlaceInfo */,
 				4ED5760D2BE8CB250034F7A6 /* Map */,
 				4ED576112BE90BDB0034F7A6 /* HomeView.swift */,
@@ -306,6 +309,14 @@
 				4ED576292BFA40810034F7A6 /* CardCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		4ED5762D2BFAD88F0034F7A6 /* PaymentView */ = {
+			isa = PBXGroup;
+			children = (
+				4ED5762E2BFAD8BD0034F7A6 /* QRPayView.swift */,
+			);
+			path = PaymentView;
 			sourceTree = "<group>";
 		};
 		52703C487EC7B5F9B912F5CE /* Frameworks */ = {
@@ -475,6 +486,7 @@
 				4EA35AF82BE326480001508B /* UserService.swift in Sources */,
 				4EA35AF42BE326040001508B /* Service.swift in Sources */,
 				4EA35AE62BE232140001508B /* KakaoLoginBtn.swift in Sources */,
+				4ED5762F2BFAD8BD0034F7A6 /* QRPayView.swift in Sources */,
 				4ED576152BE9CD590034F7A6 /* LocationPermission.swift in Sources */,
 				4EA35ACF2BCD005E0001508B /* PinforYouApp.swift in Sources */,
 				4ED5761B2BEAFEC10034F7A6 /* KakaoMapViewModel.swift in Sources */,
