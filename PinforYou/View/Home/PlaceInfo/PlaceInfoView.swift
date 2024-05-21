@@ -49,18 +49,19 @@ struct PlaceInfoView: View {
                     }
                     
                 }
+                HStack {
+                    withBtn(option: .with)
+                        .padding(.leading , 10)
+                    Spacer()
+                    withBtn(option: .game)
+                        .padding(.trailing, 10)
+                }
             }
             .tint(.black)
         }
         .padding(.top, 10)
         
-        HStack {
-            withBtn(option: .with)
-                .padding(.leading , 10)
-            Spacer()
-            withBtn(option: .game)
-                .padding(.trailing, 10)
-        }
+        
     }
 }
 
@@ -74,13 +75,15 @@ struct withBtn : View {
     var option : selectOption = .game
     
     var body: some View {
-        Button {
+        NavigationLink {
             //바인딩 값에 따라 변경
+            WithFriendView()
         } label: {
             ZStack {
                 Rectangle()
                     .frame(width: 150, height: 50)
                     .clipShape(.rect(cornerRadius: 10))
+                    .foregroundStyle(.blue)
                 
                 switch option {
                 case .game:
@@ -95,6 +98,7 @@ struct withBtn : View {
                 
             }
         }
+
 
     }
 }
