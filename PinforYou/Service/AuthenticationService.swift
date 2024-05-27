@@ -132,14 +132,15 @@ extension AuthenticationService {
         guard let data = String(data:authrizaitionCode, encoding: .utf8) else {return}
         
         print("했음")
+        print(data)
         
-        AF.request("http://pinforyou-apiserver-env-1.eba-qeinjpgf.ap-northeast-2.elasticbeanstalk.com/?\(data)",
+        AF.request("http://pinforyou-apiserver-env-1.eba-qeinjpgf.ap-northeast-2.elasticbeanstalk.com/api/v1/apple/login?authorizationCode=\(data)",
                    method: .post,
                    parameters: nil,
                    encoding: URLEncoding.default,
                    headers: ["Content-Type" : "application/json"])
-        .responseDecodable(of: String.self) { response in
-            
+        .responseString { response in
+            print("응 응답했어\(response)")
         }
         
         
