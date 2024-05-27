@@ -23,8 +23,6 @@ struct PlaceCell : View {
                     Text(Place.categoryName)
                         .font(.system(size: 12))
                 }
-                
-                
             }
             .frame(height: 20)
             
@@ -32,6 +30,7 @@ struct PlaceCell : View {
             Text(Place.addressName)
                 .font(.system(size: 16))
         }
+        
     }
 }
 

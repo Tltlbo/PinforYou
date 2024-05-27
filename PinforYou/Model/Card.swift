@@ -1,0 +1,37 @@
+//
+//  Card.swift
+//  PinforYou
+//
+//  Created by 박진성 on 5/19/24.
+//
+
+import Foundation
+
+struct Card : Hashable {
+    var cardName : String
+    var cardNumber : String
+    //test
+    var salePercent : String
+    
+    var id = UUID()
+}
+
+
+extension Card{
+    static var cardStub1 : Card {
+        .init(cardName: "나라사랑카드", cardNumber: "1994", salePercent: "10")
+    }
+    
+    static var cardStub2 : Card {
+        .init(cardName: "네이버페이머니카드", cardNumber: "1224", salePercent: "5")
+    }
+    
+    static var cardStub3 : Card {
+        .init(cardName: "토스카드", cardNumber: "1000", salePercent: "3")
+    }
+    
+    static var cardStub4 : Card {
+        .init(cardName: "신힌카드", cardNumber: "2352", salePercent: "5")
+    }
+    
+}
