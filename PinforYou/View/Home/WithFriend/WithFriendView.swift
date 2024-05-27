@@ -79,10 +79,20 @@ struct FriendGridView : View {
             LazyVGrid(columns: columns) {
                 ForEach((0...19), id: \.self) { _ in
                     
-                    Color(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1))
-                                .cornerRadius(15)
-                                .frame(width: 110, height: 110)
-                                .padding()
+                    
+                    
+                    ZStack {
+                        Color(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1))
+                                    .cornerRadius(15)
+                                    .frame(width: 110, height: 110)
+                                    .blur(radius: 5)
+                                    .padding()
+                        
+                        Image(systemName: "checkmark.seal.fill")
+                            .resizable()
+                            .foregroundStyle(.white)
+                            .frame(width: 40, height: 40)
+                    }
 
                 }
             }
