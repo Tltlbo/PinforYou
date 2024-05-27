@@ -70,28 +70,59 @@ struct WithFriendView: View {
     }
 }
 
+struct testCheck : Hashable {
+    var uuid : UUID = UUID()
+    var check = false
+}
+
 struct FriendGridView : View {
     
     var columns : [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     
+    @State var test : [testCheck] = [
+        .init(),
+        .init(),
+        .init()
+    ]
+    
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns) {
-                ForEach((0...19), id: \.self) { _ in
-                    
+                ForEach($test, id: \.self) { $test in
                     
                     
                     ZStack {
-                        Color(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1))
-                                    .cornerRadius(15)
-                                    .frame(width: 110, height: 110)
-                                    .blur(radius: 5)
-                                    .padding()
+                        if !test.check {
+                            
+                            Button {
+                                test.check = true
+                            } label: {
+                                Color(.blue)
+                                            .cornerRadius(15)
+                                            .frame(width: 110, height: 110)
+                                            .padding()
+                            }
+
+                            
+                        }
+                        else {
+                            
+                            Button {
+                                test.check = false
+                            } label: {
+                                Color(.blue)
+                                            .cornerRadius(15)
+                                            .frame(width: 110, height: 110)
+                                            .blur(radius: 5)
+                                            .padding()
+                            }
+                            
+                            Image(systemName: "checkmark.seal.fill")
+                                .resizable()
+                                .foregroundStyle(.white)
+                                .frame(width: 40, height: 40)
+                        }
                         
-                        Image(systemName: "checkmark.seal.fill")
-                            .resizable()
-                            .foregroundStyle(.white)
-                            .frame(width: 40, height: 40)
                     }
 
                 }
