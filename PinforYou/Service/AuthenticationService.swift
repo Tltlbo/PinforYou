@@ -134,7 +134,7 @@ extension AuthenticationService {
         print("했음")
         print(data)
         
-        AF.request("http://pinforyou-apiserver-env-1.eba-qeinjpgf.ap-northeast-2.elasticbeanstalk.com/api/v1/apple/login?authorizationCode=\(data)",
+        AF.request("http://PinForYou-APIServer-env-1.eba-qeinjpgf.ap-northeast-2.elasticbeanstalk.com/api/v1/apple/login?\(data)",
                    method: .post,
                    parameters: nil,
                    encoding: URLEncoding.default,
@@ -256,4 +256,16 @@ class StubAuthenticationService : AuthenticationServiceType {
     func logout() /*-> AnyPublisher<Void, ServiceError>*/ {
         //return Empty().eraseToAnyPublisher()
     }
+}
+
+struct testID : Decodable {
+    
+        var userId : String
+        
+        
+    
+    enum CodingKeys : String, CodingKey {
+        case userId = "userId"
+    }
+    
 }
