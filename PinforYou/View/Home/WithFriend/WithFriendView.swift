@@ -19,7 +19,7 @@ struct WithFriendView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading){
+            VStack(alignment:.leading){
                 if (checkOption == .game) {
                     
                     Text("""
@@ -29,42 +29,46 @@ struct WithFriendView: View {
                     .font(.system(size: 26, weight: .bold))
                     .padding(.leading, 15)
                     
+                    
                 }
                 else {
-                    Text("""
-                        함께 추천 받을 친구를
-                        선택해주세요!
-                        """)
-                    .font(.system(size: 26, weight: .bold))
-                    .padding(.leading, 15)
+                    
+                    VStack(alignment:.leading) {
+                        Text("""
+                            함께 추천 받을 친구를
+                            선택해주세요!
+                            """)
+                        .font(.system(size: 26, weight: .bold))
+                        .padding(.leading, 15)
+                    }
                 }
                 
                 FriendGridView()
                     .padding(.horizontal, 15)
-                
-                    NavigationLink {
-                        //
-                    } label: {
-                        ZStack {
-                            Rectangle()
-                                .frame(width: 150, height: 50)
-                                .clipShape(.rect(cornerRadius: 10))
-                                .foregroundStyle(.blue)
-                            
-                            if (checkOption == .game) {
-                                Text("시작하기")
-                                    .foregroundStyle(.white)
-                            }
-                            else {
-                                Text("확인")
-                                    .foregroundStyle(.white)
-                            }
-                        }
+            }
+            
+            NavigationLink {
+                //
+            } label: {
+                ZStack(alignment: .center) {
+                    Rectangle()
+                        .frame(width: UIScreen.main.bounds.width - 25, height: 64)
+                        .clipShape(.rect(cornerRadius: 10))
+                        .foregroundStyle(.blue)
+                    
+                    if (checkOption == .game) {
+                        
+                        Text("시작하기")
+                            .foregroundStyle(.white)
+                        
                     }
-
-                
-                
-                
+                    else {
+                        
+                        Text("확인")
+                            .foregroundStyle(.white)
+                        
+                    }
+                }
             }
         }
     }
@@ -98,11 +102,11 @@ struct FriendGridView : View {
                                 test.check = true
                             } label: {
                                 Color(.blue)
-                                            .cornerRadius(15)
-                                            .frame(width: 110, height: 110)
-                                            .padding()
+                                    .cornerRadius(15)
+                                    .frame(width: 110, height: 110)
+                                    .padding()
                             }
-
+                            
                             
                         }
                         else {
@@ -111,10 +115,10 @@ struct FriendGridView : View {
                                 test.check = false
                             } label: {
                                 Color(.blue)
-                                            .cornerRadius(15)
-                                            .frame(width: 110, height: 110)
-                                            .blur(radius: 5)
-                                            .padding()
+                                    .cornerRadius(15)
+                                    .frame(width: 110, height: 110)
+                                    .blur(radius: 2)
+                                    .padding()
                             }
                             
                             Image(systemName: "checkmark.seal.fill")
@@ -124,7 +128,7 @@ struct FriendGridView : View {
                         }
                         
                     }
-
+                    
                 }
             }
         }

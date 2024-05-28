@@ -28,6 +28,7 @@
 		4EA35B062BE3DCA40001508B /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35B052BE3DCA40001508B /* AuthenticationViewModel.swift */; };
 		4EA35B082BE4CAC40001508B /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35B072BE4CAC40001508B /* Key.swift */; };
 		4EA35B1D2BE6302F0001508B /* LoginIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35B1C2BE6302F0001508B /* LoginIntroView.swift */; };
+		4EC90CF22C057BD600A0B5B5 /* gameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC90CF12C057BD600A0B5B5 /* gameView.swift */; };
 		4ED576092BE77D0D0034F7A6 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576082BE77D0D0034F7A6 /* MainTabView.swift */; };
 		4ED5760B2BE77D170034F7A6 /* MainTabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5760A2BE77D170034F7A6 /* MainTabType.swift */; };
 		4ED5760F2BE8CD530034F7A6 /* KakaoMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5760E2BE8CD530034F7A6 /* KakaoMapView.swift */; };
@@ -74,6 +75,7 @@
 		4EA35B052BE3DCA40001508B /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		4EA35B072BE4CAC40001508B /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		4EA35B1C2BE6302F0001508B /* LoginIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginIntroView.swift; sourceTree = "<group>"; };
+		4EC90CF12C057BD600A0B5B5 /* gameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameView.swift; sourceTree = "<group>"; };
 		4ED576082BE77D0D0034F7A6 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		4ED5760A2BE77D170034F7A6 /* MainTabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabType.swift; sourceTree = "<group>"; };
 		4ED5760E2BE8CD530034F7A6 /* KakaoMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapView.swift; sourceTree = "<group>"; };
@@ -258,6 +260,14 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		4EC90CF02C057BB300A0B5B5 /* gameView */ = {
+			isa = PBXGroup;
+			children = (
+				4EC90CF12C057BD600A0B5B5 /* gameView.swift */,
+			);
+			path = gameView;
+			sourceTree = "<group>";
+		};
 		4ED576072BE77CFB0034F7A6 /* MainTabView */ = {
 			isa = PBXGroup;
 			children = (
@@ -325,6 +335,7 @@
 		4ED576302BFAEB440034F7A6 /* WithFriend */ = {
 			isa = PBXGroup;
 			children = (
+				4EC90CF02C057BB300A0B5B5 /* gameView */,
 				4ED576312BFAEB6E0034F7A6 /* WithFriendView.swift */,
 			);
 			path = WithFriend;
@@ -485,6 +496,7 @@
 				4EA35B002BE326EA0001508B /* UserDBRepository.swift in Sources */,
 				4ED576282BF502940034F7A6 /* PlaceCell.swift in Sources */,
 				4ED576172BE9CE230034F7A6 /* Location.swift in Sources */,
+				4EC90CF22C057BD600A0B5B5 /* gameView.swift in Sources */,
 				4ED576322BFAEB6E0034F7A6 /* WithFriendView.swift in Sources */,
 				4ED5761D2BEC716E0034F7A6 /* URL.swift in Sources */,
 				4ED5760F2BE8CD530034F7A6 /* KakaoMapView.swift in Sources */,
