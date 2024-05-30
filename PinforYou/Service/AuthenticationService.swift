@@ -127,6 +127,8 @@ extension AuthenticationService {
             return
         }
         
+        
+        
         guard let authrizaitionCode = appleIDCredential.authorizationCode else {return}
         
         guard let data = String(data:authrizaitionCode, encoding: .utf8) else {return}
@@ -134,13 +136,21 @@ extension AuthenticationService {
         print("했음")
         print(data)
         
-        AF.request("http://PinForYou-APIServer-env-1.eba-qeinjpgf.ap-northeast-2.elasticbeanstalk.com/api/v1/apple/login?\(data)",
+        struct test : Decodable {
+            var ID : String
+            
+            enum CodingKeys : String, CodingKey {
+                case ID = "userId"
+            }
+        }
+        
+        AF.request("http://pinforyou-apiserver-main-env.eba-ixdz2ipf.ap-northeast-2.elasticbeanstalk.com/login",
                    method: .post,
-                   parameters: nil,
-                   encoding: URLEncoding.default,
+                   parameters: ["authorizationCode" : data],
+                   encoding: JSONEncoding.default,
                    headers: ["Content-Type" : "application/json"])
-        .responseString { response in
-            print("응 응답했어\(response)")
+        .response { response in
+            print("응 응답했어\(response.response?.statusCode)")
         }
         
         
