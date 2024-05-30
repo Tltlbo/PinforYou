@@ -8,8 +8,10 @@
 import Foundation
 
 enum MainTabType : String, CaseIterable {
+    
+    case Community
+    case CardList
     case home
-    case CardList //이거 이름 바꿔야 하지 않을까? MY 이런걸로 카드 정보랑 친구, 모임을 가지게 될 건데?
     case Event
     case AllMenu
     
@@ -19,6 +21,8 @@ enum MainTabType : String, CaseIterable {
             return "홈"
         case .CardList:
             return "내 카드"
+        case .Community:
+            return "커뮤니티"
         case .Event:
             return "이벤트"
         case .AllMenu:

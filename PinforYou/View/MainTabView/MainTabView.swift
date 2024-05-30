@@ -23,7 +23,9 @@ struct MainTabView: View {
                     case .home:
                         HomeView(kakaoMapViewModel: .init(container: container))
                     case .CardList:
-                        Color.white
+                        CardListView()
+                    case .Community:
+                        Color.green
                     case .Event:
                         Color.brown
                     case .AllMenu:

@@ -28,6 +28,8 @@
 		4EA35B062BE3DCA40001508B /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35B052BE3DCA40001508B /* AuthenticationViewModel.swift */; };
 		4EA35B082BE4CAC40001508B /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35B072BE4CAC40001508B /* Key.swift */; };
 		4EA35B1D2BE6302F0001508B /* LoginIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35B1C2BE6302F0001508B /* LoginIntroView.swift */; };
+		4EC90CF52C080CA600A0B5B5 /* CardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC90CF42C080CA600A0B5B5 /* CardListView.swift */; };
+		4EC90CF82C0812F900A0B5B5 /* MyCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC90CF72C0812F900A0B5B5 /* MyCardCell.swift */; };
 		4ED576092BE77D0D0034F7A6 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576082BE77D0D0034F7A6 /* MainTabView.swift */; };
 		4ED5760B2BE77D170034F7A6 /* MainTabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5760A2BE77D170034F7A6 /* MainTabType.swift */; };
 		4ED5760F2BE8CD530034F7A6 /* KakaoMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5760E2BE8CD530034F7A6 /* KakaoMapView.swift */; };
@@ -74,6 +76,8 @@
 		4EA35B052BE3DCA40001508B /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		4EA35B072BE4CAC40001508B /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		4EA35B1C2BE6302F0001508B /* LoginIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginIntroView.swift; sourceTree = "<group>"; };
+		4EC90CF42C080CA600A0B5B5 /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
+		4EC90CF72C0812F900A0B5B5 /* MyCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardCell.swift; sourceTree = "<group>"; };
 		4ED576082BE77D0D0034F7A6 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		4ED5760A2BE77D170034F7A6 /* MainTabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabType.swift; sourceTree = "<group>"; };
 		4ED5760E2BE8CD530034F7A6 /* KakaoMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapView.swift; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 		4EA35ADC2BCD0AE30001508B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4EC90CF32C080C7E00A0B5B5 /* CardList */,
 				4ED5760C2BE8CB0B0034F7A6 /* Home */,
 				4ED576072BE77CFB0034F7A6 /* MainTabView */,
 				4EA35B042BE3DC7E0001508B /* Login */,
@@ -256,6 +261,23 @@
 				4EA35AE42BE231C00001508B /* LoginButton */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		4EC90CF32C080C7E00A0B5B5 /* CardList */ = {
+			isa = PBXGroup;
+			children = (
+				4EC90CF62C0812E800A0B5B5 /* Cell */,
+				4EC90CF42C080CA600A0B5B5 /* CardListView.swift */,
+			);
+			path = CardList;
+			sourceTree = "<group>";
+		};
+		4EC90CF62C0812E800A0B5B5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4EC90CF72C0812F900A0B5B5 /* MyCardCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		4ED576072BE77CFB0034F7A6 /* MainTabView */ = {
@@ -483,6 +505,7 @@
 				4ED5762A2BFA40810034F7A6 /* CardCell.swift in Sources */,
 				4EA35AEC2BE323FC0001508B /* SHA256.swift in Sources */,
 				4EA35B002BE326EA0001508B /* UserDBRepository.swift in Sources */,
+				4EC90CF52C080CA600A0B5B5 /* CardListView.swift in Sources */,
 				4ED576282BF502940034F7A6 /* PlaceCell.swift in Sources */,
 				4ED576172BE9CE230034F7A6 /* Location.swift in Sources */,
 				4ED576322BFAEB6E0034F7A6 /* WithFriendView.swift in Sources */,
@@ -505,6 +528,7 @@
 				4ED5760B2BE77D170034F7A6 /* MainTabType.swift in Sources */,
 				4EA35AEF2BE324990001508B /* AuthenticationService.swift in Sources */,
 				4ED5762C2BFA488D0034F7A6 /* Card.swift in Sources */,
+				4EC90CF82C0812F900A0B5B5 /* MyCardCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
