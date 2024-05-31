@@ -27,7 +27,7 @@ struct MainTabView: View {
                     case .Community:
                         CommunityView()
                     case .Event:
-                        Color.brown
+                        EventView()
                     case .AllMenu:
                         Color.cyan
                     }
