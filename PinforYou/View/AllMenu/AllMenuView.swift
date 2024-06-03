@@ -42,6 +42,10 @@ struct AllMenuView: View {
                 //임시 작업
                 Spacer()
             }
+            .background {
+                Color("BackgroundColor")
+                    .ignoresSafeArea()
+            }
         }
     }
 }

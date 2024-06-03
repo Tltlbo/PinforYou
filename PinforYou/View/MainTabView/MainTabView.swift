@@ -40,11 +40,14 @@ struct MainTabView: View {
             }
         }
         .tint(.white)
+        
     }
     
     // 아직 swiftUI에서는 선택되지 않은 탭의 컬러 변경은 구현되지 X UIKit에 의존해야함.
     init() {
         UITabBar.appearance().unselectedItemTintColor = UIColor(Color.gray)
+        
+        UITabBar.appearance().barTintColor = UIColor(Color(white:0.1))
     }
 }
 

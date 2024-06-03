@@ -45,6 +45,10 @@ struct EventView: View {
                 }
             }
         }
+        .background {
+            Color("BackgroundColor")
+                .ignoresSafeArea()
+        }
     }
 }
 

@@ -34,6 +34,8 @@ struct PinforYouApp: App {
                 .onOpenURL{ url in
                     GIDSignIn.sharedInstance.handle(url)
                 }
+                
         }
+        
     }
 }

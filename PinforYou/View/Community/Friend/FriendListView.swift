@@ -32,13 +32,17 @@ struct FriendListView: View {
                 ScrollView {
                     ForEach(0 ..< 19) {_ in
                         HStack {
-                            Text("test")
-                                .foregroundStyle(.black)
+                            Text("친구")
+                                .foregroundStyle(.white)
                         }
                         .frame(height: 50)
                         
                     }
                 }
+            }
+            .background {
+                Color("BackgroundColor")
+                    .ignoresSafeArea()
             }
         }
     }

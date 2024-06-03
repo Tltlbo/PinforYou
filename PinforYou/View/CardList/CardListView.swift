@@ -33,7 +33,7 @@ struct CardListView: View {
                 }
                 
                 ScrollView(.vertical) {
-                    VStack(spacing: 5) {
+                    VStack(spacing: 10) {
                         ForEach(testCardList, id: \.self) { card in
                             NavigationLink {
                                 //
@@ -47,6 +47,10 @@ struct CardListView: View {
                 }
                 
                 
+            }
+            .background {
+                Color("BackgroundColor")
+                    .ignoresSafeArea()
             }
         }
     }

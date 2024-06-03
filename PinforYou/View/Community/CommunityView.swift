@@ -41,6 +41,10 @@ struct CommunityView: View {
                 MeetingListView()
             }
         }
+        .background {
+            Color("BackgroundColor")
+                .ignoresSafeArea()
+        }
     }
 }
 
