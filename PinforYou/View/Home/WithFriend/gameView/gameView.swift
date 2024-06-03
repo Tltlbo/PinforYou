@@ -11,9 +11,11 @@ struct gameView: View {
     @State private var isAnimating = false
       var foreverAnimation: Animation {
         Animation
-              .linear(duration: 2.0)
+//              .linear(duration: 10.0)
+              .easeOut(duration: 30.0)
               .speed(5.0)
           //.repeatForever(autoreverses: false)
+          
       }
       
       var body: some View {
@@ -24,10 +26,10 @@ struct gameView: View {
           label: {
             Image(systemName: "pencil.circle")
               .resizable()
-              .frame(width: 80, height: 80)
+              .frame(width: 350, height: 350)
               .rotationEffect(
                 Angle(
-                  degrees:  self.isAnimating ? 360 : 0
+                  degrees:  self.isAnimating ? 360*20 : 0
                 )
               )
               .animation(self.isAnimating ? foreverAnimation : .default)
