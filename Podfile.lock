@@ -17,17 +17,17 @@ PODS:
     - GTMSessionFetcher/Core (< 4.0, >= 3.3)
   - GTMSessionFetcher/Core (3.4.1)
   - KakaoMapsSDK (2.10.4)
-  - KakaoSDKAuth (2.22.1):
-    - KakaoSDKCommon (= 2.22.1)
-  - KakaoSDKCommon (2.22.1):
-    - KakaoSDKCommon/Common (= 2.22.1)
-    - KakaoSDKCommon/Network (= 2.22.1)
-  - KakaoSDKCommon/Common (2.22.1)
-  - KakaoSDKCommon/Network (2.22.1):
+  - KakaoSDKAuth (2.22.2):
+    - KakaoSDKCommon (= 2.22.2)
+  - KakaoSDKCommon (2.22.2):
+    - KakaoSDKCommon/Common (= 2.22.2)
+    - KakaoSDKCommon/Network (= 2.22.2)
+  - KakaoSDKCommon/Common (2.22.2)
+  - KakaoSDKCommon/Network (2.22.2):
     - Alamofire (~> 5.9.0)
-    - KakaoSDKCommon/Common (= 2.22.1)
-  - KakaoSDKUser (2.22.1):
-    - KakaoSDKAuth (= 2.22.1)
+    - KakaoSDKCommon/Common (= 2.22.2)
+  - KakaoSDKUser (2.22.2):
+    - KakaoSDKAuth (= 2.22.2)
   - Kingfisher (7.11.0)
   - SnapKit (5.7.1)
   - SwiftyJSON (4.3.0)
@@ -67,9 +67,9 @@ SPEC CHECKSUMS:
   GTMAppAuth: f69bd07d68cd3b766125f7e072c45d7340dea0de
   GTMSessionFetcher: 8000756fc1c19d2e5697b90311f7832d2e33f6cd
   KakaoMapsSDK: 6ceb9740762945bcefb1cdb61123e48abf6e6a5d
-  KakaoSDKAuth: 347f1e6bf455689c81fb4eee3c9e02b622016fb4
-  KakaoSDKCommon: 596436353cec3865eb1475ecea1a7259d881c5ac
-  KakaoSDKUser: 31c3aaa36d32bd77f9a5acbe371e174b85a10a91
+  KakaoSDKAuth: 6a4c46f84c772a19f24121d7f5a42aa861ebc0e7
+  KakaoSDKCommon: d4f76f3b900dbef924a09196c8eb9245aefcaf83
+  KakaoSDKUser: 642c339cdb3722216241c541a843f6a4588f6cf4
   Kingfisher: b9c985d864d43515f404f1ef4a8ce7d802ace3ac
   SnapKit: d612e99e678a2d3b95bf60b0705ed0a35c03484a
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08

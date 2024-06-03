@@ -151,6 +151,7 @@ extension AuthenticationService {
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of:test.self) { response in
             print("응 응답했어\(response.response?.statusCode)")
+            debugPrint(response)
         }
         
         
