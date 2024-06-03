@@ -29,7 +29,7 @@ struct MainTabView: View {
                     case .Event:
                         EventView()
                     case .AllMenu:
-                        Color.cyan
+                        AllMenuView()
                     }
                 }
                 .tabItem {
