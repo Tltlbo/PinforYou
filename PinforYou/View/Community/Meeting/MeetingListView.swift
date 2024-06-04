@@ -39,6 +39,7 @@ struct MeetingListView: View {
                         
                     }
                 }
+                .scrollIndicators(.hidden)
             }
         }
         .background {

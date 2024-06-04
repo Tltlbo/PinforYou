@@ -47,6 +47,7 @@ struct CardListView: View {
                 }
                 
                 
+                
             }
             .background {
                 Color("BackgroundColor")

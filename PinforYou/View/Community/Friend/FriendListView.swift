@@ -29,20 +29,20 @@ struct FriendListView: View {
                 Rectangle()
                     .frame(height: 1)
                 
-                ScrollView {
+                ScrollView{
                     ForEach(0 ..< 19) {_ in
                         HStack {
                             Text("친구")
                                 .foregroundStyle(.white)
                         }
                         .frame(height: 50)
+                        .background {
+                            Color("BackgroundColor")
+                        }
                         
                     }
                 }
-            }
-            .background {
-                Color("BackgroundColor")
-                    .ignoresSafeArea()
+                .scrollIndicators(.hidden)
             }
         }
     }
