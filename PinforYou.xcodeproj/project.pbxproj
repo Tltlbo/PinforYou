@@ -402,6 +402,7 @@
 		4ED576302BFAEB440034F7A6 /* WithFriend */ = {
 			isa = PBXGroup;
 			children = (
+				4EC90CF02C057BB300A0B5B5 /* gameView */,
 				4ED576312BFAEB6E0034F7A6 /* WithFriendView.swift */,
 			);
 			path = WithFriend;
@@ -563,6 +564,7 @@
 				4EC90CF52C080CA600A0B5B5 /* CardListView.swift in Sources */,
 				4ED576282BF502940034F7A6 /* PlaceCell.swift in Sources */,
 				4ED576172BE9CE230034F7A6 /* Location.swift in Sources */,
+				4EC90CF22C057BD600A0B5B5 /* gameView.swift in Sources */,
 				4ED576322BFAEB6E0034F7A6 /* WithFriendView.swift in Sources */,
 				4ED5761D2BEC716E0034F7A6 /* URL.swift in Sources */,
 				4EC90CFB2C0960F100A0B5B5 /* CommunityView.swift in Sources */,
