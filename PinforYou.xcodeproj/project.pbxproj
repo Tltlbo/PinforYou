@@ -150,6 +150,7 @@
 		4EA35ACD2BCD005E0001508B /* PinforYou */ = {
 			isa = PBXGroup;
 			children = (
+				4EC90D082C0DAE4600A0B5B5 /* Color */,
 				4ED576132BE9CD2D0034F7A6 /* Permission */,
 				4EA35B012BE3D9900001508B /* General */,
 				4EA35AF92BE3268F0001508B /* Repository */,
@@ -333,6 +334,13 @@
 				4EC90D062C0D4F6600A0B5B5 /* AllMenuView.swift */,
 			);
 			path = AllMenu;
+			sourceTree = "<group>";
+		};
+		4EC90D082C0DAE4600A0B5B5 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Color;
 			sourceTree = "<group>";
 		};
 		4ED576072BE77CFB0034F7A6 /* MainTabView */ = {

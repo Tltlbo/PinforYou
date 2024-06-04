@@ -34,6 +34,10 @@ struct HomeView: View {
                                 selection: $modalDetent
                             )
                     }
+                    .background {
+                        Color("BackgroundColor")
+                            .ignoresSafeArea()
+                    }
                     
             } else {
                 ProgressView()
