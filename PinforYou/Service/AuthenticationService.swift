@@ -144,10 +144,10 @@ extension AuthenticationService {
             }
         }
         
-        AF.request("http://pinforyou-apiserver-main-env.eba-ixdz2ipf.ap-northeast-2.elasticbeanstalk.com/api/v1/apple/login",
+        AF.request("http://pinforyou-apiserver-main-env.eba-ixdz2ipf.ap-northeast-2.elasticbeanstalk.com/api/v1/apple/login?authorizationCode=\(data)",
                    method: .post,
-                   parameters: ["authorizationCode" : data],
-                   encoding: JSONEncoding.default,
+                   parameters: nil/*["authorizationCode" : data]*/,
+                   encoding: URLEncoding.default,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of:test.self) { response in
             print("응 응답했어\(response.response?.statusCode)")
