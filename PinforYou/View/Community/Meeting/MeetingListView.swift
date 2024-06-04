@@ -32,15 +32,21 @@ struct MeetingListView: View {
                 ScrollView {
                     ForEach(0 ..< 19) {_ in
                         HStack {
-                            Text("test")
-                                .foregroundStyle(.black)
+                            Text("모임")
+                                .foregroundStyle(.white)
                         }
                         .frame(height: 50)
                         
                     }
                 }
+                .scrollIndicators(.hidden)
             }
         }
+        .background {
+            Color("BackgroundColor")
+                .ignoresSafeArea()
+        }
+        
     }
 }
 

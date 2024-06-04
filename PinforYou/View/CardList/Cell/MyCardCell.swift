@@ -30,14 +30,13 @@ struct MyCardCell: View {
                 Text("1234-1234-1234-1234")
                     .font(.system(size: 20))
                     .foregroundStyle(.white)
-                    
-                
-                
             }
             Spacer()
         }
-        .frame(width: UIScreen.main.bounds.size.width)
-        .background(Color.gray)
+        .frame(width: UIScreen.main.bounds.size.width - 20)
+        .background {
+            Color("CellBackgroundColor")
+        }
         .clipShape(.rect(cornerRadius: 20))
         
     }

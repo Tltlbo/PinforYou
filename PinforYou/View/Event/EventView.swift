@@ -26,6 +26,7 @@ struct EventView: View {
                 .onAppear {
                     UIScrollView.appearance().isPagingEnabled = true
                 }
+                .scrollIndicators(.hidden)
             }
             
             
@@ -43,7 +44,12 @@ struct EventView: View {
                 .onAppear {
                     UIScrollView.appearance().isPagingEnabled = true
                 }
+                .scrollIndicators(.hidden)
             }
+        }
+        .background {
+            Color("BackgroundColor")
+                .ignoresSafeArea()
         }
     }
 }
