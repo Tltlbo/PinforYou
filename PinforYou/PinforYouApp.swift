@@ -24,16 +24,19 @@ struct PinforYouApp: App {
     
     var body: some Scene {
         WindowGroup {
-            AuthenticatedView(authViewModel: .init(container: container))
-                .environmentObject(container)
-                .onOpenURL { url in
-                    if (AuthApi.isKakaoTalkLoginUrl(url)) {
-                        _ = AuthController.handleOpenUrl(url: url)
-                    }
-                }
-                .onOpenURL{ url in
-                    GIDSignIn.sharedInstance.handle(url)
-                }
+//            AuthenticatedView(authViewModel: .init(container: container))
+//                .environmentObject(container)
+//                .onOpenURL { url in
+//                    if (AuthApi.isKakaoTalkLoginUrl(url)) {
+//                        _ = AuthController.handleOpenUrl(url: url)
+//                    }
+//                }
+//                .onOpenURL{ url in
+//                    GIDSignIn.sharedInstance.handle(url)
+//                }
+            
+            QRScannerView()
+                .ignoresSafeArea()
                 
         }
         
