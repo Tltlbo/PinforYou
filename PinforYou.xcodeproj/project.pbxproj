@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E0F44FF2C12A6D1003724E7 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0F44FE2C12A6D1003724E7 /* ScannerView.swift */; };
 		4EA35ACF2BCD005E0001508B /* PinforYouApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35ACE2BCD005E0001508B /* PinforYouApp.swift */; };
 		4EA35AD12BCD005E0001508B /* AuthenticatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35AD02BCD005E0001508B /* AuthenticatedView.swift */; };
 		4EA35AD32BCD00600001508B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EA35AD22BCD00600001508B /* Assets.xcassets */; };
@@ -57,6 +58,7 @@
 /* Begin PBXFileReference section */
 		28531306F13EC3B74457DB6F /* Pods_PinforYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinforYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A373425BA1055BA166363E8 /* Pods-PinforYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinforYou.release.xcconfig"; path = "Target Support Files/Pods-PinforYou/Pods-PinforYou.release.xcconfig"; sourceTree = "<group>"; };
+		4E0F44FE2C12A6D1003724E7 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
 		4EA35ACB2BCD005E0001508B /* PinforYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinforYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EA35ACE2BCD005E0001508B /* PinforYouApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinforYouApp.swift; sourceTree = "<group>"; };
 		4EA35AD02BCD005E0001508B /* AuthenticatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedView.swift; sourceTree = "<group>"; };
@@ -128,6 +130,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		4E0F44FD2C12A6BD003724E7 /* QRScan */ = {
+			isa = PBXGroup;
+			children = (
+				4E0F44FE2C12A6D1003724E7 /* ScannerView.swift */,
+			);
+			path = QRScan;
+			sourceTree = "<group>";
+		};
 		4EA35AC22BCD005E0001508B = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +188,7 @@
 		4EA35ADC2BCD0AE30001508B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4E0F44FD2C12A6BD003724E7 /* QRScan */,
 				4EC90D052C0D4F5400A0B5B5 /* AllMenu */,
 				4EC90D022C096B8300A0B5B5 /* Event */,
 				4EC90CF92C095FB200A0B5B5 /* Community */,
@@ -589,6 +600,7 @@
 				4EA35AE62BE232140001508B /* KakaoLoginBtn.swift in Sources */,
 				4ED5762F2BFAD8BD0034F7A6 /* QRPayView.swift in Sources */,
 				4EC90CFF2C0963AD00A0B5B5 /* FriendListView.swift in Sources */,
+				4E0F44FF2C12A6D1003724E7 /* ScannerView.swift in Sources */,
 				4ED576152BE9CD590034F7A6 /* LocationPermission.swift in Sources */,
 				4EA35ACF2BCD005E0001508B /* PinforYouApp.swift in Sources */,
 				4ED5761B2BEAFEC10034F7A6 /* KakaoMapViewModel.swift in Sources */,
