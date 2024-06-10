@@ -39,6 +39,7 @@ struct CommunityView: View {
                 FriendListView()
             case .meeting:
                 MeetingListView()
+                    
             }
         }
         .background {

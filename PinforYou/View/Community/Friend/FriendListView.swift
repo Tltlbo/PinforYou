@@ -36,13 +36,15 @@ struct FriendListView: View {
                                 .foregroundStyle(.white)
                         }
                         .frame(height: 50)
-                        .background {
-                            Color("BackgroundColor")
-                        }
+                    
                         
                     }
                 }
                 .scrollIndicators(.hidden)
+            }
+            .background {
+                Color("BackgroundColor")
+                    .ignoresSafeArea()
             }
         }
     }

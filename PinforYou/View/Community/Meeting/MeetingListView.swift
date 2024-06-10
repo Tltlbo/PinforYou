@@ -17,37 +17,46 @@ struct MeetingListView: View {
                         //
                     } label: {
                         Text("추가")
+                            .font(.system(size: 20))
                     }
                     
                     Button {
                         //
                     } label: {
                         Text("관리")
+                            .font(.system(size: 20))
                     }
                     .padding(.trailing, 10)
                 }
                 Rectangle()
                     .frame(height: 1)
                 
-                ScrollView {
-                    ForEach(0 ..< 19) {_ in
-                        HStack {
-                            Text("모임")
-                                .foregroundStyle(.white)
+                ScrollView(.vertical) {
+                    
+                    VStack(spacing: 10) {
+                        ForEach(0 ..< 19, id: \.self) { _ in
+                            HStack {
+                                Text("모임")
+                                    .foregroundStyle(.white)
+                            }
+                            .frame(height: 50)
+                            
                         }
-                        .frame(height: 50)
                         
                     }
                 }
                 .scrollIndicators(.hidden)
+                
             }
-        }
-        .background {
-            Color("BackgroundColor")
-                .ignoresSafeArea()
+            .background {
+                Color("BackgroundColor")
+                    .ignoresSafeArea()
+            }
         }
         
     }
+    
+    
 }
 
 #Preview {
