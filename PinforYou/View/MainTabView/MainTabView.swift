@@ -23,7 +23,7 @@ struct MainTabView: View {
                     case .home:
                         HomeView(kakaoMapViewModel: .init(container: container))
                     case .CardList:
-                        CardListView()
+                        MyCardView()
                     case .Community:
                         CommunityView()
                     case .Event:

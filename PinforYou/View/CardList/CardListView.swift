@@ -20,16 +20,17 @@ struct CardListView: View {
                         //
                     } label: {
                         Text("추가")
-                            .font(.system(size: 20))
+                            .font(.system(size: 15))
                     }
+                    .padding(.trailing, 5)
                     
                     Button {
                         //
                     } label: {
                         Text("관리")
-                            .font(.system(size: 20))
+                            .font(.system(size: 15))
                     }
-                    .padding(.horizontal, 5)
+                    .padding(.trailing, 10)
                 }
                 
                 ScrollView(.vertical) {
@@ -46,8 +47,7 @@ struct CardListView: View {
                     }
                 }
                 
-                
-                
+                Spacer()
             }
             .background {
                 Color("BackgroundColor")
