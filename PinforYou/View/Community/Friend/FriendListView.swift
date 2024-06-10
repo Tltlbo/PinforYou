@@ -17,12 +17,15 @@ struct FriendListView: View {
                         //
                     } label: {
                         Text("추가")
+                            .font(.system(size: 15))
                     }
+                    .padding(.trailing, 5)
                     
                     Button {
                         //
                     } label: {
                         Text("관리")
+                            .font(.system(size: 15))
                     }
                     .padding(.trailing, 10)
                 }
@@ -33,6 +36,8 @@ struct FriendListView: View {
                     MyFriendGridView()
                 }
                 .scrollIndicators(.hidden)
+                
+                Spacer()
             }
             .background {
                 Color("BackgroundColor")

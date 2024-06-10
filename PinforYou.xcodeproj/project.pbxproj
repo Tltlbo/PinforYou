@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4E6FB33D2C172DB700AC1B25 /* MeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB33C2C172DB700AC1B25 /* MeetingCell.swift */; };
 		4E6FB3402C172FEF00AC1B25 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB33F2C172FEF00AC1B25 /* FriendCell.swift */; };
+		4E6FB3422C17332500AC1B25 /* MyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB3412C17332500AC1B25 /* MyCardView.swift */; };
 		4EA35ACF2BCD005E0001508B /* PinforYouApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35ACE2BCD005E0001508B /* PinforYouApp.swift */; };
 		4EA35AD12BCD005E0001508B /* AuthenticatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35AD02BCD005E0001508B /* AuthenticatedView.swift */; };
 		4EA35AD32BCD00600001508B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EA35AD22BCD00600001508B /* Assets.xcassets */; };
@@ -61,6 +62,7 @@
 		2A373425BA1055BA166363E8 /* Pods-PinforYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinforYou.release.xcconfig"; path = "Target Support Files/Pods-PinforYou/Pods-PinforYou.release.xcconfig"; sourceTree = "<group>"; };
 		4E6FB33C2C172DB700AC1B25 /* MeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCell.swift; sourceTree = "<group>"; };
 		4E6FB33F2C172FEF00AC1B25 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
+		4E6FB3412C17332500AC1B25 /* MyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardView.swift; sourceTree = "<group>"; };
 		4EA35ACB2BCD005E0001508B /* PinforYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinforYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EA35ACE2BCD005E0001508B /* PinforYouApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinforYouApp.swift; sourceTree = "<group>"; };
 		4EA35AD02BCD005E0001508B /* AuthenticatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedView.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 			children = (
 				4EC90CF62C0812E800A0B5B5 /* Cell */,
 				4EC90CF42C080CA600A0B5B5 /* CardListView.swift */,
+				4E6FB3412C17332500AC1B25 /* MyCardView.swift */,
 			);
 			path = CardList;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				4EA35AEC2BE323FC0001508B /* SHA256.swift in Sources */,
 				4EA35B002BE326EA0001508B /* UserDBRepository.swift in Sources */,
 				4EC90CF52C080CA600A0B5B5 /* CardListView.swift in Sources */,
+				4E6FB3422C17332500AC1B25 /* MyCardView.swift in Sources */,
 				4ED576282BF502940034F7A6 /* PlaceCell.swift in Sources */,
 				4ED576172BE9CE230034F7A6 /* Location.swift in Sources */,
 				4ED576322BFAEB6E0034F7A6 /* WithFriendView.swift in Sources */,

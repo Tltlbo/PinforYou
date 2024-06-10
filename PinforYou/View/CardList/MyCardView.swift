@@ -7,9 +7,56 @@
 
 import SwiftUI
 
+enum CardOption {
+    case MyCard
+    case Recommend
+}
+
 struct MyCardView: View {
+    
+    @State var OptionSelect : CardOption = .MyCard
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                Button {
+                    OptionSelect = .MyCard
+                } label: {
+                    HStack {
+                        Text("내 카드")
+                            .font(.system(size: 17))
+                    }
+                    .frame(width: 70, height: 35)
+                    .background(Color("CellBackgroundColor"))
+                    .clipShape(.rect(cornerRadius: 12))
+                }
+                .padding(.leading, 10)
+                
+                Button {
+                    OptionSelect = .Recommend
+                } label: {
+                    HStack {
+                        Text("추천")
+                            .font(.system(size: 17))
+                    }
+                    .frame(width: 70, height: 35)
+                    .background(Color("CellBackgroundColor"))
+                    .clipShape(.rect(cornerRadius: 12))
+                }
+                Spacer()
+            }
+            
+            switch OptionSelect {
+            case .MyCard:
+                CardListView()
+            case .Recommend:
+                EmptyView()
+            }
+        }
+        .background {
+            Color("BackgroundColor")
+                .ignoresSafeArea()
+        }
     }
 }
 

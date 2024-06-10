@@ -22,14 +22,29 @@ struct CommunityView: View {
                 Button {
                     communitySelect = .friend
                 } label: {
-                    Text("친구")
+                    
+                    HStack {
+                        Text("친구")
+                            .font(.system(size: 17))
+                    }
+                    .frame(width: 70, height: 35)
+                    .background(Color("CellBackgroundColor"))
+                    .clipShape(.rect(cornerRadius: 12))
+                    
                 }
                 .padding(.leading, 10)
                 
                 Button {
                     communitySelect = .meeting
                 } label: {
-                    Text("모임")
+                    HStack {
+                        Text("모임")
+                            .font(.system(size: 17))
+                    }
+                    .frame(width: 70, height: 35)
+                    .background(Color("CellBackgroundColor"))
+                    .clipShape(.rect(cornerRadius: 12))
+                    
                 }
                 Spacer()
             }
