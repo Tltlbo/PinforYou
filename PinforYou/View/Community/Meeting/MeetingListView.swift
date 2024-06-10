@@ -35,11 +35,12 @@ struct MeetingListView: View {
                     
                     VStack(spacing: 10) {
                         ForEach(0 ..< 19, id: \.self) { _ in
-                            HStack {
-                                Text("모임")
-                                    .foregroundStyle(.white)
+                            NavigationLink {
+                                //
+                            } label: {
+                                MeetingCell()
                             }
-                            .frame(height: 50)
+
                             
                         }
                         
