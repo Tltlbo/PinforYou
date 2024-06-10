@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E24977D2C174F0A00851D9D /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24977C2C174F0A00851D9D /* ScannerView.swift */; };
 		4E6FB33D2C172DB700AC1B25 /* MeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB33C2C172DB700AC1B25 /* MeetingCell.swift */; };
 		4E6FB3402C172FEF00AC1B25 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB33F2C172FEF00AC1B25 /* FriendCell.swift */; };
 		4E6FB3422C17332500AC1B25 /* MyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB3412C17332500AC1B25 /* MyCardView.swift */; };
@@ -60,6 +61,7 @@
 /* Begin PBXFileReference section */
 		28531306F13EC3B74457DB6F /* Pods_PinforYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinforYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A373425BA1055BA166363E8 /* Pods-PinforYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinforYou.release.xcconfig"; path = "Target Support Files/Pods-PinforYou/Pods-PinforYou.release.xcconfig"; sourceTree = "<group>"; };
+		4E24977C2C174F0A00851D9D /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
 		4E6FB33C2C172DB700AC1B25 /* MeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCell.swift; sourceTree = "<group>"; };
 		4E6FB33F2C172FEF00AC1B25 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		4E6FB3412C17332500AC1B25 /* MyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardView.swift; sourceTree = "<group>"; };
@@ -134,6 +136,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		4E24977B2C174F0000851D9D /* Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				4E24977C2C174F0A00851D9D /* ScannerView.swift */,
+			);
+			path = Scanner;
+			sourceTree = "<group>";
+		};
 		4E6FB33B2C172DA600AC1B25 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,7 +210,7 @@
 		4EA35ADC2BCD0AE30001508B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4E0F44FD2C12A6BD003724E7 /* QRScan */,
+				4E24977B2C174F0000851D9D /* Scanner */,
 				4EC90D052C0D4F5400A0B5B5 /* AllMenu */,
 				4EC90D022C096B8300A0B5B5 /* Event */,
 				4EC90CF92C095FB200A0B5B5 /* Community */,
@@ -591,6 +601,7 @@
 				4ED576122BE90BDB0034F7A6 /* HomeView.swift in Sources */,
 				4E6FB33D2C172DB700AC1B25 /* MeetingCell.swift in Sources */,
 				4ED576092BE77D0D0034F7A6 /* MainTabView.swift in Sources */,
+				4E24977D2C174F0A00851D9D /* ScannerView.swift in Sources */,
 				4EA35ADF2BCD19280001508B /* LoginOptionView.swift in Sources */,
 				4ED5762A2BFA40810034F7A6 /* CardCell.swift in Sources */,
 				4EA35AEC2BE323FC0001508B /* SHA256.swift in Sources */,
