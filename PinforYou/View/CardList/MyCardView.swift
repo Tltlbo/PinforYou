@@ -1,60 +1,56 @@
 //
-//  CommunityView.swift
+//  MyCardView.swift
 //  PinforYou
 //
-//  Created by 박진성 on 5/31/24.
+//  Created by 박진성 on 6/10/24.
 //
 
 import SwiftUI
 
-enum Community {
-    case friend
-    case meeting
+enum CardOption {
+    case MyCard
+    case Recommend
 }
 
-struct CommunityView: View {
+struct MyCardView: View {
     
-    @State var communitySelect : Community = .friend
+    @State var OptionSelect : CardOption = .MyCard
     
     var body: some View {
         VStack {
             HStack {
                 Button {
-                    communitySelect = .friend
+                    OptionSelect = .MyCard
                 } label: {
-                    
                     HStack {
-                        Text("친구")
+                        Text("내 카드")
                             .font(.system(size: 17))
                     }
                     .frame(width: 70, height: 35)
                     .background(Color("CellBackgroundColor"))
                     .clipShape(.rect(cornerRadius: 12))
-                    
                 }
                 .padding(.leading, 10)
                 
                 Button {
-                    communitySelect = .meeting
+                    OptionSelect = .Recommend
                 } label: {
                     HStack {
-                        Text("모임")
+                        Text("추천")
                             .font(.system(size: 17))
                     }
                     .frame(width: 70, height: 35)
                     .background(Color("CellBackgroundColor"))
                     .clipShape(.rect(cornerRadius: 12))
-                    
                 }
                 Spacer()
             }
             
-            switch communitySelect {
-            case .friend:
-                FriendListView()
-            case .meeting:
-                MeetingListView()
-                    
+            switch OptionSelect {
+            case .MyCard:
+                CardListView()
+            case .Recommend:
+                EmptyView()
             }
         }
         .background {
@@ -65,5 +61,5 @@ struct CommunityView: View {
 }
 
 #Preview {
-    CommunityView()
+    MyCardView()
 }
