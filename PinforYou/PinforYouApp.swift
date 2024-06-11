@@ -17,7 +17,7 @@ struct PinforYouApp: App {
     @StateObject var container : DIContainer = .init(services: Services())
     
     init() {
-        //KakaoSDK.initSDK(appKey: Key.KakaoAppKey.rawValue)
+        KakaoSDK.initSDK(appKey: Key.KakaoAppKey.rawValue)
         SDKInitializer.InitSDK(appKey: Key.KakaoAppKey.rawValue)
         
     } // appKey 숨겨야할듯?
@@ -28,7 +28,7 @@ struct PinforYouApp: App {
                 .environmentObject(container)
                 .onOpenURL { url in
                     if (AuthApi.isKakaoTalkLoginUrl(url)) {
-                        _ = AuthController.handleOpenUrl(url: url)
+                        AuthController.handleOpenUrl(url: url)
                     }
                 }
                 .onOpenURL{ url in
