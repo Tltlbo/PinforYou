@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4E24977D2C174F0A00851D9D /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24977C2C174F0A00851D9D /* ScannerView.swift */; };
+		4E2497802C17E2C800851D9D /* SignUpEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24977F2C17E2C800851D9D /* SignUpEmailView.swift */; };
+		4E2497822C17E30700851D9D /* SignUpUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497812C17E30700851D9D /* SignUpUserInfoView.swift */; };
 		4E6FB33D2C172DB700AC1B25 /* MeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB33C2C172DB700AC1B25 /* MeetingCell.swift */; };
 		4E6FB3402C172FEF00AC1B25 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB33F2C172FEF00AC1B25 /* FriendCell.swift */; };
 		4E6FB3422C17332500AC1B25 /* MyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB3412C17332500AC1B25 /* MyCardView.swift */; };
@@ -62,6 +64,8 @@
 		28531306F13EC3B74457DB6F /* Pods_PinforYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinforYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A373425BA1055BA166363E8 /* Pods-PinforYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinforYou.release.xcconfig"; path = "Target Support Files/Pods-PinforYou/Pods-PinforYou.release.xcconfig"; sourceTree = "<group>"; };
 		4E24977C2C174F0A00851D9D /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
+		4E24977F2C17E2C800851D9D /* SignUpEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEmailView.swift; sourceTree = "<group>"; };
+		4E2497812C17E30700851D9D /* SignUpUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUserInfoView.swift; sourceTree = "<group>"; };
 		4E6FB33C2C172DB700AC1B25 /* MeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCell.swift; sourceTree = "<group>"; };
 		4E6FB33F2C172FEF00AC1B25 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		4E6FB3412C17332500AC1B25 /* MyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardView.swift; sourceTree = "<group>"; };
@@ -142,6 +146,15 @@
 				4E24977C2C174F0A00851D9D /* ScannerView.swift */,
 			);
 			path = Scanner;
+			sourceTree = "<group>";
+		};
+		4E24977E2C17E2A000851D9D /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				4E24977F2C17E2C800851D9D /* SignUpEmailView.swift */,
+				4E2497812C17E30700851D9D /* SignUpUserInfoView.swift */,
+			);
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 		4E6FB33B2C172DA600AC1B25 /* Cell */ = {
@@ -303,6 +316,7 @@
 		4EA35B042BE3DC7E0001508B /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				4E24977E2C17E2A000851D9D /* SignUp */,
 				4EA35ADE2BCD19280001508B /* LoginOptionView.swift */,
 				4EA35B1C2BE6302F0001508B /* LoginIntroView.swift */,
 				4EA35AE42BE231C00001508B /* LoginButton */,
@@ -605,6 +619,7 @@
 				4EA35ADF2BCD19280001508B /* LoginOptionView.swift in Sources */,
 				4ED5762A2BFA40810034F7A6 /* CardCell.swift in Sources */,
 				4EA35AEC2BE323FC0001508B /* SHA256.swift in Sources */,
+				4E2497802C17E2C800851D9D /* SignUpEmailView.swift in Sources */,
 				4EA35B002BE326EA0001508B /* UserDBRepository.swift in Sources */,
 				4EC90CF52C080CA600A0B5B5 /* CardListView.swift in Sources */,
 				4E6FB3422C17332500AC1B25 /* MyCardView.swift in Sources */,
@@ -623,6 +638,7 @@
 				4ED576192BEA73AD0034F7A6 /* LocationService.swift in Sources */,
 				4ED5761F2BED03AE0034F7A6 /* Place.swift in Sources */,
 				4EA35AF82BE326480001508B /* UserService.swift in Sources */,
+				4E2497822C17E30700851D9D /* SignUpUserInfoView.swift in Sources */,
 				4EA35AF42BE326040001508B /* Service.swift in Sources */,
 				4EC90D012C09687F00A0B5B5 /* MeetingListView.swift in Sources */,
 				4EA35AE62BE232140001508B /* KakaoLoginBtn.swift in Sources */,
