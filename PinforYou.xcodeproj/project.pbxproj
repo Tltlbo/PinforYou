@@ -10,6 +10,8 @@
 		4E24977D2C174F0A00851D9D /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24977C2C174F0A00851D9D /* ScannerView.swift */; };
 		4E2497802C17E2C800851D9D /* SignUpEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24977F2C17E2C800851D9D /* SignUpEmailView.swift */; };
 		4E2497822C17E30700851D9D /* SignUpUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497812C17E30700851D9D /* SignUpUserInfoView.swift */; };
+		4E2497842C17E85900851D9D /* RecommendCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497832C17E85900851D9D /* RecommendCardView.swift */; };
+		4E2497872C17EC0C00851D9D /* MyInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497862C17EC0C00851D9D /* MyInfoView.swift */; };
 		4E6FB33D2C172DB700AC1B25 /* MeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB33C2C172DB700AC1B25 /* MeetingCell.swift */; };
 		4E6FB3402C172FEF00AC1B25 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB33F2C172FEF00AC1B25 /* FriendCell.swift */; };
 		4E6FB3422C17332500AC1B25 /* MyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB3412C17332500AC1B25 /* MyCardView.swift */; };
@@ -66,6 +68,8 @@
 		4E24977C2C174F0A00851D9D /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
 		4E24977F2C17E2C800851D9D /* SignUpEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEmailView.swift; sourceTree = "<group>"; };
 		4E2497812C17E30700851D9D /* SignUpUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpUserInfoView.swift; sourceTree = "<group>"; };
+		4E2497832C17E85900851D9D /* RecommendCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCardView.swift; sourceTree = "<group>"; };
+		4E2497862C17EC0C00851D9D /* MyInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInfoView.swift; sourceTree = "<group>"; };
 		4E6FB33C2C172DB700AC1B25 /* MeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCell.swift; sourceTree = "<group>"; };
 		4E6FB33F2C172FEF00AC1B25 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		4E6FB3412C17332500AC1B25 /* MyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardView.swift; sourceTree = "<group>"; };
@@ -155,6 +159,14 @@
 				4E2497812C17E30700851D9D /* SignUpUserInfoView.swift */,
 			);
 			path = SignUp;
+			sourceTree = "<group>";
+		};
+		4E2497852C17EBFD00851D9D /* MyInfo */ = {
+			isa = PBXGroup;
+			children = (
+				4E2497862C17EC0C00851D9D /* MyInfoView.swift */,
+			);
+			path = MyInfo;
 			sourceTree = "<group>";
 		};
 		4E6FB33B2C172DA600AC1B25 /* Cell */ = {
@@ -330,6 +342,7 @@
 				4EC90CF62C0812E800A0B5B5 /* Cell */,
 				4EC90CF42C080CA600A0B5B5 /* CardListView.swift */,
 				4E6FB3412C17332500AC1B25 /* MyCardView.swift */,
+				4E2497832C17E85900851D9D /* RecommendCardView.swift */,
 			);
 			path = CardList;
 			sourceTree = "<group>";
@@ -381,6 +394,7 @@
 		4EC90D052C0D4F5400A0B5B5 /* AllMenu */ = {
 			isa = PBXGroup;
 			children = (
+				4E2497852C17EBFD00851D9D /* MyInfo */,
 				4EC90D062C0D4F6600A0B5B5 /* AllMenuView.swift */,
 			);
 			path = AllMenu;
@@ -613,6 +627,7 @@
 				4EA35AFE2BE326CD0001508B /* UserObject.swift in Sources */,
 				4EA35B062BE3DCA40001508B /* AuthenticationViewModel.swift in Sources */,
 				4ED576122BE90BDB0034F7A6 /* HomeView.swift in Sources */,
+				4E2497872C17EC0C00851D9D /* MyInfoView.swift in Sources */,
 				4E6FB33D2C172DB700AC1B25 /* MeetingCell.swift in Sources */,
 				4ED576092BE77D0D0034F7A6 /* MainTabView.swift in Sources */,
 				4E24977D2C174F0A00851D9D /* ScannerView.swift in Sources */,
@@ -623,6 +638,7 @@
 				4EA35B002BE326EA0001508B /* UserDBRepository.swift in Sources */,
 				4EC90CF52C080CA600A0B5B5 /* CardListView.swift in Sources */,
 				4E6FB3422C17332500AC1B25 /* MyCardView.swift in Sources */,
+				4E2497842C17E85900851D9D /* RecommendCardView.swift in Sources */,
 				4ED576282BF502940034F7A6 /* PlaceCell.swift in Sources */,
 				4ED576172BE9CE230034F7A6 /* Location.swift in Sources */,
 				4ED576322BFAEB6E0034F7A6 /* WithFriendView.swift in Sources */,
