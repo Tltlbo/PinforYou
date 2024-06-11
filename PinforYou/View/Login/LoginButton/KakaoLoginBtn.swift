@@ -20,9 +20,24 @@ struct KakaoLoginBtn: View {
                     }
                     
                     if let oauthToken = oauthToken {
+                        
                         //TODO: 소셜 로그인(회원가입 API Call)
+                        
+                        UserApi.shared.me() {(user, error) in
+                            if let error = error {
+                                print(error)
+                            }
+                            else {
+                                print("me() success.")
+                                
+                                //do something
+                                if let user = user {
+                                    
+                                }
+                                
+                            }
+                        }
                     }
-                    
                 }
             } else {
                 UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
