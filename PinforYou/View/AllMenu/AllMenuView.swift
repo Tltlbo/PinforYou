@@ -34,11 +34,15 @@ struct AllMenuView: View {
                         .padding(.bottom, 58)
                         .foregroundStyle(.white)
                 }
-
-                Text("챌린지")
-                    .font(.system(size: 26))
-                    .padding(.leading, 20)
-                    .padding(.bottom, 58)
+                
+                NavigationLink {
+                    ChallengeView()
+                } label: {
+                    Text("챌린지")
+                        .font(.system(size: 26))
+                        .padding(.leading, 20)
+                        .padding(.bottom, 58)
+                }
                 
                 Text("포인트 샵")
                     .font(.system(size: 26))
