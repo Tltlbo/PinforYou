@@ -31,7 +31,6 @@ enum MainTabType : String, CaseIterable {
     }
     
     func imageName(selected: Bool) -> String {
-        //selected ? "square.and.arrow.up.circle.fill" : "square.and.arrow.up.circle.fill"
         selected ? "\(rawValue).fill" : "\(rawValue)"
     }
 }
