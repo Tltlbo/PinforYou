@@ -15,6 +15,10 @@
 		4E24978A2C19228400851D9D /* ChallengeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497892C19228400851D9D /* ChallengeView.swift */; };
 		4E24978C2C19252600851D9D /* ChallengeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24978B2C19252600851D9D /* ChallengeCell.swift */; };
 		4E24978E2C192BAB00851D9D /* ChallengeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24978D2C192BAB00851D9D /* ChallengeDetailView.swift */; };
+		4E2497912C1A70B700851D9D /* PointShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497902C1A70B700851D9D /* PointShopView.swift */; };
+		4E2497932C1A758000851D9D /* PurchaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497922C1A758000851D9D /* PurchaseView.swift */; };
+		4E2497952C1A7DA900851D9D /* PurchaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497942C1A7DA900851D9D /* PurchaseCell.swift */; };
+		4E2497992C1A80A500851D9D /* PurchaseGifticonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497982C1A80A500851D9D /* PurchaseGifticonView.swift */; };
 		4E6FB33D2C172DB700AC1B25 /* MeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB33C2C172DB700AC1B25 /* MeetingCell.swift */; };
 		4E6FB3402C172FEF00AC1B25 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB33F2C172FEF00AC1B25 /* FriendCell.swift */; };
 		4E6FB3422C17332500AC1B25 /* MyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB3412C17332500AC1B25 /* MyCardView.swift */; };
@@ -76,6 +80,10 @@
 		4E2497892C19228400851D9D /* ChallengeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeView.swift; sourceTree = "<group>"; };
 		4E24978B2C19252600851D9D /* ChallengeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCell.swift; sourceTree = "<group>"; };
 		4E24978D2C192BAB00851D9D /* ChallengeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeDetailView.swift; sourceTree = "<group>"; };
+		4E2497902C1A70B700851D9D /* PointShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointShopView.swift; sourceTree = "<group>"; };
+		4E2497922C1A758000851D9D /* PurchaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseView.swift; sourceTree = "<group>"; };
+		4E2497942C1A7DA900851D9D /* PurchaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCell.swift; sourceTree = "<group>"; };
+		4E2497982C1A80A500851D9D /* PurchaseGifticonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseGifticonView.swift; sourceTree = "<group>"; };
 		4E6FB33C2C172DB700AC1B25 /* MeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCell.swift; sourceTree = "<group>"; };
 		4E6FB33F2C172FEF00AC1B25 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		4E6FB3412C17332500AC1B25 /* MyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardView.swift; sourceTree = "<group>"; };
@@ -183,6 +191,33 @@
 				4E24978D2C192BAB00851D9D /* ChallengeDetailView.swift */,
 			);
 			path = Challenge;
+			sourceTree = "<group>";
+		};
+		4E24978F2C1A70A800851D9D /* PointShop */ = {
+			isa = PBXGroup;
+			children = (
+				4E2497972C1A808600851D9D /* Mygiftcon */,
+				4E2497962C1A807100851D9D /* Purchase */,
+				4E2497902C1A70B700851D9D /* PointShopView.swift */,
+			);
+			path = PointShop;
+			sourceTree = "<group>";
+		};
+		4E2497962C1A807100851D9D /* Purchase */ = {
+			isa = PBXGroup;
+			children = (
+				4E2497942C1A7DA900851D9D /* PurchaseCell.swift */,
+				4E2497922C1A758000851D9D /* PurchaseView.swift */,
+				4E2497982C1A80A500851D9D /* PurchaseGifticonView.swift */,
+			);
+			path = Purchase;
+			sourceTree = "<group>";
+		};
+		4E2497972C1A808600851D9D /* Mygiftcon */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mygiftcon;
 			sourceTree = "<group>";
 		};
 		4E6FB33B2C172DA600AC1B25 /* Cell */ = {
@@ -410,6 +445,7 @@
 		4EC90D052C0D4F5400A0B5B5 /* AllMenu */ = {
 			isa = PBXGroup;
 			children = (
+				4E24978F2C1A70A800851D9D /* PointShop */,
 				4E2497882C19226900851D9D /* Challenge */,
 				4E2497852C17EBFD00851D9D /* MyInfo */,
 				4EC90D062C0D4F6600A0B5B5 /* AllMenuView.swift */,
@@ -637,12 +673,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E2497912C1A70B700851D9D /* PointShopView.swift in Sources */,
 				4EA35AFB2BE326A40001508B /* DBError.swift in Sources */,
 				4EA35AF62BE3262D0001508B /* ServiceError.swift in Sources */,
 				4EA35AEA2BE323D30001508B /* randomNonceString.swift in Sources */,
 				4E24978A2C19228400851D9D /* ChallengeView.swift in Sources */,
 				4ED576252BF3B2190034F7A6 /* PlaceInfoView.swift in Sources */,
+				4E2497992C1A80A500851D9D /* PurchaseGifticonView.swift in Sources */,
 				4EA35AFE2BE326CD0001508B /* UserObject.swift in Sources */,
+				4E2497952C1A7DA900851D9D /* PurchaseCell.swift in Sources */,
 				4EA35B062BE3DCA40001508B /* AuthenticationViewModel.swift in Sources */,
 				4ED576122BE90BDB0034F7A6 /* HomeView.swift in Sources */,
 				4E2497872C17EC0C00851D9D /* MyInfoView.swift in Sources */,
@@ -675,6 +714,7 @@
 				4EA35AF82BE326480001508B /* UserService.swift in Sources */,
 				4E2497822C17E30700851D9D /* SignUpUserInfoView.swift in Sources */,
 				4EA35AF42BE326040001508B /* Service.swift in Sources */,
+				4E2497932C1A758000851D9D /* PurchaseView.swift in Sources */,
 				4EC90D012C09687F00A0B5B5 /* MeetingListView.swift in Sources */,
 				4EA35AE62BE232140001508B /* KakaoLoginBtn.swift in Sources */,
 				4ED5762F2BFAD8BD0034F7A6 /* QRPayView.swift in Sources */,
