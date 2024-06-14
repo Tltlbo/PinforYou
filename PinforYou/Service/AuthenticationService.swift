@@ -110,6 +110,7 @@ extension AuthenticationService {
                 return
             }
             
+            
             let accessToken = user.accessToken.tokenString
 //            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
             

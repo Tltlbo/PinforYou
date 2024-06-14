@@ -24,19 +24,34 @@ struct AllMenuView: View {
                 .padding(.bottom, 63)
                 .padding(.top, 60)
                 
-                Text("내 정보")
-                    .font(.system(size: 26))
-                    .padding(.leading, 20)
-                    .padding(.bottom, 58)
                 
-                Text("챌린지")
-                    .font(.system(size: 26))
-                    .padding(.leading, 20)
-                    .padding(.bottom, 58)
+                NavigationLink {
+                    MyInfoView()
+                } label: {
+                    Text("내 정보")
+                        .font(.system(size: 26))
+                        .padding(.leading, 20)
+                        .padding(.bottom, 58)
+                        .foregroundStyle(.white)
+                }
                 
-                Text("포인트 샵")
-                    .font(.system(size: 26))
-                    .padding(.leading, 20)
+                NavigationLink {
+                    ChallengeView()
+                } label: {
+                    Text("챌린지")
+                        .font(.system(size: 26))
+                        .padding(.leading, 20)
+                        .padding(.bottom, 58)
+                }
+                
+                NavigationLink {
+                    PurchaseView()
+                } label: {
+                    Text("포인트 샵")
+                        .font(.system(size: 26))
+                        .padding(.leading, 20)
+                }
+
                 
                 
                 //임시 작업

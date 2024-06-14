@@ -50,7 +50,7 @@ struct MyCardView: View {
             case .MyCard:
                 CardListView()
             case .Recommend:
-                EmptyView()
+                RecommendCardView()
             }
         }
         .background {
