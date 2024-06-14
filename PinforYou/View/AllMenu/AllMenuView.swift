@@ -44,9 +44,14 @@ struct AllMenuView: View {
                         .padding(.bottom, 58)
                 }
                 
-                Text("포인트 샵")
-                    .font(.system(size: 26))
-                    .padding(.leading, 20)
+                NavigationLink {
+                    PurchaseView()
+                } label: {
+                    Text("포인트 샵")
+                        .font(.system(size: 26))
+                        .padding(.leading, 20)
+                }
+
                 
                 
                 //임시 작업
