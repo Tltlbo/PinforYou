@@ -10,6 +10,7 @@ import SwiftUI
 struct QRPayView: View {
     
     var card : Card
+    @StateObject var QRPayViewModel : QRPayViewModel
     
     var testImage : Image = Image("QR_test")
     
@@ -23,5 +24,5 @@ struct QRPayView: View {
 }
 
 #Preview {
-    QRPayView(card: Card.cardStub1)
+    QRPayView(card: Card.cardStub1, QRPayViewModel: .init(container: .init(services: StubService())))
 }
