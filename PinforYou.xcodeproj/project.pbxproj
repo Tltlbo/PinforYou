@@ -24,6 +24,8 @@
 		4E24979F2C1BD19600851D9D /* PlaceInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24979E2C1BD19600851D9D /* PlaceInfoViewModel.swift */; };
 		4E2497A12C211A6000851D9D /* QRPayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497A02C211A6000851D9D /* QRPayViewModel.swift */; };
 		4E2497A32C21225800851D9D /* OwnerPayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497A22C21225800851D9D /* OwnerPayService.swift */; };
+		4E2497A52C22657A00851D9D /* ScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497A42C22657A00851D9D /* ScannerViewModel.swift */; };
+		4E2497A72C2269CD00851D9D /* PaymentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497A62C2269CD00851D9D /* PaymentInfo.swift */; };
 		4E6FB33D2C172DB700AC1B25 /* MeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB33C2C172DB700AC1B25 /* MeetingCell.swift */; };
 		4E6FB3402C172FEF00AC1B25 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB33F2C172FEF00AC1B25 /* FriendCell.swift */; };
 		4E6FB3422C17332500AC1B25 /* MyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB3412C17332500AC1B25 /* MyCardView.swift */; };
@@ -94,6 +96,8 @@
 		4E24979E2C1BD19600851D9D /* PlaceInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceInfoViewModel.swift; sourceTree = "<group>"; };
 		4E2497A02C211A6000851D9D /* QRPayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPayViewModel.swift; sourceTree = "<group>"; };
 		4E2497A22C21225800851D9D /* OwnerPayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerPayService.swift; sourceTree = "<group>"; };
+		4E2497A42C22657A00851D9D /* ScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewModel.swift; sourceTree = "<group>"; };
+		4E2497A62C2269CD00851D9D /* PaymentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentInfo.swift; sourceTree = "<group>"; };
 		4E6FB33C2C172DB700AC1B25 /* MeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCell.swift; sourceTree = "<group>"; };
 		4E6FB33F2C172FEF00AC1B25 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		4E6FB3412C17332500AC1B25 /* MyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardView.swift; sourceTree = "<group>"; };
@@ -172,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				4E24977C2C174F0A00851D9D /* ScannerView.swift */,
+				4E2497A42C22657A00851D9D /* ScannerViewModel.swift */,
 			);
 			path = Scanner;
 			sourceTree = "<group>";
@@ -359,6 +364,7 @@
 				4ED5761E2BED03AE0034F7A6 /* Place.swift */,
 				4ED5762B2BFA488D0034F7A6 /* Card.swift */,
 				4E24979C2C1BC7A500851D9D /* PayCard.swift */,
+				4E2497A62C2269CD00851D9D /* PaymentInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -700,6 +706,7 @@
 				4EA35B062BE3DCA40001508B /* AuthenticationViewModel.swift in Sources */,
 				4ED576122BE90BDB0034F7A6 /* HomeView.swift in Sources */,
 				4E2497872C17EC0C00851D9D /* MyInfoView.swift in Sources */,
+				4E2497A72C2269CD00851D9D /* PaymentInfo.swift in Sources */,
 				4E6FB33D2C172DB700AC1B25 /* MeetingCell.swift in Sources */,
 				4ED576092BE77D0D0034F7A6 /* MainTabView.swift in Sources */,
 				4E24977D2C174F0A00851D9D /* ScannerView.swift in Sources */,
@@ -733,6 +740,7 @@
 				4E24979D2C1BC7A500851D9D /* PayCard.swift in Sources */,
 				4E2497822C17E30700851D9D /* SignUpUserInfoView.swift in Sources */,
 				4EA35AF42BE326040001508B /* Service.swift in Sources */,
+				4E2497A52C22657A00851D9D /* ScannerViewModel.swift in Sources */,
 				4E2497932C1A758000851D9D /* PurchaseView.swift in Sources */,
 				4EC90D012C09687F00A0B5B5 /* MeetingListView.swift in Sources */,
 				4EA35AE62BE232140001508B /* KakaoLoginBtn.swift in Sources */,

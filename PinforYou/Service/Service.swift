@@ -24,7 +24,7 @@ class Services : ServiceType {
     
     init() {
         self.authService = AuthenticationService()
-        self.userService = UserService(dbRepository: UserDBRepository())
+        self.userService = UserService()
         self.locationService = LocationService()
         self.payService = PayService()
         self.ownerPayService = OwnerPayService()

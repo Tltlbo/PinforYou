@@ -42,6 +42,7 @@ class PayService : PayServiceType {
             })
         }.eraseToAnyPublisher()
     }
+    
 }
 
 extension PayService {
@@ -80,6 +81,8 @@ extension PayService {
             debugPrint(response)
         }
     }
+    
+    
 }
 
 class StubPayService : PayServiceType {
