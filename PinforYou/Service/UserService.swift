@@ -40,10 +40,16 @@ extension UserService {
                    method: .get,
                    parameters: ["user_id" : 1,
                                 "card_id" : 3],
-                   encoding: JSONEncoding.default,
+                   encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: PaymentInfo.self) { [weak self] response in
-            debugPrint(response)
+            guard case .success(let data) = response.result
+            else {
+                return completion(.failure(LocationError.APICallFailed))
+            }
+            
+            
+            completion(.success(data))
         }
     }
 }

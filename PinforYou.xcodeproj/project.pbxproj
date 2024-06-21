@@ -27,6 +27,8 @@
 		4E2497A52C22657A00851D9D /* ScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497A42C22657A00851D9D /* ScannerViewModel.swift */; };
 		4E2497A72C2269CD00851D9D /* PaymentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497A62C2269CD00851D9D /* PaymentInfo.swift */; };
 		4E2497A92C23B18C00851D9D /* CardPaymentInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497A82C23B18C00851D9D /* CardPaymentInfoView.swift */; };
+		4E2497AB2C25ABFC00851D9D /* PaymentInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497AA2C25ABFC00851D9D /* PaymentInfoCell.swift */; };
+		4E2497AE2C25AFC500851D9D /* CardPaymentInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497AD2C25AFC500851D9D /* CardPaymentInfoViewModel.swift */; };
 		4E6FB33D2C172DB700AC1B25 /* MeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB33C2C172DB700AC1B25 /* MeetingCell.swift */; };
 		4E6FB3402C172FEF00AC1B25 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB33F2C172FEF00AC1B25 /* FriendCell.swift */; };
 		4E6FB3422C17332500AC1B25 /* MyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB3412C17332500AC1B25 /* MyCardView.swift */; };
@@ -100,6 +102,8 @@
 		4E2497A42C22657A00851D9D /* ScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewModel.swift; sourceTree = "<group>"; };
 		4E2497A62C2269CD00851D9D /* PaymentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentInfo.swift; sourceTree = "<group>"; };
 		4E2497A82C23B18C00851D9D /* CardPaymentInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPaymentInfoView.swift; sourceTree = "<group>"; };
+		4E2497AA2C25ABFC00851D9D /* PaymentInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentInfoCell.swift; sourceTree = "<group>"; };
+		4E2497AD2C25AFC500851D9D /* CardPaymentInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPaymentInfoViewModel.swift; sourceTree = "<group>"; };
 		4E6FB33C2C172DB700AC1B25 /* MeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCell.swift; sourceTree = "<group>"; };
 		4E6FB33F2C172FEF00AC1B25 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		4E6FB3412C17332500AC1B25 /* MyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardView.swift; sourceTree = "<group>"; };
@@ -235,6 +239,15 @@
 			children = (
 			);
 			path = Mygiftcon;
+			sourceTree = "<group>";
+		};
+		4E2497AC2C25AFA800851D9D /* CardPaymentInfo */ = {
+			isa = PBXGroup;
+			children = (
+				4E2497A82C23B18C00851D9D /* CardPaymentInfoView.swift */,
+				4E2497AD2C25AFC500851D9D /* CardPaymentInfoViewModel.swift */,
+			);
+			path = CardPaymentInfo;
 			sourceTree = "<group>";
 		};
 		4E6FB33B2C172DA600AC1B25 /* Cell */ = {
@@ -411,11 +424,11 @@
 		4EC90CF32C080C7E00A0B5B5 /* CardList */ = {
 			isa = PBXGroup;
 			children = (
+				4E2497AC2C25AFA800851D9D /* CardPaymentInfo */,
 				4EC90CF62C0812E800A0B5B5 /* Cell */,
 				4EC90CF42C080CA600A0B5B5 /* CardListView.swift */,
 				4E6FB3412C17332500AC1B25 /* MyCardView.swift */,
 				4E2497832C17E85900851D9D /* RecommendCardView.swift */,
-				4E2497A82C23B18C00851D9D /* CardPaymentInfoView.swift */,
 			);
 			path = CardList;
 			sourceTree = "<group>";
@@ -424,6 +437,7 @@
 			isa = PBXGroup;
 			children = (
 				4EC90CF72C0812F900A0B5B5 /* MyCardCell.swift */,
+				4E2497AA2C25ABFC00851D9D /* PaymentInfoCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -732,9 +746,11 @@
 				4EA35B082BE4CAC40001508B /* Key.swift in Sources */,
 				4E2497A12C211A6000851D9D /* QRPayViewModel.swift in Sources */,
 				4EA35B1D2BE6302F0001508B /* LoginIntroView.swift in Sources */,
+				4E2497AE2C25AFC500851D9D /* CardPaymentInfoViewModel.swift in Sources */,
 				4EA35B032BE3D9A60001508B /* DIContainer.swift in Sources */,
 				4EA35AD12BCD005E0001508B /* AuthenticatedView.swift in Sources */,
 				4EC90D072C0D4F6600A0B5B5 /* AllMenuView.swift in Sources */,
+				4E2497AB2C25ABFC00851D9D /* PaymentInfoCell.swift in Sources */,
 				4EA35AF22BE325A90001508B /* User.swift in Sources */,
 				4ED576192BEA73AD0034F7A6 /* LocationService.swift in Sources */,
 				4ED5761F2BED03AE0034F7A6 /* Place.swift in Sources */,

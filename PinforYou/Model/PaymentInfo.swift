@@ -17,11 +17,12 @@ struct PaymentInfo : Decodable {
     var Payments : [Payment] = []
     
     
-    struct Payment : Decodable {
+    struct Payment : Decodable, Hashable {
         var payAmount : Int
         var Date : String
         var StoreName : String
         var category : String
+        var id = UUID()
         
         enum CodingKeys : String, CodingKey {
             case payAmount = "pay_amount"
@@ -39,4 +40,11 @@ struct PaymentInfo : Decodable {
         case cardColor = "card_color"
         case Payments = "payments"
     }
+}
+
+extension PaymentInfo {
+//    static var paymentCardInfotub1 : Location {
+//        .init(longitude: 126.978365, latitude: 37.566691)
+//    }
+
 }

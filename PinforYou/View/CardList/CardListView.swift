@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CardListView: View {
     
+    @EnvironmentObject var container : DIContainer
+    
     var testCardList : [Card] = [Card.cardStub1, Card.cardStub2, Card.cardStub3, Card.cardStub4]
     
     var body: some View {
@@ -37,7 +39,7 @@ struct CardListView: View {
                     VStack(spacing: 10) {
                         ForEach(testCardList, id: \.self) { card in
                             NavigationLink {
-                                CardPaymentInfoView()
+                                CardPaymentInfoView(cardPaymentInfoViewModel: .init(container: container))
                             } label: {
                                 MyCardCell()
                             }
