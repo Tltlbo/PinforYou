@@ -8,10 +8,12 @@
 import Foundation
 import Alamofire
 import Combine
+import SwiftUI
+import Kingfisher
 
 protocol PayServiceType {
     func getPayRecommendCardInfo(userid : Int, storeName : String, storeCategory : String) -> AnyPublisher<PayCardModel, ServiceError>
-    func getCardQrCode() -> AnyPublisher<UIImage, ServiceError>
+    func getCardQrCode() -> AnyPublisher<UIImageView, ServiceError>
 }
 
 class PayService : PayServiceType {
@@ -29,12 +31,12 @@ class PayService : PayServiceType {
         }.eraseToAnyPublisher()
     }
     
-    func getCardQrCode() -> AnyPublisher<UIImage, ServiceError> {
+    func getCardQrCode() -> AnyPublisher<UIImageView, ServiceError> {
         Future { [weak self] promise in
             self?.getCardQrCode(completion: { result in
                 switch result {
-                case let .success(UIImage):
-                    promise(.success(UIImage))
+                case let .success(UIImageView):
+                    promise(.success(UIImageView))
                     
                 case let .failure(error):
                     promise(.failure(.error(error)))
@@ -53,32 +55,54 @@ extension PayService {
                    parameters: ["user_id" : userid,
                                 "store_name" : storeName,
                                 "category" : storeCategory],
-                   encoding: JSONEncoding.default,
+                   encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
-        //.validate(statusCode: 200 ..< 300)
         .responseDecodable(of: PayCardModel.self) { [weak self] response in
             guard case .success(let data) = response.result
             else {
-                debugPrint(response)
                 return completion(.failure(LocationError.APICallFailed))
             }
             
             
             completion(.success(.init(CardList: data.CardList)))
             
-            
         }
     }
     
-    private func getCardQrCode(completion: @escaping (Result<UIImage, Error>) -> Void) {
+    private func getCardQrCode(completion: @escaping (Result<UIImageView, Error>) -> Void) {
+        
+        class Data : Decodable  {
+            var body : String
+            var statusCode : String
+            var statusCodeValue : Int
+            
+            enum CodingKeys: String, CodingKey {
+                case body = "body"
+                case statusCode = "statusCode"
+                case statusCodeValue = "statusCodeValue"
+            }
+        }
+        
         AF.request("https://pinforyou.online/userCard/pay",
                    method: .get,
                    parameters: ["user_id" : 1,
                                 "card_id" : 14],
-                   encoding: JSONEncoding.default,
+                   encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
-        .responseDecodable(of: String.self) { [weak self] response in
-            debugPrint(response)
+        .responseDecodable(of: Data.self) { [weak self] response in
+            guard case .success(let data) = response.result
+            else {
+                return completion(.failure(LocationError.APICallFailed))
+            }
+            
+            let provider = Base64ImageDataProvider(base64String: data.body, cacheKey: "QR")
+            
+            var imageView : UIImageView = UIImageView()
+            
+            imageView.kf.setImage(with: provider)
+            
+            return completion(.success(imageView))
+        
         }
     }
     
@@ -91,7 +115,7 @@ class StubPayService : PayServiceType {
         Empty().eraseToAnyPublisher()
     }
     
-    func getCardQrCode() -> AnyPublisher<UIImage, ServiceError> {
+    func getCardQrCode() -> AnyPublisher<UIImageView, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
 }

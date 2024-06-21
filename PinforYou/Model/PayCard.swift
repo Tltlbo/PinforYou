@@ -11,13 +11,14 @@ struct PayCardModel : Decodable {
     
     var CardList : [PayCard] = []
     
-    struct PayCard : Decodable {
+    struct PayCard : Decodable, Hashable {
         var userID : Int
         var cardID : Int
         var cardName : String
         var cardLastNum : String
         var discountPercent : Int
         var cardColor : String
+        var uuid = UUID()
         
         enum CodingKeys : String, CodingKey {
             case userID = "user_id"

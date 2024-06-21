@@ -41,8 +41,7 @@ class PlaceInfoViewModel : ObservableObject {
                     }
                 } receiveValue: { [weak self] card in
                     self?.isFinished = true
-                    print(card)
-                    
+                    self?.CardList = card.CardList
                 }.store(in: &subscriptions)
 
         }

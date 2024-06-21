@@ -32,29 +32,29 @@ struct PlaceInfoView: View {
                         Spacer()
                     }
                     
-//                    ScrollView(.vertical) {
-//                        VStack(spacing: 0) {
-//                            Rectangle()
-//                                .fill(Color.gray)
-//                                .frame(height: 1)
-//                            
-//                            ForEach(placeInfoViewModel.CardList, id: \.self) { card in
-//                                
-//                                NavigationLink {
-//                                    QRPayView(card: card, QRPayViewModel: .init(container: container))
-//                                } label: {
-//                                    CardCell()
-//                                }
-//
-//                                
-//                                Rectangle()
-//                                    .fill(Color.white)
-//                                    .frame(height:1)
-//                            }
-//                            
-//                        }
-//                        
-//                    }
+                    ScrollView(.vertical) {
+                        VStack(spacing: 0) {
+                            Rectangle()
+                                .fill(Color.gray)
+                                .frame(height: 1)
+                            
+                            ForEach(placeInfoViewModel.CardList, id: \.self) { card in
+                                
+                                NavigationLink {
+                                    QRPayView(card: card, QRPayViewModel: .init(container: container, cardinfo: card))
+                                } label: {
+                                    CardCell(cardInfo: card)
+                                }
+
+                                
+                                Rectangle()
+                                    .fill(Color.white)
+                                    .frame(height:1)
+                            }
+                            
+                        }
+                        
+                    }
                     HStack {
                         withBtn(option: .with)
                             .padding(.leading , 10)

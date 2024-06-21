@@ -37,7 +37,7 @@ struct CardListView: View {
                     VStack(spacing: 10) {
                         ForEach(testCardList, id: \.self) { card in
                             NavigationLink {
-                                //
+                                CardPaymentInfoView()
                             } label: {
                                 MyCardCell()
                             }

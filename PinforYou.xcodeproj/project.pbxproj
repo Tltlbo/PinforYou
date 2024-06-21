@@ -26,6 +26,7 @@
 		4E2497A32C21225800851D9D /* OwnerPayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497A22C21225800851D9D /* OwnerPayService.swift */; };
 		4E2497A52C22657A00851D9D /* ScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497A42C22657A00851D9D /* ScannerViewModel.swift */; };
 		4E2497A72C2269CD00851D9D /* PaymentInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497A62C2269CD00851D9D /* PaymentInfo.swift */; };
+		4E2497A92C23B18C00851D9D /* CardPaymentInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497A82C23B18C00851D9D /* CardPaymentInfoView.swift */; };
 		4E6FB33D2C172DB700AC1B25 /* MeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB33C2C172DB700AC1B25 /* MeetingCell.swift */; };
 		4E6FB3402C172FEF00AC1B25 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB33F2C172FEF00AC1B25 /* FriendCell.swift */; };
 		4E6FB3422C17332500AC1B25 /* MyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB3412C17332500AC1B25 /* MyCardView.swift */; };
@@ -98,6 +99,7 @@
 		4E2497A22C21225800851D9D /* OwnerPayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerPayService.swift; sourceTree = "<group>"; };
 		4E2497A42C22657A00851D9D /* ScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewModel.swift; sourceTree = "<group>"; };
 		4E2497A62C2269CD00851D9D /* PaymentInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentInfo.swift; sourceTree = "<group>"; };
+		4E2497A82C23B18C00851D9D /* CardPaymentInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPaymentInfoView.swift; sourceTree = "<group>"; };
 		4E6FB33C2C172DB700AC1B25 /* MeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCell.swift; sourceTree = "<group>"; };
 		4E6FB33F2C172FEF00AC1B25 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		4E6FB3412C17332500AC1B25 /* MyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardView.swift; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 				4EC90CF42C080CA600A0B5B5 /* CardListView.swift */,
 				4E6FB3412C17332500AC1B25 /* MyCardView.swift */,
 				4E2497832C17E85900851D9D /* RecommendCardView.swift */,
+				4E2497A82C23B18C00851D9D /* CardPaymentInfoView.swift */,
 			);
 			path = CardList;
 			sourceTree = "<group>";
@@ -745,6 +748,7 @@
 				4EC90D012C09687F00A0B5B5 /* MeetingListView.swift in Sources */,
 				4EA35AE62BE232140001508B /* KakaoLoginBtn.swift in Sources */,
 				4ED5762F2BFAD8BD0034F7A6 /* QRPayView.swift in Sources */,
+				4E2497A92C23B18C00851D9D /* CardPaymentInfoView.swift in Sources */,
 				4E2497A32C21225800851D9D /* OwnerPayService.swift in Sources */,
 				4EC90CFF2C0963AD00A0B5B5 /* FriendListView.swift in Sources */,
 				4E6FB3402C172FEF00AC1B25 /* FriendCell.swift in Sources */,

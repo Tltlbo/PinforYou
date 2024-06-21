@@ -7,17 +7,25 @@
 
 import Foundation
 import Combine
+import UIKit
+import SwiftUI
 
 class QRPayViewModel : ObservableObject {
     enum Action {
         case getQrCode
     }
     
+    private var cardInfo : PayCardModel.PayCard
     private var container : DIContainer
     private var subscriptions = Set<AnyCancellable>()
     
-    init(container: DIContainer) {
+    var QRImageView : UIImageView = UIImageView()
+    
+    @Published var isFinshed : Bool = false
+    
+    init(container: DIContainer, cardinfo : PayCardModel.PayCard) {
         self.container = container
+        self.cardInfo = cardinfo
     }
     
     func send(action : Action) {
@@ -28,10 +36,12 @@ class QRPayViewModel : ObservableObject {
                     if case .failure = completion {
                         //
                     }
+                    self?.isFinshed = true
                 } receiveValue: { [weak self] image in
-                    //
+                    self?.QRImageView = image
                 }.store(in: &subscriptions)
 
         }
     }
+    
 }
