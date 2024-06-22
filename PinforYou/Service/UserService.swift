@@ -39,7 +39,7 @@ extension UserService {
         AF.request("https://pinforyou.online/paymentHistory",
                    method: .get,
                    parameters: ["user_id" : 1,
-                                "card_id" : 3],
+                                "card_id" : 14],
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: PaymentInfo.self) { [weak self] response in

@@ -10,13 +10,13 @@ import Combine
 import Alamofire
 
 protocol OwnerPayServiceType {
-    func storePaymentInfo() -> AnyPublisher<String, ServiceError>
+    func storePaymentInfo(amount : Int) -> AnyPublisher<String, ServiceError>
 }
 
 class OwnerPayService : OwnerPayServiceType {
-    func storePaymentInfo() -> AnyPublisher<String, ServiceError> {
+    func storePaymentInfo(amount : Int) -> AnyPublisher<String, ServiceError> {
         Future { [weak self] promise in
-            self?.storePaymentInfo { result in
+            self?.storePaymentInfo(amount: amount) { result in
                 switch result {
                 case let .success(String):
                     promise(.success(String))
@@ -30,24 +30,30 @@ class OwnerPayService : OwnerPayServiceType {
 }
 
 extension OwnerPayService {
-    private func storePaymentInfo(completion: @escaping (Result<String, Error>) -> Void) {
+    private func storePaymentInfo(amount: Int, completion: @escaping (Result<String, Error>) -> Void) {
         AF.request("https://pinforyou.online/paymentHistory",
                    method: .post,
                    parameters: ["user_id" : 1,
                                 "card_id" : 14,
-                                "pay_amount" : 1000,
+                                "pay_amount" : amount,
                                 "store_name" : "CU 영남대점",
                                 "category" : "편의점"],
-                   encoding: JSONEncoding.default,
+                   encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: String.self) { [weak self] response in
-            debugPrint(response)
+            guard case .success(let data) = response.result
+            else {
+                return completion(.failure(LocationError.APICallFailed))
+            }
+            
+            
+            completion(.success(data))
         }
     }
 }
 
 class StubOwnerPayService : OwnerPayServiceType {
-    func storePaymentInfo() -> AnyPublisher<String, ServiceError> {
+    func storePaymentInfo(amount : Int) -> AnyPublisher<String, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
 }
