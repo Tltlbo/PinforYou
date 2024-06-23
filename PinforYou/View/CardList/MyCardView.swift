@@ -15,6 +15,7 @@ enum CardOption {
 struct MyCardView: View {
     
     @State var OptionSelect : CardOption = .MyCard
+    @EnvironmentObject var container : DIContainer
     
     var body: some View {
         VStack {
@@ -48,7 +49,7 @@ struct MyCardView: View {
             
             switch OptionSelect {
             case .MyCard:
-                CardListView()
+                CardListView(cardlistViewModel: .init(container: container))
             case .Recommend:
                 RecommendCardView()
             }

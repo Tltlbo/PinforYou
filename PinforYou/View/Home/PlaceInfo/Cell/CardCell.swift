@@ -35,7 +35,7 @@ struct CardCell: View {
                 .foregroundStyle(.white)
         }
         .frame(width: UIScreen.main.bounds.size.width)
-        .background(Color.gray)
+        .background(Color.init(hex: cardInfo.cardColor))
         
     }
 }

@@ -1,21 +1,21 @@
 //
-//  CardPaymentInfoViewModel.swift
+//  CardListViewModel.swift
 //  PinforYou
 //
-//  Created by 박진성 on 6/21/24.
+//  Created by 박진성 on 6/23/24.
 //
 
 import Foundation
 import Combine
 
-class CardPaymentInfoViewModel : ObservableObject {
+class CardListViewModel : ObservableObject {
     
     enum Action {
-        case getPaymentInfo
+        case getCardInfo
     }
     
     @Published var isFinished : Bool = false
-    var paymentInfo : PaymentInfo? = nil
+    var CardList : [CardInfo.Carda] = []
     
     private var container : DIContainer
     private var subscriptions = Set<AnyCancellable>()
@@ -24,17 +24,17 @@ class CardPaymentInfoViewModel : ObservableObject {
         self.container = container
     }
     
-    func send(action : Action, cardid : Int = 0) {
+    func send(action : Action) {
         switch action {
-        case .getPaymentInfo:
-            container.services.userService.getPaymentInfo(cardid: cardid)
+        case .getCardInfo:
+            container.services.userService.getCardInfo()
                 .sink { [weak self] completion in
                     if case .failure = completion {
                         //
                     }
                     self?.isFinished = true
-                } receiveValue: { [weak self] info in
-                    self?.paymentInfo = info
+                } receiveValue: { [weak self] card in
+                    self?.CardList = card.CardList
                 }
                 .store(in: &subscriptions)
 

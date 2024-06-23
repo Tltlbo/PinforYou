@@ -16,6 +16,30 @@ struct Card : Hashable {
     var id = UUID()
 }
 
+struct CardInfo : Decodable {
+    
+    var CardList : [Carda] = []
+    
+    struct Carda : Hashable, Decodable {
+        var cardID : Int
+        var cardName : String
+        var cardNum : String
+        var ID = UUID()
+        
+        enum CodingKeys : String, CodingKey {
+            case cardID = "card_id"
+            case cardName = "card_name"
+            case cardNum = "card_num"
+        }
+    }
+    
+    enum CodingKeys : String, CodingKey {
+        case CardList =  "userCard_list"
+    }
+    
+    
+}
+
 
 extension Card{
     static var cardStub1 : Card {

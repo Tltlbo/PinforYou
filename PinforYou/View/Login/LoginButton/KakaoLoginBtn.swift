@@ -11,6 +11,9 @@ import KakaoSDKAuth
 import KakaoSDKUser
 
 struct KakaoLoginBtn: View {
+    
+    @EnvironmentObject var authenticationViewModel : AuthenticationViewModel
+    
     var body: some View {
         Button {
             if (UserApi.isKakaoTalkLoginAvailable()) {
@@ -32,7 +35,7 @@ struct KakaoLoginBtn: View {
                                 
                                 //do something
                                 if let user = user {
-                                    
+                                    authenticationViewModel.authenticationState = .authenticated
                                 }
                                 
                             }
@@ -46,6 +49,7 @@ struct KakaoLoginBtn: View {
                     }
                     if let oauthToken = oauthToken {
                         print("kakao success")
+                        authenticationViewModel.authenticationState = .authenticated
                         //TODO: 소셜 로그인(회원가입 API Call)
                     }
                 }

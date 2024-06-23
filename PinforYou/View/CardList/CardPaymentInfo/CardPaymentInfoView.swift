@@ -10,6 +10,7 @@ import SwiftUI
 struct CardPaymentInfoView: View {
     
     @StateObject var cardPaymentInfoViewModel : CardPaymentInfoViewModel
+    var cardID : Int
     
     var body: some View {
         
@@ -23,8 +24,8 @@ struct CardPaymentInfoView: View {
                         
                         HStack(alignment: .center) {
                             VStack(alignment:.leading) {
-                                Text("The BEST-F")
-                                Text("1736-6684-3090-2003")
+                                Text(cardPaymentInfoViewModel.paymentInfo?.cardName ?? "")
+                                Text(cardPaymentInfoViewModel.paymentInfo?.cardNum ?? "")
                             }
                             .padding(.trailing, 60)
                             
@@ -79,7 +80,7 @@ struct CardPaymentInfoView: View {
         else {
             ProgressView()
                 .onAppear {
-                    cardPaymentInfoViewModel.send(action: .getPaymentInfo)
+                    cardPaymentInfoViewModel.send(action: .getPaymentInfo, cardid: cardID)
                 }
         }
         
