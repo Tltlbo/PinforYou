@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct AllMenuView: View {
+    
+    @EnvironmentObject var container : DIContainer
+    
     var body: some View {
         NavigationStack {
             VStack(alignment:.leading) {
@@ -48,6 +51,15 @@ struct AllMenuView: View {
                     PurchaseView()
                 } label: {
                     Text("포인트 샵")
+                        .font(.system(size: 26))
+                        .padding(.leading, 20)
+                        .padding(.bottom, 58)
+                }
+                
+                NavigationLink {
+                    ScannerMainView(scannerViewModel: .init(container: container))
+                } label: {
+                    Text("QR테스트")
                         .font(.system(size: 26))
                         .padding(.leading, 20)
                 }

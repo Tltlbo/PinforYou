@@ -7,69 +7,92 @@
 
 import Foundation
 import Combine
+import Alamofire
 
 protocol UserServiceType {
-    func addUser(_ user : User) /*-> AnyPublisher<User, ServiceError>*/
-//    func addUserAfterContact(users: [User]) -> AnyPublisher<Void, ServiceError>
-//    func getUser(userId : String) -> AnyPublisher<User, ServiceError>
-//    func loadUsers(id : String) -> AnyPublisher<[User], ServiceError>
-    
+    func getCardInfo() -> AnyPublisher<CardInfo, ServiceError>
+    func getPaymentInfo(cardid : Int) -> AnyPublisher<PaymentInfo, ServiceError>
 }
 
 class UserService : UserServiceType {
     
-    private var dbRepository : UserDBRepositoryType
     
-    init(dbRepository: UserDBRepositoryType) {
-        self.dbRepository = dbRepository
+    func getCardInfo() -> AnyPublisher<CardInfo, ServiceError> {
+        Future { [weak self] promise in
+            self?.getCardInfo { result in
+                switch result {
+                case let .success(CardInfo):
+                    promise(.success(CardInfo))
+                    
+                case let .failure(error):
+                    promise(.failure(.error(error)))
+                }
+            }
+            
+        }.eraseToAnyPublisher()
     }
     
-    func addUser(_ user : User) /*-> AnyPublisher<User, ServiceError>*/ {
-        dbRepository.addUser(user.toObject())
-//            .map {user}
-//            .mapError {.error($0)}
-//            .eraseToAnyPublisher()
+    func getPaymentInfo(cardid : Int) -> AnyPublisher<PaymentInfo, ServiceError> {
+        Future { [weak self] promise in
+            self?.getPaymentInfo(cardid: cardid) { result in
+                switch result {
+                case let .success(PaymentInfo):
+                    promise(.success(PaymentInfo))
+                    
+                case let .failure(error):
+                    promise(.failure(.error(error)))
+                }
+            }
+            
+        }.eraseToAnyPublisher()
     }
     
-    func addUserAfterContact(users: [User]) /*-> AnyPublisher<Void, ServiceError>*/ {
-//        dbRepository.addUserAfterContact(users: users.map {$0.toObject()})
-//            .mapError {.error($0)}
-//            .eraseToAnyPublisher()
+}
+
+extension UserService {
+    
+    private func getCardInfo(completion: @escaping (Result<CardInfo, Error>) -> Void) {
+        AF.request("https://pinforyou.online/userCard",
+                   method: .get,
+                   parameters: ["user_id" : 1],
+                   encoding: URLEncoding.queryString,
+                   headers: ["Content-Type" : "application/json"])
+        .responseDecodable(of: CardInfo.self) { [weak self] response in
+            guard case .success(let data) = response.result
+            else {
+                return completion(.failure(LocationError.APICallFailed))
+            }
+            
+            completion(.success(data))
+        }
     }
     
-    func getUser(userId : String) /*-> AnyPublisher<User, ServiceError>*/ {
-//        dbRepository.getUser(userId: userId)
-//            .map { $0.toModel()}
-//            .mapError { .error($0)}
-//            .eraseToAnyPublisher()
-    }
-    
-    func loadUsers(id : String) /*-> AnyPublisher<[User], ServiceError>*/ {
-//        dbRepository.loadUser()
-//            .map { $0
-//                .map { $0.toModel() }
-//                .filter {$0.id != id }
-//            }
-//            .mapError {.error($0)}
-//            .eraseToAnyPublisher()
+    private func getPaymentInfo(cardid: Int, completion: @escaping (Result<PaymentInfo, Error>) -> Void) {
+        AF.request("https://pinforyou.online/paymentHistory",
+                   method: .get,
+                   parameters: ["user_id" : 1,
+                                "card_id" : cardid],
+                   encoding: URLEncoding.queryString,
+                   headers: ["Content-Type" : "application/json"])
+        .responseDecodable(of: PaymentInfo.self) { [weak self] response in
+            guard case .success(let data) = response.result
+            else {
+                return completion(.failure(LocationError.APICallFailed))
+            }
+            
+            
+            completion(.success(data))
+        }
     }
 }
 
 class StubUserService : UserServiceType {
     
-    func addUser(_ user : User) /*-> AnyPublisher<User, ServiceError>*/ {
-        //Empty().eraseToAnyPublisher()
+    func getCardInfo() -> AnyPublisher<CardInfo, ServiceError> {
+        Empty().eraseToAnyPublisher()
     }
     
-    func addUserAfterContact(users: [User]) /*-> AnyPublisher<Void, ServiceError>*/ {
-        //Empty().eraseToAnyPublisher()
-    }
-    
-    func getUser(userId : String) /*-> AnyPublisher<User, ServiceError>*/ {
-        //Just(.stub1).setFailureType(to: ServiceError.self).eraseToAnyPublisher()
-    }
-    
-    func loadUsers(id : String) /*-> AnyPublisher<[User], ServiceError>*/ {
-        //Just([.stub1, .stub2]).setFailureType(to: ServiceError.self).eraseToAnyPublisher()
+    func getPaymentInfo(cardid : Int) -> AnyPublisher<PaymentInfo, ServiceError> {
+        Empty().eraseToAnyPublisher()
     }
 }

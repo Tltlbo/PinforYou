@@ -16,6 +16,8 @@ struct HomeView: View {
     
     @StateObject var kakaoMapViewModel : KakaoMapViewModel
     
+    @EnvironmentObject var container : DIContainer
+    
     
         var body: some View {
             
@@ -28,7 +30,7 @@ struct HomeView: View {
                     })/*.frame(maxWidth: .infinity, maxHeight: .infinity)*/
                     .environmentObject(kakaoMapViewModel)
                     .sheet(isPresented: $isTapped) {
-                        PlaceInfoView(Place: $TappedPlace)
+                        PlaceInfoView(Place: $TappedPlace, placeInfoViewModel: .init(container: container, userid: 1, storename: TappedPlace.placeName, storecategory: TappedPlace.categoryName))
                             .presentationDetents(
                                 [.medium, .large],
                                 selection: $modalDetent

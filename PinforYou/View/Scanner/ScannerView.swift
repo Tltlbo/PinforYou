@@ -19,10 +19,8 @@ import SwiftUI
 import SnapKit
 
 
-
 class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
-
-
+    
 
     // 웹뷰 및 QR 코드 스캔 버튼의 아웃렛 정의
 
@@ -283,7 +281,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         if let metadataObject = metadataObjects.first as? AVMetadataMachineReadableCodeObject,
 
            let qrCodeObject = previewLayer.transformedMetadataObject(for: metadataObject) as? AVMetadataMachineReadableCodeObject {
-
+            
             qrCodeFrameView?.frame = qrCodeObject.bounds  // QR 코드 위치에 동적 박스 그리기
 
 
@@ -299,7 +297,18 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
                     }
 
                 }
-
+                
+                if let money = inputMoney.text?.split(separator: " ")[0] {
+                    NotificationCenter.default.post(name: NSNotification.Name("scannedData"), object: money, userInfo: nil)
+                    
+                    self.captureSession.stopRunning()
+                    self.dismiss(animated: true, completion: nil)
+                }
+                
+                
+                
+                
+                
 
 
                 lastQRCodeValue = stringValue
@@ -331,8 +340,7 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
     func showResultAlert(_ result: String) {
 
         print("Scanned result: \(result)")  // 출력
-
-
+        
 
         // 팝업
 
@@ -382,10 +390,6 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
 
         view.endEditing(true)
 
-        
-
-    
-
     }
 
 
@@ -401,7 +405,8 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         }
 
     }
-
+      
+    
 }
 
 
@@ -470,15 +475,9 @@ extension ScannerViewController : UITextFieldDelegate {
 
 private extension ScannerViewController {
 
-    
-
-    
-
     func setupViews() {
 
-        
-
-        
+  
 
         [qrcodeBtn, inputMoney].forEach {
 
@@ -486,12 +485,7 @@ private extension ScannerViewController {
 
         }
 
-        
-
         inputMoney.snp.makeConstraints {
-
-            
-
             $0.width.equalTo(inputMoney.intrinsicContentSize.width + 200)
 
             $0.height.equalTo(45.0)
@@ -507,9 +501,6 @@ private extension ScannerViewController {
         
 
         qrcodeBtn.snp.makeConstraints {
-
-            
-
             $0.width.equalTo(70)
 
             $0.height.equalTo(40)
@@ -535,35 +526,42 @@ private extension ScannerViewController {
 
 
 struct QRScannerView : UIViewControllerRepresentable {
-
     
-
+    @Binding var scannedData : String
+    
     let viewController : ScannerViewController = ScannerViewController()
 
-    
-
-    func makeUIViewController(context: Context) -> some UIViewController {
-
-        
-
-        
-
-        
-
+    func makeUIViewController(context: Context) -> UIViewController {
         return viewController
-
     }
-
-    
 
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-
-        
-
     }
-
     
+ 
 
+}
+
+struct ScannerMainView : View {
+    
+    @State var scannedData : String = ""
+    @StateObject var scannerViewModel : ScannerViewModel
+    
+    let scannedDataNotification = NotificationCenter.default
+        .publisher(for: NSNotification.Name("scannedData"))
+    
+    var body: some View {
+        if scannerViewModel.isFinshed {
+            Text("결제되었습니다.")
+        }
+        else {
+            QRScannerView(scannedData: $scannedData)
+                .onReceive(scannedDataNotification) { (output) in
+                    scannedData = output.object as? String ?? ""
+                    scannerViewModel.send(action: .storePayment, amount: Int(scannedData)!)
+                }
+        }
+    }
 }
 
 
@@ -572,7 +570,8 @@ struct Preview : PreviewProvider {
 
     static var previews: some View {
 
-        QRScannerView()
+        //QRScannerView()
+        Text("HELLO")
 
     }
 
