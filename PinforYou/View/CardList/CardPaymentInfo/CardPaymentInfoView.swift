@@ -50,18 +50,6 @@ struct CardPaymentInfoView: View {
                         .frame(height: 1)
                         .foregroundColor(.gray)
                     
-                    HStack {
-                        Text("26")
-                            .padding(.leading, 10)
-                        Text("월요일")
-                        Spacer()
-                        Text("50000")
-                            .padding(.trailing, 10)
-                    }
-                    
-                    Rectangle()
-                        .frame(height: 1)
-                        .foregroundStyle(.gray)
                     
                     ScrollView(.vertical) {
                         VStack(spacing: 10) {

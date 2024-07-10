@@ -298,31 +298,31 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
 
                 }
                 
-                if let money = inputMoney.text?.split(separator: " ")[0] {
-                    NotificationCenter.default.post(name: NSNotification.Name("scannedData"), object: money, userInfo: nil)
-                    
-                    self.captureSession.stopRunning()
-                    self.dismiss(animated: true, completion: nil)
-                }
-                
-                
-                
-                
-                
+                     
 
 
                 lastQRCodeValue = stringValue
 
                 lastDetectionTime = Date()
-
-
-
+                
+                var testValue = stringValue.split(separator: ",")[1]
+                var testValue2 = testValue.split(separator: ":")[1]
+                var testValue3 = testValue2.split(separator: "}")[0]
+                
                 // 인식된 QR 코드를 2초간 지속 추적
 
                 displayAlertTimer?.invalidate()
 
                 displayAlertTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { [weak self] _ in
 
+                    if let money = self?.inputMoney.text?.split(separator: " ")[0] {
+                        NotificationCenter.default.post(name: NSNotification.Name("scannedData"), object: money, userInfo: nil)
+                        NotificationCenter.default.post(name: NSNotification.Name("cardID"), object: Int(testValue3)!, userInfo: nil)
+                        
+                        self?.captureSession.stopRunning()
+                        self?.dismiss(animated: true, completion: nil)
+                    }
+                    
                     self?.showResultAlert(stringValue)
 
                 }
@@ -545,10 +545,14 @@ struct QRScannerView : UIViewControllerRepresentable {
 struct ScannerMainView : View {
     
     @State var scannedData : String = ""
+    @State var cardid : Int = 0
     @StateObject var scannerViewModel : ScannerViewModel
     
     let scannedDataNotification = NotificationCenter.default
         .publisher(for: NSNotification.Name("scannedData"))
+    
+    let scannedCardidNotification = NotificationCenter.default
+        .publisher(for: NSNotification.Name("cardID"))
     
     var body: some View {
         if scannerViewModel.isFinshed {
@@ -556,10 +560,14 @@ struct ScannerMainView : View {
         }
         else {
             QRScannerView(scannedData: $scannedData)
-                .onReceive(scannedDataNotification) { (output) in
-                    scannedData = output.object as? String ?? ""
-                    scannerViewModel.send(action: .storePayment, amount: Int(scannedData)!)
+                .onReceive(scannedDataNotification.zip(scannedCardidNotification)) { (Data, cardID) in
+                    scannedData = Data.object as? String ?? ""
+                    cardid = cardID.object as? Int ?? 0
+                    print(cardid)
+    
+                    scannerViewModel.send(action: .storePayment, amount: Int(scannedData)!, cardid: cardid)
                 }
+                
         }
     }
 }

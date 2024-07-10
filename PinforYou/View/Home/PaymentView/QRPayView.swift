@@ -7,19 +7,26 @@
 
 import SwiftUI
 import UIKit
+import Kingfisher
 
 struct QRPayView: View {
     
     var card : PayCardModel.PayCard
     @StateObject var QRPayViewModel : QRPayViewModel
     
-    var testImage : Image = Image("QR_test")
-    
     var body: some View {
         
-        if QRPayViewModel.isFinshed {
+        if QRPayViewModel.isFinshed && QRPayViewModel.QRImageView != nil {
             Text(card.cardName)
-            Image(uiImage: (QRPayViewModel.QRImageView.image ?? UIImage(systemName: "creditcard"))!)
+            
+            if let image = QRPayViewModel.QRImageView?.image {
+                Image(uiImage: (image))
+                    .onDisappear {
+                        ImageCache.default.removeImage(forKey: "QR")
+                    }
+            }
+            
+            
         }
         else {
             ProgressView()

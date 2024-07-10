@@ -24,10 +24,10 @@ class ScannerViewModel : ObservableObject {
     }
     
     
-    func send(action : Action, amount : Int) {
+    func send(action : Action, amount : Int, cardid : Int) {
         switch action {
         case .storePayment:
-            container.services.ownerPayService.storePaymentInfo(amount: amount)
+            container.services.ownerPayService.storePaymentInfo(cardid: cardid, amount: amount)
                 .sink { [weak self] completion in
                     if case .failure = completion {
                         //
