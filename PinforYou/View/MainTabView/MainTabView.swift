@@ -17,6 +17,14 @@ struct MainTabView: View {
         
         VStack(spacing: 0) {
             
+            HStack {
+                Image("logodesign_horizon")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 50)
+                
+                Spacer()
+            }
             
             switch selectedTab {
             case .home:
@@ -37,7 +45,9 @@ struct MainTabView: View {
         }
         .background {
             Color("BackgroundColor")
+                .ignoresSafeArea()
         }
+        
         
     }
     

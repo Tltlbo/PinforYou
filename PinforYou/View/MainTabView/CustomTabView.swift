@@ -25,13 +25,13 @@ struct CustomTabView: View {
                             
                     }
                     else {
-                        Button {
-                            selectedTab = tab
-                        } label: {
-                            Image(tab.imageName(selected: selectedTab == tab))
-                                .frame(height: 70)
-                        }
-                        .padding(.horizontal, UIScreen.main.bounds.width/100 * 5 - 5)
+                        Image(tab.imageName(selected: selectedTab == tab))
+                            .frame(height: 70)
+                            .padding(.horizontal, UIScreen.main.bounds.width/100 * 5 - 5)
+                            .onTapGesture {
+                                selectedTab = tab
+                            }
+            
                     }
 
                 }
@@ -40,10 +40,17 @@ struct CustomTabView: View {
             Button {
                 selectedTab = .home
             } label: {
-                Image("Main")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 70, height: 70)
+                ZStack {
+                    Circle()
+                        .frame(width: 60, height: 60)
+                        .foregroundStyle(.white)
+                        .shadow(radius: 10)
+                    
+                    Image("logo_main")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 60, height: 60)
+                }
             }
             .offset(y: -25)
         }

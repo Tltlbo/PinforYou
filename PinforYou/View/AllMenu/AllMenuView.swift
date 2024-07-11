@@ -37,6 +37,7 @@ struct AllMenuView: View {
                         .padding(.bottom, 58)
                         .foregroundStyle(.white)
                 }
+                .buttonStyle(PlainButtonStyle())
                 
                 NavigationLink {
                     ChallengeView()
@@ -46,6 +47,7 @@ struct AllMenuView: View {
                         .padding(.leading, 20)
                         .padding(.bottom, 58)
                 }
+                .buttonStyle(PlainButtonStyle())
                 
                 NavigationLink {
                     PurchaseView()
@@ -55,6 +57,7 @@ struct AllMenuView: View {
                         .padding(.leading, 20)
                         .padding(.bottom, 58)
                 }
+                .buttonStyle(PlainButtonStyle())
                 
                 NavigationLink {
                     ScannerMainView(scannerViewModel: .init(container: container))
@@ -63,7 +66,7 @@ struct AllMenuView: View {
                         .font(.system(size: 26))
                         .padding(.leading, 20)
                 }
-
+                .buttonStyle(PlainButtonStyle())
                 
                 
                 //임시 작업

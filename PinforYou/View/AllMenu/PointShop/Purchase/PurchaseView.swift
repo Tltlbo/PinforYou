@@ -51,6 +51,10 @@ struct PurchaseView: View {
             
             Spacer()
         }
+        .background {
+            Color("BackgroundColor")
+                .ignoresSafeArea()
+        }
     }
 }
 
