@@ -9,11 +9,11 @@ import Foundation
 
 enum MainTabType : String, CaseIterable {
     
-    case Community = "person.2"
-    case CardList = "creditcard"
-    case home = "house"
-    case Event = "gift"
-    case AllMenu = "tray"
+    case Community = "community"
+    case CardList = "mycard"
+    case home = "Main"
+    case Event = "event"
+    case AllMenu = "allmenu"
     
     var title : String {
         switch self {
@@ -31,6 +31,6 @@ enum MainTabType : String, CaseIterable {
     }
     
     func imageName(selected: Bool) -> String {
-        selected ? "\(rawValue).fill" : "\(rawValue)"
+        selected ? "\(rawValue)_fill" : "\(rawValue)"
     }
 }
