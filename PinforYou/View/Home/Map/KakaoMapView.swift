@@ -116,7 +116,7 @@ class KakaoMapCoordinator: NSObject, MapControllerDelegate, ObservableObject {
         let manager = view.getLabelManager()
         // 심볼을 지정.
         // 심볼의 anchor point(심볼이 배치될때의 위치 기준점)를 지정. 심볼의 좌상단을 기준으로 한 % 값.
-        let iconStyle = PoiIconStyle(symbol: UIImage(named: "pin_blue.png"), anchorPoint: CGPoint(x: 0.0, y: 0.5))
+        let iconStyle = PoiIconStyle(symbol: UIImage(named: "pin_icon_fill.png"), anchorPoint: CGPoint(x: 0.0, y: 0.5))
         let perLevelStyle = PerLevelPoiStyle(iconStyle: iconStyle, level: 0)  // 이 스타일이 적용되기 시작할 레벨.
         let poiStyle = PoiStyle(styleID: "customStyle1", styles: [perLevelStyle])
         manager.addPoiStyle(poiStyle)
