@@ -54,13 +54,14 @@ struct CommunityView: View {
                 FriendListView()
             case .meeting:
                 MeetingListView()
-                    
             }
+            
         }
         .background {
             Color("BackgroundColor")
                 .ignoresSafeArea()
         }
+        
     }
 }
 

@@ -15,40 +15,42 @@ struct MainTabView: View {
     
     var body: some View {
         
-        TabView(selection: $selectedTab) {
-            ForEach(MainTabType.allCases,id: \.self) { tab in
+        VStack(spacing: 0) {
+            
+            HStack {
+                Image("logodesign_horizon")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 50)
                 
-                Group {
-                    switch tab {
-                    case .home:
-                        HomeView(kakaoMapViewModel: .init(container: container))
-                    case .CardList:
-                        MyCardView()
-                    case .Community:
-                        CommunityView()
-                    case .Event:
-                        EventView()
-                    case .AllMenu:
-                        AllMenuView()
-                    }
-                }
-                .tabItem {
-                    Label(tab.title, systemImage: tab.imageName(selected: selectedTab == tab))
-                    
-                }
-                .tag(tab)
+                Spacer()
             }
+            
+            switch selectedTab {
+            case .home:
+                HomeView(kakaoMapViewModel: .init(container: container))
+            case .CardList:
+                MyCardView()
+            case .Community:
+                CommunityView()
+            case .Event:
+                EventView()
+            case .AllMenu:
+                AllMenuView()
+            }
+            
+            Spacer()
+            
+            CustomTabView(selectedTab: $selectedTab)
         }
-        .tint(.white)
+        .background {
+            Color("BackgroundColor")
+                .ignoresSafeArea()
+        }
+        
         
     }
     
-    // 아직 swiftUI에서는 선택되지 않은 탭의 컬러 변경은 구현되지 X UIKit에 의존해야함.
-    init() {
-        UITabBar.appearance().unselectedItemTintColor = UIColor(Color.gray)
-        
-        UITabBar.appearance().barTintColor = UIColor(Color(white:0.1))
-    }
 }
 
 #Preview {
