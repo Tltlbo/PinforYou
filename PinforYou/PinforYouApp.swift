@@ -15,6 +15,7 @@ import KakaoMapsSDK
 struct PinforYouApp: App {
     
     @StateObject var container : DIContainer = .init(services: Services())
+    @State var isSplashView = true
     
     init() {
         KakaoSDK.initSDK(appKey: Key.KakaoAppKey.rawValue)
@@ -24,18 +25,39 @@ struct PinforYouApp: App {
     
     var body: some Scene {
         WindowGroup {
-            AuthenticatedView(authViewModel: .init(container: container))
-                .environmentObject(container)
-                .onOpenURL { url in
-                    if (AuthApi.isKakaoTalkLoginUrl(url)) {
-                        AuthController.handleOpenUrl(url: url)
+            
+            if isSplashView {
+                LaunchScreenView()
+                    .ignoresSafeArea()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                            isSplashView = false
+                        }
                     }
-                }
-                .onOpenURL{ url in
-                    GIDSignIn.sharedInstance.handle(url)
-                }
-                
+            } 
+            else {
+                AuthenticatedView(authViewModel: .init(container: container))
+                    .environmentObject(container)
+                    .onOpenURL { url in
+                        if (AuthApi.isKakaoTalkLoginUrl(url)) {
+                            AuthController.handleOpenUrl(url: url)
+                        }
+                    }
+                    .onOpenURL{ url in
+                        GIDSignIn.sharedInstance.handle(url)
+                    }
+            }     
         }
         
+    }
+}
+
+struct LaunchScreenView : UIViewControllerRepresentable {
+    func makeUIViewController(context: Context) -> some UIViewController {
+        let controller = UIStoryboard(name: "Launch Screen", bundle: nil)
+            .instantiateInitialViewController()!
+        return controller
+    }
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
     }
 }

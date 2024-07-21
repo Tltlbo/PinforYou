@@ -35,6 +35,7 @@
 		4E9785FC2C26C9AA000F61BB /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9785FB2C26C9AA000F61BB /* ColorExtension.swift */; };
 		4E9785FF2C27CFC3000F61BB /* CardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9785FE2C27CFC3000F61BB /* CardListViewModel.swift */; };
 		4E9786B22C3EC247000F61BB /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9786B12C3EC247000F61BB /* CustomTabView.swift */; };
+		4E9787722C4D3804000F61BB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E9787712C4D3804000F61BB /* Launch Screen.storyboard */; };
 		4EA35ACF2BCD005E0001508B /* PinforYouApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35ACE2BCD005E0001508B /* PinforYouApp.swift */; };
 		4EA35AD12BCD005E0001508B /* AuthenticatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35AD02BCD005E0001508B /* AuthenticatedView.swift */; };
 		4EA35AD32BCD00600001508B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EA35AD22BCD00600001508B /* Assets.xcassets */; };
@@ -113,6 +114,7 @@
 		4E9785FB2C26C9AA000F61BB /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		4E9785FE2C27CFC3000F61BB /* CardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewModel.swift; sourceTree = "<group>"; };
 		4E9786B12C3EC247000F61BB /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
+		4E9787712C4D3804000F61BB /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		4EA35ACB2BCD005E0001508B /* PinforYou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinforYou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EA35ACE2BCD005E0001508B /* PinforYouApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinforYouApp.swift; sourceTree = "<group>"; };
 		4EA35AD02BCD005E0001508B /* AuthenticatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedView.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				4EA35ACE2BCD005E0001508B /* PinforYouApp.swift */,
 				4EA35AD22BCD00600001508B /* Assets.xcassets */,
 				4EA35AD42BCD00600001508B /* Preview Content */,
+				4E9787712C4D3804000F61BB /* Launch Screen.storyboard */,
 			);
 			path = PinforYou;
 			sourceTree = "<group>";
@@ -658,6 +661,7 @@
 			files = (
 				4EA35AD62BCD00600001508B /* Preview Assets.xcassets in Resources */,
 				4EA35AE22BE144200001508B /* .gitignore in Resources */,
+				4E9787722C4D3804000F61BB /* Launch Screen.storyboard in Resources */,
 				4EA35AD32BCD00600001508B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -939,7 +943,7 @@
 				INFOPLIST_FILE = PinforYou/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치를 기반으로 주변 가게 정보를 제공하기 위해 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -973,7 +977,7 @@
 				INFOPLIST_FILE = PinforYou/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치를 기반으로 주변 가게 정보를 제공하기 위해 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
