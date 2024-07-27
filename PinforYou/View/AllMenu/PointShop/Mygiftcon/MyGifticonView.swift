@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct MyGifticonView: View {
+    @State private var isScreenFullDetailView : Bool = false
     var body: some View {
+    
         NavigationStack {
             ZStack {
                 Color("BackgroundColor")
@@ -19,11 +21,15 @@ struct MyGifticonView: View {
                         VStack {
                             ForEach(0 ..< 10, id: \.self) {
                                 _ in
-                                NavigationLink {
-                                    MyGifticonDetailView()
+                                Button {
+                                    isScreenFullDetailView = true
                                 } label: {
                                     MygifticonCell()
                                 }
+                                .fullScreenCover(isPresented: $isScreenFullDetailView) {
+                                    MyGifticonDetailView(isScreenFullDetailView: $isScreenFullDetailView)
+                                }
+
                             }
                         }
                     }
