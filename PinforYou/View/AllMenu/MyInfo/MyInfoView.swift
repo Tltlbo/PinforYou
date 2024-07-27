@@ -15,31 +15,31 @@ struct MyInfoView: View {
                 Color("BackgroundColor")
                     .ignoresSafeArea()
                 
-                VStack {
-                    HStack {
-                        VStack(alignment:.leading) {
-                            HStack {
-                                Text("이름")
-                                    .font(.system(size: 20))
-                                    .foregroundStyle(.white)
-                            }
-                            .padding(.bottom, 5)
-                            .padding(.leading, 10)
-                            
-                            HStack {
-                                Text("박진성")
-                                    .font(.system(size: 20))
-                                    .foregroundStyle(.white)
-                            }
-                            .padding(.leading, 10)
+                VStack(spacing: 25) {
+                    NameCell()
+                    EmailCell()
+                    PhoneNumberCell()
+                    passwordModifyCell()
+                    
+                    Spacer()
+                    
+                    HStack(spacing: 10){
+                        Button {
+                            //
+                        } label: {
+                            Text("로그아웃")
                         }
-                        Spacer()
+                        
+                        Text("|")
+                        
+                        Button {
+                            //
+                        } label: {
+                            Text("회원탈퇴")
+                        }
                     }
-                    .frame(width: UIScreen.main.bounds.size.width - 25, height: 76)
-                    .background {
-                        Color("CellBackgroundColor")
-                    }
-                    .clipShape(.rect(cornerRadius: 20))
+                    .padding(.bottom, 40)
+
                 }
                 .navigationTitle("내 정보 수정")
                 .background {
@@ -50,6 +50,10 @@ struct MyInfoView: View {
         }
     }
 }
+
+
+
+
 
 #Preview {
     MyInfoView()
