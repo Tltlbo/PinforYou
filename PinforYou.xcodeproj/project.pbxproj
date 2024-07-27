@@ -38,6 +38,7 @@
 		4E8243BF2C54E4D400A40BFF /* passwordModifyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243BE2C54E4D400A40BFF /* passwordModifyCell.swift */; };
 		4E8243C12C55476600A40BFF /* MyGifticonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243C02C55476600A40BFF /* MyGifticonView.swift */; };
 		4E8243C32C5548C400A40BFF /* MygifticonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243C22C5548C400A40BFF /* MygifticonCell.swift */; };
+		4E8243C52C554E5700A40BFF /* MyGifticonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243C42C554E5700A40BFF /* MyGifticonDetailView.swift */; };
 		4E9785FC2C26C9AA000F61BB /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9785FB2C26C9AA000F61BB /* ColorExtension.swift */; };
 		4E9785FF2C27CFC3000F61BB /* CardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9785FE2C27CFC3000F61BB /* CardListViewModel.swift */; };
 		4E9786B22C3EC247000F61BB /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9786B12C3EC247000F61BB /* CustomTabView.swift */; };
@@ -123,6 +124,7 @@
 		4E8243BE2C54E4D400A40BFF /* passwordModifyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = passwordModifyCell.swift; sourceTree = "<group>"; };
 		4E8243C02C55476600A40BFF /* MyGifticonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGifticonView.swift; sourceTree = "<group>"; };
 		4E8243C22C5548C400A40BFF /* MygifticonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MygifticonCell.swift; sourceTree = "<group>"; };
+		4E8243C42C554E5700A40BFF /* MyGifticonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGifticonDetailView.swift; sourceTree = "<group>"; };
 		4E9785FB2C26C9AA000F61BB /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		4E9785FE2C27CFC3000F61BB /* CardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewModel.swift; sourceTree = "<group>"; };
 		4E9786B12C3EC247000F61BB /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 			children = (
 				4E8243C02C55476600A40BFF /* MyGifticonView.swift */,
 				4E8243C22C5548C400A40BFF /* MygifticonCell.swift */,
+				4E8243C42C554E5700A40BFF /* MyGifticonDetailView.swift */,
 			);
 			path = Mygiftcon;
 			sourceTree = "<group>";
@@ -790,6 +793,7 @@
 				4ED576172BE9CE230034F7A6 /* Location.swift in Sources */,
 				4ED576322BFAEB6E0034F7A6 /* WithFriendView.swift in Sources */,
 				4ED5761D2BEC716E0034F7A6 /* URL.swift in Sources */,
+				4E8243C52C554E5700A40BFF /* MyGifticonDetailView.swift in Sources */,
 				4EC90CFB2C0960F100A0B5B5 /* CommunityView.swift in Sources */,
 				4ED5760F2BE8CD530034F7A6 /* KakaoMapView.swift in Sources */,
 				4EA35B082BE4CAC40001508B /* Key.swift in Sources */,

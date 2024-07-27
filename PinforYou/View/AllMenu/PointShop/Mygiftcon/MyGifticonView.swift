@@ -19,7 +19,11 @@ struct MyGifticonView: View {
                         VStack {
                             ForEach(0 ..< 10, id: \.self) {
                                 _ in
-                                MygifticonCell()
+                                NavigationLink {
+                                    MyGifticonDetailView()
+                                } label: {
+                                    MygifticonCell()
+                                }
                             }
                         }
                     }
