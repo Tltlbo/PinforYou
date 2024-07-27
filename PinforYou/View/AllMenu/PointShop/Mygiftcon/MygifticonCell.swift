@@ -1,16 +1,15 @@
 //
-//  PurchaseCell.swift
+//  MygifticonCell.swift
 //  PinforYou
 //
-//  Created by 박진성 on 6/13/24.
+//  Created by 박진성 on 7/28/24.
 //
 
 import SwiftUI
 
-struct PurchaseCell: View {
+struct MygifticonCell: View {
     var body: some View {
         HStack {
-            
             Image(systemName: "creditcard")
                 .resizable()
                 .scaledToFit()
@@ -24,17 +23,14 @@ struct PurchaseCell: View {
                         .font(.system(size: 17))
                         .foregroundStyle(.white)
                 }
-                .padding(.top, 10)
+                .padding(.vertical, 10)
                 
                 HStack {
                     Text("스타벅스 아메리카노(T)")
                 }
-                .padding(.bottom, 10)
+                .padding(.bottom, 20)
                 
-                HStack {
-                    Text("4500P")
-                }
-                .padding(.bottom, 10)
+
             }
             .padding(.leading, 15)
             Spacer()
@@ -50,5 +46,5 @@ struct PurchaseCell: View {
 }
 
 #Preview {
-    PurchaseCell()
+    MygifticonCell()
 }
