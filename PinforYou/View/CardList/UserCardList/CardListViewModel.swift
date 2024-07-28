@@ -15,7 +15,7 @@ class CardListViewModel : ObservableObject {
     }
     
     @Published var isFinished : Bool = false
-    var CardList : [CardInfo.Carda] = []
+    @Published var CardList : [CardInfo.Carda] = []
     
     private var container : DIContainer
     private var subscriptions = Set<AnyCancellable>()
@@ -38,6 +38,16 @@ class CardListViewModel : ObservableObject {
                 }
                 .store(in: &subscriptions)
 
+        }
+    }
+}
+
+//MARK: 리스트 삭제 추가 관련 메서드
+extension CardListViewModel {
+    func delete(card : CardInfo.Carda) {
+        self.CardList = CardList.filter {mycard in
+            mycard != card
+            // TODO: 지웠다는 API 호출해서 작업 성공에 대한 처리 필요
         }
     }
 }

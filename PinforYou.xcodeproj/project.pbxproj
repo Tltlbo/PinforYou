@@ -39,6 +39,8 @@
 		4E8243C12C55476600A40BFF /* MyGifticonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243C02C55476600A40BFF /* MyGifticonView.swift */; };
 		4E8243C32C5548C400A40BFF /* MygifticonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243C22C5548C400A40BFF /* MygifticonCell.swift */; };
 		4E8243C52C554E5700A40BFF /* MyGifticonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243C42C554E5700A40BFF /* MyGifticonDetailView.swift */; };
+		4E8243C72C56291300A40BFF /* CardDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243C62C56291300A40BFF /* CardDeleteView.swift */; };
+		4E8243C92C56295700A40BFF /* CardDeleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243C82C56295700A40BFF /* CardDeleteCell.swift */; };
 		4E9785FC2C26C9AA000F61BB /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9785FB2C26C9AA000F61BB /* ColorExtension.swift */; };
 		4E9785FF2C27CFC3000F61BB /* CardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9785FE2C27CFC3000F61BB /* CardListViewModel.swift */; };
 		4E9786B22C3EC247000F61BB /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9786B12C3EC247000F61BB /* CustomTabView.swift */; };
@@ -125,6 +127,8 @@
 		4E8243C02C55476600A40BFF /* MyGifticonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGifticonView.swift; sourceTree = "<group>"; };
 		4E8243C22C5548C400A40BFF /* MygifticonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MygifticonCell.swift; sourceTree = "<group>"; };
 		4E8243C42C554E5700A40BFF /* MyGifticonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGifticonDetailView.swift; sourceTree = "<group>"; };
+		4E8243C62C56291300A40BFF /* CardDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDeleteView.swift; sourceTree = "<group>"; };
+		4E8243C82C56295700A40BFF /* CardDeleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDeleteCell.swift; sourceTree = "<group>"; };
 		4E9785FB2C26C9AA000F61BB /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		4E9785FE2C27CFC3000F61BB /* CardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewModel.swift; sourceTree = "<group>"; };
 		4E9786B12C3EC247000F61BB /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
@@ -308,6 +312,7 @@
 			children = (
 				4EC90CF42C080CA600A0B5B5 /* CardListView.swift */,
 				4E9785FE2C27CFC3000F61BB /* CardListViewModel.swift */,
+				4E8243C62C56291300A40BFF /* CardDeleteView.swift */,
 			);
 			path = UserCardList;
 			sourceTree = "<group>";
@@ -485,6 +490,7 @@
 			children = (
 				4EC90CF72C0812F900A0B5B5 /* MyCardCell.swift */,
 				4E2497AA2C25ABFC00851D9D /* PaymentInfoCell.swift */,
+				4E8243C82C56295700A40BFF /* CardDeleteCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -799,6 +805,7 @@
 				4EA35B082BE4CAC40001508B /* Key.swift in Sources */,
 				4E2497A12C211A6000851D9D /* QRPayViewModel.swift in Sources */,
 				4E9785FC2C26C9AA000F61BB /* ColorExtension.swift in Sources */,
+				4E8243C92C56295700A40BFF /* CardDeleteCell.swift in Sources */,
 				4EA35B1D2BE6302F0001508B /* LoginIntroView.swift in Sources */,
 				4E2497AE2C25AFC500851D9D /* CardPaymentInfoViewModel.swift in Sources */,
 				4E8243BB2C54E28A00A40BFF /* EmailCell.swift in Sources */,
@@ -825,6 +832,7 @@
 				4E2497A32C21225800851D9D /* OwnerPayService.swift in Sources */,
 				4EC90CFF2C0963AD00A0B5B5 /* FriendListView.swift in Sources */,
 				4E8243B92C54E23400A40BFF /* NameCell.swift in Sources */,
+				4E8243C72C56291300A40BFF /* CardDeleteView.swift in Sources */,
 				4E8243BF2C54E4D400A40BFF /* passwordModifyCell.swift in Sources */,
 				4E6FB3402C172FEF00AC1B25 /* FriendCell.swift in Sources */,
 				4ED576152BE9CD590034F7A6 /* LocationPermission.swift in Sources */,

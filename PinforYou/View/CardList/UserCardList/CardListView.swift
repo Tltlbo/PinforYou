@@ -18,7 +18,6 @@ struct CardListView: View {
     var body: some View {
         
         if cardlistViewModel.isFinished {
-            
             NavigationStack {
                 VStack {
                     HStack {
@@ -31,8 +30,9 @@ struct CardListView: View {
                         }
                         .padding(.trailing, 5)
                         
-                        Button {
-                            //
+                        NavigationLink{
+                            CardDeleteView()
+                                .environmentObject(cardlistViewModel)
                         } label: {
                             Text("관리")
                                 .font(.system(size: 15))
@@ -46,7 +46,7 @@ struct CardListView: View {
                                 NavigationLink {
                                     CardPaymentInfoView(cardPaymentInfoViewModel: .init(container: container), cardID: card.cardID)
                                 } label: {
-                                    MyCardCell(cardName: card.cardName, cardNum: card.cardNum)
+                                    MyCardCell(card: card)
                                 }
 
                             }

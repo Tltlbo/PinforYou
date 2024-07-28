@@ -9,8 +9,7 @@ import SwiftUI
 
 struct MyCardCell: View {
     
-    var cardName : String
-    var cardNum : String
+    let card : CardInfo.Carda
     
     var body: some View {
         HStack {
@@ -23,13 +22,13 @@ struct MyCardCell: View {
             
             VStack(alignment:.leading) {
                 HStack {
-                    Text(cardName)
+                    Text(card.cardName)
                         .font(.system(size: 20))
                         .foregroundStyle(.white)
                 }
                 .padding(.bottom, 30)
                 
-                Text(cardNum)
+                Text(card.cardNum)
                     .font(.system(size: 20))
                     .foregroundStyle(.white)
             }
@@ -45,5 +44,5 @@ struct MyCardCell: View {
 }
 
 #Preview {
-    MyCardCell(cardName: "HELLO", cardNum: "1234-1234-1234-1234")
+    MyCardCell(card: .init(cardID: 1, cardName: "test", cardNum: "teset"))
 }
