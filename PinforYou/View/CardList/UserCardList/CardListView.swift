@@ -12,6 +12,8 @@ struct CardListView: View {
     @StateObject var cardlistViewModel : CardListViewModel
     @EnvironmentObject var container : DIContainer
     
+    @State var isTouched : Bool = false
+    
     
     var testCardList : [Card] = [Card.cardStub1, Card.cardStub2, Card.cardStub3, Card.cardStub4]
     
@@ -22,13 +24,20 @@ struct CardListView: View {
                 VStack {
                     HStack {
                         Spacer()
+                        
                         Button {
-                            //
+                            isTouched = true
                         } label: {
                             Text("추가")
                                 .font(.system(size: 15))
                         }
                         .padding(.trailing, 5)
+                        .fullScreenCover(isPresented: $isTouched) {
+                            CardInsertView()
+                                .environmentObject(cardlistViewModel)
+                        }
+
+
                         
                         NavigationLink{
                             CardDeleteView()

@@ -41,6 +41,7 @@
 		4E8243C52C554E5700A40BFF /* MyGifticonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243C42C554E5700A40BFF /* MyGifticonDetailView.swift */; };
 		4E8243C72C56291300A40BFF /* CardDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243C62C56291300A40BFF /* CardDeleteView.swift */; };
 		4E8243C92C56295700A40BFF /* CardDeleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243C82C56295700A40BFF /* CardDeleteCell.swift */; };
+		4E8243CB2C566DF600A40BFF /* CardInsertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243CA2C566DF600A40BFF /* CardInsertView.swift */; };
 		4E9785FC2C26C9AA000F61BB /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9785FB2C26C9AA000F61BB /* ColorExtension.swift */; };
 		4E9785FF2C27CFC3000F61BB /* CardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9785FE2C27CFC3000F61BB /* CardListViewModel.swift */; };
 		4E9786B22C3EC247000F61BB /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9786B12C3EC247000F61BB /* CustomTabView.swift */; };
@@ -129,6 +130,7 @@
 		4E8243C42C554E5700A40BFF /* MyGifticonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGifticonDetailView.swift; sourceTree = "<group>"; };
 		4E8243C62C56291300A40BFF /* CardDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDeleteView.swift; sourceTree = "<group>"; };
 		4E8243C82C56295700A40BFF /* CardDeleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDeleteCell.swift; sourceTree = "<group>"; };
+		4E8243CA2C566DF600A40BFF /* CardInsertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInsertView.swift; sourceTree = "<group>"; };
 		4E9785FB2C26C9AA000F61BB /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		4E9785FE2C27CFC3000F61BB /* CardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewModel.swift; sourceTree = "<group>"; };
 		4E9786B12C3EC247000F61BB /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				4EC90CF42C080CA600A0B5B5 /* CardListView.swift */,
 				4E9785FE2C27CFC3000F61BB /* CardListViewModel.swift */,
 				4E8243C62C56291300A40BFF /* CardDeleteView.swift */,
+				4E8243CA2C566DF600A40BFF /* CardInsertView.swift */,
 			);
 			path = UserCardList;
 			sourceTree = "<group>";
@@ -818,6 +821,7 @@
 				4ED5761F2BED03AE0034F7A6 /* Place.swift in Sources */,
 				4E24979B2C1BC2D100851D9D /* PayService.swift in Sources */,
 				4EA35AF82BE326480001508B /* UserService.swift in Sources */,
+				4E8243CB2C566DF600A40BFF /* CardInsertView.swift in Sources */,
 				4E24979D2C1BC7A500851D9D /* PayCard.swift in Sources */,
 				4E2497822C17E30700851D9D /* SignUpUserInfoView.swift in Sources */,
 				4EA35AF42BE326040001508B /* Service.swift in Sources */,

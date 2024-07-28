@@ -48,7 +48,7 @@ struct CardDeleteCell: View {
                     .padding(.trailing, 10)
                     .alert(isPresented: $isDelete) {
                         Alert(title: Text("삭제하시겠습니까?"), message: Text("\(card.cardName)이 삭제됩니다."), primaryButton: .destructive(Text("삭제"), action: {
-                            cardlistViewModel.delete(card: card)
+                            cardlistViewModel.cardDelete(card: card)
                         }), secondaryButton: .cancel(Text("취소"), action: {
                             //
                         }))

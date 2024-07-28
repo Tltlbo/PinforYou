@@ -44,10 +44,16 @@ class CardListViewModel : ObservableObject {
 
 //MARK: 리스트 삭제 추가 관련 메서드
 extension CardListViewModel {
-    func delete(card : CardInfo.Carda) {
+    func cardDelete(card : CardInfo.Carda) {
         self.CardList = CardList.filter {mycard in
             mycard != card
             // TODO: 지웠다는 API 호출해서 작업 성공에 대한 처리 필요
         }
+    }
+    
+    func inert(cardName: String, cardNum : String) {
+        let card = CardInfo.Carda(cardID: Int.random(in: 0 ... 255), cardName: cardName, cardNum: cardNum)
+        
+        self.CardList.append(card)
     }
 }
