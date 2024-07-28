@@ -50,7 +50,7 @@ struct AllMenuView: View {
                 .buttonStyle(PlainButtonStyle())
                 
                 NavigationLink {
-                    PurchaseView()
+                    PointShopView()
                 } label: {
                     Text("포인트 샵")
                         .font(.system(size: 26))

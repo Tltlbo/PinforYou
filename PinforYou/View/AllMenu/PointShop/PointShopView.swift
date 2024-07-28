@@ -13,6 +13,9 @@ enum ShopOption {
 }
 
 struct PointShopView: View {
+    
+    @State var selectOption : ShopOption = .MyGifticon
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -23,7 +26,7 @@ struct PointShopView: View {
                     
                     HStack {
                         Button  {
-                            //
+                            selectOption = .PointShop
                         } label: {
                             Text("구매하기")
                         }
@@ -32,7 +35,7 @@ struct PointShopView: View {
                         Spacer()
                         
                         Button {
-                            //
+                            selectOption = .MyGifticon
                         } label: {
                             Text("내 기프티콘")
                         }
@@ -47,6 +50,14 @@ struct PointShopView: View {
                         Spacer()
                         Text("포인트 잔액")
                     }
+                    
+                    switch selectOption {
+                    case .PointShop:
+                        PurchaseView()
+                    case .MyGifticon:
+                        MyGifticonView()
+                    }
+                    
                     
                     
                     

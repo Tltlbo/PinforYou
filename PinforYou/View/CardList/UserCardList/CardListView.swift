@@ -12,27 +12,36 @@ struct CardListView: View {
     @StateObject var cardlistViewModel : CardListViewModel
     @EnvironmentObject var container : DIContainer
     
+    @State var isTouched : Bool = false
+    
     
     var testCardList : [Card] = [Card.cardStub1, Card.cardStub2, Card.cardStub3, Card.cardStub4]
     
     var body: some View {
         
         if cardlistViewModel.isFinished {
-            
             NavigationStack {
                 VStack {
                     HStack {
                         Spacer()
+                        
                         Button {
-                            //
+                            isTouched = true
                         } label: {
                             Text("추가")
                                 .font(.system(size: 15))
                         }
                         .padding(.trailing, 5)
+                        .fullScreenCover(isPresented: $isTouched) {
+                            CardInsertView()
+                                .environmentObject(cardlistViewModel)
+                        }
+
+
                         
-                        Button {
-                            //
+                        NavigationLink{
+                            CardDeleteView()
+                                .environmentObject(cardlistViewModel)
                         } label: {
                             Text("관리")
                                 .font(.system(size: 15))
@@ -46,7 +55,7 @@ struct CardListView: View {
                                 NavigationLink {
                                     CardPaymentInfoView(cardPaymentInfoViewModel: .init(container: container), cardID: card.cardID)
                                 } label: {
-                                    MyCardCell(cardName: card.cardName, cardNum: card.cardNum)
+                                    MyCardCell(card: card)
                                 }
 
                             }

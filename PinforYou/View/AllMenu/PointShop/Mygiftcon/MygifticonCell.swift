@@ -1,48 +1,50 @@
 //
-//  CardCell.swift
+//  MygifticonCell.swift
 //  PinforYou
 //
-//  Created by 박진성 on 5/30/24.
+//  Created by 박진성 on 7/28/24.
 //
 
 import SwiftUI
 
-struct MyCardCell: View {
-    
-    let card : CardInfo.Carda
-    
+struct MygifticonCell: View {
     var body: some View {
         HStack {
             Image(systemName: "creditcard")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 100)
-                .padding(.horizontal, 10)
-                
+                .frame(width: 70, height: 70)
+                .padding(.trailing, 20)
+                .padding(.leading, 10)
             
             VStack(alignment:.leading) {
                 HStack {
-                    Text(card.cardName)
-                        .font(.system(size: 20))
+                    Text("스타벅스")
+                        .font(.system(size: 17))
                         .foregroundStyle(.white)
                 }
-                .padding(.bottom, 30)
+                .padding(.vertical, 10)
                 
-                Text(card.cardNum)
-                    .font(.system(size: 20))
-                    .foregroundStyle(.white)
+                HStack {
+                    Text("스타벅스 아메리카노(T)")
+                }
+                .padding(.bottom, 20)
+                
+
             }
+            .padding(.leading, 15)
             Spacer()
+            
+            
         }
         .frame(width: UIScreen.main.bounds.size.width - 20)
         .background {
             Color("CellBackgroundColor")
         }
         .clipShape(.rect(cornerRadius: 20))
-        
     }
 }
 
 #Preview {
-    MyCardCell(card: .init(cardID: 1, cardName: "test", cardNum: "teset"))
+    MygifticonCell()
 }

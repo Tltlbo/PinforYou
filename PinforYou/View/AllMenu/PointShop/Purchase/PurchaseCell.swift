@@ -43,7 +43,7 @@ struct PurchaseCell: View {
         }
         .frame(width: UIScreen.main.bounds.size.width - 20)
         .background {
-            //Color("CellBackgroundColor")
+            Color("CellBackgroundColor")
         }
         .clipShape(.rect(cornerRadius: 20))
     }

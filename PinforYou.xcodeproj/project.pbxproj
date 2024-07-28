@@ -36,6 +36,12 @@
 		4E8243BB2C54E28A00A40BFF /* EmailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243BA2C54E28A00A40BFF /* EmailCell.swift */; };
 		4E8243BD2C54E2BD00A40BFF /* PhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243BC2C54E2BD00A40BFF /* PhoneNumberCell.swift */; };
 		4E8243BF2C54E4D400A40BFF /* passwordModifyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243BE2C54E4D400A40BFF /* passwordModifyCell.swift */; };
+		4E8243C12C55476600A40BFF /* MyGifticonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243C02C55476600A40BFF /* MyGifticonView.swift */; };
+		4E8243C32C5548C400A40BFF /* MygifticonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243C22C5548C400A40BFF /* MygifticonCell.swift */; };
+		4E8243C52C554E5700A40BFF /* MyGifticonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243C42C554E5700A40BFF /* MyGifticonDetailView.swift */; };
+		4E8243C72C56291300A40BFF /* CardDeleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243C62C56291300A40BFF /* CardDeleteView.swift */; };
+		4E8243C92C56295700A40BFF /* CardDeleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243C82C56295700A40BFF /* CardDeleteCell.swift */; };
+		4E8243CB2C566DF600A40BFF /* CardInsertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243CA2C566DF600A40BFF /* CardInsertView.swift */; };
 		4E9785FC2C26C9AA000F61BB /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9785FB2C26C9AA000F61BB /* ColorExtension.swift */; };
 		4E9785FF2C27CFC3000F61BB /* CardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9785FE2C27CFC3000F61BB /* CardListViewModel.swift */; };
 		4E9786B22C3EC247000F61BB /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9786B12C3EC247000F61BB /* CustomTabView.swift */; };
@@ -119,6 +125,12 @@
 		4E8243BA2C54E28A00A40BFF /* EmailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCell.swift; sourceTree = "<group>"; };
 		4E8243BC2C54E2BD00A40BFF /* PhoneNumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCell.swift; sourceTree = "<group>"; };
 		4E8243BE2C54E4D400A40BFF /* passwordModifyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = passwordModifyCell.swift; sourceTree = "<group>"; };
+		4E8243C02C55476600A40BFF /* MyGifticonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGifticonView.swift; sourceTree = "<group>"; };
+		4E8243C22C5548C400A40BFF /* MygifticonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MygifticonCell.swift; sourceTree = "<group>"; };
+		4E8243C42C554E5700A40BFF /* MyGifticonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGifticonDetailView.swift; sourceTree = "<group>"; };
+		4E8243C62C56291300A40BFF /* CardDeleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDeleteView.swift; sourceTree = "<group>"; };
+		4E8243C82C56295700A40BFF /* CardDeleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDeleteCell.swift; sourceTree = "<group>"; };
+		4E8243CA2C566DF600A40BFF /* CardInsertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInsertView.swift; sourceTree = "<group>"; };
 		4E9785FB2C26C9AA000F61BB /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		4E9785FE2C27CFC3000F61BB /* CardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewModel.swift; sourceTree = "<group>"; };
 		4E9786B12C3EC247000F61BB /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
@@ -254,6 +266,9 @@
 		4E2497972C1A808600851D9D /* Mygiftcon */ = {
 			isa = PBXGroup;
 			children = (
+				4E8243C02C55476600A40BFF /* MyGifticonView.swift */,
+				4E8243C22C5548C400A40BFF /* MygifticonCell.swift */,
+				4E8243C42C554E5700A40BFF /* MyGifticonDetailView.swift */,
 			);
 			path = Mygiftcon;
 			sourceTree = "<group>";
@@ -299,6 +314,8 @@
 			children = (
 				4EC90CF42C080CA600A0B5B5 /* CardListView.swift */,
 				4E9785FE2C27CFC3000F61BB /* CardListViewModel.swift */,
+				4E8243C62C56291300A40BFF /* CardDeleteView.swift */,
+				4E8243CA2C566DF600A40BFF /* CardInsertView.swift */,
 			);
 			path = UserCardList;
 			sourceTree = "<group>";
@@ -476,6 +493,7 @@
 			children = (
 				4EC90CF72C0812F900A0B5B5 /* MyCardCell.swift */,
 				4E2497AA2C25ABFC00851D9D /* PaymentInfoCell.swift */,
+				4E8243C82C56295700A40BFF /* CardDeleteCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -767,6 +785,7 @@
 				4E9786B22C3EC247000F61BB /* CustomTabView.swift in Sources */,
 				4E2497A72C2269CD00851D9D /* PaymentInfo.swift in Sources */,
 				4E6FB33D2C172DB700AC1B25 /* MeetingCell.swift in Sources */,
+				4E8243C12C55476600A40BFF /* MyGifticonView.swift in Sources */,
 				4ED576092BE77D0D0034F7A6 /* MainTabView.swift in Sources */,
 				4E24977D2C174F0A00851D9D /* ScannerView.swift in Sources */,
 				4E24979F2C1BD19600851D9D /* PlaceInfoViewModel.swift in Sources */,
@@ -783,11 +802,13 @@
 				4ED576172BE9CE230034F7A6 /* Location.swift in Sources */,
 				4ED576322BFAEB6E0034F7A6 /* WithFriendView.swift in Sources */,
 				4ED5761D2BEC716E0034F7A6 /* URL.swift in Sources */,
+				4E8243C52C554E5700A40BFF /* MyGifticonDetailView.swift in Sources */,
 				4EC90CFB2C0960F100A0B5B5 /* CommunityView.swift in Sources */,
 				4ED5760F2BE8CD530034F7A6 /* KakaoMapView.swift in Sources */,
 				4EA35B082BE4CAC40001508B /* Key.swift in Sources */,
 				4E2497A12C211A6000851D9D /* QRPayViewModel.swift in Sources */,
 				4E9785FC2C26C9AA000F61BB /* ColorExtension.swift in Sources */,
+				4E8243C92C56295700A40BFF /* CardDeleteCell.swift in Sources */,
 				4EA35B1D2BE6302F0001508B /* LoginIntroView.swift in Sources */,
 				4E2497AE2C25AFC500851D9D /* CardPaymentInfoViewModel.swift in Sources */,
 				4E8243BB2C54E28A00A40BFF /* EmailCell.swift in Sources */,
@@ -800,6 +821,7 @@
 				4ED5761F2BED03AE0034F7A6 /* Place.swift in Sources */,
 				4E24979B2C1BC2D100851D9D /* PayService.swift in Sources */,
 				4EA35AF82BE326480001508B /* UserService.swift in Sources */,
+				4E8243CB2C566DF600A40BFF /* CardInsertView.swift in Sources */,
 				4E24979D2C1BC7A500851D9D /* PayCard.swift in Sources */,
 				4E2497822C17E30700851D9D /* SignUpUserInfoView.swift in Sources */,
 				4EA35AF42BE326040001508B /* Service.swift in Sources */,
@@ -810,9 +832,11 @@
 				4EA35AE62BE232140001508B /* KakaoLoginBtn.swift in Sources */,
 				4ED5762F2BFAD8BD0034F7A6 /* QRPayView.swift in Sources */,
 				4E2497A92C23B18C00851D9D /* CardPaymentInfoView.swift in Sources */,
+				4E8243C32C5548C400A40BFF /* MygifticonCell.swift in Sources */,
 				4E2497A32C21225800851D9D /* OwnerPayService.swift in Sources */,
 				4EC90CFF2C0963AD00A0B5B5 /* FriendListView.swift in Sources */,
 				4E8243B92C54E23400A40BFF /* NameCell.swift in Sources */,
+				4E8243C72C56291300A40BFF /* CardDeleteView.swift in Sources */,
 				4E8243BF2C54E4D400A40BFF /* passwordModifyCell.swift in Sources */,
 				4E6FB3402C172FEF00AC1B25 /* FriendCell.swift in Sources */,
 				4ED576152BE9CD590034F7A6 /* LocationPermission.swift in Sources */,
