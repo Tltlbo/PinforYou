@@ -34,6 +34,17 @@ struct MeetingListView: View {
                         HStack {
                             Text("모임")
                                 .foregroundStyle(.white)
+                ScrollView(.vertical) {
+                    
+                    VStack(spacing: 10) {
+                        ForEach(0 ..< 19, id: \.self) { _ in
+                            NavigationLink {
+                                MeetingCardPaymentInfoView()
+                            } label: {
+                                MeetingCell()
+                            }
+
+                            
                         }
                         .frame(height: 50)
                         
