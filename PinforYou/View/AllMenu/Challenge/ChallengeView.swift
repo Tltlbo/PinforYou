@@ -8,40 +8,56 @@
 import SwiftUI
 
 struct ChallengeView: View {
+    
+    @StateObject var challengeViewModel : ChallengeViewModel
+    
     var body: some View {
-        NavigationStack {
-            ZStack {
-                Color("BackgroundColor")
-                    .ignoresSafeArea()
-                
-                VStack {
+        
+        if challengeViewModel.isFinished {
+            NavigationStack {
+                ZStack {
+                    Color("BackgroundColor")
+                        .ignoresSafeArea()
                     
-                    Spacer()
-                    
-                    ScrollView(.vertical) {
-                        VStack(spacing: 10) {
-                            ForEach(0 ..< 15, id: \.self) { _ in
-                                NavigationLink {
-                                    ChallengeDetailView()
-                                } label: {
-                                    ChallengeCell()
+                    VStack {
+                        
+                        Spacer()
+                        
+                        ScrollView(.vertical) {
+                            VStack(spacing: 10) {
+                                ForEach(challengeViewModel.ChallengeList, id: \.self) { challenge in
+                                    NavigationLink {
+                                        ChallengeDetailView()
+                                    } label: {
+                                        ChallengeCell(challengeName: challenge.challengeName, goal: challenge.goal, achiveNumber: challenge.percent, point: challenge.point)
+                                    }
                                 }
-
-
+                                
                             }
-                            
                         }
+                        
+                        Spacer()
                     }
                     
-                    Spacer()
                 }
-                
+                .navigationTitle("챌린지 진행 정보")
             }
-            .navigationTitle("챌린지 진행 정보")
+        }
+        else {
+            
+            ZStack {
+                Color("backgroundColor")
+                
+                ProgressView()
+                    .onAppear {
+                        challengeViewModel.send(action: .getChallengeInfo)
+                    }
+            }
+            
         }
     }
 }
 
 #Preview {
-    ChallengeView()
+    ChallengeView(challengeViewModel: .init(container: .init(services: StubService())))
 }

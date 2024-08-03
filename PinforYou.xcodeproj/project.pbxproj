@@ -43,6 +43,9 @@
 		4E8243C92C56295700A40BFF /* CardDeleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243C82C56295700A40BFF /* CardDeleteCell.swift */; };
 		4E8243CB2C566DF600A40BFF /* CardInsertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243CA2C566DF600A40BFF /* CardInsertView.swift */; };
 		4E8244792C5E134600A40BFF /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = 4E8244782C5E134600A40BFF /* .gitattributes */; };
+		4E8244812C5E636F00A40BFF /* ChallengeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8244802C5E636F00A40BFF /* ChallengeViewModel.swift */; };
+		4E8244832C5E63D100A40BFF /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8244822C5E63D100A40BFF /* Challenge.swift */; };
+		4E8244852C5E66CC00A40BFF /* ChallengeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8244842C5E66CC00A40BFF /* ChallengeService.swift */; };
 		4E9785FC2C26C9AA000F61BB /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9785FB2C26C9AA000F61BB /* ColorExtension.swift */; };
 		4E9785FF2C27CFC3000F61BB /* CardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9785FE2C27CFC3000F61BB /* CardListViewModel.swift */; };
 		4E9786B22C3EC247000F61BB /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9786B12C3EC247000F61BB /* CustomTabView.swift */; };
@@ -133,6 +136,9 @@
 		4E8243C82C56295700A40BFF /* CardDeleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDeleteCell.swift; sourceTree = "<group>"; };
 		4E8243CA2C566DF600A40BFF /* CardInsertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInsertView.swift; sourceTree = "<group>"; };
 		4E8244782C5E134600A40BFF /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
+		4E8244802C5E636F00A40BFF /* ChallengeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewModel.swift; sourceTree = "<group>"; };
+		4E8244822C5E63D100A40BFF /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
+		4E8244842C5E66CC00A40BFF /* ChallengeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeService.swift; sourceTree = "<group>"; };
 		4E9785FB2C26C9AA000F61BB /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		4E9785FE2C27CFC3000F61BB /* CardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewModel.swift; sourceTree = "<group>"; };
 		4E9786B12C3EC247000F61BB /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
@@ -241,6 +247,7 @@
 				4E2497892C19228400851D9D /* ChallengeView.swift */,
 				4E24978B2C19252600851D9D /* ChallengeCell.swift */,
 				4E24978D2C192BAB00851D9D /* ChallengeDetailView.swift */,
+				4E8244802C5E636F00A40BFF /* ChallengeViewModel.swift */,
 			);
 			path = Challenge;
 			sourceTree = "<group>";
@@ -425,6 +432,7 @@
 				4ED576182BEA73AD0034F7A6 /* LocationService.swift */,
 				4E24979A2C1BC2D100851D9D /* PayService.swift */,
 				4E2497A22C21225800851D9D /* OwnerPayService.swift */,
+				4E8244842C5E66CC00A40BFF /* ChallengeService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -438,6 +446,7 @@
 				4ED5762B2BFA488D0034F7A6 /* Card.swift */,
 				4E24979C2C1BC7A500851D9D /* PayCard.swift */,
 				4E2497A62C2269CD00851D9D /* PaymentInfo.swift */,
+				4E8244822C5E63D100A40BFF /* Challenge.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -829,6 +838,7 @@
 				4E24979D2C1BC7A500851D9D /* PayCard.swift in Sources */,
 				4E2497822C17E30700851D9D /* SignUpUserInfoView.swift in Sources */,
 				4EA35AF42BE326040001508B /* Service.swift in Sources */,
+				4E8244832C5E63D100A40BFF /* Challenge.swift in Sources */,
 				4E8243BD2C54E2BD00A40BFF /* PhoneNumberCell.swift in Sources */,
 				4E2497A52C22657A00851D9D /* ScannerViewModel.swift in Sources */,
 				4E2497932C1A758000851D9D /* PurchaseView.swift in Sources */,
@@ -840,6 +850,7 @@
 				4E2497A32C21225800851D9D /* OwnerPayService.swift in Sources */,
 				4EC90CFF2C0963AD00A0B5B5 /* FriendListView.swift in Sources */,
 				4E8243B92C54E23400A40BFF /* NameCell.swift in Sources */,
+				4E8244812C5E636F00A40BFF /* ChallengeViewModel.swift in Sources */,
 				4E8243C72C56291300A40BFF /* CardDeleteView.swift in Sources */,
 				4E8243BF2C54E4D400A40BFF /* passwordModifyCell.swift in Sources */,
 				4E6FB3402C172FEF00AC1B25 /* FriendCell.swift in Sources */,
@@ -847,6 +858,7 @@
 				4EA35ACF2BCD005E0001508B /* PinforYouApp.swift in Sources */,
 				4ED5761B2BEAFEC10034F7A6 /* KakaoMapViewModel.swift in Sources */,
 				4ED5760B2BE77D170034F7A6 /* MainTabType.swift in Sources */,
+				4E8244852C5E66CC00A40BFF /* ChallengeService.swift in Sources */,
 				4E24978C2C19252600851D9D /* ChallengeCell.swift in Sources */,
 				4EA35AEF2BE324990001508B /* AuthenticationService.swift in Sources */,
 				4E9785FF2C27CFC3000F61BB /* CardListViewModel.swift in Sources */,
