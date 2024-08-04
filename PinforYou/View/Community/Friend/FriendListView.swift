@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct FriendListView: View {
+    
+    @StateObject var friendListViewModel : FriendListViewModel
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -34,6 +37,7 @@ struct FriendListView: View {
                 
                 ScrollView{
                     MyFriendGridView()
+                        .environmentObject(friendListViewModel)
                 }
                 .scrollIndicators(.hidden)
                 
@@ -51,10 +55,12 @@ struct MyFriendGridView : View {
     
     var columns : [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     
+    @EnvironmentObject var friendListViewModel : FriendListViewModel
+    
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns) {
-                ForEach((0...19), id: \.self) { _ in
+                ForEach(friendListViewModel.FriendList, id: \.self) { friend in
                     
                     NavigationLink {
                         //
@@ -64,7 +70,7 @@ struct MyFriendGridView : View {
                             Color(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1))
                                         .cornerRadius(15)
                                         .frame(width: 110, height: 110)
-                            Text("이름")
+                            Text(friend.name)
                         }
                        
                     }
@@ -72,9 +78,12 @@ struct MyFriendGridView : View {
                 }
             }
         }
+        .onAppear {
+            friendListViewModel.send(action: .getFriendInfo, userid: 1)
+        }
     }
 }
 
 #Preview {
-    FriendListView()
+    FriendListView(friendListViewModel: .init(container: .init(services: StubService())))
 }
