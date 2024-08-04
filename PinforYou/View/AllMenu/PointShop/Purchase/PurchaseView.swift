@@ -7,28 +7,35 @@
 
 import SwiftUI
 
-enum gifticonCategory {
-    case drink
-    case Food
-    case Voucher
-}
-
-
 struct PurchaseView: View {
+    
+    let categoryList : [gifticonCategory] = [
+        .all,
+        .coffee,
+        .drink,
+        .food,
+        .goods,
+        .other
+    ]
+    
+    @State var currentCategory : gifticonCategory = .all
+    @StateObject var purchaseViewModel : PurchaseViewModel
+    
     var body: some View {
         VStack {
             ScrollView(.horizontal) {
                 HStack {
-                    ForEach(0 ..< 3, id: \.self) { _ in
+                    ForEach(categoryList, id: \.self) { category in
                         
                         Button {
-                            //State 써서 값 바꾸기
+                            currentCategory = category
+                            print(currentCategory.rawValue)
                         } label: {
                             VStack {
                                 Color(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1))
                                     .cornerRadius(15)
                                     .frame(width: 110, height: 110)
-                                Text("이름")
+                                Text(category.rawValue)
                             }
                         }
                         
@@ -42,9 +49,9 @@ struct PurchaseView: View {
             
             ScrollView(.vertical) {
                 VStack {
-                    ForEach(0 ..< 10, id: \.self) {
-                        _ in
-                        PurchaseCell()
+                    ForEach(purchaseViewModel.gifticonList, id: \.self) {
+                        gifticon in
+                        PurchaseCell(gifticon: gifticon)
                     }
                 }
             }
@@ -55,9 +62,16 @@ struct PurchaseView: View {
             Color("BackgroundColor")
                 .ignoresSafeArea()
         }
+        .onAppear {
+            purchaseViewModel.send(action: .getGifticonInfo, category: currentCategory)
+        }
+        .onChange(of: currentCategory) { newCategory in
+            print(currentCategory)
+                purchaseViewModel.send(action: .getGifticonInfo, category: newCategory)
+        }
     }
 }
 
 #Preview {
-    PurchaseView()
+    PurchaseView(purchaseViewModel: .init(container: .init(services: StubService())))
 }

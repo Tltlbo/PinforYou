@@ -15,6 +15,7 @@ enum Community {
 struct CommunityView: View {
     
     @State var communitySelect : Community = .friend
+    @EnvironmentObject var container : DIContainer
     
     var body: some View {
         VStack {
@@ -51,7 +52,7 @@ struct CommunityView: View {
             
             switch communitySelect {
             case .friend:
-                FriendListView()
+                FriendListView(friendListViewModel: .init(container: container))
             case .meeting:
                 MeetingListView()
             }

@@ -29,6 +29,12 @@
 		4E2497A92C23B18C00851D9D /* CardPaymentInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497A82C23B18C00851D9D /* CardPaymentInfoView.swift */; };
 		4E2497AB2C25ABFC00851D9D /* PaymentInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497AA2C25ABFC00851D9D /* PaymentInfoCell.swift */; };
 		4E2497AE2C25AFC500851D9D /* CardPaymentInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2497AD2C25AFC500851D9D /* CardPaymentInfoViewModel.swift */; };
+		4E2838842C5F47690037AE55 /* PointShopService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2838832C5F47690037AE55 /* PointShopService.swift */; };
+		4E2838862C5F530D0037AE55 /* Gifticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2838852C5F530D0037AE55 /* Gifticon.swift */; };
+		4E2838882C5F641F0037AE55 /* PurchaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2838872C5F641F0037AE55 /* PurchaseViewModel.swift */; };
+		4E28388A2C5FA15C0037AE55 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2838892C5FA15C0037AE55 /* Friend.swift */; };
+		4E28388C2C5FA5B40037AE55 /* FriendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E28388B2C5FA5B40037AE55 /* FriendService.swift */; };
+		4E28388E2C5FA9D10037AE55 /* FriendListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E28388D2C5FA9D10037AE55 /* FriendListViewModel.swift */; };
 		4E6FB33D2C172DB700AC1B25 /* MeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB33C2C172DB700AC1B25 /* MeetingCell.swift */; };
 		4E6FB3402C172FEF00AC1B25 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB33F2C172FEF00AC1B25 /* FriendCell.swift */; };
 		4E6FB3422C17332500AC1B25 /* MyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB3412C17332500AC1B25 /* MyCardView.swift */; };
@@ -43,6 +49,9 @@
 		4E8243C92C56295700A40BFF /* CardDeleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243C82C56295700A40BFF /* CardDeleteCell.swift */; };
 		4E8243CB2C566DF600A40BFF /* CardInsertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243CA2C566DF600A40BFF /* CardInsertView.swift */; };
 		4E8244792C5E134600A40BFF /* .gitattributes in Resources */ = {isa = PBXBuildFile; fileRef = 4E8244782C5E134600A40BFF /* .gitattributes */; };
+		4E8244812C5E636F00A40BFF /* ChallengeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8244802C5E636F00A40BFF /* ChallengeViewModel.swift */; };
+		4E8244832C5E63D100A40BFF /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8244822C5E63D100A40BFF /* Challenge.swift */; };
+		4E8244852C5E66CC00A40BFF /* ChallengeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8244842C5E66CC00A40BFF /* ChallengeService.swift */; };
 		4E9785FC2C26C9AA000F61BB /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9785FB2C26C9AA000F61BB /* ColorExtension.swift */; };
 		4E9785FF2C27CFC3000F61BB /* CardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9785FE2C27CFC3000F61BB /* CardListViewModel.swift */; };
 		4E9786B22C3EC247000F61BB /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9786B12C3EC247000F61BB /* CustomTabView.swift */; };
@@ -119,6 +128,12 @@
 		4E2497A82C23B18C00851D9D /* CardPaymentInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPaymentInfoView.swift; sourceTree = "<group>"; };
 		4E2497AA2C25ABFC00851D9D /* PaymentInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentInfoCell.swift; sourceTree = "<group>"; };
 		4E2497AD2C25AFC500851D9D /* CardPaymentInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPaymentInfoViewModel.swift; sourceTree = "<group>"; };
+		4E2838832C5F47690037AE55 /* PointShopService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointShopService.swift; sourceTree = "<group>"; };
+		4E2838852C5F530D0037AE55 /* Gifticon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gifticon.swift; sourceTree = "<group>"; };
+		4E2838872C5F641F0037AE55 /* PurchaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewModel.swift; sourceTree = "<group>"; };
+		4E2838892C5FA15C0037AE55 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		4E28388B2C5FA5B40037AE55 /* FriendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendService.swift; sourceTree = "<group>"; };
+		4E28388D2C5FA9D10037AE55 /* FriendListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewModel.swift; sourceTree = "<group>"; };
 		4E6FB33C2C172DB700AC1B25 /* MeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCell.swift; sourceTree = "<group>"; };
 		4E6FB33F2C172FEF00AC1B25 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		4E6FB3412C17332500AC1B25 /* MyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardView.swift; sourceTree = "<group>"; };
@@ -133,6 +148,9 @@
 		4E8243C82C56295700A40BFF /* CardDeleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDeleteCell.swift; sourceTree = "<group>"; };
 		4E8243CA2C566DF600A40BFF /* CardInsertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInsertView.swift; sourceTree = "<group>"; };
 		4E8244782C5E134600A40BFF /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
+		4E8244802C5E636F00A40BFF /* ChallengeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeViewModel.swift; sourceTree = "<group>"; };
+		4E8244822C5E63D100A40BFF /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
+		4E8244842C5E66CC00A40BFF /* ChallengeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeService.swift; sourceTree = "<group>"; };
 		4E9785FB2C26C9AA000F61BB /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		4E9785FE2C27CFC3000F61BB /* CardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewModel.swift; sourceTree = "<group>"; };
 		4E9786B12C3EC247000F61BB /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
@@ -241,6 +259,7 @@
 				4E2497892C19228400851D9D /* ChallengeView.swift */,
 				4E24978B2C19252600851D9D /* ChallengeCell.swift */,
 				4E24978D2C192BAB00851D9D /* ChallengeDetailView.swift */,
+				4E8244802C5E636F00A40BFF /* ChallengeViewModel.swift */,
 			);
 			path = Challenge;
 			sourceTree = "<group>";
@@ -261,6 +280,7 @@
 				4E2497942C1A7DA900851D9D /* PurchaseCell.swift */,
 				4E2497922C1A758000851D9D /* PurchaseView.swift */,
 				4E2497982C1A80A500851D9D /* PurchaseGifticonView.swift */,
+				4E2838872C5F641F0037AE55 /* PurchaseViewModel.swift */,
 			);
 			path = Purchase;
 			sourceTree = "<group>";
@@ -425,6 +445,9 @@
 				4ED576182BEA73AD0034F7A6 /* LocationService.swift */,
 				4E24979A2C1BC2D100851D9D /* PayService.swift */,
 				4E2497A22C21225800851D9D /* OwnerPayService.swift */,
+				4E8244842C5E66CC00A40BFF /* ChallengeService.swift */,
+				4E2838832C5F47690037AE55 /* PointShopService.swift */,
+				4E28388B2C5FA5B40037AE55 /* FriendService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -438,6 +461,9 @@
 				4ED5762B2BFA488D0034F7A6 /* Card.swift */,
 				4E24979C2C1BC7A500851D9D /* PayCard.swift */,
 				4E2497A62C2269CD00851D9D /* PaymentInfo.swift */,
+				4E8244822C5E63D100A40BFF /* Challenge.swift */,
+				4E2838852C5F530D0037AE55 /* Gifticon.swift */,
+				4E2838892C5FA15C0037AE55 /* Friend.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -516,6 +542,7 @@
 			children = (
 				4E6FB33E2C172FE400AC1B25 /* Cell */,
 				4EC90CFE2C0963AD00A0B5B5 /* FriendListView.swift */,
+				4E28388D2C5FA9D10037AE55 /* FriendListViewModel.swift */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -782,9 +809,11 @@
 				4ED576252BF3B2190034F7A6 /* PlaceInfoView.swift in Sources */,
 				4E2497992C1A80A500851D9D /* PurchaseGifticonView.swift in Sources */,
 				4EA35AFE2BE326CD0001508B /* UserObject.swift in Sources */,
+				4E2838862C5F530D0037AE55 /* Gifticon.swift in Sources */,
 				4E2497952C1A7DA900851D9D /* PurchaseCell.swift in Sources */,
 				4EA35B062BE3DCA40001508B /* AuthenticationViewModel.swift in Sources */,
 				4ED576122BE90BDB0034F7A6 /* HomeView.swift in Sources */,
+				4E28388E2C5FA9D10037AE55 /* FriendListViewModel.swift in Sources */,
 				4E2497872C17EC0C00851D9D /* MyInfoView.swift in Sources */,
 				4E9786B22C3EC247000F61BB /* CustomTabView.swift in Sources */,
 				4E2497A72C2269CD00851D9D /* PaymentInfo.swift in Sources */,
@@ -800,6 +829,7 @@
 				4EA35B002BE326EA0001508B /* UserDBRepository.swift in Sources */,
 				4EC90CF52C080CA600A0B5B5 /* CardListView.swift in Sources */,
 				4E6FB3422C17332500AC1B25 /* MyCardView.swift in Sources */,
+				4E2838842C5F47690037AE55 /* PointShopService.swift in Sources */,
 				4E2497842C17E85900851D9D /* RecommendCardView.swift in Sources */,
 				4ED576282BF502940034F7A6 /* PlaceCell.swift in Sources */,
 				4E24978E2C192BAB00851D9D /* ChallengeDetailView.swift in Sources */,
@@ -811,6 +841,7 @@
 				4ED5760F2BE8CD530034F7A6 /* KakaoMapView.swift in Sources */,
 				4EA35B082BE4CAC40001508B /* Key.swift in Sources */,
 				4E2497A12C211A6000851D9D /* QRPayViewModel.swift in Sources */,
+				4E28388A2C5FA15C0037AE55 /* Friend.swift in Sources */,
 				4E9785FC2C26C9AA000F61BB /* ColorExtension.swift in Sources */,
 				4E8243C92C56295700A40BFF /* CardDeleteCell.swift in Sources */,
 				4EA35B1D2BE6302F0001508B /* LoginIntroView.swift in Sources */,
@@ -818,6 +849,7 @@
 				4E8243BB2C54E28A00A40BFF /* EmailCell.swift in Sources */,
 				4EA35B032BE3D9A60001508B /* DIContainer.swift in Sources */,
 				4EA35AD12BCD005E0001508B /* AuthenticatedView.swift in Sources */,
+				4E28388C2C5FA5B40037AE55 /* FriendService.swift in Sources */,
 				4EC90D072C0D4F6600A0B5B5 /* AllMenuView.swift in Sources */,
 				4E2497AB2C25ABFC00851D9D /* PaymentInfoCell.swift in Sources */,
 				4EA35AF22BE325A90001508B /* User.swift in Sources */,
@@ -829,10 +861,12 @@
 				4E24979D2C1BC7A500851D9D /* PayCard.swift in Sources */,
 				4E2497822C17E30700851D9D /* SignUpUserInfoView.swift in Sources */,
 				4EA35AF42BE326040001508B /* Service.swift in Sources */,
+				4E8244832C5E63D100A40BFF /* Challenge.swift in Sources */,
 				4E8243BD2C54E2BD00A40BFF /* PhoneNumberCell.swift in Sources */,
 				4E2497A52C22657A00851D9D /* ScannerViewModel.swift in Sources */,
 				4E2497932C1A758000851D9D /* PurchaseView.swift in Sources */,
 				4EC90D012C09687F00A0B5B5 /* MeetingListView.swift in Sources */,
+				4E2838882C5F641F0037AE55 /* PurchaseViewModel.swift in Sources */,
 				4EA35AE62BE232140001508B /* KakaoLoginBtn.swift in Sources */,
 				4ED5762F2BFAD8BD0034F7A6 /* QRPayView.swift in Sources */,
 				4E2497A92C23B18C00851D9D /* CardPaymentInfoView.swift in Sources */,
@@ -840,6 +874,7 @@
 				4E2497A32C21225800851D9D /* OwnerPayService.swift in Sources */,
 				4EC90CFF2C0963AD00A0B5B5 /* FriendListView.swift in Sources */,
 				4E8243B92C54E23400A40BFF /* NameCell.swift in Sources */,
+				4E8244812C5E636F00A40BFF /* ChallengeViewModel.swift in Sources */,
 				4E8243C72C56291300A40BFF /* CardDeleteView.swift in Sources */,
 				4E8243BF2C54E4D400A40BFF /* passwordModifyCell.swift in Sources */,
 				4E6FB3402C172FEF00AC1B25 /* FriendCell.swift in Sources */,
@@ -847,6 +882,7 @@
 				4EA35ACF2BCD005E0001508B /* PinforYouApp.swift in Sources */,
 				4ED5761B2BEAFEC10034F7A6 /* KakaoMapViewModel.swift in Sources */,
 				4ED5760B2BE77D170034F7A6 /* MainTabType.swift in Sources */,
+				4E8244852C5E66CC00A40BFF /* ChallengeService.swift in Sources */,
 				4E24978C2C19252600851D9D /* ChallengeCell.swift in Sources */,
 				4EA35AEF2BE324990001508B /* AuthenticationService.swift in Sources */,
 				4E9785FF2C27CFC3000F61BB /* CardListViewModel.swift in Sources */,

@@ -40,7 +40,7 @@ struct AllMenuView: View {
                 .buttonStyle(PlainButtonStyle())
                 
                 NavigationLink {
-                    ChallengeView()
+                    ChallengeView(challengeViewModel: .init(container: container))
                 } label: {
                     Text("챌린지")
                         .font(.system(size: 26))
