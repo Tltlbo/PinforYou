@@ -15,6 +15,7 @@ enum ShopOption {
 struct PointShopView: View {
     
     @State var selectOption : ShopOption = .MyGifticon
+    @EnvironmentObject var container : DIContainer
     
     var body: some View {
         NavigationStack {
@@ -53,7 +54,7 @@ struct PointShopView: View {
                     
                     switch selectOption {
                     case .PointShop:
-                        PurchaseView()
+                        PurchaseView( purchaseViewModel: .init(container: container))
                     case .MyGifticon:
                         MyGifticonView()
                     }

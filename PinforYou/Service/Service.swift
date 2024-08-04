@@ -14,6 +14,7 @@ protocol ServiceType {
     var payService : PayServiceType {get set}
     var ownerPayService : OwnerPayServiceType {get set}
     var challengeService : ChallengeServiceType {get set}
+    var pointShopService : PointShopServiceType {get set}
 }
 
 class Services : ServiceType {
@@ -24,6 +25,7 @@ class Services : ServiceType {
     var payService : PayServiceType
     var ownerPayService: OwnerPayServiceType
     var challengeService : ChallengeServiceType
+    var pointShopService : PointShopServiceType
     
     init() {
         self.authService = AuthenticationService()
@@ -32,6 +34,7 @@ class Services : ServiceType {
         self.payService = PayService()
         self.ownerPayService = OwnerPayService()
         self.challengeService = ChallengeService()
+        self.pointShopService = PointShopService()
     }
 }
 
@@ -42,4 +45,5 @@ class StubService : ServiceType {
     var payService : PayServiceType = StubPayService()
     var ownerPayService: OwnerPayServiceType = StubOwnerPayService()
     var challengeService : ChallengeServiceType = StubChallengeService()
+    var pointShopService : PointShopServiceType = StubPointShopService()
 }
