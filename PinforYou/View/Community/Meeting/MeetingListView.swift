@@ -37,7 +37,7 @@ struct MeetingListView: View {
                     VStack(spacing: 10) {
                         ForEach(0 ..< 19, id: \.self) { _ in
                             NavigationLink {
-                                //
+                                MeetingCardPaymentInfoView() // 모임 창으로 연결
                             } label: {
                                 MeetingCell()
                             }
