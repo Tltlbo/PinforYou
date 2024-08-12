@@ -108,5 +108,6 @@ iOSInjectionProject/
 
 /PinforYou/Util/Key.swift
 /PinforYou/Info.plist
+.DS_Store
 
 # End of https://www.toptal.com/developers/gitignore/api/xcode,swift,cocoapods
