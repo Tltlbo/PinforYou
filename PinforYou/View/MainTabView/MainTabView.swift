@@ -34,7 +34,7 @@ struct MainTabView: View {
             case .Community:
                 CommunityView()
             case .Event:
-                EventView()
+                EventView(eventViewModel: .init(container: container))
             case .AllMenu:
                 AllMenuView()
             }
