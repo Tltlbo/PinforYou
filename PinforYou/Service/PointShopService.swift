@@ -11,6 +11,7 @@ import Alamofire
 
 enum PointShopError : Error {
     case FailedfetchGifticon
+    case FailedfetchUserGifticon
 }
 
 enum gifticonCategory : String {
@@ -24,6 +25,7 @@ enum gifticonCategory : String {
 
 protocol PointShopServiceType {
     func getGifticonInfo(category : gifticonCategory) -> AnyPublisher<[PointShopGifticon], ServiceError>
+    func getUserGifticon(userid : Int) -> AnyPublisher<Usergifticon, ServiceError>
 }
 
 class PointShopService : PointShopServiceType {
@@ -34,6 +36,20 @@ class PointShopService : PointShopServiceType {
                 switch result {
                 case let .success(gifticon):
                     promise(.success(gifticon))
+                    
+                case let .failure(error):
+                    promise(.failure(.error(error)))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    func getUserGifticon(userid: Int) -> AnyPublisher<Usergifticon, ServiceError> {
+        Future { [weak self] promise in
+            self?.getUserGifticon(userid: userid) { result in
+                switch result {
+                case let .success(usergifticon):
+                    promise(.success(usergifticon))
                     
                 case let .failure(error):
                     promise(.failure(.error(error)))
@@ -58,7 +74,6 @@ extension PointShopService {
                     return completion(.failure(PointShopError.FailedfetchGifticon))
                 }
                 
-                
                 completion(.success(data))
             }
         }
@@ -69,7 +84,6 @@ extension PointShopService {
                        encoding: URLEncoding.queryString,
                        headers: ["Content-Type" : "application/json"])
             .responseDecodable(of: [PointShopGifticon].self) { [weak self] response in
-                print("나 카테고리 호출")
                 guard case .success(let data) = response.result
                 else {
                     return completion(.failure(PointShopError.FailedfetchGifticon))
@@ -79,14 +93,34 @@ extension PointShopService {
                 completion(.success(data))
             }
         }
-        
-        
+    }
+    
+    private func getUserGifticon(userid: Int, completion : @escaping (Result<Usergifticon, Error>) -> Void) {
+        AF.request("https://pinforyou.online/itemList",
+                   method: .get,
+                   parameters: ["user_id" : userid],
+                   encoding: URLEncoding.queryString,
+                   headers: ["Content-Type" : "application/json"])
+        .responseDecodable(of: Usergifticon.self) { [weak self] response in
+            debugPrint(response)
+            guard case .success(let data) = response.result
+            else {
+                return completion(.failure(PointShopError.FailedfetchUserGifticon))
+            }
+            
+            
+            completion(.success(data))
+        }
     }
 }
 
 class StubPointShopService : PointShopServiceType {
     
     func getGifticonInfo(category : gifticonCategory) -> AnyPublisher<[PointShopGifticon], ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
+    func getUserGifticon(userid: Int) -> AnyPublisher<Usergifticon, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
 }
