@@ -98,6 +98,9 @@ extension AuthenticationService {
             return
         }
         
+        let config = GIDConfiguration(clientID: Key.googleClientID.rawValue)
+        GIDSignIn.sharedInstance.configuration = config
+        
         GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController) { [weak self] result, error in
             if let error {
                 completion(.failure(error))
@@ -110,11 +113,30 @@ extension AuthenticationService {
                 return
             }
             
-            
             let accessToken = user.accessToken.tokenString
-//            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
+            
+            print(user.profile?.email)
+            print(user.profile?.name)
             
             //TODO: 서버에 던지기
+            
+            struct test : Decodable {
+                var ID : String
+                
+                enum CodingKeys : String, CodingKey {
+                    case ID = "userId"
+                }
+            }
+            
+            AF.request("http://pinforyou-apiserver-main-env.eba-ixdz2ipf.ap-northeast-2.elasticbeanstalk.com/login/oauth2/code/google",
+                       method: .get,
+                       parameters: ["code" : accessToken],
+                       encoding: URLEncoding.queryString,
+                       headers: ["Content-Type" : "application/json"])
+            .responseDecodable(of:test.self) { response in
+                debugPrint(response)
+            }
+            
         }
          
     }
@@ -151,7 +173,6 @@ extension AuthenticationService {
                    encoding: URLEncoding.default,
                    headers: ["Content-Type" : "application/x-www-form-urlencoded"])
         .responseDecodable(of:test.self) { response in
-            print("응 응답했어\(response.response?.statusCode)")
             debugPrint(response)
         }
         
