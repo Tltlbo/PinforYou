@@ -12,10 +12,10 @@ import Alamofire
 protocol UserServiceType {
     func getCardInfo() -> AnyPublisher<CardInfo, ServiceError>
     func getPaymentInfo(cardid : Int) -> AnyPublisher<PaymentInfo, ServiceError>
+    func getRecommendCardInfo(userid : Int) -> AnyPublisher<RecommendCardInfo, ServiceError>
 }
 
 class UserService : UserServiceType {
-    
     
     func getCardInfo() -> AnyPublisher<CardInfo, ServiceError> {
         Future { [weak self] promise in
@@ -38,6 +38,21 @@ class UserService : UserServiceType {
                 switch result {
                 case let .success(PaymentInfo):
                     promise(.success(PaymentInfo))
+                    
+                case let .failure(error):
+                    promise(.failure(.error(error)))
+                }
+            }
+            
+        }.eraseToAnyPublisher()
+    }
+    
+    func getRecommendCardInfo(userid: Int) -> AnyPublisher<RecommendCardInfo, ServiceError> {
+        Future { [weak self] promise in
+            self?.getRecommendCardInfo(userid: userid) { result in
+                switch result {
+                case let .success(RecommendCardInfo):
+                    promise(.success(RecommendCardInfo))
                     
                 case let .failure(error):
                     promise(.failure(.error(error)))
@@ -76,12 +91,29 @@ extension UserService {
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: PaymentInfo.self) { [weak self] response in
             
-            debugPrint(response)
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(LocationError.APICallFailed))
             }
             
+            
+            completion(.success(data))
+        }
+    }
+    
+    private func getRecommendCardInfo(userid: Int, completion: @escaping (Result<RecommendCardInfo, Error>) -> Void) {
+        AF.request("https://pinforyou.online/userCard/newCardRecommend",
+                   method: .get,
+                   parameters: ["user_id" : userid],
+                   encoding: URLEncoding.queryString,
+                   headers: ["Content-Type" : "application/json"])
+        .responseDecodable(of: RecommendCardInfo.self) { [weak self] response in
+            
+            debugPrint(response)
+            guard case .success(let data) = response.result
+            else {
+                return completion(.failure(LocationError.APICallFailed))
+            }
             
             completion(.success(data))
         }
@@ -95,6 +127,10 @@ class StubUserService : UserServiceType {
     }
     
     func getPaymentInfo(cardid : Int) -> AnyPublisher<PaymentInfo, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
+    func getRecommendCardInfo(userid: Int) -> AnyPublisher<RecommendCardInfo, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
 }

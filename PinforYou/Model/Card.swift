@@ -59,3 +59,17 @@ extension Card{
     }
     
 }
+
+struct RecommendCardInfo : Decodable {
+    let category : String
+    let name : String
+    let image_URL : String
+    let benefits : [String]
+    
+    enum CodingKeys: String, CodingKey {
+        case category = "category"
+        case name = "name"
+        case image_URL = "image_url"
+        case benefits = "benefits"
+    }
+}

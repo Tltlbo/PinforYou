@@ -51,7 +51,7 @@ struct MyCardView: View {
             case .MyCard:
                 CardListView(cardlistViewModel: .init(container: container))
             case .Recommend:
-                RecommendCardView()
+                RecommendCardView(recommendCardViewModel: .init(container: container))
             }
         }
         .background {

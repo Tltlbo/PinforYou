@@ -42,6 +42,7 @@
 		4E7CDB7F2C69FE5D0023D12C /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7CDB7E2C69FE5D0023D12C /* EventService.swift */; };
 		4E7CDB812C6A018C0023D12C /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7CDB802C6A018C0023D12C /* EventViewModel.swift */; };
 		4E7CDB832C6B4B0C0023D12C /* MyGifticonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7CDB822C6B4B0C0023D12C /* MyGifticonViewModel.swift */; };
+		4E7CDB852C70DF390023D12C /* RecommendCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7CDB842C70DF390023D12C /* RecommendCardViewModel.swift */; };
 		4E8243B92C54E23400A40BFF /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243B82C54E23400A40BFF /* NameCell.swift */; };
 		4E8243BB2C54E28A00A40BFF /* EmailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243BA2C54E28A00A40BFF /* EmailCell.swift */; };
 		4E8243BD2C54E2BD00A40BFF /* PhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243BC2C54E2BD00A40BFF /* PhoneNumberCell.swift */; };
@@ -147,6 +148,7 @@
 		4E7CDB7E2C69FE5D0023D12C /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
 		4E7CDB802C6A018C0023D12C /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		4E7CDB822C6B4B0C0023D12C /* MyGifticonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGifticonViewModel.swift; sourceTree = "<group>"; };
+		4E7CDB842C70DF390023D12C /* RecommendCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCardViewModel.swift; sourceTree = "<group>"; };
 		4E8243B82C54E23400A40BFF /* NameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
 		4E8243BA2C54E28A00A40BFF /* EmailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCell.swift; sourceTree = "<group>"; };
 		4E8243BC2C54E2BD00A40BFF /* PhoneNumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCell.swift; sourceTree = "<group>"; };
@@ -528,6 +530,7 @@
 				4E9785FD2C27CFA1000F61BB /* UserCardList */,
 				4E6FB3412C17332500AC1B25 /* MyCardView.swift */,
 				4E2497832C17E85900851D9D /* RecommendCardView.swift */,
+				4E7CDB842C70DF390023D12C /* RecommendCardViewModel.swift */,
 			);
 			path = CardList;
 			sourceTree = "<group>";
@@ -878,6 +881,7 @@
 				4E8243BB2C54E28A00A40BFF /* EmailCell.swift in Sources */,
 				4EA35B032BE3D9A60001508B /* DIContainer.swift in Sources */,
 				4EA35AD12BCD005E0001508B /* AuthenticatedView.swift in Sources */,
+				4E7CDB852C70DF390023D12C /* RecommendCardViewModel.swift in Sources */,
 				4E28388C2C5FA5B40037AE55 /* FriendService.swift in Sources */,
 				4EC90D072C0D4F6600A0B5B5 /* AllMenuView.swift in Sources */,
 				4E2497AB2C25ABFC00851D9D /* PaymentInfoCell.swift in Sources */,
