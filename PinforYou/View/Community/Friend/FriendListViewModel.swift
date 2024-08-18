@@ -12,10 +12,12 @@ class FriendListViewModel : ObservableObject {
     
     enum Action {
         case getFriendInfo
+        case getRequestFriendInfo
     }
     
     @Published var isFinished : Bool = false
     @Published var FriendList : [Friend] = []
+    @Published var RequestFriendList : [Friend] = []
     
     private var container : DIContainer
     private var subscriptions = Set<AnyCancellable>()
@@ -37,7 +39,18 @@ class FriendListViewModel : ObservableObject {
                     self?.isFinished = true
                 }
                 .store(in: &subscriptions)
-
+            
+        case .getRequestFriendInfo:
+            container.services.friendService.getRequestFriendInfo(userid: userid)
+                .sink { [weak self] completion in
+                    if case .failure = completion {
+                        //
+                    }
+                } receiveValue: { [weak self] Friend in
+                    self?.RequestFriendList = Friend.requestfriendList
+                    self?.isFinished = true
+                }
+                .store(in: &subscriptions)
         }
     }
 }

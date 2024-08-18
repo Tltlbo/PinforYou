@@ -10,6 +10,7 @@ import SwiftUI
 struct FriendListView: View {
     
     @StateObject var friendListViewModel : FriendListViewModel
+    @State var modifyTouched : Bool = false
     
     var body: some View {
         NavigationStack {
@@ -25,12 +26,16 @@ struct FriendListView: View {
                     .padding(.trailing, 5)
                     
                     Button {
-                        //
+                        modifyTouched = true
                     } label: {
                         Text("관리")
                             .font(.system(size: 15))
                     }
                     .padding(.trailing, 10)
+                    .fullScreenCover(isPresented: $modifyTouched) {
+                        FriendModifyView()
+                            .environmentObject(friendListViewModel)
+                    }
                 }
                 Rectangle()
                     .frame(height: 1)
