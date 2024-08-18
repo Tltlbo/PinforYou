@@ -43,6 +43,7 @@
 		4E7CDB812C6A018C0023D12C /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7CDB802C6A018C0023D12C /* EventViewModel.swift */; };
 		4E7CDB832C6B4B0C0023D12C /* MyGifticonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7CDB822C6B4B0C0023D12C /* MyGifticonViewModel.swift */; };
 		4E7CDB852C70DF390023D12C /* RecommendCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7CDB842C70DF390023D12C /* RecommendCardViewModel.swift */; };
+		4E7CDB892C721FA50023D12C /* FriendModifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7CDB882C721FA50023D12C /* FriendModifyView.swift */; };
 		4E8243B92C54E23400A40BFF /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243B82C54E23400A40BFF /* NameCell.swift */; };
 		4E8243BB2C54E28A00A40BFF /* EmailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243BA2C54E28A00A40BFF /* EmailCell.swift */; };
 		4E8243BD2C54E2BD00A40BFF /* PhoneNumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8243BC2C54E2BD00A40BFF /* PhoneNumberCell.swift */; };
@@ -149,6 +150,7 @@
 		4E7CDB802C6A018C0023D12C /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
 		4E7CDB822C6B4B0C0023D12C /* MyGifticonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGifticonViewModel.swift; sourceTree = "<group>"; };
 		4E7CDB842C70DF390023D12C /* RecommendCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCardViewModel.swift; sourceTree = "<group>"; };
+		4E7CDB882C721FA50023D12C /* FriendModifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendModifyView.swift; sourceTree = "<group>"; };
 		4E8243B82C54E23400A40BFF /* NameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
 		4E8243BA2C54E28A00A40BFF /* EmailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCell.swift; sourceTree = "<group>"; };
 		4E8243BC2C54E2BD00A40BFF /* PhoneNumberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberCell.swift; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 				4E6FB33E2C172FE400AC1B25 /* Cell */,
 				4EC90CFE2C0963AD00A0B5B5 /* FriendListView.swift */,
 				4E28388D2C5FA9D10037AE55 /* FriendListViewModel.swift */,
+				4E7CDB882C721FA50023D12C /* FriendModifyView.swift */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -874,6 +877,7 @@
 				4EA35B082BE4CAC40001508B /* Key.swift in Sources */,
 				4E2497A12C211A6000851D9D /* QRPayViewModel.swift in Sources */,
 				4E28388A2C5FA15C0037AE55 /* Friend.swift in Sources */,
+				4E7CDB892C721FA50023D12C /* FriendModifyView.swift in Sources */,
 				4E9785FC2C26C9AA000F61BB /* ColorExtension.swift in Sources */,
 				4E8243C92C56295700A40BFF /* CardDeleteCell.swift in Sources */,
 				4EA35B1D2BE6302F0001508B /* LoginIntroView.swift in Sources */,

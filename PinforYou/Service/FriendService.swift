@@ -15,6 +15,7 @@ enum FriendError : Error {
 
 protocol FriendServiceType {
     func getFriendInfo(userid : Int) -> AnyPublisher<Friends, ServiceError>
+    func getRequestFriendInfo(userid : Int) -> AnyPublisher<RequestFriend, ServiceError>
 }
 
 class FriendService : FriendServiceType {
@@ -30,10 +31,22 @@ class FriendService : FriendServiceType {
                     promise(.failure(.error(error)))
                 }
             }
-            
         }.eraseToAnyPublisher()
     }
     
+    func getRequestFriendInfo(userid : Int) -> AnyPublisher<RequestFriend, ServiceError> {
+        Future { [weak self] promise in
+            self?.getRequestFriendInfo(userid: userid) { result in
+                switch result {
+                case let .success(FriendInfo):
+                    promise(.success(FriendInfo))
+                    
+                case let .failure(error):
+                    promise(.failure(.error(error)))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
 }
 
 extension FriendService {
@@ -51,14 +64,37 @@ extension FriendService {
             else {
                 return completion(.failure(FriendError.FailedfetchFriend))
             }
-            
-            
+    
             completion(.success(data))
         }
     }
+    
+    private func getRequestFriendInfo(userid : Int, completion: @escaping (Result<RequestFriend, Error>) -> Void) {
+        AF.request("https://pinforyou.online/friend/request",
+                   method: .get,
+                   parameters: ["user_id" : userid],
+                   encoding: URLEncoding.queryString,
+                   headers: ["Content-Type" : "application/json"])
+        .responseDecodable(of: RequestFriend.self) { [weak self] response in
+            
+            debugPrint(response)
+            guard case .success(let data) = response.result
+            else {
+                return completion(.failure(FriendError.FailedfetchFriend))
+            }
+    
+            completion(.success(data))
+        }
+    }
+    
+    
 }
 
 class StubFriendService : FriendServiceType {
+    func getRequestFriendInfo(userid: Int) -> AnyPublisher<RequestFriend, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
     func getFriendInfo(userid: Int) -> AnyPublisher<Friends, ServiceError> {
         Empty().eraseToAnyPublisher()
     }

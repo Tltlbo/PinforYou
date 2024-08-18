@@ -15,7 +15,7 @@ class FriendListViewModel : ObservableObject {
     }
     
     @Published var isFinished : Bool = false
-    @Published var FriendList : [Friends.Friend] = []
+    @Published var FriendList : [Friend] = []
     
     private var container : DIContainer
     private var subscriptions = Set<AnyCancellable>()

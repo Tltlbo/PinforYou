@@ -21,11 +21,23 @@ struct CardInsertView: View {
         NavigationStack {
             
             ZStack {
-                
                 Color("BackgroundColor")
                     .ignoresSafeArea()
                 
+                
                 VStack(alignment: .leading) {
+                    
+                    HStack {
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            Image(systemName: "chevron.left")
+                                .foregroundColor(.white)
+                                .font(.system(size: 25))
+                                
+                        }
+
+                    }
                     
                     HStack {
                         Text("""
