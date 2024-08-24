@@ -13,6 +13,7 @@ protocol UserServiceType {
     func getCardInfo() -> AnyPublisher<CardInfo, ServiceError>
     func getPaymentInfo(cardid : Int) -> AnyPublisher<PaymentInfo, ServiceError>
     func getRecommendCardInfo(userid : Int) -> AnyPublisher<RecommendCardInfo, ServiceError>
+    func cardValidation(cardNum: String) -> AnyPublisher<ValidityCard, ServiceError>
 }
 
 class UserService : UserServiceType {
@@ -62,6 +63,21 @@ class UserService : UserServiceType {
         }.eraseToAnyPublisher()
     }
     
+    func cardValidation(cardNum: String) -> AnyPublisher<ValidityCard, ServiceError> {
+        Future { [weak self] promise in
+            self?.cardValidation(cardNum: cardNum) { result in
+                switch result {
+                case let .success(validityCard):
+                    promise(.success(validityCard))
+                    
+                case let .failure(error):
+                    promise(.failure(.error(error)))
+                }
+            }
+            
+        }.eraseToAnyPublisher()
+    }
+    
 }
 
 extension UserService {
@@ -73,6 +89,7 @@ extension UserService {
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: CardInfo.self) { [weak self] response in
+            
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(LocationError.APICallFailed))
@@ -118,6 +135,23 @@ extension UserService {
             completion(.success(data))
         }
     }
+    
+    private func cardValidation(cardNum: String, completion: @escaping (Result<ValidityCard, Error>) -> Void) {
+        AF.request("https://pinforyou.online/userCard/classify",
+                   method: .get,
+                   parameters: ["number" : cardNum],
+                   encoding: URLEncoding.queryString,
+                   headers: ["Content-Type" : "application/json"])
+        .responseDecodable(of: ValidityCard.self) { [weak self] response in
+            debugPrint(response)
+            guard case .success(let data) = response.result
+            else {
+                return completion(.failure(LocationError.APICallFailed))
+            }
+            
+            completion(.success(data))
+        }
+    }
 }
 
 class StubUserService : UserServiceType {
@@ -131,6 +165,10 @@ class StubUserService : UserServiceType {
     }
     
     func getRecommendCardInfo(userid: Int) -> AnyPublisher<RecommendCardInfo, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
+    func cardValidation(cardNum: String) -> AnyPublisher<ValidityCard, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
 }

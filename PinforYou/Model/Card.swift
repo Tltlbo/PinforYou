@@ -73,3 +73,13 @@ struct RecommendCardInfo : Decodable {
         case benefits = "benefits"
     }
 }
+
+struct ValidityCard: Decodable {
+    let company: String
+    let card: String
+    
+    enum CodingKeys: String, CodingKey {
+        case company = "company_name"
+        case card = "card_name"
+    }
+}
