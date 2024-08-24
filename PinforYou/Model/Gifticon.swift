@@ -27,6 +27,7 @@ struct PointShopGifticon : Decodable, Hashable {
 }
 
 struct Usergifticon : Decodable {
+    let userID : Int
     var gifticonList : [gifticon] = []
     
     struct gifticon : Decodable, Hashable {
@@ -36,7 +37,15 @@ struct Usergifticon : Decodable {
         let giftName : String
         let imageURL : String
         let category : String
-        let barcode : String
+        let barcode : Barcode
+        
+        struct Barcode: Decodable, Hashable {
+            let image_URL: String
+            
+            enum CodingKeys : String, CodingKey {
+                case image_URL = "body"
+            }
+        }
         
         enum CodingKeys : String, CodingKey {
             case list_id = "item_list_id"
@@ -50,6 +59,7 @@ struct Usergifticon : Decodable {
     }
     
     enum CodingKeys : String, CodingKey {
+        case userID = "user_id"
         case gifticonList = "item_list"
     }
 }
