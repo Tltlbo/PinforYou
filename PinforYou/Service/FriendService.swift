@@ -78,6 +78,7 @@ extension FriendService {
         .responseDecodable(of: RequestFriend.self) { [weak self] response in
             
             debugPrint(response)
+            print("HO")
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(FriendError.FailedfetchFriend))

@@ -58,6 +58,9 @@ struct FriendModifyView : View {
                 .padding(.leading, 10)
             }
         }
+        .onAppear {
+            friendListViewModel.send(action: .getRequestFriendInfo, userid: 1)
+        }
             
             
     }
@@ -90,8 +93,6 @@ struct RequestFriendGridView : View {
                 }
             }
         }
-        .onAppear {
-            friendListViewModel.send(action: .getRequestFriendInfo, userid: 1)
-        }
+        
     }
 }
