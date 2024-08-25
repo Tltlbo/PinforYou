@@ -14,6 +14,7 @@ protocol UserServiceType {
     func getPaymentInfo(cardid : Int) -> AnyPublisher<PaymentInfo, ServiceError>
     func getRecommendCardInfo(userid : Int) -> AnyPublisher<RecommendCardInfo, ServiceError>
     func cardValidation(cardNum: String) -> AnyPublisher<ValidityCard, ServiceError>
+    func cardAppend(userid: Int, cardNum:String, cardName: String) -> AnyPublisher<Bool, ServiceError>
 }
 
 class UserService : UserServiceType {

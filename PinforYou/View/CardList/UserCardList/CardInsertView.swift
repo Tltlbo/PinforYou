@@ -58,7 +58,7 @@ struct CardInsertView: View {
                     TextField("카드 번호를 입력해주세요",  text: $cardNum)
                         .onChange(of: cardNum) { num in
                             print(num)
-                            cardInsertViewModel.send(action: .cardValidate, cardNum: num)
+                            cardInsertViewModel.send(action: .cardValidate, userid: 1, cardNum: num)
                         }
                     Rectangle()
                         .frame(height: 1)
@@ -87,6 +87,7 @@ struct CardInsertView: View {
                     }
                     .alert(isPresented: $isInsert) {
                         Alert(title: Text("등록하시겠습니까?"), message: Text("\(cardInsertViewModel.companyName) \(cardInsertViewModel.cardName)카드가 등록됩니다."), primaryButton: .destructive(Text("등록"), action: {
+                            cardInsertViewModel.send(action: .cardAppend, userid: 1, cardNum: self.cardNum, cardName: self.cardName)
                             cardlistViewModel.inert(cardName: cardName, cardNum: cardNum)
                             
                             presentationMode.wrappedValue.dismiss()

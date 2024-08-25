@@ -12,10 +12,12 @@ class CardInsertViewModel : ObservableObject {
     
     enum Action {
         case cardValidate
+        case cardAppend
     }
 
     @Published var companyName : String = ""
     @Published var cardName : String = ""
+    @Published var isAppend: Bool = false
     
     
     private var container : DIContainer
@@ -25,9 +27,9 @@ class CardInsertViewModel : ObservableObject {
         self.container = container
     }
     
-    func send(action: Action, cardNum: String) {
+    func send(action: Action, userid: Int, cardNum: String = "", cardName: String = "") {
         switch action {
-        
+            
         case .cardValidate:
             container.services.userService.cardValidation(cardNum: cardNum)
                 .sink { [weak self] completion in
@@ -39,7 +41,16 @@ class CardInsertViewModel : ObservableObject {
                     self?.cardName = validate.card
                     
                 }.store(in: &subscriptions)
-  
+            
+        case .cardAppend:
+            container.services.userService.cardAppend(userid: userid, cardNum: cardNum, cardName: cardName)
+                .sink { [weak self] completion in
+                    if case .failure = completion {
+                        
+                    }
+                } receiveValue: { [weak self] iscomplete in
+                    self?.isAppend = iscomplete
+                }.store(in: &subscriptions)
         }
     }
 }
