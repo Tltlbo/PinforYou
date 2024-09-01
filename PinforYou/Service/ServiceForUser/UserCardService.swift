@@ -24,6 +24,21 @@ extension UserService {
             
         }.eraseToAnyPublisher()
     }
+    
+    func cardDelete(userid: Int, cardid: Int) -> AnyPublisher<Bool, ServiceError> {
+        Future { [weak self] promise in
+            self?.cardDelete(userid: userid, cardid: cardid) { result in
+                switch result {
+                case let .success(iscomplete):
+                    promise(.success(iscomplete))
+                    
+                case let .failure(error):
+                    promise(.failure(.error(error)))
+                }
+            }
+            
+        }.eraseToAnyPublisher()
+    }
 }
 
 //private 메서드
@@ -51,10 +66,37 @@ extension UserService {
             completion(.success(data.result))
         }
     }
+    
+    private func cardDelete(userid: Int, cardid: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
+        
+        struct cardDeleteCheck: Decodable {
+            let result: Bool
+        }
+        
+        AF.request("https://pinforyou.online/userCard",
+                   method: .delete,
+                   parameters: ["card_id": cardid,
+                                "user_id": userid],
+                   encoding: URLEncoding.queryString,
+                   headers: ["Content-Type" : "application/json"])
+        .responseDecodable(of: cardDeleteCheck.self) { [weak self] response in
+            debugPrint(response)
+            guard case .success(let data) = response.result
+            else {
+                return completion(.failure(LocationError.APICallFailed))
+            }
+            
+            completion(.success(data.result))
+        }
+    }
 }
 
 extension StubUserService {
     func cardAppend(userid: Int, cardNum: String, cardName: String) -> AnyPublisher<Bool, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
+    func cardDelete(userid: Int, cardid: Int) -> AnyPublisher<Bool, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
 }
