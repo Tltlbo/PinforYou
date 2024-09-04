@@ -33,7 +33,7 @@ struct CardListView: View {
                         }
                         .padding(.trailing, 5)
                         .fullScreenCover(isPresented: $isTouched) {
-                            CardInsertView()
+                            CardInsertView(cardInsertViewModel: .init(container: container))
                                 .environmentObject(cardlistViewModel)
                         }
 

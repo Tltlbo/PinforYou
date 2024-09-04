@@ -21,6 +21,23 @@ enum gifticonCategory : String {
     case goods = "굿즈"
     case other = "기타"
     case all = "전체"
+    
+    func description() -> String {
+            switch self {
+            case .drink:
+                return "drink"
+            case .coffee:
+                return "coffee"
+            case .food:
+                return "food"
+            case .goods:
+                return "goods"
+            case .other:
+                return "other"
+            case .all:
+                return "all"
+            }
+        }
 }
 
 protocol PointShopServiceType {
@@ -78,9 +95,9 @@ extension PointShopService {
             }
         }
         else {
-            AF.request("https://pinforyou.online/pointShop/items",
+            AF.request("https://pinforyou.online/pointShop/items/category",
                        method: .get,
-                       parameters: ["category" : category.rawValue],
+                       parameters: ["category" : category.description()],
                        encoding: URLEncoding.queryString,
                        headers: ["Content-Type" : "application/json"])
             .responseDecodable(of: [PointShopGifticon].self) { [weak self] response in

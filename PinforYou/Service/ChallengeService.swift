@@ -43,7 +43,7 @@ extension ChallengeService {
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: [Challenge].self) { [weak self] response in
-            
+            print(response)
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(ChallengeError.FailedfetchChallenge))

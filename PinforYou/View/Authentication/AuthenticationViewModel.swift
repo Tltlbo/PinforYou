@@ -62,8 +62,9 @@ class AuthenticationViewModel : ObservableObject {
                     self?.isLoading = false
                     self?.userId = user.id
                     self?.authenticationState = .authenticated
+                    print("Google")
                 }.store(in: &subscriptions)
-            print("Google")
+            
             
         case let .appleLogin(request):
             let nonce = container.services.authService.handleSignInWithAppleRequest(request)

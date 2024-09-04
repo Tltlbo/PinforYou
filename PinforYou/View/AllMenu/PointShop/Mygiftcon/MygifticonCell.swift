@@ -48,5 +48,5 @@ struct MygifticonCell: View {
 }
 
 #Preview {
-    MygifticonCell(gifticon: .init(list_id: 1, item_id: 1, place: "장소", giftName: "이름", imageURL: "", category: "카페", barcode: ""))
+    MygifticonCell(gifticon: .init(list_id: 1, item_id: 1, place: "장소", giftName: "이름", imageURL: "", category: "카페", barcode: .init(image_URL: "")))
 }
