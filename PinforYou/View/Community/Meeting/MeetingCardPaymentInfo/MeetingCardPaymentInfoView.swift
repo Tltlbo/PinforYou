@@ -69,34 +69,36 @@ struct MeetingCardPaymentInfoView: View {
 
 struct UsageHistoryView: View {
     var body: some View {
-        VStack(alignment: .center, spacing: 0) {
-            // 카드 정보와 잔액
-            VStack {
-                Text("KB 국민 노리2 체크 카드(Play)")
-                Text("(1234-1234-1234-1234)")
-                Text("190,000")
-                    .font(.largeTitle)
-                    .padding()
-            }
-            .padding()
-            .frame(maxWidth: .infinity)
-            
-            Divider()
-            
-            // 사용내역
-            ScrollView {
-                VStack(alignment: .leading) {
-                    GroupedTransactionView(date: "04.22 월요일", transactions: [
-                        TransactionItem(name: "장군제육", category: "식당", amount: "+10,000", balance: "190,000", time: "16:27"),
-                        TransactionItem(name: "교보문고", category: "서점", amount: "-20,000", balance: "180,000", time: "10:43")
-                    ])
-                    GroupedTransactionView(date: "04.20 토요일", transactions: [
-                        TransactionItem(name: "대구은행 김성훈", category: "입금", amount: "+200,000", balance: "200,000", time: "23:11")
-                    ])
+        ScrollView {
+            VStack(alignment: .center, spacing: 0) {
+                // 카드 정보와 잔액
+                VStack {
+                    Text("KB 국민 노리2 체크 카드(Play)")
+                    Text("(1234-1234-1234-1234)")
+                    Text("190,000")
+                        .font(.largeTitle)
+                        .padding()
                 }
                 .padding()
+                .frame(maxWidth: .infinity)
                 
-                Spacer()
+                Divider()
+                
+                // 사용내역
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        GroupedTransactionView(date: "04.22 월요일", transactions: [
+                            TransactionItem(name: "장군제육", category: "식당", amount: "+10,000", balance: "190,000", time: "16:27"),
+                            TransactionItem(name: "교보문고", category: "서점", amount: "-20,000", balance: "180,000", time: "10:43")
+                        ])
+                        GroupedTransactionView(date: "04.20 토요일", transactions: [
+                            TransactionItem(name: "대구은행 김성훈", category: "입금", amount: "+200,000", balance: "200,000", time: "23:11")
+                        ])
+                    }
+                    .padding()
+                    
+                    Spacer()
+                }
             }
         }
     }
