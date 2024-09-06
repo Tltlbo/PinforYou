@@ -69,44 +69,42 @@ struct MeetingCardPaymentInfoView: View {
 
 struct UsageHistoryView: View {
     var body: some View {
-        VStack(alignment: .center, spacing: 0) {
-            // 카드 정보와 잔액
-            VStack {
-                Text("KB 국민 노리2 체크 카드(Play)")
-                Text("(1234-1234-1234-1234)")
-                Text("190,000")
-                    .font(.largeTitle)
-                    .padding()
+        ScrollView {
+            VStack(alignment: .center, spacing: 0) {
+                // 카드 정보와 잔액
+                VStack {
+                    Text("KB 국민 노리2 체크 카드(Play)")
+                    Text("(1234-1234-1234-1234)")
+                    Text("190,000")
+                        .font(.largeTitle)
+                        .padding()
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                
+                Divider()
+                
+                // 사용내역
+                VStack(alignment: .leading) {
+                    GroupedTransactionView(date: "04.22 월요일", transactions: [
+                        TransactionItem(name: "장군제육", category: "식당", amount: "+10,000", balance: "190,000", time: "16:27"),
+                        TransactionItem(name: "교보문고", category: "서점", amount: "-20,000", balance: "180,000", time: "10:43")
+                    ])
+                    GroupedTransactionView(date: "04.20 토요일", transactions: [
+                        TransactionItem(name: "대구은행 김성훈", category: "입금", amount: "+200,000", balance: "200,000", time: "23:11")
+                    ])
+                }
+                .padding()
+                
+                Spacer()
             }
-            .padding()
-            .frame(maxWidth: .infinity)
-            
-            Divider()
-            
-            // 사용내역
-            VStack(alignment: .leading) {
-                GroupedTransactionView(date: "04.22 월요일", transactions: [
-                    TransactionItem(name: "장군제육", category: "식당", amount: "+10,000", balance: "190,000", time: "16:27"),
-                    TransactionItem(name: "교보문고", category: "서점", amount: "-20,000", balance: "180,000", time: "10:43")
-                ])
-                GroupedTransactionView(date: "04.20 토요일", transactions: [
-                    TransactionItem(name: "대구은행 김성훈", category: "입금", amount: "+200,000", balance: "200,000", time: "23:11")
-                ])
-            }
-            .padding()
-            
-            Spacer()
         }
-    }
-}
-
-struct CardView: View {
-    var body: some View {
-        VStack {
-            Text("카드 정보 화면")
-            // 여기에 카드 정보를 표시하는 뷰를 추가하세요.
-        }
-        .padding()
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> main
+=======
+>>>>>>> main
     }
 }
 
@@ -171,54 +169,64 @@ struct CardDetailView: View {
 
 struct MembersView: View {
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            HStack {
-                Text("모임주")
-                    .font(.headline)
-                Spacer()
-                Button(action: {
-                    // 추가 버튼 액션
-                }) {
-                    Text("추가")
-                        .foregroundColor(.blue)
-                }
-                Button(action: {
-                    // 편집 버튼 액션
-                }) {
-                    Text("편집")
-                        .foregroundColor(.blue)
-                }
-            }
-            .padding()
-            
-            HStack {
-                Image(systemName: "person.circle")
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                VStack(alignment: .leading) {
-                    Text("김성훈")
-                        .font(.headline)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 0) {
+                HStack {
                     Text("모임주")
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
+                        .font(.headline)
+                    Spacer()
+                    Button(action: {
+                        // 추가 버튼 액션
+                    }) {
+                        Text("추가")
+                            .foregroundColor(.blue)
+                    }
+                    Button(action: {
+                        // 편집 버튼 액션
+                    }) {
+                        Text("편집")
+                            .foregroundColor(.blue)
+                    }
                 }
+                .padding()
+                
+                HStack {
+                    Image(systemName: "person.circle")
+                        .resizable()
+                        .frame(width: 50, height: 50)
+                    VStack(alignment: .leading) {
+                        Text("김성훈")
+                            .font(.headline)
+                        Text("모임주")
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                    }
+                    Spacer()
+                }
+                .padding()
+                
+                Divider()
+                
+                Text("멤버")
+                    .font(.headline)
+                    .padding([.leading, .top])
+                
+                MemberItemView(name: "박진성")
+                MemberItemView(name: "송재민")
+                MemberItemView(name: "노지인")
+                MemberItemView(name: "정수열")
+                
                 Spacer()
             }
-            .padding()
+<<<<<<< HEAD
+<<<<<<< HEAD
             
-            Divider()
-            
-            Text("멤버")
-                .font(.headline)
-                .padding([.leading, .top])
-            
-            MemberItemView(name: "박진성")
-            MemberItemView(name: "송재민")
-            MemberItemView(name: "노지인")
-            MemberItemView(name: "정수열")
-            
-            Spacer()
+=======
+>>>>>>> main
+=======
+>>>>>>> main
         }
+        
     }
 }
 

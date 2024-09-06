@@ -48,7 +48,14 @@ struct WithFriendView: View {
             }
             
             NavigationLink {
-                //
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                RouletteView() // 룰렛 뷰 연결
+>>>>>>> main
+=======
+                RouletteView() // 룰렛 뷰 연결
+>>>>>>> main
             } label: {
                 ZStack(alignment: .center) {
                     Rectangle()
