@@ -12,9 +12,11 @@ class CardListViewModel : ObservableObject {
     
     enum Action {
         case getCardInfo
+        case deleteCard
     }
     
     @Published var isFinished : Bool = false
+    @Published var isDeleted : Bool = false
     @Published var CardList : [CardInfo.Carda] = []
     
     private var container : DIContainer
@@ -24,7 +26,7 @@ class CardListViewModel : ObservableObject {
         self.container = container
     }
     
-    func send(action : Action) {
+    func send(action : Action, userid: Int = 1, cardid: Int = 1) {
         switch action {
         case .getCardInfo:
             container.services.userService.getCardInfo()
@@ -37,7 +39,16 @@ class CardListViewModel : ObservableObject {
                     self?.CardList = card.CardList
                 }
                 .store(in: &subscriptions)
-
+        case .deleteCard:
+            container.services.userService.cardDelete(userid: userid, cardid: cardid)
+                .sink { [weak self] completion in
+                    if case .failure = completion {
+                        //
+                    }
+                } receiveValue: { [weak self] isDelete in
+                    self?.isDeleted = isDelete
+                }
+                .store(in: &subscriptions)
         }
     }
 }

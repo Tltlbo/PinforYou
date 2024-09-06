@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MyGifticonView: View {
     @State private var isScreenFullDetailView : Bool = false
+    @StateObject var mygifticonViewModel : MyGifticonViewModel
+    
     var body: some View {
     
         NavigationStack {
@@ -19,12 +21,12 @@ struct MyGifticonView: View {
                 VStack {
                     ScrollView(.vertical) {
                         VStack {
-                            ForEach(0 ..< 10, id: \.self) {
-                                _ in
+                            ForEach(mygifticonViewModel.gifticonList, id: \.self) { gifticon in
+                        
                                 Button {
                                     isScreenFullDetailView = true
                                 } label: {
-                                    MygifticonCell()
+                                    MygifticonCell(gifticon: gifticon)
                                 }
                                 .fullScreenCover(isPresented: $isScreenFullDetailView) {
                                     MyGifticonDetailView(isScreenFullDetailView: $isScreenFullDetailView)
@@ -37,9 +39,12 @@ struct MyGifticonView: View {
             }
             
         }
+        .onAppear {
+            mygifticonViewModel.send(action: .getGifticonInfo, userid: 1)
+        }
     }
 }
 
 #Preview {
-    MyGifticonView()
+    MyGifticonView(mygifticonViewModel: .init(container: .init(services: StubService())))
 }

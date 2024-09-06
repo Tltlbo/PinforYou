@@ -54,9 +54,9 @@ struct PointShopView: View {
                     
                     switch selectOption {
                     case .PointShop:
-                        PurchaseView( purchaseViewModel: .init(container: container))
+                        PurchaseView(purchaseViewModel: .init(container: container))
                     case .MyGifticon:
-                        MyGifticonView()
+                        MyGifticonView(mygifticonViewModel: .init(container: container))
                     }
                     
                     

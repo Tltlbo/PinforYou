@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct MygifticonCell: View {
+    let gifticon : Usergifticon.gifticon
     var body: some View {
         HStack {
-            Image(systemName: "creditcard")
+            KFImage(URL(string: gifticon.imageURL))
                 .resizable()
                 .scaledToFit()
                 .frame(width: 70, height: 70)
@@ -19,14 +21,14 @@ struct MygifticonCell: View {
             
             VStack(alignment:.leading) {
                 HStack {
-                    Text("스타벅스")
+                    Text(gifticon.place)
                         .font(.system(size: 17))
                         .foregroundStyle(.white)
                 }
                 .padding(.vertical, 10)
                 
                 HStack {
-                    Text("스타벅스 아메리카노(T)")
+                    Text(gifticon.giftName)
                 }
                 .padding(.bottom, 20)
                 
@@ -46,5 +48,5 @@ struct MygifticonCell: View {
 }
 
 #Preview {
-    MygifticonCell()
+    MygifticonCell(gifticon: .init(list_id: 1, item_id: 1, place: "장소", giftName: "이름", imageURL: "", category: "카페", barcode: .init(image_URL: "")))
 }

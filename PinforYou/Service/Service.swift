@@ -16,6 +16,7 @@ protocol ServiceType {
     var challengeService : ChallengeServiceType {get set}
     var pointShopService : PointShopServiceType {get set}
     var friendService : FriendServiceType {get set}
+    var eventService : EventServiceType {get set}
 }
 
 class Services : ServiceType {
@@ -28,6 +29,7 @@ class Services : ServiceType {
     var challengeService : ChallengeServiceType
     var pointShopService : PointShopServiceType
     var friendService : FriendServiceType
+    var eventService : EventServiceType
     
     init() {
         self.authService = AuthenticationService()
@@ -38,6 +40,7 @@ class Services : ServiceType {
         self.challengeService = ChallengeService()
         self.pointShopService = PointShopService()
         self.friendService = FriendService()
+        self.eventService = EventService()
     }
 }
 
@@ -50,4 +53,5 @@ class StubService : ServiceType {
     var challengeService : ChallengeServiceType = StubChallengeService()
     var pointShopService : PointShopServiceType = StubPointShopService()
     var friendService : FriendServiceType = StubFriendService()
+    var eventService : EventServiceType = StubEventService()
 }

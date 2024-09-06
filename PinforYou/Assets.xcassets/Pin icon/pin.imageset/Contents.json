@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "pin.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -9,7 +10,6 @@
       "scale" : "2x"
     },
     {
-      "filename" : "pin_icon_fill.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

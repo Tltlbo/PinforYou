@@ -18,7 +18,11 @@ struct CardInfoView: View {
                         .font(.title)
                         .padding()
 
+<<<<<<< HEAD
                     Image(systemName: "creditcard")  // 사용할 이미지 파일명을 정확히 지정해야 합니다.
+=======
+                    Image(systemName: "creditcard")
+>>>>>>> main
                         .resizable()
                         .scaledToFit()
                         .frame(height: 200)
