@@ -19,7 +19,10 @@ struct CardInfoView: View {
                         .padding()
 
 <<<<<<< HEAD
-                    Image(systemName: "creditcard")  // 사용할 이미지 파일명을 정확히 지정해야 합니다.
+<<<<<<< HEAD
+=======
+                    Image(systemName: "creditcard")
+>>>>>>> main
 =======
                     Image(systemName: "creditcard")
 >>>>>>> main

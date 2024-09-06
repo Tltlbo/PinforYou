@@ -100,7 +100,9 @@ struct UsageHistoryView: View {
             }
         }
 <<<<<<< HEAD
-        
+<<<<<<< HEAD
+=======
+>>>>>>> main
 =======
 >>>>>>> main
     }
@@ -217,7 +219,10 @@ struct MembersView: View {
                 Spacer()
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
             
+=======
+>>>>>>> main
 =======
 >>>>>>> main
         }
