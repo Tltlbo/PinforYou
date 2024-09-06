@@ -100,6 +100,8 @@
 		4ED5762C2BFA488D0034F7A6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5762B2BFA488D0034F7A6 /* Card.swift */; };
 		4ED5762F2BFAD8BD0034F7A6 /* QRPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5762E2BFAD8BD0034F7A6 /* QRPayView.swift */; };
 		4ED576322BFAEB6E0034F7A6 /* WithFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576312BFAEB6E0034F7A6 /* WithFriendView.swift */; };
+		547A902D2C85853A00884CCF /* RouletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547A902C2C85853A00884CCF /* RouletteView.swift */; };
+		547A902F2C85856900884CCF /* CardInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 547A902E2C85856900884CCF /* CardInfoView.swift */; };
 		549FBD632C64B8F50087240E /* MeetingCardPaymentInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549FBD622C64B8F50087240E /* MeetingCardPaymentInfoView.swift */; };
 		549FBD652C64B9170087240E /* MeetingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549FBD642C64B9170087240E /* MeetingListViewModel.swift */; };
 		730C6F69986697778218E709 /* Pods_PinforYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28531306F13EC3B74457DB6F /* Pods_PinforYou.framework */; };
@@ -204,6 +206,8 @@
 		4ED5762B2BFA488D0034F7A6 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		4ED5762E2BFAD8BD0034F7A6 /* QRPayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPayView.swift; sourceTree = "<group>"; };
 		4ED576312BFAEB6E0034F7A6 /* WithFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithFriendView.swift; sourceTree = "<group>"; };
+		547A902C2C85853A00884CCF /* RouletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteView.swift; sourceTree = "<group>"; };
+		547A902E2C85856900884CCF /* CardInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoView.swift; sourceTree = "<group>"; };
 		549FBD622C64B8F50087240E /* MeetingCardPaymentInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCardPaymentInfoView.swift; sourceTree = "<group>"; };
 		549FBD642C64B9170087240E /* MeetingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingListViewModel.swift; sourceTree = "<group>"; };
 		5F528BB8266D3D3FCBADB28D /* Pods-PinforYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinforYou.debug.xcconfig"; path = "Target Support Files/Pods-PinforYou/Pods-PinforYou.debug.xcconfig"; sourceTree = "<group>"; };
@@ -602,6 +606,7 @@
 		4ED5760C2BE8CB0B0034F7A6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				547A902B2C85852200884CCF /* Roulette */,
 				4ED576302BFAEB440034F7A6 /* WithFriend */,
 				4ED5762D2BFAD88F0034F7A6 /* PaymentView */,
 				4ED576232BF3B1C80034F7A6 /* PlaceInfo */,
@@ -670,6 +675,15 @@
 				28531306F13EC3B74457DB6F /* Pods_PinforYou.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		547A902B2C85852200884CCF /* Roulette */ = {
+			isa = PBXGroup;
+			children = (
+				547A902C2C85853A00884CCF /* RouletteView.swift */,
+				547A902E2C85856900884CCF /* CardInfoView.swift */,
+			);
+			path = Roulette;
 			sourceTree = "<group>";
 		};
 		549FBD612C64B86E0087240E /* MeetingCardPaymentInfo */ = {
@@ -855,11 +869,13 @@
 				4EC90CFB2C0960F100A0B5B5 /* CommunityView.swift in Sources */,
 				4ED5760F2BE8CD530034F7A6 /* KakaoMapView.swift in Sources */,
 				4EA35B082BE4CAC40001508B /* Key.swift in Sources */,
+				547A902D2C85853A00884CCF /* RouletteView.swift in Sources */,
 				4E2497A12C211A6000851D9D /* QRPayViewModel.swift in Sources */,
 				4E28388A2C5FA15C0037AE55 /* Friend.swift in Sources */,
 				4E9785FC2C26C9AA000F61BB /* ColorExtension.swift in Sources */,
 				4E8243C92C56295700A40BFF /* CardDeleteCell.swift in Sources */,
 				4EA35B1D2BE6302F0001508B /* LoginIntroView.swift in Sources */,
+				547A902F2C85856900884CCF /* CardInfoView.swift in Sources */,
 				4E2497AE2C25AFC500851D9D /* CardPaymentInfoViewModel.swift in Sources */,
 				4E8243BB2C54E28A00A40BFF /* EmailCell.swift in Sources */,
 				4EA35B032BE3D9A60001508B /* DIContainer.swift in Sources */,
