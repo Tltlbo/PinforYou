@@ -48,7 +48,7 @@ struct WithFriendView: View {
             }
             
             NavigationLink {
-                //
+                RouletteView()
             } label: {
                 ZStack(alignment: .center) {
                     Rectangle()
