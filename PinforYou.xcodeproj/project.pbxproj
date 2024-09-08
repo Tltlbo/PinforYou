@@ -92,6 +92,8 @@
 		4EC90D012C09687F00A0B5B5 /* MeetingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC90D002C09687F00A0B5B5 /* MeetingListView.swift */; };
 		4EC90D042C096BB500A0B5B5 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC90D032C096BB500A0B5B5 /* EventView.swift */; };
 		4EC90D072C0D4F6600A0B5B5 /* AllMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC90D062C0D4F6600A0B5B5 /* AllMenuView.swift */; };
+		4ECD55F42C8DF75900F09157 /* RouletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD55F32C8DF75900F09157 /* RouletteView.swift */; };
+		4ECD55F62C8DF78B00F09157 /* CardInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD55F52C8DF78B00F09157 /* CardInfoView.swift */; };
 		4ED576092BE77D0D0034F7A6 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576082BE77D0D0034F7A6 /* MainTabView.swift */; };
 		4ED5760B2BE77D170034F7A6 /* MainTabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5760A2BE77D170034F7A6 /* MainTabType.swift */; };
 		4ED5760F2BE8CD530034F7A6 /* KakaoMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5760E2BE8CD530034F7A6 /* KakaoMapView.swift */; };
@@ -204,6 +206,8 @@
 		4EC90D002C09687F00A0B5B5 /* MeetingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingListView.swift; sourceTree = "<group>"; };
 		4EC90D032C096BB500A0B5B5 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		4EC90D062C0D4F6600A0B5B5 /* AllMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllMenuView.swift; sourceTree = "<group>"; };
+		4ECD55F32C8DF75900F09157 /* RouletteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteView.swift; sourceTree = "<group>"; };
+		4ECD55F52C8DF78B00F09157 /* CardInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoView.swift; sourceTree = "<group>"; };
 		4ED576082BE77D0D0034F7A6 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		4ED5760A2BE77D170034F7A6 /* MainTabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabType.swift; sourceTree = "<group>"; };
 		4ED5760E2BE8CD530034F7A6 /* KakaoMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoMapView.swift; sourceTree = "<group>"; };
@@ -621,6 +625,15 @@
 			path = Color;
 			sourceTree = "<group>";
 		};
+		4ECD55F22C8DF72900F09157 /* Roulete */ = {
+			isa = PBXGroup;
+			children = (
+				4ECD55F32C8DF75900F09157 /* RouletteView.swift */,
+				4ECD55F52C8DF78B00F09157 /* CardInfoView.swift */,
+			);
+			path = Roulete;
+			sourceTree = "<group>";
+		};
 		4ED576072BE77CFB0034F7A6 /* MainTabView */ = {
 			isa = PBXGroup;
 			children = (
@@ -634,6 +647,7 @@
 		4ED5760C2BE8CB0B0034F7A6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				4ECD55F22C8DF72900F09157 /* Roulete */,
 				4ED576302BFAEB440034F7A6 /* WithFriend */,
 				4ED5762D2BFAD88F0034F7A6 /* PaymentView */,
 				4ED576232BF3B1C80034F7A6 /* PlaceInfo */,
@@ -901,6 +915,7 @@
 				4E8243BB2C54E28A00A40BFF /* EmailCell.swift in Sources */,
 				4EA35B032BE3D9A60001508B /* DIContainer.swift in Sources */,
 				4EA35AD12BCD005E0001508B /* AuthenticatedView.swift in Sources */,
+				4ECD55F62C8DF78B00F09157 /* CardInfoView.swift in Sources */,
 				4E7CDB852C70DF390023D12C /* RecommendCardViewModel.swift in Sources */,
 				4E28388C2C5FA5B40037AE55 /* FriendService.swift in Sources */,
 				4EC90D072C0D4F6600A0B5B5 /* AllMenuView.swift in Sources */,
@@ -908,6 +923,7 @@
 				4EA35AF22BE325A90001508B /* User.swift in Sources */,
 				4ED576192BEA73AD0034F7A6 /* LocationService.swift in Sources */,
 				4ED5761F2BED03AE0034F7A6 /* Place.swift in Sources */,
+				4ECD55F42C8DF75900F09157 /* RouletteView.swift in Sources */,
 				4E24979B2C1BC2D100851D9D /* PayService.swift in Sources */,
 				4EA35AF82BE326480001508B /* UserService.swift in Sources */,
 				4E8243CB2C566DF600A40BFF /* CardInsertView.swift in Sources */,
