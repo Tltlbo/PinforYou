@@ -102,16 +102,6 @@ struct UsageHistoryView: View {
     }
 }
 
-struct CardView: View {
-    var body: some View {
-        VStack {
-            Text("카드 정보 화면")
-            // 여기에 카드 정보를 표시하는 뷰를 추가하세요.
-        }
-        .padding()
-    }
-}
-
 struct CardDetailView: View {
     var body: some View {
         ScrollView {
@@ -223,6 +213,7 @@ struct MembersView: View {
                 Spacer()
             }
         }
+        
     }
 }
 
