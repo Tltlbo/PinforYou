@@ -2,7 +2,7 @@
 //  MeetingListViewModel.swift
 //  PinforYou
 //
-//  Created by 김성훈 on 7/15/24.
+//  Created by 김성훈 on 7/15/24.ㄴㄴ
 //
 
 import Foundation
