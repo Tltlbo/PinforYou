@@ -12,6 +12,7 @@ import Alamofire
 enum PointShopError : Error {
     case FailedfetchGifticon
     case FailedfetchUserGifticon
+    case FailedFetchUserPoint
 }
 
 enum gifticonCategory : String {
@@ -41,13 +42,14 @@ enum gifticonCategory : String {
 }
 
 protocol PointShopServiceType {
-    func getGifticonInfo(category : gifticonCategory) -> AnyPublisher<[PointShopGifticon], ServiceError>
+    func getGifticonInfo(category : gifticonCategory) -> AnyPublisher<PointShopGifticon, ServiceError>
     func getUserGifticon(userid : Int) -> AnyPublisher<Usergifticon, ServiceError>
+    func getUserPointInfo(userid: Int) -> AnyPublisher<Int, ServiceError>
 }
 
 class PointShopService : PointShopServiceType {
     
-    func getGifticonInfo(category : gifticonCategory) -> AnyPublisher<[PointShopGifticon], ServiceError> {
+    func getGifticonInfo(category : gifticonCategory) -> AnyPublisher<PointShopGifticon, ServiceError> {
         Future { [weak self] promise in
             self?.getGifticonInfo(category: category) { result in
                 switch result {
@@ -74,18 +76,32 @@ class PointShopService : PointShopServiceType {
             }
         }.eraseToAnyPublisher()
     }
+    
+    func getUserPointInfo(userid: Int) -> AnyPublisher<Int, ServiceError> {
+        Future { [weak self] promise in
+            self?.getUserPointInfo(userid: userid) { result in
+                switch result {
+                case let .success(userPoint):
+                    promise(.success(userPoint))
+                    
+                case let .failure(error):
+                    promise(.failure(.error(error)))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
 }
 
 extension PointShopService {
     
-    private func getGifticonInfo(category: gifticonCategory, completion: @escaping (Result<[PointShopGifticon], Error>) -> Void) {
+    private func getGifticonInfo(category: gifticonCategory, completion: @escaping (Result<PointShopGifticon, Error>) -> Void) {
         if category == .all {
             AF.request("https://pinforyou.online/pointShop/items",
                        method: .get,
                        encoding: URLEncoding.queryString,
                        headers: ["Content-Type" : "application/json"])
-            .responseDecodable(of: [PointShopGifticon].self) { [weak self] response in
-                
+            .responseDecodable(of: PointShopGifticon.self) { [weak self] response in
+                debugPrint(response)
                 guard case .success(let data) = response.result
                 else {
                     return completion(.failure(PointShopError.FailedfetchGifticon))
@@ -100,7 +116,7 @@ extension PointShopService {
                        parameters: ["category" : category.description()],
                        encoding: URLEncoding.queryString,
                        headers: ["Content-Type" : "application/json"])
-            .responseDecodable(of: [PointShopGifticon].self) { [weak self] response in
+            .responseDecodable(of: PointShopGifticon.self) { [weak self] response in
                 guard case .success(let data) = response.result
                 else {
                     return completion(.failure(PointShopError.FailedfetchGifticon))
@@ -124,20 +140,47 @@ extension PointShopService {
             else {
                 return completion(.failure(PointShopError.FailedfetchUserGifticon))
             }
-            
-            
             completion(.success(data))
+        }
+    }
+    
+    private func getUserPointInfo(userid: Int, completion : @escaping (Result<Int, Error>) -> Void) {
+        
+        struct Point: Decodable {
+            let point: Int
+            
+            enum CodingKeys: String, CodingKey {
+                case point = "point"
+            }
+        }
+        
+        AF.request("https://pinforyou.online/user/point",
+                   method: .get,
+                   parameters: ["user_id" : userid],
+                   encoding: URLEncoding.queryString,
+                   headers: ["Content-Type" : "application/json"])
+        .responseDecodable(of: Point.self) { [weak self] response in
+            debugPrint(response)
+            guard case .success(let data) = response.result
+            else {
+                return completion(.failure(PointShopError.FailedFetchUserPoint))
+            }
+            completion(.success(data.point))
         }
     }
 }
 
 class StubPointShopService : PointShopServiceType {
-    
-    func getGifticonInfo(category : gifticonCategory) -> AnyPublisher<[PointShopGifticon], ServiceError> {
+    func getGifticonInfo(category : gifticonCategory) -> AnyPublisher<PointShopGifticon, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
     
     func getUserGifticon(userid: Int) -> AnyPublisher<Usergifticon, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
+    
+    func getUserPointInfo(userid: Int) -> AnyPublisher<Int, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
 }
+
