@@ -16,6 +16,7 @@ struct PointShopView: View {
     
     @State var selectOption : ShopOption = .MyGifticon
     @EnvironmentObject var container : DIContainer
+    @StateObject var pointshopViewModel : PointShopViewModel
     
     var body: some View {
         NavigationStack {
@@ -24,7 +25,6 @@ struct PointShopView: View {
                     .ignoresSafeArea()
                 
                 VStack {
-                    
                     HStack {
                         Button  {
                             selectOption = .PointShop
@@ -49,7 +49,10 @@ struct PointShopView: View {
                     
                     HStack {
                         Spacer()
-                        Text("포인트 잔액")
+                        Text("포인트 잔액 \(pointshopViewModel.point)")
+                    }
+                    .onAppear {
+                        pointshopViewModel.send(action: .getUserPointInfo, userid: 1)
                     }
                     
                     switch selectOption {
@@ -69,5 +72,5 @@ struct PointShopView: View {
 }
 
 #Preview {
-    PointShopView()
+    PointShopView(pointshopViewModel: .init(container: .init(services: StubService())))
 }
