@@ -16,6 +16,7 @@ enum FriendError : Error {
 protocol FriendServiceType {
     func getFriendInfo(userid : Int) -> AnyPublisher<Friends, ServiceError>
     func getRequestFriendInfo(userid : Int) -> AnyPublisher<RequestFriend, ServiceError>
+    func deleteFriendInfo(userid: Int, friendid: Int) -> AnyPublisher<Bool, ServiceError>
 }
 
 class FriendService : FriendServiceType {
@@ -40,6 +41,20 @@ class FriendService : FriendServiceType {
                 switch result {
                 case let .success(FriendInfo):
                     promise(.success(FriendInfo))
+                    
+                case let .failure(error):
+                    promise(.failure(.error(error)))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    func deleteFriendInfo(userid : Int, friendid: Int) -> AnyPublisher<Bool, ServiceError> {
+        Future { [weak self] promise in
+            self?.deleteFriendInfo(userid: userid, friendid: friendid) { result in
+                switch result {
+                case let .success(result):
+                    promise(.success(result))
                     
                 case let .failure(error):
                     promise(.failure(.error(error)))
@@ -76,9 +91,6 @@ extension FriendService {
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: RequestFriend.self) { [weak self] response in
-            
-            debugPrint(response)
-            print("HO")
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(FriendError.FailedfetchFriend))
@@ -88,7 +100,33 @@ extension FriendService {
         }
     }
     
+    private func deleteFriendInfo(userid: Int, friendid: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
+        
+        struct Result: Decodable {
+            let result: Bool
+            let message: String
+            
+            enum CodingKeys: String, CodingKey {
+                case result = "result"
+                case message = "message"
+            }
+        }
+        AF.request("https://pinforyou.online/friend/delete",
+                   method: .get,
+                   parameters: ["user_hashedId" : userid,
+                                "friend_hashedId" : friendid],
+                   encoding: URLEncoding.queryString,
+                   headers: ["Content-Type" : "application/json"])
+        .responseDecodable(of: Result.self) { [weak self] response in
+            debugPrint(response)
+            guard case .success(let data) = response.result
+            else {
+                return completion(.failure(FriendError.FailedfetchFriend))
+            }
     
+            completion(.success(data.result))
+        }
+    }
 }
 
 class StubFriendService : FriendServiceType {
@@ -99,5 +137,8 @@ class StubFriendService : FriendServiceType {
     func getFriendInfo(userid: Int) -> AnyPublisher<Friends, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
-        
+    
+    func deleteFriendInfo(userid: Int, friendid: Int) -> AnyPublisher<Bool, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
 }

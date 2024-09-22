@@ -59,7 +59,7 @@ struct FriendModifyView : View {
             }
         }
         .onAppear {
-            friendListViewModel.send(action: .getRequestFriendInfo, userid: 1)
+            friendListViewModel.send(action: .getRequestFriendInfo, userid: 1, friendid: nil)
         }
             
             

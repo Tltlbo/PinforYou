@@ -61,30 +61,38 @@ struct MyFriendGridView : View {
     var columns : [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     
     @EnvironmentObject var friendListViewModel : FriendListViewModel
+    @State var isDelete: Bool = false
     
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns) {
                 ForEach(friendListViewModel.FriendList, id: \.self) { friend in
                     
-                    NavigationLink {
-                        //
+                    Button {
+                        isDelete = true
                     } label: {
-                        
                         VStack(alignment: .center) {
                             Color(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1))
                                         .cornerRadius(15)
                                         .frame(width: 110, height: 110)
                             Text(friend.name)
                         }
-                       
                     }
+                    .alert(isPresented: $isDelete) {
+                        Alert(title: Text("삭제하시겠습니까?"), message: Text("\(friend.name)이 삭제됩니다."), primaryButton: .destructive(Text("삭제"), action: {
+                            friendListViewModel.send(action: .deleteFriendInfo, userid: 1, friendid: friend.friendID)
+                            isDelete = false
+                        }), secondaryButton: .cancel(Text("취소"), action: {
+                            isDelete = false
+                        }))
+                    }
+
 
                 }
             }
         }
         .onAppear {
-            friendListViewModel.send(action: .getFriendInfo, userid: 1)
+            friendListViewModel.send(action: .getFriendInfo, userid: 1, friendid: nil)
         }
     }
 }

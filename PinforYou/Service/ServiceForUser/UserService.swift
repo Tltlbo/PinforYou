@@ -128,7 +128,6 @@ extension UserService {
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: RecommendCardInfo.self) { [weak self] response in
             
-            debugPrint(response)
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(LocationError.APICallFailed))
@@ -145,7 +144,6 @@ extension UserService {
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: ValidityCard.self) { [weak self] response in
-            debugPrint(response)
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(LocationError.APICallFailed))
