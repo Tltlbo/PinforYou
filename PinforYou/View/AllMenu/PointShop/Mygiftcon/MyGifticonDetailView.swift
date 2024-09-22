@@ -11,7 +11,9 @@ import Kingfisher
 struct MyGifticonDetailView: View {
     
     @Binding var isScreenFullDetailView : Bool
+    @EnvironmentObject var mygifticonViewModel : MyGifticonViewModel
     let gifticon : Usergifticon.gifticon
+    @State var isDelete: Bool = false
     
     var body: some View {
         NavigationView {
@@ -58,10 +60,22 @@ struct MyGifticonDetailView: View {
                 Image(systemName: "arrow.backward")
                     .foregroundColor(.white)
             }), trailing: Button(action: {
-                <#code#>
+                isDelete = true
             }, label: {
                 Image(systemName: "trash")
-            }))
+            })
+                .alert(isPresented: $isDelete) {
+                    Alert(title: Text("삭제하시겠습니까?"), message: Text("\(gifticon.giftName)이 삭제됩니다."), primaryButton: .destructive(Text("삭제"), action: {
+                        mygifticonViewModel.send(action: .deleteGifticon, userid: nil, itemid: gifticon.list_id)
+                    }), secondaryButton: .cancel(Text("취소"), action: {
+                        //
+                    }))
+                }
+            )
+        }
+        .onChange(of: mygifticonViewModel.isDelete) { _ in
+            isScreenFullDetailView = false
+            mygifticonViewModel.isDelete = false
         }
     }
 }

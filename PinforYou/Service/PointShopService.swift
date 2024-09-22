@@ -45,6 +45,7 @@ protocol PointShopServiceType {
     func getGifticonInfo(category : gifticonCategory) -> AnyPublisher<PointShopGifticon, ServiceError>
     func getUserGifticon(userid : Int) -> AnyPublisher<Usergifticon, ServiceError>
     func getUserPointInfo(userid: Int) -> AnyPublisher<Int, ServiceError>
+    func deleteUserGifticon(itemid: Int) -> AnyPublisher<Int, ServiceError>
 }
 
 class PointShopService : PointShopServiceType {
@@ -83,6 +84,20 @@ class PointShopService : PointShopServiceType {
                 switch result {
                 case let .success(userPoint):
                     promise(.success(userPoint))
+                    
+                case let .failure(error):
+                    promise(.failure(.error(error)))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    func deleteUserGifticon(itemid: Int) -> AnyPublisher<Int, ServiceError> {
+        Future { [weak self] promise in
+            self?.deleteUserGifticon(itemid: itemid) { result in
+                switch result {
+                case let .success(result):
+                    promise(.success(result))
                     
                 case let .failure(error):
                     promise(.failure(.error(error)))
@@ -168,6 +183,29 @@ extension PointShopService {
             completion(.success(data.point))
         }
     }
+    
+    private func deleteUserGifticon(itemid: Int, completion : @escaping (Result<Int, Error>) -> Void) {
+        struct result: Decodable {
+            let result: Int
+            
+            enum CodingKeys: String, CodingKey {
+                case result = "result"
+            }
+        }
+        AF.request("https://pinforyou.online/itemList/delete",
+                   method: .get,
+                   parameters: ["item_list_id" : itemid],
+                   encoding: URLEncoding.queryString,
+                   headers: ["Content-Type" : "application/json"])
+        .responseDecodable(of: result.self) { [weak self] response in
+            debugPrint(response)
+            guard case .success(let data) = response.result
+            else {
+                return completion(.failure(PointShopError.FailedfetchUserGifticon))
+            }
+            completion(.success(data.result))
+        }
+    }
 }
 
 class StubPointShopService : PointShopServiceType {
@@ -180,6 +218,10 @@ class StubPointShopService : PointShopServiceType {
     }
     
     func getUserPointInfo(userid: Int) -> AnyPublisher<Int, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
+    func deleteUserGifticon(itemid: Int) -> AnyPublisher<Int, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
 }

@@ -12,9 +12,11 @@ class MyGifticonViewModel : ObservableObject {
     
     enum Action {
         case getGifticonInfo
+        case deleteGifticon
     }
     
     @Published var isFinished : Bool = false
+    @Published var isDelete: Bool = false
     @Published var gifticonList : [Usergifticon.gifticon] = []
     
     private var container : DIContainer
@@ -24,10 +26,10 @@ class MyGifticonViewModel : ObservableObject {
         self.container = container
     }
     
-    func send(action : Action, userid : Int) {
+    func send(action : Action, userid : Int?, itemid: Int?) {
         switch action {
         case .getGifticonInfo:
-            container.services.pointShopService.getUserGifticon(userid: userid)
+            container.services.pointShopService.getUserGifticon(userid: userid!)
                 .sink { [weak self] completion in
                     if case .failure = completion {
                         //
@@ -37,7 +39,16 @@ class MyGifticonViewModel : ObservableObject {
                     self?.isFinished = true
                 }
                 .store(in: &subscriptions)
-
+        case .deleteGifticon:
+            container.services.pointShopService.deleteUserGifticon(itemid: itemid!)
+                .sink { [weak self] completion in
+                    if case .failure = completion {
+                        //
+                    }
+                } receiveValue: { [weak self] gifticon in
+                    self?.isDelete = true
+                }
+                .store(in: &subscriptions)
         }
     }
 }

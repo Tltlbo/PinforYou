@@ -30,6 +30,7 @@ struct MyGifticonView: View {
                                 }
                                 .fullScreenCover(isPresented: $isScreenFullDetailView) {
                                     MyGifticonDetailView(isScreenFullDetailView: $isScreenFullDetailView, gifticon: gifticon)
+                                        .environmentObject(mygifticonViewModel)
                                 }
 
                             }
@@ -40,7 +41,7 @@ struct MyGifticonView: View {
             
         }
         .onAppear {
-            mygifticonViewModel.send(action: .getGifticonInfo, userid: 1)
+            mygifticonViewModel.send(action: .getGifticonInfo, userid: 1, itemid: nil)
         }
     }
 }
