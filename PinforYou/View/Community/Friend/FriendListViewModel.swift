@@ -14,10 +14,12 @@ class FriendListViewModel : ObservableObject {
         case getFriendInfo
         case getRequestFriendInfo
         case deleteFriendInfo
+        case acceptRequestFriend
     }
     
     @Published var isFinished : Bool = false
     @Published var isDelete: Bool = false
+    @Published var isAccept: Bool = false
     @Published var FriendList : [Friend] = []
     @Published var RequestFriendList : [Friend] = []
     
@@ -63,6 +65,19 @@ class FriendListViewModel : ObservableObject {
                 } receiveValue: { [weak self] result in
                     if result {
                         self?.isDelete = true
+                    }
+                }
+                .store(in: &subscriptions)
+            
+        case .acceptRequestFriend:
+            container.services.friendService.acceptRequestFriend(userid: userid, friendid: friendid!)
+                .sink { [weak self] completion in
+                    if case .failure = completion {
+                        //
+                    }
+                } receiveValue: { [weak self] result in
+                    if result {
+                        self?.isAccept = true
                     }
                 }
                 .store(in: &subscriptions)
