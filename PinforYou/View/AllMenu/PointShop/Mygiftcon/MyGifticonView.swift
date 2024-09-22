@@ -29,7 +29,7 @@ struct MyGifticonView: View {
                                     MygifticonCell(gifticon: gifticon)
                                 }
                                 .fullScreenCover(isPresented: $isScreenFullDetailView) {
-                                    MyGifticonDetailView(isScreenFullDetailView: $isScreenFullDetailView)
+                                    MyGifticonDetailView(isScreenFullDetailView: $isScreenFullDetailView, gifticon: gifticon)
                                 }
 
                             }

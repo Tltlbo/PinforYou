@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct MyGifticonDetailView: View {
     
     @Binding var isScreenFullDetailView : Bool
+    let gifticon : Usergifticon.gifticon
     
     var body: some View {
         NavigationView {
@@ -18,18 +20,18 @@ struct MyGifticonDetailView: View {
                     .ignoresSafeArea()
                 
                 VStack(alignment: .leading) {
-                    Image(systemName: "creditcard")
+                    KFImage(URL(string: gifticon.imageURL))
                         .resizable()
                         .frame(width: UIScreen.main.bounds.width, height: 300)
                     
                     VStack(alignment: .leading) {
-                        Text("투썸플레이스")
+                        Text(gifticon.place)
                             .foregroundColor(.secondary)
-                        Text("투썸플레이스 3만원권")
+                        Text(gifticon.giftName)
                     }
                     .padding(.vertical, 25)
                     
-                    Image(systemName: "creditcard")
+                    KFImage(URL(string: gifticon.barcodeURL))
                         .resizable()
                         .frame(width: UIScreen.main.bounds.width, height: 100)
                     
@@ -47,7 +49,7 @@ struct MyGifticonDetailView: View {
                                 .foregroundColor(.white)
                         }
                     }
-
+                    
                 }
             }
             .navigationBarItems(leading: Button(action: {
@@ -55,6 +57,10 @@ struct MyGifticonDetailView: View {
             }, label: {
                 Image(systemName: "arrow.backward")
                     .foregroundColor(.white)
+            }), trailing: Button(action: {
+                <#code#>
+            }, label: {
+                Image(systemName: "trash")
             }))
         }
     }
