@@ -183,4 +183,3 @@ class StubPointShopService : PointShopServiceType {
         Empty().eraseToAnyPublisher()
     }
 }
-

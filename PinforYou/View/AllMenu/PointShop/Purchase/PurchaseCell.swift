@@ -10,7 +10,7 @@ import Kingfisher
 
 struct PurchaseCell: View {
     
-    let gifticon : PointShopGifticon
+    let gifticon : PointShopGifticon.Gifticon
     
     var body: some View {
         HStack {

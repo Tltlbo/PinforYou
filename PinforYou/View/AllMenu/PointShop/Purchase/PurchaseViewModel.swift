@@ -15,7 +15,7 @@ class PurchaseViewModel : ObservableObject {
     }
     
     @Published var isFinished : Bool = false
-    @Published var gifticonList : [PointShopGifticon] = []
+    @Published var gifticonList : [PointShopGifticon.Gifticon] = []
     
     private var container : DIContainer
     private var subscriptions = Set<AnyCancellable>()
@@ -33,12 +33,7 @@ class PurchaseViewModel : ObservableObject {
                         //
                     }
                 } receiveValue: { [weak self] gifticon in
-                    var list : [PointShopGifticon] = []
-                    for i in gifticon {
-                        print(i.category)
-                        list.append(i)
-                    }
-                    self?.gifticonList = list
+                    self?.gifticonList = gifticon.items
                     self?.isFinished = true
                 }
                 .store(in: &subscriptions)

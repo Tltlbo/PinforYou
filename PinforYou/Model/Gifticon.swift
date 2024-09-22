@@ -7,23 +7,32 @@
 
 import Foundation
 
-struct PointShopGifticon : Decodable, Hashable {
+struct PointShopGifticon : Decodable {
     
-    let id : Int
-    let giftName : String
-    let place : String
-    let price : Int
-    let category : String
-    let imageURL : String
+    var items: [Gifticon] = []
     
-    enum CodingKeys : String, CodingKey {
-        case id = "id"
-        case giftName = "item_name"
-        case place = "use_place"
-        case price = "item_price"
-        case category = "category"
-        case imageURL = "image_url"
+    struct Gifticon: Decodable, Hashable {
+        let id : Int
+        let giftName : String
+        let place : String
+        let price : Int
+        let category : String
+        let imageURL : String
+        
+        enum CodingKeys : String, CodingKey {
+            case id = "id"
+            case giftName = "item_name"
+            case place = "use_place"
+            case price = "item_price"
+            case category = "category"
+            case imageURL = "image_url"
+        }
     }
+    enum CodingKeys : String, CodingKey {
+        case items = "items"
+    }
+    
+    
 }
 
 struct Usergifticon : Decodable {
@@ -37,15 +46,7 @@ struct Usergifticon : Decodable {
         let giftName : String
         let imageURL : String
         let category : String
-        let barcode : Barcode
-        
-        struct Barcode: Decodable, Hashable {
-            let image_URL: String
-            
-            enum CodingKeys : String, CodingKey {
-                case image_URL = "body"
-            }
-        }
+        let barcodeURL : String
         
         enum CodingKeys : String, CodingKey {
             case list_id = "item_list_id"
@@ -54,7 +55,7 @@ struct Usergifticon : Decodable {
             case giftName = "name"
             case imageURL = "image_url"
             case category = "category"
-            case barcode = "barcode"
+            case barcodeURL = "barcode_url"
         }
     }
     
@@ -63,3 +64,4 @@ struct Usergifticon : Decodable {
         case gifticonList = "item_list"
     }
 }
+
