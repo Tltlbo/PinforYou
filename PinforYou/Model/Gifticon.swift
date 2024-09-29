@@ -39,7 +39,8 @@ struct Usergifticon : Decodable {
     let userID : Int
     var gifticonList : [gifticon] = []
     
-    struct gifticon : Decodable, Hashable {
+    struct gifticon : Decodable, Hashable, Identifiable {
+        var id: Int {item_id}
         let list_id : Int
         let item_id : Int
         let place : String

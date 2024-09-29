@@ -62,14 +62,14 @@ struct MyFriendGridView : View {
     
     @EnvironmentObject var friendListViewModel : FriendListViewModel
     @State var isDelete: Bool = false
+    @State var deletedFriend: Friend?
     
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns) {
                 ForEach(friendListViewModel.FriendList, id: \.self) { friend in
-                    
                     Button {
-                        isDelete = true
+                        deletedFriend = friend
                     } label: {
                         VStack(alignment: .center) {
                             Color(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1))
@@ -78,12 +78,12 @@ struct MyFriendGridView : View {
                             Text(friend.name)
                         }
                     }
-                    .alert(isPresented: $isDelete) {
+                    .alert(item: $deletedFriend) { friend in
                         Alert(title: Text("삭제하시겠습니까?"), message: Text("\(friend.name)이 삭제됩니다."), primaryButton: .destructive(Text("삭제"), action: {
                             friendListViewModel.send(action: .deleteFriendInfo, userid: 1, friendid: friend.friendID)
-                            isDelete = false
+                            deletedFriend = nil
                         }), secondaryButton: .cancel(Text("취소"), action: {
-                            isDelete = false
+                            deletedFriend = nil
                         }))
                     }
 

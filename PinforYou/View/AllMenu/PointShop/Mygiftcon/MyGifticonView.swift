@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MyGifticonView: View {
     @State private var isScreenFullDetailView : Bool = false
+    @State private var selectedGifticon: Usergifticon.gifticon?
     @StateObject var mygifticonViewModel : MyGifticonViewModel
     
     var body: some View {
@@ -24,11 +25,11 @@ struct MyGifticonView: View {
                             ForEach(mygifticonViewModel.gifticonList, id: \.self) { gifticon in
                         
                                 Button {
-                                    isScreenFullDetailView = true
+                                    selectedGifticon = gifticon
                                 } label: {
                                     MygifticonCell(gifticon: gifticon)
                                 }
-                                .fullScreenCover(isPresented: $isScreenFullDetailView) {
+                                .fullScreenCover(item: $selectedGifticon) { gifticon in
                                     MyGifticonDetailView(isScreenFullDetailView: $isScreenFullDetailView, gifticon: gifticon)
                                         .environmentObject(mygifticonViewModel)
                                 }
