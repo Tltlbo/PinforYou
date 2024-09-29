@@ -19,7 +19,7 @@ class QRPayViewModel : ObservableObject {
     private var container : DIContainer
     private var subscriptions = Set<AnyCancellable>()
     
-    @Published var QRImageView : UIImageView? = nil
+    @Published var QRImage_url : String? = nil
     
     @Published var isFinshed : Bool = false
     
@@ -37,8 +37,8 @@ class QRPayViewModel : ObservableObject {
                         //
                     }
                     self?.isFinshed = true
-                } receiveValue: { [weak self] image in
-                    self?.QRImageView = image
+                } receiveValue: { [weak self] url in
+                    self?.QRImage_url = url
                 }.store(in: &subscriptions)
 
         }

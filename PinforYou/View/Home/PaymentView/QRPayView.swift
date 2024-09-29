@@ -16,17 +16,11 @@ struct QRPayView: View {
     
     var body: some View {
         
-        if QRPayViewModel.isFinshed && QRPayViewModel.QRImageView != nil {
-            Text(card.cardName)
-            
-            if let image = QRPayViewModel.QRImageView?.image {
-                Image(uiImage: (image))
-                    .onDisappear {
-                        ImageCache.default.removeImage(forKey: "QR")
-                    }
+        if QRPayViewModel.isFinshed {
+            if let url = QRPayViewModel.QRImage_url {
+                Text(card.cardName)
+                KFImage(URL(string: url))
             }
-            
-            
         }
         else {
             ProgressView()
