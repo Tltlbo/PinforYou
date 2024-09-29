@@ -19,55 +19,65 @@ struct PurchaseView: View {
     ]
     
     @State var currentCategory : gifticonCategory = .all
+    @State private var selectedGifticon: PointShopGifticon.Gifticon?
     @StateObject var purchaseViewModel : PurchaseViewModel
     
     var body: some View {
-        VStack {
-            ScrollView(.horizontal) {
-                HStack {
-                    ForEach(categoryList, id: \.self) { category in
-                        
-                        Button {
-                            currentCategory = category
-                            print(currentCategory.rawValue)
-                        } label: {
-                            VStack {
-                                Color(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1))
-                                    .cornerRadius(15)
-                                    .frame(width: 110, height: 110)
-                                Text(category.rawValue)
+        NavigationStack {
+            VStack {
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(categoryList, id: \.self) { category in
+                            
+                            Button {
+                                currentCategory = category
+                            } label: {
+                                VStack {
+                                    Color(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1))
+                                        .cornerRadius(15)
+                                        .frame(width: 110, height: 110)
+                                    Text(category.rawValue)
+                                }
+                            }
+                            
+                        }
+                    }
+                }
+                
+                Rectangle()
+                    .frame(height: 1)
+                    .foregroundStyle(.gray)
+                
+                ScrollView(.vertical) {
+                    VStack {
+                        ForEach(purchaseViewModel.gifticonList, id: \.self) {
+                            gifticon in
+                            
+                            Button {
+                                selectedGifticon = gifticon
+                            } label: {
+                                PurchaseCell(gifticon: gifticon)
+                            }
+                            .fullScreenCover(item: $selectedGifticon) { gifticon in
+                                PurchaseGifticonView(gifticon: gifticon)
+                                    .environmentObject(purchaseViewModel)
                             }
                         }
-                        
                     }
                 }
+                
+                Spacer()
             }
-            
-            Rectangle()
-                .frame(height: 1)
-                .foregroundStyle(.gray)
-            
-            ScrollView(.vertical) {
-                VStack {
-                    ForEach(purchaseViewModel.gifticonList, id: \.self) {
-                        gifticon in
-                        PurchaseCell(gifticon: gifticon)
-                    }
-                }
+            .background {
+                Color("BackgroundColor")
+                    .ignoresSafeArea()
             }
-            
-            Spacer()
-        }
-        .background {
-            Color("BackgroundColor")
-                .ignoresSafeArea()
-        }
-        .onAppear {
-            purchaseViewModel.send(action: .getGifticonInfo, category: currentCategory)
-        }
-        .onChange(of: currentCategory) { newCategory in
-            print(currentCategory)
-                purchaseViewModel.send(action: .getGifticonInfo, category: newCategory)
+            .onAppear {
+                purchaseViewModel.send(action: .getGifticonInfo, category: currentCategory, itemid: nil)
+            }
+            .onChange(of: currentCategory) { newCategory in
+                purchaseViewModel.send(action: .getGifticonInfo, category: newCategory, itemid: nil)
+            }
         }
     }
 }

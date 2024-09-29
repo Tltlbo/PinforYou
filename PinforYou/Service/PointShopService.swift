@@ -46,6 +46,7 @@ protocol PointShopServiceType {
     func getUserGifticon(userid : Int) -> AnyPublisher<Usergifticon, ServiceError>
     func getUserPointInfo(userid: Int) -> AnyPublisher<Int, ServiceError>
     func deleteUserGifticon(itemid: Int) -> AnyPublisher<Int, ServiceError>
+    func purchaseGifticon(itemid: Int) -> AnyPublisher<Bool, ServiceError>
 }
 
 class PointShopService : PointShopServiceType {
@@ -105,6 +106,20 @@ class PointShopService : PointShopServiceType {
             }
         }.eraseToAnyPublisher()
     }
+    
+    func purchaseGifticon(itemid: Int) -> AnyPublisher<Bool, ServiceError> {
+        Future { [weak self] promise in
+            self?.purchaseGifticon(itemid: itemid) { result in
+                switch result {
+                case let .success(result):
+                    promise(.success(result))
+                    
+                case let .failure(error):
+                    promise(.failure(.error(error)))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
 }
 
 extension PointShopService {
@@ -116,7 +131,6 @@ extension PointShopService {
                        encoding: URLEncoding.queryString,
                        headers: ["Content-Type" : "application/json"])
             .responseDecodable(of: PointShopGifticon.self) { [weak self] response in
-                debugPrint(response)
                 guard case .success(let data) = response.result
                 else {
                     return completion(.failure(PointShopError.FailedfetchGifticon))
@@ -150,7 +164,6 @@ extension PointShopService {
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: Usergifticon.self) { [weak self] response in
-            debugPrint(response)
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(PointShopError.FailedfetchUserGifticon))
@@ -175,7 +188,6 @@ extension PointShopService {
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: Point.self) { [weak self] response in
-            debugPrint(response)
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(PointShopError.FailedFetchUserPoint))
@@ -198,12 +210,37 @@ extension PointShopService {
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: result.self) { [weak self] response in
-            debugPrint(response)
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(PointShopError.FailedfetchUserGifticon))
             }
             completion(.success(data.result))
+        }
+    }
+    
+    private func purchaseGifticon(itemid: Int, completion : @escaping (Result<Bool, Error>) -> Void) {
+        struct result: Decodable {
+            let result: String
+        }
+        
+        AF.request("https://pinforyou.online/pointShop/purchaseItem",
+                   method: .get,
+                   parameters: ["hashed_id" : "8a2d0e95dbfc6f17f11672392b870b632377ab3c49582e311913df8fbd3548f2",
+                                "item_id" : itemid],
+                   encoding: URLEncoding.queryString,
+                   headers: ["Content-Type" : "application/json"])
+        .responseDecodable(of: result.self) { [weak self] response in
+            debugPrint(response)
+            guard case .success(let data) = response.result
+            else {
+                return completion(.failure(PointShopError.FailedfetchUserGifticon))
+            }
+            if data.result == "true" {
+                completion(.success(true))
+            }
+            else {
+                completion(.success(false))
+            }
         }
     }
 }
@@ -222,6 +259,10 @@ class StubPointShopService : PointShopServiceType {
     }
     
     func deleteUserGifticon(itemid: Int) -> AnyPublisher<Int, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
+    func purchaseGifticon(itemid: Int) -> AnyPublisher<Bool, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
 }

@@ -11,7 +11,7 @@ struct PointShopGifticon : Decodable {
     
     var items: [Gifticon] = []
     
-    struct Gifticon: Decodable, Hashable {
+    struct Gifticon: Decodable, Hashable, Identifiable {
         let id : Int
         let giftName : String
         let place : String
