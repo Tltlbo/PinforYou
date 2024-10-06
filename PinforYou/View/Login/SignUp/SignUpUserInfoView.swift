@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SignUpUserInfoView: View {
+    
+    @EnvironmentObject var authViewModel : AuthenticationViewModel
+    
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {

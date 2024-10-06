@@ -19,7 +19,9 @@ struct AuthenticatedView: View {
             case .unauthenticated:
                 LoginIntroView()
                     .environmentObject(authViewModel)
-                
+            case .authenticating:
+                SignUpUserInfoView()
+                    .environmentObject(authViewModel)
             case .authenticated:
                 MainTabView()
                     .environmentObject(authViewModel)

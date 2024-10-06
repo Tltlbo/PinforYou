@@ -11,6 +11,7 @@ import AuthenticationServices
 
 enum AuthenticationState {
     case unauthenticated
+    case authenticating
     case authenticated
 }
 
@@ -24,7 +25,7 @@ class AuthenticationViewModel : ObservableObject {
         case logout
     }
     
-    @Published var authenticationState : AuthenticationState = .authenticated
+    @Published var authenticationState : AuthenticationState = .unauthenticated
     //임시로 authenticated로 변경
     
     @Published var isLoading : Bool = false
@@ -51,18 +52,24 @@ class AuthenticationViewModel : ObservableObject {
         case .googleLogin:
             isLoading = true
             container.services.authService.signInWithGoogle()
-//                .flatMap { user in
-//                    self.container.services.userService.addUser(user)
-//                }
                 .sink { [weak self] completion in
                     if case .failure = completion {
                         self?.isLoading = false
+                        print("false?")
                     }
                 } receiveValue: { [weak self] user in
-                    self?.isLoading = false
-                    self?.userId = user.id
-                    self?.authenticationState = .authenticated
-                    print("Google")
+                    print("false")
+                    if user.result {
+                        self?.isLoading = false
+                        self?.userId = user.hashedID
+                        self?.authenticationState = .authenticated
+                    }
+                    else {
+                        self?.isLoading = false
+                        self?.userId = user.hashedID
+                        self?.authenticationState = .authenticating
+                    }
+                    
                 }.store(in: &subscriptions)
             
             

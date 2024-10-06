@@ -21,7 +21,7 @@ enum AuthenticationError : Error {
 
 protocol AuthenticationServiceType {
     func checkAuthenticationState() /*-> String?*/
-    func signInWithGoogle() -> AnyPublisher<User, ServiceError>
+    func signInWithGoogle() -> AnyPublisher<(result: Bool, hashedID: String), ServiceError>
     func handleSignInWithAppleRequest(_ request: ASAuthorizationAppleIDRequest) -> String
     func handleSignInWithAppleCompletion(_ authorization: ASAuthorization, none: String) -> AnyPublisher<User, ServiceError>
     func logout() /*-> AnyPublisher<Void, ServiceError>*/
@@ -37,7 +37,7 @@ class AuthenticationService : AuthenticationServiceType {
 //        }
     }
     
-    func signInWithGoogle() -> AnyPublisher<User, ServiceError> {
+    func signInWithGoogle() -> AnyPublisher<(result: Bool, hashedID: String), ServiceError> {
         Future { [weak self] promise in
             self?.signInWithGoogle { result in
                 switch result {
@@ -90,7 +90,7 @@ class AuthenticationService : AuthenticationServiceType {
 }
 
 extension AuthenticationService {
-    private func signInWithGoogle(completion: @escaping (Result<User, Error>) -> Void) {
+    private func signInWithGoogle(completion: @escaping (Result<(result: Bool, hashedID: String), Error>) -> Void) {
         //구글 로그인이 진행 될 때 구글 로그인 창이 팝업 되어 나올 수 있게 하는 것
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let window = windowScene.windows.first,
@@ -115,26 +115,29 @@ extension AuthenticationService {
             
             let accessToken = user.accessToken.tokenString
             
-            print(user.profile?.email)
-            print(user.profile?.name)
-            
+            guard let email = user.profile?.email,
+                  let name = user.profile?.name else {return}
             //TODO: 서버에 던지기
             
             struct test : Decodable {
-                var ID : String
-                
-                enum CodingKeys : String, CodingKey {
-                    case ID = "userId"
-                }
+                let result: Bool
+                let hashedId: String
             }
             
-            AF.request("http://pinforyou-apiserver-main-env.eba-ixdz2ipf.ap-northeast-2.elasticbeanstalk.com/login/oauth2/code/google",
-                       method: .get,
-                       parameters: ["code" : accessToken],
+            AF.request("https://pinforyou.online/user/checkLogin",
+                       method: .post,
+                       parameters: ["username" : name,
+                                    "email" : email],
                        encoding: URLEncoding.queryString,
                        headers: ["Content-Type" : "application/json"])
             .responseDecodable(of:test.self) { response in
                 debugPrint(response)
+                guard case .success(let data) = response.result
+                else {
+                    return completion(.failure(FriendError.FailedfetchFriend))
+                }
+        
+                completion(.success((data.result, data.hashedId)))
             }
             
         }
@@ -272,7 +275,7 @@ class StubAuthenticationService : AuthenticationServiceType {
         //return nil
     }
     
-    func signInWithGoogle() -> AnyPublisher<User, ServiceError> {
+    func signInWithGoogle() -> AnyPublisher<(result: Bool, hashedID: String), ServiceError> {
         Empty().eraseToAnyPublisher()
     }
     

@@ -12,8 +12,6 @@ struct LoginIntroView: View {
     @State private var isPresentedLoginOptionView : Bool = false
     
     var body: some View {
-        
-        
         NavigationStack {
             VStack (alignment: .leading){
                 
@@ -51,7 +49,6 @@ struct LoginIntroView: View {
                 }
                 .padding(.leading, 20)
                 .padding(.bottom, 200)
-                
                 .navigationDestination(isPresented: $isPresentedLoginOptionView) {
                     LoginOptionView()
                 }

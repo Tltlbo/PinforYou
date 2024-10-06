@@ -34,7 +34,6 @@ struct LoginOptionView: View {
             
             VStack(spacing: 40) {
                 HStack(spacing: 90){
-                    
                     GoogleSignInButton(
                         scheme: .light,
                         style: .wide,
