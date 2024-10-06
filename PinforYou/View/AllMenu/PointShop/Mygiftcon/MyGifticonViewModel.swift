@@ -43,7 +43,7 @@ class MyGifticonViewModel : ObservableObject {
             container.services.pointShopService.deleteUserGifticon(itemid: itemid!)
                 .sink { [weak self] completion in
                     if case .failure = completion {
-                        //
+                        print("fail")
                     }
                 } receiveValue: { [weak self] gifticon in
                     self?.isDelete = true

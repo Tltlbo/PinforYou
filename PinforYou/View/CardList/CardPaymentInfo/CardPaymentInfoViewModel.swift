@@ -27,7 +27,7 @@ class CardPaymentInfoViewModel : ObservableObject {
     func send(action : Action, cardid : Int = 0) {
         switch action {
         case .getPaymentInfo:
-            container.services.userService.getPaymentInfo(cardid: cardid)
+            container.services.userService.getPaymentInfo(cardid: cardid, year: 2024, month: 10)
                 .sink { [weak self] completion in
                     if case .failure = completion {
                         //

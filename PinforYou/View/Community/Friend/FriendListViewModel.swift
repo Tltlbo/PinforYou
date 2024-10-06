@@ -40,9 +40,6 @@ class FriendListViewModel : ObservableObject {
                     }
                 } receiveValue: { [weak self] Friend in
                     self?.FriendList = Friend.friendList
-                    self?.FriendList.forEach({ friend in
-                        print(friend.name)
-                    })
                     self?.isFinished = true
                 }
                 .store(in: &subscriptions)

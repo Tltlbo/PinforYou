@@ -9,8 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct MyGifticonDetailView: View {
-    
-    @Binding var isScreenFullDetailView : Bool
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var mygifticonViewModel : MyGifticonViewModel
     let gifticon : Usergifticon.gifticon
     @State var isDelete: Bool = false
@@ -55,10 +54,10 @@ struct MyGifticonDetailView: View {
                 }
             }
             .navigationBarItems(leading: Button(action: {
-                isScreenFullDetailView = false
+                dismiss()
             }, label: {
                 Image(systemName: "arrow.backward")
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
             }), trailing: Button(action: {
                 isDelete = true
             }, label: {
@@ -73,9 +72,11 @@ struct MyGifticonDetailView: View {
                 }
             )
         }
-        .onChange(of: mygifticonViewModel.isDelete) { _ in
-            isScreenFullDetailView = false
-            mygifticonViewModel.isDelete = false
+        .onChange(of: mygifticonViewModel.isDelete) { isDelete in
+            if isDelete {
+                mygifticonViewModel.isDelete = false
+                dismiss()
+            }
         }
     }
 }

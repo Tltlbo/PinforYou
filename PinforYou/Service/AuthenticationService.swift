@@ -156,9 +156,6 @@ extension AuthenticationService {
         
         guard let data = String(data:authrizaitionCode, encoding: .utf8) else {return}
         
-        print("했음")
-        print(data)
-        
         struct test : Decodable {
             var ID : String
             

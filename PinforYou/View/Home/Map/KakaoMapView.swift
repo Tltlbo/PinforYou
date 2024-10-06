@@ -173,7 +173,6 @@ class KakaoMapCoordinator: NSObject, MapControllerDelegate, ObservableObject {
     }
     
     func addViewSucceeded(_ viewName: String, viewInfoName: String) {
-        print("OK")
         let view = controller?.getView("mapview")
         
         createLabelLayer()

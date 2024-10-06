@@ -205,7 +205,7 @@ extension PointShopService {
             }
         }
         AF.request("https://pinforyou.online/itemList/delete",
-                   method: .get,
+                   method: .delete,
                    parameters: ["item_list_id" : itemid],
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
@@ -220,11 +220,11 @@ extension PointShopService {
     
     private func purchaseGifticon(itemid: Int, completion : @escaping (Result<Bool, Error>) -> Void) {
         struct result: Decodable {
-            let result: String
+            let result: Bool
         }
         
         AF.request("https://pinforyou.online/pointShop/purchaseItem",
-                   method: .get,
+                   method: .post,
                    parameters: ["hashed_id" : "8a2d0e95dbfc6f17f11672392b870b632377ab3c49582e311913df8fbd3548f2",
                                 "item_id" : itemid],
                    encoding: URLEncoding.queryString,
@@ -235,12 +235,7 @@ extension PointShopService {
             else {
                 return completion(.failure(PointShopError.FailedfetchUserGifticon))
             }
-            if data.result == "true" {
-                completion(.success(true))
-            }
-            else {
-                completion(.success(false))
-            }
+            completion(.success(data.result))
         }
     }
 }

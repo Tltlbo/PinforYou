@@ -11,7 +11,7 @@ import Alamofire
 
 protocol UserServiceType {
     func getCardInfo() -> AnyPublisher<CardInfo, ServiceError>
-    func getPaymentInfo(cardid : Int) -> AnyPublisher<PaymentInfo, ServiceError>
+    func getPaymentInfo(cardid : Int, year: Int, month: Int) -> AnyPublisher<PaymentInfo, ServiceError>
     func getRecommendCardInfo(userid : Int) -> AnyPublisher<RecommendCardInfo, ServiceError>
     func cardValidation(cardNum: String) -> AnyPublisher<ValidityCard, ServiceError>
     func cardAppend(userid: Int, cardNum:String, cardName: String) -> AnyPublisher<Bool, ServiceError>
@@ -35,9 +35,9 @@ class UserService : UserServiceType {
         }.eraseToAnyPublisher()
     }
     
-    func getPaymentInfo(cardid : Int) -> AnyPublisher<PaymentInfo, ServiceError> {
+    func getPaymentInfo(cardid: Int, year: Int, month: Int) -> AnyPublisher<PaymentInfo, ServiceError> {
         Future { [weak self] promise in
-            self?.getPaymentInfo(cardid: cardid) { result in
+            self?.getPaymentInfo(cardid: cardid, year: year, month: month) { result in
                 switch result {
                 case let .success(PaymentInfo):
                     promise(.success(PaymentInfo))
@@ -101,15 +101,17 @@ extension UserService {
         }
     }
     
-    private func getPaymentInfo(cardid: Int, completion: @escaping (Result<PaymentInfo, Error>) -> Void) {
+    private func getPaymentInfo(cardid: Int, year: Int, month: Int, completion: @escaping (Result<PaymentInfo, Error>) -> Void) {
         AF.request("https://pinforyou.online/paymentHistory",
                    method: .get,
                    parameters: ["user_id" : 1,
-                                "card_id" : cardid],
+                                "card_id" : cardid,
+                                "year" : 2024,
+                                "month" : 7],
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: PaymentInfo.self) { [weak self] response in
-            
+            debugPrint(response)
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(LocationError.APICallFailed))
@@ -160,7 +162,7 @@ class StubUserService : UserServiceType {
         Empty().eraseToAnyPublisher()
     }
     
-    func getPaymentInfo(cardid : Int) -> AnyPublisher<PaymentInfo, ServiceError> {
+    func getPaymentInfo(cardid: Int, year: Int, month: Int) -> AnyPublisher<PaymentInfo, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
     

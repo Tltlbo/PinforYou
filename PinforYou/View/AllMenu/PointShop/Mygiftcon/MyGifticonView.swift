@@ -13,7 +13,7 @@ struct MyGifticonView: View {
     @StateObject var mygifticonViewModel : MyGifticonViewModel
     
     var body: some View {
-    
+        
         NavigationStack {
             ZStack {
                 Color("BackgroundColor")
@@ -23,17 +23,18 @@ struct MyGifticonView: View {
                     ScrollView(.vertical) {
                         VStack {
                             ForEach(mygifticonViewModel.gifticonList, id: \.self) { gifticon in
-                        
+                                
                                 Button {
                                     selectedGifticon = gifticon
                                 } label: {
                                     MygifticonCell(gifticon: gifticon)
                                 }
                                 .fullScreenCover(item: $selectedGifticon) { gifticon in
-                                    MyGifticonDetailView(isScreenFullDetailView: $isScreenFullDetailView, gifticon: gifticon)
+                                    MyGifticonDetailView(gifticon: gifticon)
                                         .environmentObject(mygifticonViewModel)
+                                    
                                 }
-
+                                
                             }
                         }
                     }
