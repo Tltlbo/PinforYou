@@ -35,6 +35,7 @@
 		4E28388A2C5FA15C0037AE55 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2838892C5FA15C0037AE55 /* Friend.swift */; };
 		4E28388C2C5FA5B40037AE55 /* FriendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E28388B2C5FA5B40037AE55 /* FriendService.swift */; };
 		4E28388E2C5FA9D10037AE55 /* FriendListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E28388D2C5FA9D10037AE55 /* FriendListViewModel.swift */; };
+		4E3E98F62CBBB39100743FBD /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3E98F52CBBB39100743FBD /* SignupViewModel.swift */; };
 		4E6FB33D2C172DB700AC1B25 /* MeetingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB33C2C172DB700AC1B25 /* MeetingCell.swift */; };
 		4E6FB3402C172FEF00AC1B25 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB33F2C172FEF00AC1B25 /* FriendCell.swift */; };
 		4E6FB3422C17332500AC1B25 /* MyCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6FB3412C17332500AC1B25 /* MyCardView.swift */; };
@@ -147,6 +148,7 @@
 		4E2838892C5FA15C0037AE55 /* Friend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		4E28388B2C5FA5B40037AE55 /* FriendService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendService.swift; sourceTree = "<group>"; };
 		4E28388D2C5FA9D10037AE55 /* FriendListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListViewModel.swift; sourceTree = "<group>"; };
+		4E3E98F52CBBB39100743FBD /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		4E6FB33C2C172DB700AC1B25 /* MeetingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCell.swift; sourceTree = "<group>"; };
 		4E6FB33F2C172FEF00AC1B25 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		4E6FB3412C17332500AC1B25 /* MyCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCardView.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 			children = (
 				4E24977F2C17E2C800851D9D /* SignUpEmailView.swift */,
 				4E2497812C17E30700851D9D /* SignUpUserInfoView.swift */,
+				4E3E98F52CBBB39100743FBD /* SignupViewModel.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -864,6 +867,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E3E98F62CBBB39100743FBD /* SignupViewModel.swift in Sources */,
 				4E2497912C1A70B700851D9D /* PointShopView.swift in Sources */,
 				4EA35AFB2BE326A40001508B /* DBError.swift in Sources */,
 				4EA35AF62BE3262D0001508B /* ServiceError.swift in Sources */,

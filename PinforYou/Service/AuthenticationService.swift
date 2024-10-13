@@ -153,10 +153,7 @@ extension AuthenticationService {
             return
         }
         
-        
-        
         guard let authrizaitionCode = appleIDCredential.authorizationCode else {return}
-        
         guard let data = String(data:authrizaitionCode, encoding: .utf8) else {return}
         
         struct test : Decodable {
@@ -176,9 +173,6 @@ extension AuthenticationService {
             debugPrint(response)
         }
         
-        
-        
-        
         guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
             completion(.failure(AuthenticationError.tokenError))
             return
@@ -197,74 +191,28 @@ extension AuthenticationService {
         else {
             completion(.failure(AuthenticationError.invaildated))
         }
-        
-        //TODO: 서버에 appleIDCredential.authorizationCode 넘기기
-        
-//        let credential = OAuthProvider.credential(
-//            withProviderID:"apple.com",
-//                                                   idToken: idTokenString,
-//                                                   rawNonce: nonce)
-//        
-//        authenticateUserWithFirebase(credential: credential) { result in
-//            switch result {
-//            case var .success(user):
-//                user.name = [appleIDCredential.fullName?.givenName,
-//                            appleIDCredential.fullName?.familyName]
-//                    .compactMap { $0 }
-//                    .joined(separator: " ")
-//                completion(.success(user))
-//            case let .failure(error):
-//                completion(.failure(error))
-//            }
-//        }
-        
     }
     
-    //MARK: 서버에 ios 인가코드 전송
-    private func authenticateUserWithApple(auth_code: String, completion: @escaping (Result<User, Error>) -> Void) {
-        /*Auth.auth().signIn(with: credential) { result, error in
-            if let error {
-                completion(.failure(error))
-                return
-            }
-            
-            guard let result else {
-                completion(.failure(AuthenticationError.invaildated))
-                return
-            }
-            
-            let firebaseUser = result.user
-            let user : User = .init(id: firebaseUser.uid,
-                                    name: firebaseUser.displayName ?? "",
-                                    phoneNumber: firebaseUser.phoneNumber,
-                                    profileURL: firebaseUser.photoURL?.absoluteString)
-            completion(.success(user))
-        }
-         */
+    private func signUp(userName: String, gender: Gender, phoneNumber: String, age: String, interest: String, hashedID: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         
-        
-    }
-    
-    private func authenticateUserWithFirebase(auth_code: String/*AuthCredential*/, completion: @escaping (Result<User, Error>) -> Void) {
-        /*Auth.auth().signIn(with: credential) { result, error in
-            if let error {
-                completion(.failure(error))
-                return
-            }
-            
-            guard let result else {
-                completion(.failure(AuthenticationError.invaildated))
-                return
-            }
-            
-            let firebaseUser = result.user
-            let user : User = .init(id: firebaseUser.uid,
-                                    name: firebaseUser.displayName ?? "",
-                                    phoneNumber: firebaseUser.phoneNumber,
-                                    profileURL: firebaseUser.photoURL?.absoluteString)
-            completion(.success(user))
+        struct Result: Decodable {
+            let social_join: String
+            let hashed_id: String
         }
-         */
+        
+        AF.request("https://pinforyou.online/user/checkLogin",
+                   method: .post,
+                   parameters: ["username" : userName,
+                                "sex" : gender.rawValue,
+                                "tel" : phoneNumber,
+                                "age" : Int(age)!,
+                                "interest" : interest,
+                                "hashed_id" : hashedID],
+                   encoding: URLEncoding.queryString,
+                   headers: ["Content-Type" : "application/x-www-form-urlencoded"])
+        .responseDecodable(of: Result.self) { response in
+            //보류
+        }
     }
 }
 
