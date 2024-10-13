@@ -20,6 +20,7 @@ class AuthenticationViewModel : ObservableObject {
     enum Action {
         case checkAuthenticationState
         case googleLogin
+        case kakaoLogin
         case appleLogin(ASAuthorizationAppleIDRequest)
         case appleLoginCompletion(Result<ASAuthorization, Error>)
         case logout
@@ -40,7 +41,7 @@ class AuthenticationViewModel : ObservableObject {
         self.container = container
     }
     
-    func send(action: Action) {
+    func send(action: Action, email: String? = nil, name: String? = nil) {
         switch action {
         case .checkAuthenticationState:
 //            if let userID = container.services.authService.checkAuthenticationState() {
@@ -48,6 +49,27 @@ class AuthenticationViewModel : ObservableObject {
 //                self.authenticationState = .authenticated
 //            }
             print("checkAuthenticationState")
+            
+        case .kakaoLogin:
+            isLoading = true
+            container.services.authService.signInWithKakao(email: email!, name: name!)
+                .sink { [weak self] completion in
+                    if case .failure = completion {
+                        self?.isLoading = false
+                    }
+                } receiveValue: { [weak self] user in
+                    if user.result {
+                        self?.isLoading = false
+                        self?.userId = user.hashedID
+                        self?.authenticationState = .authenticated
+                    }
+                    else {
+                        self?.isLoading = false
+                        self?.userId = user.hashedID
+                        self?.authenticationState = .authenticating
+                    }
+                    
+                }.store(in: &subscriptions)
             
         case .googleLogin:
             isLoading = true

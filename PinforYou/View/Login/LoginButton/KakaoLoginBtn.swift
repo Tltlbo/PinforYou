@@ -21,7 +21,6 @@ struct KakaoLoginBtn: View {
                     if let error = error {
                         print(error)
                     }
-                    
                     if let oauthToken = oauthToken {
                         
                         //TODO: 소셜 로그인(회원가입 API Call)
@@ -32,10 +31,9 @@ struct KakaoLoginBtn: View {
                             }
                             else {
                                 print("me() success.")
-                                
                                 //do something
                                 if let user = user {
-                                    authenticationViewModel.authenticationState = .authenticated
+                                    authenticationViewModel.send(action: .kakaoLogin, email: user.kakaoAccount?.email, name: user.kakaoAccount?.profile?.nickname)
                                 }
                                 
                             }
@@ -48,9 +46,20 @@ struct KakaoLoginBtn: View {
                         print(error)
                     }
                     if let oauthToken = oauthToken {
-                        print("kakao success")
-                        authenticationViewModel.authenticationState = .authenticated
-                        //TODO: 소셜 로그인(회원가입 API Call)
+                        UserApi.shared.me() {(user, error) in
+                            if let error = error {
+                                print(error)
+                            }
+                            else {
+                                print("me() success.")
+                                
+                                //do something
+                                if let user = user {
+                                    authenticationViewModel.send(action: .kakaoLogin, email: user.kakaoAccount?.email, name: user.kakaoAccount?.name)
+                                }
+                                
+                            }
+                        }
                     }
                 }
             }

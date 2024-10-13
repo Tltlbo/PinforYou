@@ -48,7 +48,7 @@ struct SignUpUserInfoView: View {
                     
                     VStack(alignment: .leading) {
                         Text("휴대폰 번호(-를 제외한)")
-                        TextField("휴대폰 번호를 입력해주세요", text: $name)
+                        TextField("휴대폰 번호를 입력해주세요", text: $phoneNumber)
                             .autocorrectionDisabled(true)
                             .keyboardType(.numberPad)
                         Divider()
@@ -68,7 +68,7 @@ struct SignUpUserInfoView: View {
                     
                     VStack(alignment: .leading) {
                         Text("나이")
-                        TextField("나이를 입력해주세요", text: $name)
+                        TextField("나이를 입력해주세요", text: $age)
                             .autocorrectionDisabled(true)
                             .keyboardType(.numberPad)
                         Divider()

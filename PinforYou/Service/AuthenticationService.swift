@@ -22,6 +22,7 @@ enum AuthenticationError : Error {
 protocol AuthenticationServiceType {
     func checkAuthenticationState() /*-> String?*/
     func signInWithGoogle() -> AnyPublisher<(result: Bool, hashedID: String), ServiceError>
+    func signInWithKakao(email: String, name: String) -> AnyPublisher<(result: Bool, hashedID: String), ServiceError>
     func handleSignInWithAppleRequest(_ request: ASAuthorizationAppleIDRequest) -> String
     func handleSignInWithAppleCompletion(_ authorization: ASAuthorization, none: String) -> AnyPublisher<User, ServiceError>
     func logout() /*-> AnyPublisher<Void, ServiceError>*/
@@ -49,7 +50,20 @@ class AuthenticationService : AuthenticationServiceType {
                 }
             }
         }.eraseToAnyPublisher()
-        
+    }
+    
+    func signInWithKakao(email: String, name: String) -> AnyPublisher<(result: Bool, hashedID: String), ServiceError> {
+        Future { [weak self] promise in
+            self?.signInWithKakao(email: email, name: name) { result in
+                switch result {
+                case let .success(user):
+                    promise(.success(user))
+                    
+                case let .failure(error):
+                    promise(.failure(.error(error)))
+                }
+            }
+        }.eraseToAnyPublisher()
     }
     
     func handleSignInWithAppleRequest(_ request: ASAuthorizationAppleIDRequest) -> String {
@@ -139,9 +153,31 @@ extension AuthenticationService {
         
                 completion(.success((data.result, data.hashedId)))
             }
-            
         }
-         
+    }
+    
+    private func signInWithKakao(email: String, name: String, completion: @escaping (Result<(result: Bool, hashedID: String), Error>) -> Void) {
+        
+        struct test : Decodable {
+            let result: Bool
+            let hashedId: String
+        }
+        
+        AF.request("https://pinforyou.online/user/checkLogin",
+                   method: .post,
+                   parameters: ["username" : name,
+                                "email" : email],
+                   encoding: URLEncoding.queryString,
+                   headers: ["Content-Type" : "application/json"])
+        .responseDecodable(of:test.self) { response in
+            debugPrint(response)
+            guard case .success(let data) = response.result
+            else {
+                return completion(.failure(FriendError.FailedfetchFriend))
+            }
+    
+            completion(.success((data.result, data.hashedId)))
+        }
     }
     
     private func handleSignInWithAppleCompletion(_ authorization: ASAuthorization,
@@ -157,17 +193,19 @@ extension AuthenticationService {
         guard let data = String(data:authrizaitionCode, encoding: .utf8) else {return}
         
         struct test : Decodable {
-            var ID : String
-            
+            let hashed_ID: String
+            let result: String
+        
             enum CodingKeys : String, CodingKey {
-                case ID = "userId"
+                case hashed_ID = "hashed_id"
+                case result = "result"
             }
         }
         
         AF.request("http://pinforyou-apiserver-main-env.eba-ixdz2ipf.ap-northeast-2.elasticbeanstalk.com/api/v1/apple/login",
                    method: .post,
                    parameters: ["authorizationCode" : data],
-                   encoding: URLEncoding.default,
+                   encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/x-www-form-urlencoded"])
         .responseDecodable(of:test.self) { response in
             debugPrint(response)
@@ -224,6 +262,10 @@ class StubAuthenticationService : AuthenticationServiceType {
     }
     
     func signInWithGoogle() -> AnyPublisher<(result: Bool, hashedID: String), ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
+    func signInWithKakao(email: String, name: String) -> AnyPublisher<(result: Bool, hashedID: String), ServiceError> {
         Empty().eraseToAnyPublisher()
     }
     
