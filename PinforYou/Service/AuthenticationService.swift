@@ -24,7 +24,8 @@ protocol AuthenticationServiceType {
     func signInWithGoogle() -> AnyPublisher<(result: Bool, hashedID: String), ServiceError>
     func signInWithKakao(email: String, name: String) -> AnyPublisher<(result: Bool, hashedID: String), ServiceError>
     func handleSignInWithAppleRequest(_ request: ASAuthorizationAppleIDRequest) -> String
-    func handleSignInWithAppleCompletion(_ authorization: ASAuthorization, none: String) -> AnyPublisher<User, ServiceError>
+    func handleSignInWithAppleCompletion(_ authorization: ASAuthorization, none: String) -> AnyPublisher<(result: Bool, hashedID: String), ServiceError>
+    func requestVerifyEmail(email: String) -> AnyPublisher<Bool, ServiceError>
     func logout() /*-> AnyPublisher<Void, ServiceError>*/
 }
 
@@ -73,7 +74,7 @@ class AuthenticationService : AuthenticationServiceType {
         return nonce
     }
     
-    func handleSignInWithAppleCompletion(_ authorization: ASAuthorization, none: String) -> AnyPublisher<User, ServiceError> {
+    func handleSignInWithAppleCompletion(_ authorization: ASAuthorization, none: String) -> AnyPublisher<(result: Bool, hashedID: String), ServiceError> {
         Future { [weak self] promise in
             self?.handleSignInWithAppleCompletion(authorization, nonce: none) { result in
                 switch result {
@@ -98,8 +99,20 @@ class AuthenticationService : AuthenticationServiceType {
             }
         }
         .eraseToAnyPublisher()*/
-        
-        
+    }
+    
+    func requestVerifyEmail(email: String) -> AnyPublisher<Bool, ServiceError> {
+        Future { [weak self] promise in
+            self?.requestVerifyEmail(email: email) { result in
+                switch result {
+                case let .success(result):
+                    promise(.success(result))
+                    
+                case let .failure(error):
+                    promise(.failure(.error(error)))
+                }
+            }
+        }.eraseToAnyPublisher()
     }
 }
 
@@ -182,7 +195,7 @@ extension AuthenticationService {
     
     private func handleSignInWithAppleCompletion(_ authorization: ASAuthorization,
                                                  nonce: String,
-                                                 completion: @escaping (Result<User, Error>) -> Void) {
+                                                 completion: @escaping (Result<(result: Bool, hashedID: String), Error>) -> Void) {
         guard let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential,
               let appleIDToken = appleIDCredential.identityToken else {
             completion(.failure(AuthenticationError.tokenError))
@@ -194,7 +207,7 @@ extension AuthenticationService {
         
         struct test : Decodable {
             let hashed_ID: String
-            let result: String
+            let result: Bool
         
             enum CodingKeys : String, CodingKey {
                 case hashed_ID = "hashed_id"
@@ -209,26 +222,15 @@ extension AuthenticationService {
                    headers: ["Content-Type" : "application/x-www-form-urlencoded"])
         .responseDecodable(of:test.self) { response in
             debugPrint(response)
+            guard case .success(let data) = response.result
+            else {
+                return completion(.failure(AuthenticationError.invaildated))
+            }
+    
+            completion(.success((data.result, data.hashed_ID)))
         }
         
-        guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-            completion(.failure(AuthenticationError.tokenError))
-            return
-        }
         
-        var check = true
-        var checkuser : User = .init(id: "hi", name: "SD")
-        
-        if check {
-            checkuser.name = [appleIDCredential.fullName?.givenName,
-                        appleIDCredential.fullName?.familyName]
-                .compactMap {$0}
-                .joined(separator: " ")
-            completion(.success(checkuser))
-        }
-        else {
-            completion(.failure(AuthenticationError.invaildated))
-        }
     }
     
     private func signUp(userName: String, gender: Gender, phoneNumber: String, age: String, interest: String, hashedID: String, completion: @escaping (Result<Bool, Error>) -> Void) {
@@ -252,6 +254,16 @@ extension AuthenticationService {
             //보류
         }
     }
+    
+    private func requestVerifyEmail(email: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        AF.request("https://pinforyou.online/emails/verification-requests",
+                   method: .post,
+                   parameters: ["email" : email],
+                   encoding: URLEncoding.queryString,
+                   headers: ["Content-Type" : "application/x-www-form-urlencoded"])
+        .responseDecodable(of: Bool.self) { response in
+        }
+    }
 }
 
 
@@ -272,12 +284,16 @@ class StubAuthenticationService : AuthenticationServiceType {
     func handleSignInWithAppleRequest(_ request: ASAuthorizationAppleIDRequest) -> String {
         return ""
     }
-    func handleSignInWithAppleCompletion(_ authorization: ASAuthorization, none: String) -> AnyPublisher<User, ServiceError> {
+    func handleSignInWithAppleCompletion(_ authorization: ASAuthorization, none: String) -> AnyPublisher<(result: Bool, hashedID: String), ServiceError> {
         return Empty().eraseToAnyPublisher()
     }
     
     func logout() /*-> AnyPublisher<Void, ServiceError>*/ {
         //return Empty().eraseToAnyPublisher()
+    }
+    
+    func requestVerifyEmail(email: String) -> AnyPublisher<Bool, ServiceError> {
+        return Empty().eraseToAnyPublisher()
     }
 }
 

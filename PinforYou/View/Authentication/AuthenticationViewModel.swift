@@ -112,9 +112,16 @@ class AuthenticationViewModel : ObservableObject {
                             self?.isLoading = false
                         }
                     } receiveValue: { [weak self] user in
-                        self?.isLoading = false
-                        self?.userId = user.id
-                        self?.authenticationState = .authenticated
+                        if user.result {
+                            self?.isLoading = false
+                            self?.userId = user.hashedID
+                            self?.authenticationState = .authenticated
+                        }
+                        else {
+                            self?.isLoading = false
+                            self?.userId = user.hashedID
+                            self?.authenticationState = .authenticating
+                        }
                     }.store(in: &subscriptions)
             } else if case let .failure(error) = result {
                 isLoading = false
