@@ -50,14 +50,18 @@ struct CardPaymentInfoView: View {
                         .frame(height: 1)
                         .foregroundColor(.gray)
                     
-                    
-                    ScrollView(.vertical) {
-                        VStack(spacing: 10) {
-                            ForEach(cardPaymentInfoViewModel.paymentInfo!.Payments, id: \.self) { info in
-                                PaymentInfoCell(Info: info)
+                    if let info = cardPaymentInfoViewModel.paymentInfo {
+                        ScrollView(.vertical) {
+                            VStack(spacing: 10) {
+                                ForEach(cardPaymentInfoViewModel.paymentInfo!.Payments, id: \.self) { info in
+                                    PaymentInfoCell(Info: info)
+                                }
                             }
-                            
                         }
+                    }
+                    
+                    else {
+                        Text("결제내역이 존재하지 않습니다.")
                     }
                     
                     Spacer()

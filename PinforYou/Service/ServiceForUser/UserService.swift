@@ -10,19 +10,19 @@ import Combine
 import Alamofire
 
 protocol UserServiceType {
-    func getCardInfo() -> AnyPublisher<CardInfo, ServiceError>
+    func getCardInfo(id: String) -> AnyPublisher<CardInfo, ServiceError>
     func getPaymentInfo(cardid : Int, year: Int, month: Int) -> AnyPublisher<PaymentInfo, ServiceError>
     func getRecommendCardInfo(userid : Int) -> AnyPublisher<RecommendCardInfo, ServiceError>
     func cardValidation(cardNum: String) -> AnyPublisher<ValidityCard, ServiceError>
-    func cardAppend(userid: Int, cardNum:String, cardName: String) -> AnyPublisher<Bool, ServiceError>
-    func cardDelete(userid: Int, cardid: Int) -> AnyPublisher<Bool, ServiceError>
+    func cardAppend(userid: String, cardNum:String, cardName: String) -> AnyPublisher<Bool, ServiceError>
+    func cardDelete(userid: String, cardid: Int) -> AnyPublisher<Bool, ServiceError>
 }
 
 class UserService : UserServiceType {
     
-    func getCardInfo() -> AnyPublisher<CardInfo, ServiceError> {
+    func getCardInfo(id: String) -> AnyPublisher<CardInfo, ServiceError> {
         Future { [weak self] promise in
-            self?.getCardInfo { result in
+            self?.getCardInfo(id: id) { result in
                 switch result {
                 case let .success(CardInfo):
                     promise(.success(CardInfo))
@@ -84,14 +84,14 @@ class UserService : UserServiceType {
 
 extension UserService {
     
-    private func getCardInfo(completion: @escaping (Result<CardInfo, Error>) -> Void) {
+    private func getCardInfo(id: String, completion: @escaping (Result<CardInfo, Error>) -> Void) {
         AF.request("https://pinforyou.online/userCard",
                    method: .get,
-                   parameters: ["user_id" : 1],
+                   parameters: ["hashed_id" : id],
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: CardInfo.self) { [weak self] response in
-            
+            debugPrint(response)
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(LocationError.APICallFailed))
@@ -158,7 +158,7 @@ extension UserService {
 
 class StubUserService : UserServiceType {
     
-    func getCardInfo() -> AnyPublisher<CardInfo, ServiceError> {
+    func getCardInfo(id: String) -> AnyPublisher<CardInfo, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
     

@@ -9,7 +9,7 @@ import Foundation
 
 struct PaymentInfo : Decodable {
     
-    var userID : Int
+    var userID : String
     var cardID : Int
     var cardName : String
     var cardNum : String
