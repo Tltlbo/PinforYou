@@ -33,7 +33,7 @@ struct PaymentInfo : Decodable {
     }
     
     enum CodingKeys : String, CodingKey {
-        case userID = "user_id"
+        case userID = "hashed_id"
         case cardID = "card_id"
         case cardName = "card_name"
         case cardNum = "card_num"

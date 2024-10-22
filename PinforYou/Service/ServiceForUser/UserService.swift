@@ -11,7 +11,7 @@ import Alamofire
 
 protocol UserServiceType {
     func getCardInfo(id: String) -> AnyPublisher<CardInfo, ServiceError>
-    func getPaymentInfo(cardid : Int, year: Int, month: Int) -> AnyPublisher<PaymentInfo, ServiceError>
+    func getPaymentInfo(userid: String, cardid : Int, year: Int, month: Int) -> AnyPublisher<PaymentInfo, ServiceError>
     func getRecommendCardInfo(userid : Int) -> AnyPublisher<RecommendCardInfo, ServiceError>
     func cardValidation(cardNum: String) -> AnyPublisher<ValidityCard, ServiceError>
     func cardAppend(userid: String, cardNum:String, cardName: String) -> AnyPublisher<Bool, ServiceError>
@@ -35,9 +35,9 @@ class UserService : UserServiceType {
         }.eraseToAnyPublisher()
     }
     
-    func getPaymentInfo(cardid: Int, year: Int, month: Int) -> AnyPublisher<PaymentInfo, ServiceError> {
+    func getPaymentInfo(userid: String, cardid: Int, year: Int, month: Int) -> AnyPublisher<PaymentInfo, ServiceError> {
         Future { [weak self] promise in
-            self?.getPaymentInfo(cardid: cardid, year: year, month: month) { result in
+            self?.getPaymentInfo(userid: userid, cardid: cardid, year: year, month: month) { result in
                 switch result {
                 case let .success(PaymentInfo):
                     promise(.success(PaymentInfo))
@@ -101,10 +101,10 @@ extension UserService {
         }
     }
     
-    private func getPaymentInfo(cardid: Int, year: Int, month: Int, completion: @escaping (Result<PaymentInfo, Error>) -> Void) {
+    private func getPaymentInfo(userid: String, cardid: Int, year: Int, month: Int, completion: @escaping (Result<PaymentInfo, Error>) -> Void) {
         AF.request("https://pinforyou.online/paymentHistory",
                    method: .get,
-                   parameters: ["user_id" : 1,
+                   parameters: ["hashed_id" : userid,
                                 "card_id" : cardid,
                                 "year" : 2024,
                                 "month" : 7],
@@ -157,12 +157,11 @@ extension UserService {
 }
 
 class StubUserService : UserServiceType {
-    
     func getCardInfo(id: String) -> AnyPublisher<CardInfo, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
     
-    func getPaymentInfo(cardid: Int, year: Int, month: Int) -> AnyPublisher<PaymentInfo, ServiceError> {
+    func getPaymentInfo(userid: String, cardid: Int, year: Int, month: Int) -> AnyPublisher<PaymentInfo, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
     
