@@ -14,15 +14,15 @@ enum FriendError : Error {
 }
 
 protocol FriendServiceType {
-    func getFriendInfo(userid : Int) -> AnyPublisher<Friends, ServiceError>
-    func getRequestFriendInfo(userid : Int) -> AnyPublisher<RequestFriend, ServiceError>
-    func deleteFriendInfo(userid: Int, friendid: Int) -> AnyPublisher<Bool, ServiceError>
-    func acceptRequestFriend(userid: Int, friendid: Int) -> AnyPublisher<Bool, ServiceError>
+    func getFriendInfo(userid : String) -> AnyPublisher<Friends, ServiceError>
+    func getRequestFriendInfo(userid : String) -> AnyPublisher<RequestFriend, ServiceError>
+    func deleteFriendInfo(userid: String, friendid: Int) -> AnyPublisher<Bool, ServiceError>
+    func acceptRequestFriend(userid: String, friendid: Int) -> AnyPublisher<Bool, ServiceError>
 }
 
 class FriendService : FriendServiceType {
     
-    func getFriendInfo(userid : Int) -> AnyPublisher<Friends, ServiceError> {
+    func getFriendInfo(userid : String) -> AnyPublisher<Friends, ServiceError> {
         Future { [weak self] promise in
             self?.getFriendInfo(userid: userid) { result in
                 switch result {
@@ -36,7 +36,7 @@ class FriendService : FriendServiceType {
         }.eraseToAnyPublisher()
     }
     
-    func getRequestFriendInfo(userid : Int) -> AnyPublisher<RequestFriend, ServiceError> {
+    func getRequestFriendInfo(userid : String) -> AnyPublisher<RequestFriend, ServiceError> {
         Future { [weak self] promise in
             self?.getRequestFriendInfo(userid: userid) { result in
                 switch result {
@@ -50,7 +50,7 @@ class FriendService : FriendServiceType {
         }.eraseToAnyPublisher()
     }
     
-    func deleteFriendInfo(userid : Int, friendid: Int) -> AnyPublisher<Bool, ServiceError> {
+    func deleteFriendInfo(userid : String, friendid: Int) -> AnyPublisher<Bool, ServiceError> {
         Future { [weak self] promise in
             self?.deleteFriendInfo(userid: userid, friendid: friendid) { result in
                 switch result {
@@ -64,7 +64,7 @@ class FriendService : FriendServiceType {
         }.eraseToAnyPublisher()
     }
     
-    func acceptRequestFriend(userid: Int, friendid: Int) -> AnyPublisher<Bool, ServiceError> {
+    func acceptRequestFriend(userid: String, friendid: Int) -> AnyPublisher<Bool, ServiceError> {
         Future { [weak self] promise in
             self?.acceptRequestFriend(userid: userid, friendid: friendid) { result in
                 switch result {
@@ -81,7 +81,7 @@ class FriendService : FriendServiceType {
 
 extension FriendService {
     
-    private func getFriendInfo(userid : Int, completion: @escaping (Result<Friends, Error>) -> Void)  {
+    private func getFriendInfo(userid : String, completion: @escaping (Result<Friends, Error>) -> Void)  {
         AF.request("https://pinforyou.online/friend",
                    method: .get,
                    parameters: ["user_id" : userid],
@@ -99,7 +99,7 @@ extension FriendService {
         }
     }
     
-    private func getRequestFriendInfo(userid : Int, completion: @escaping (Result<RequestFriend, Error>) -> Void) {
+    private func getRequestFriendInfo(userid : String, completion: @escaping (Result<RequestFriend, Error>) -> Void) {
         AF.request("https://pinforyou.online/friend/request",
                    method: .get,
                    parameters: ["user_id" : userid],
@@ -115,7 +115,7 @@ extension FriendService {
         }
     }
     
-    private func deleteFriendInfo(userid: Int, friendid: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
+    private func deleteFriendInfo(userid: String, friendid: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
         
         struct Result: Decodable {
             let result: Bool
@@ -143,7 +143,7 @@ extension FriendService {
         }
     }
     
-    private func acceptRequestFriend(userid: Int, friendid: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
+    private func acceptRequestFriend(userid: String, friendid: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
         
         struct Result: Decodable {
             let result: Bool
@@ -173,19 +173,19 @@ extension FriendService {
 }
 
 class StubFriendService : FriendServiceType {
-    func getRequestFriendInfo(userid: Int) -> AnyPublisher<RequestFriend, ServiceError> {
+    func getRequestFriendInfo(userid: String) -> AnyPublisher<RequestFriend, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
     
-    func getFriendInfo(userid: Int) -> AnyPublisher<Friends, ServiceError> {
+    func getFriendInfo(userid: String) -> AnyPublisher<Friends, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
     
-    func deleteFriendInfo(userid: Int, friendid: Int) -> AnyPublisher<Bool, ServiceError> {
+    func deleteFriendInfo(userid: String, friendid: Int) -> AnyPublisher<Bool, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
     
-    func acceptRequestFriend(userid: Int, friendid: Int) -> AnyPublisher<Bool, ServiceError> {
+    func acceptRequestFriend(userid: String, friendid: Int) -> AnyPublisher<Bool, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
 }

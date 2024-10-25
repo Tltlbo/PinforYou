@@ -26,10 +26,11 @@ class CardListViewModel : ObservableObject {
         self.container = container
     }
     
-    func send(action : Action, userid: String = "8a2d0e95dbfc6f17f11672392b870b632377ab3c49582e311913df8fbd3548f2", cardid: Int = 1) {
+    func send(action : Action, cardid: Int = 1) {
+        guard let userid = UserID.shared.hashedID else {return}
         switch action {
         case .getCardInfo:
-            container.services.userService.getCardInfo(id: "8a2d0e95dbfc6f17f11672392b870b632377ab3c49582e311913df8fbd3548f2")
+            container.services.userService.getCardInfo(id: userid)
                 .sink { [weak self] completion in
                     if case .failure = completion {
                         //

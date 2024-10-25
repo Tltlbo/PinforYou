@@ -59,7 +59,7 @@ struct FriendModifyView : View {
             }
         }
         .onAppear {
-            friendListViewModel.send(action: .getRequestFriendInfo, userid: 1, friendid: nil)
+            friendListViewModel.send(action: .getRequestFriendInfo, friendid: nil)
         }
             
             
@@ -76,7 +76,7 @@ struct RequestFriendGridView : View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns) {
-                ForEach(friendListViewModel.RequestFriendList, id: \.self) { friend in
+                ForEach(friendListViewModel.RequestFriendList, id: \.friendID) { friend in
                     
                     Button {
                         isAccept = true
@@ -90,7 +90,7 @@ struct RequestFriendGridView : View {
                     }
                     .alert(isPresented: $isAccept) {
                         Alert(title: Text("수락하시겠습니까?"), message: Text("\(friend.name)이 추가됩니다."), primaryButton: .destructive(Text("추가"), action: {
-                            friendListViewModel.send(action: .acceptRequestFriend, userid: 1, friendid: friend.friendID)
+                            friendListViewModel.send(action: .acceptRequestFriend, friendid: friend.friendID)
                             isAccept = false
                         }), secondaryButton: .cancel(Text("취소"), action: {
                             isAccept = false

@@ -30,7 +30,8 @@ class FriendListViewModel : ObservableObject {
         self.container = container
     }
     
-    func send(action : Action, userid: Int, friendid: Int?) {
+    func send(action : Action, friendid: Int?) {
+        guard let userid = UserID.shared.hashedID else {return}
         switch action {
         case .getFriendInfo:
             container.services.friendService.getFriendInfo(userid: userid)

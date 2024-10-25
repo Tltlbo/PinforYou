@@ -80,19 +80,17 @@ struct MyFriendGridView : View {
                     }
                     .alert(item: $deletedFriend) { friend in
                         Alert(title: Text("삭제하시겠습니까?"), message: Text("\(friend.name)이 삭제됩니다."), primaryButton: .destructive(Text("삭제"), action: {
-                            friendListViewModel.send(action: .deleteFriendInfo, userid: 1, friendid: friend.friendID)
+                            friendListViewModel.send(action: .deleteFriendInfo, friendid: friend.friendID)
                             deletedFriend = nil
                         }), secondaryButton: .cancel(Text("취소"), action: {
                             deletedFriend = nil
                         }))
                     }
-
-
                 }
             }
         }
         .onAppear {
-            friendListViewModel.send(action: .getFriendInfo, userid: 1, friendid: nil)
+            friendListViewModel.send(action: .getFriendInfo, friendid: nil)
         }
     }
 }

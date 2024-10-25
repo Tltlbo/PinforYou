@@ -86,6 +86,7 @@
 		4EA35B082BE4CAC40001508B /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35B072BE4CAC40001508B /* Key.swift */; };
 		4EA35B1D2BE6302F0001508B /* LoginIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA35B1C2BE6302F0001508B /* LoginIntroView.swift */; };
 		4EA96C682CC574C20041CE94 /* SignUpEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA96C672CC574C20041CE94 /* SignUpEmailViewModel.swift */; };
+		4EA96C6A2CCB8C8E0041CE94 /* UserID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA96C692CCB8C8E0041CE94 /* UserID.swift */; };
 		4EB83EB32C79D2EC0046E308 /* CardInsertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB83EB22C79D2EC0046E308 /* CardInsertViewModel.swift */; };
 		4EB83EB62C7A26690046E308 /* UserCardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB83EB52C7A26690046E308 /* UserCardService.swift */; };
 		4EC90CF52C080CA600A0B5B5 /* CardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC90CF42C080CA600A0B5B5 /* CardListView.swift */; };
@@ -203,6 +204,7 @@
 		4EA35B072BE4CAC40001508B /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		4EA35B1C2BE6302F0001508B /* LoginIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginIntroView.swift; sourceTree = "<group>"; };
 		4EA96C672CC574C20041CE94 /* SignUpEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpEmailViewModel.swift; sourceTree = "<group>"; };
+		4EA96C692CCB8C8E0041CE94 /* UserID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserID.swift; sourceTree = "<group>"; };
 		4EB83EB22C79D2EC0046E308 /* CardInsertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInsertViewModel.swift; sourceTree = "<group>"; };
 		4EB83EB52C7A26690046E308 /* UserCardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardService.swift; sourceTree = "<group>"; };
 		4EC90CF42C080CA600A0B5B5 /* CardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListView.swift; sourceTree = "<group>"; };
@@ -484,6 +486,7 @@
 				4E2838832C5F47690037AE55 /* PointShopService.swift */,
 				4E28388B2C5FA5B40037AE55 /* FriendService.swift */,
 				4E7CDB7E2C69FE5D0023D12C /* EventService.swift */,
+				4EA96C692CCB8C8E0041CE94 /* UserID.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -937,6 +940,7 @@
 				4ECD55F42C8DF75900F09157 /* RouletteView.swift in Sources */,
 				4E24979B2C1BC2D100851D9D /* PayService.swift in Sources */,
 				4EA35AF82BE326480001508B /* UserService.swift in Sources */,
+				4EA96C6A2CCB8C8E0041CE94 /* UserID.swift in Sources */,
 				4E8243CB2C566DF600A40BFF /* CardInsertView.swift in Sources */,
 				4E24979D2C1BC7A500851D9D /* PayCard.swift in Sources */,
 				4E2497822C17E30700851D9D /* SignUpUserInfoView.swift in Sources */,
