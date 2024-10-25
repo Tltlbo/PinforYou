@@ -19,6 +19,17 @@ struct SignUpUserInfoView: View {
     @State var phoneNumber: String = ""
     @State var gender: Gender = .male
     @State var age: String = ""
+    let gridItems = Array(repeating: GridItem(.flexible()), count: 3)
+    let categoryList: [String] = [
+        "conveniencestore",
+        "supermarket",
+        "restaurant",
+        "cafe",
+        "hospital",
+        "pharmacy", 
+        "other"
+    ]
+    @State private var selectedIndex: Int? = nil
     
     var body: some View {
         NavigationStack {
@@ -75,10 +86,24 @@ struct SignUpUserInfoView: View {
                     }
                     .padding(.top, 52)
                     
+                    VStack {
+                                LazyVGrid(columns: gridItems) {
+                                    ForEach(0..<7) { index in
+                                        GridCellView(isSelected: selectedIndex == index)
+                                            .onTapGesture {
+                                                selectCell(at: index)
+                                            }
+                                    }
+                                }
+                                .padding()
+                            }
+                    
                     Spacer()
                     
                     Button {
-                        //
+                        if let index = selectedIndex {
+                            authViewModel.send(action: .signUp, userName: name, gender: gender, phoneNumber: phoneNumber, age: age, interest: categoryList[index])
+                        }
                     } label: {
                         HStack(alignment: .center) {
                             Text("완료")
@@ -100,6 +125,29 @@ struct SignUpUserInfoView: View {
                 }
             }
         }
+    }
+    
+    private func selectCell(at index: Int) {
+            if selectedIndex == index {
+                selectedIndex = nil
+            } else {
+                selectedIndex = index
+            }
+        }
+}
+
+struct GridCellView: View {
+    var isSelected: Bool
+    
+    var body: some View {
+        Rectangle()
+            .opacity(isSelected ? 0.0 : 5.0)
+            .frame(width: 110, height: 110)
+            .cornerRadius(10)
+            .overlay(
+                isSelected ? Image(systemName: "checkmark.seal.fill") : Image(systemName: ""),
+                alignment: .center
+            )
     }
 }
 

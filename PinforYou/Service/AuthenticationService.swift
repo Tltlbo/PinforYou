@@ -27,6 +27,7 @@ protocol AuthenticationServiceType {
     func handleSignInWithAppleCompletion(_ authorization: ASAuthorization, none: String) -> AnyPublisher<(result: Bool, hashedID: String), ServiceError>
     func requestVerifyEmail(email: String) -> AnyPublisher<Bool, ServiceError>
     func logout() /*-> AnyPublisher<Void, ServiceError>*/
+    func signUp(userName: String, gender: Gender, phoneNumber: String, age: String, interest: String, hashedID: String) -> AnyPublisher<Bool, ServiceError>
 }
 
 class AuthenticationService : AuthenticationServiceType {
@@ -114,6 +115,21 @@ class AuthenticationService : AuthenticationServiceType {
             }
         }.eraseToAnyPublisher()
     }
+    
+    func signUp(userName: String, gender: Gender, phoneNumber: String, age: String, interest: String, hashedID: String) -> AnyPublisher<Bool, ServiceError> {
+        Future { [weak self] promise in
+            self?.signUp(userName: userName, gender: gender, phoneNumber: phoneNumber, age: age, interest: interest, hashedID: hashedID) { result in
+                switch result {
+                case let .success(result):
+                    promise(.success(result))
+                    
+                case let .failure(error):
+                    promise(.failure(.error(error)))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
 }
 
 extension AuthenticationService {
@@ -236,11 +252,10 @@ extension AuthenticationService {
     private func signUp(userName: String, gender: Gender, phoneNumber: String, age: String, interest: String, hashedID: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         
         struct Result: Decodable {
-            let social_join: String
-            let hashed_id: String
+            let result: Bool
         }
         
-        AF.request("https://pinforyou.online/user/checkLogin",
+        AF.request("https://pinforyou.online/social/join",
                    method: .post,
                    parameters: ["username" : userName,
                                 "sex" : gender.rawValue,
@@ -249,9 +264,15 @@ extension AuthenticationService {
                                 "interest" : interest,
                                 "hashed_id" : hashedID],
                    encoding: URLEncoding.queryString,
-                   headers: ["Content-Type" : "application/x-www-form-urlencoded"])
+                   headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: Result.self) { response in
-            //보류
+            debugPrint(response)
+            guard case .success(let data) = response.result
+            else {
+                return completion(.failure(AuthenticationError.invaildated))
+            }
+    
+            completion(.success((data.result)))
         }
     }
     
@@ -268,7 +289,6 @@ extension AuthenticationService {
 
 
 class StubAuthenticationService : AuthenticationServiceType {
-    
     func checkAuthenticationState() /*-> String?*/ {
         //return nil
     }
@@ -293,6 +313,10 @@ class StubAuthenticationService : AuthenticationServiceType {
     }
     
     func requestVerifyEmail(email: String) -> AnyPublisher<Bool, ServiceError> {
+        return Empty().eraseToAnyPublisher()
+    }
+    
+    func signUp(userName: String, gender: Gender, phoneNumber: String, age: String, interest: String, hashedID: String) -> AnyPublisher<Bool, ServiceError> {
         return Empty().eraseToAnyPublisher()
     }
 }

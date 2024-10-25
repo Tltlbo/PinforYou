@@ -23,10 +23,11 @@ class AuthenticationViewModel : ObservableObject {
         case kakaoLogin
         case appleLogin(ASAuthorizationAppleIDRequest)
         case appleLoginCompletion(Result<ASAuthorization, Error>)
+        case signUp
         case logout
     }
     
-    @Published var authenticationState : AuthenticationState = .authenticated
+    @Published var authenticationState : AuthenticationState = .unauthenticated
     //임시로 authenticated로 변경
     
     @Published var isLoading : Bool = false
@@ -41,14 +42,13 @@ class AuthenticationViewModel : ObservableObject {
         self.container = container
     }
     
-    func send(action: Action, email: String? = nil, name: String? = nil) {
+    func send(action: Action, email: String? = nil, name: String? = nil, userName: String? = nil, gender: Gender? = nil, phoneNumber: String? = nil, age: String? = nil, interest: String? = nil) {
         switch action {
         case .checkAuthenticationState:
-//            if let userID = container.services.authService.checkAuthenticationState() {
-//                self.userId = userID
-//                self.authenticationState = .authenticated
-//            }
-            print("checkAuthenticationState")
+            if let id = UserDefaults.standard.string(forKey: "hashedID") {
+                self.userId = id
+                self.authenticationState = .authenticated
+            }
             
         case .kakaoLogin:
             isLoading = true
@@ -104,9 +104,6 @@ class AuthenticationViewModel : ObservableObject {
                 guard let nonce = currentNonce else {return}
                 
                 container.services.authService.handleSignInWithAppleCompletion(authorizaition, none: nonce)
-//                    .flatMap { user in
-//                        self.container.services.userService.addUser(user)
-//                    }
                     .sink { [weak self] completion in
                         if case .failure = completion {
                             self?.isLoading = false
@@ -129,14 +126,31 @@ class AuthenticationViewModel : ObservableObject {
             }
             
         case .logout:
-//            container.services.authService.logout().sink { completion in
-//                
-//            } receiveValue: { [weak self] _ in
-//                self?.authenticationState = .unauthenticated
-//                self?.userId = nil
-//            }.store(in: &subscriptions)
+            //            container.services.authService.logout().sink { completion in
+            //
+            //            } receiveValue: { [weak self] _ in
+            //                self?.authenticationState = .unauthenticated
+            //                self?.userId = nil
+            //            }.store(in: &subscriptions)
             print("logout")
-
+            
+        case .signUp:
+            container.services.authService.signUp(userName: userName!, gender: gender!, phoneNumber: phoneNumber!, age: age!, interest: interest!, hashedID: self.userId!)
+                .sink { [weak self] completion in
+                    if case .failure = completion {
+                        self?.isLoading = false
+                    }
+                } receiveValue: { [weak self] result in
+                    if result {
+                        //여기다가 아이디 저장
+                        UserDefaults.standard.set(self?.userId, forKey: "hashedID")
+                        self?.authenticationState = .authenticated
+                    }
+                    else {
+                        self?.userId = nil
+                        self?.authenticationState = .unauthenticated
+                    }
+                }.store(in: &subscriptions)
         }
     }
 }
