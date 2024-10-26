@@ -7,9 +7,15 @@
 
 import Foundation
 
+struct Challenges: Decodable {
+    var challenges: [Challenge] = []
+    
+    enum CodingKeys: String, CodingKey {
+        case challenges = "user_progress"
+    }
+}
+
 struct Challenge : Decodable, Hashable {
-    
-    
     let goal : Int
     let challengeID : Int
     let challengeName : String

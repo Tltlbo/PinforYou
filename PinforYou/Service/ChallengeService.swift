@@ -14,12 +14,12 @@ enum ChallengeError : Error {
 }
 
 protocol ChallengeServiceType {
-    func getChallengeInfo(userid : Int) -> AnyPublisher<[Challenge], ServiceError>
+    func getChallengeInfo(userid : String) -> AnyPublisher<Challenges, ServiceError>
 }
 
 class ChallengeService : ChallengeServiceType {
     
-    func getChallengeInfo(userid : Int = 1) -> AnyPublisher<[Challenge], ServiceError> {
+    func getChallengeInfo(userid : String) -> AnyPublisher<Challenges, ServiceError> {
         Future { [weak self] promise in
             self?.getChallengeInfo(userid: userid) { result in
                 switch result {
@@ -36,13 +36,13 @@ class ChallengeService : ChallengeServiceType {
 
 extension ChallengeService {
     
-    private func getChallengeInfo(userid: Int = 1, completion: @escaping (Result<[Challenge], Error>) -> Void) {
+    private func getChallengeInfo(userid: String, completion: @escaping (Result<Challenges, Error>) -> Void) {
         AF.request("https://pinforyou.online/Challenge/UserProgress",
                    method: .get,
-                   parameters: ["user_id" : 1],
+                   parameters: ["hashed_id" : userid],
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
-        .responseDecodable(of: [Challenge].self) { [weak self] response in
+        .responseDecodable(of: Challenges.self) { [weak self] response in
             print(response)
             guard case .success(let data) = response.result
             else {
@@ -57,7 +57,7 @@ extension ChallengeService {
 
 class StubChallengeService : ChallengeServiceType {
     
-    func getChallengeInfo(userid: Int) -> AnyPublisher<[Challenge], ServiceError> {
+    func getChallengeInfo(userid: String) -> AnyPublisher<Challenges, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
 }

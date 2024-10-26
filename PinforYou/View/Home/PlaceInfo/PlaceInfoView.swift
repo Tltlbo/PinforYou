@@ -17,14 +17,16 @@ struct PlaceInfoView: View {
     
     //TEST
     var testCardList : [Card] = [Card.cardStub1, Card.cardStub2, Card.cardStub3, Card.cardStub4]
-
+    
     
     
     var body: some View {
         
-        if placeInfoViewModel.isFinished {
-            VStack(spacing: 0){
-                
+        VStack(spacing: 0) {
+            if placeInfoViewModel.CardList.isEmpty {
+                Text("등록된 카드가 존재하지 않습니다.")
+            }
+            else {
                 NavigationStack {
                     
                     HStack {
@@ -45,7 +47,7 @@ struct PlaceInfoView: View {
                                 } label: {
                                     CardCell(cardInfo: card)
                                 }
-
+                                
                                 
                                 Rectangle()
                                     .fill(Color.white)
@@ -65,20 +67,11 @@ struct PlaceInfoView: View {
                 }
                 .tint(.black)
             }
-            .padding(.top, 10)
-            
         }
-        else {
-            ProgressView()
-                .onAppear {
-                    placeInfoViewModel.send(action: .getRecommendPayCardInfo)
-                    
-                }
-        }
-        
-        
-        
-        
+        .padding(.top, 10)
+        .onAppear {
+            placeInfoViewModel.send(action: .getRecommendPayCardInfo)
+        } 
     }
 }
 
@@ -115,14 +108,14 @@ struct withBtn : View {
                 
             }
         }
-
-
+        
+        
     }
 }
 
 
 
 #Preview {
-    PlaceInfoView(Place: .constant(PlaceModel.placestub1.PlaceList[0]), placeInfoViewModel: .init(container: .init(services: StubService()), userid: 1, storename: "hello", storecategory: "HELLO"))
-        
+    PlaceInfoView(Place: .constant(PlaceModel.placestub1.PlaceList[0]), placeInfoViewModel: .init(container: .init(services: StubService()), storename: "hello", storecategory: "HELLO"))
+    
 }

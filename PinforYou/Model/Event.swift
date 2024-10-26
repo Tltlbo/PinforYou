@@ -22,6 +22,7 @@ struct Event : Decodable {
         let pay_event_url: String
     }
     
+    
     enum CodingKeys : String, CodingKey {
         case issuanceEvent = "card_event"
         case paymentEvent = "pay_event"

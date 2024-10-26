@@ -12,21 +12,23 @@ struct PayCardModel : Decodable {
     var CardList : [PayCard] = []
     
     struct PayCard : Decodable, Hashable {
-        var userID : Int
+        var userID : String
         var cardID : Int
         var cardName : String
         var cardLastNum : String
         var discountPercent : Int
         var cardColor : String
+        var description: String
         var uuid = UUID()
         
         enum CodingKeys : String, CodingKey {
-            case userID = "user_id"
+            case userID = "hashed_id"
             case cardID = "card_id"
             case cardName = "card_name"
             case cardLastNum = "card_last_num"
             case discountPercent = "discount_percentage"
             case cardColor = "card_color"
+            case description = "description"
         }
     }
     

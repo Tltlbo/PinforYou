@@ -28,7 +28,6 @@ struct EventView: View {
                 .frame(height: 200)
             }
             
-            
             Section(header: Text("결제 이벤트").font(.title)) {
                 TabView {
                     ForEach(eventViewModel.paymentEventList, id: \.self) {

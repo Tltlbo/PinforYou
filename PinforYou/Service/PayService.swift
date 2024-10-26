@@ -12,12 +12,12 @@ import SwiftUI
 import Kingfisher
 
 protocol PayServiceType {
-    func getPayRecommendCardInfo(userid : Int, storeName : String, storeCategory : String) -> AnyPublisher<PayCardModel, ServiceError>
+    func getPayRecommendCardInfo(userid : String, storeName : String, storeCategory : String) -> AnyPublisher<PayCardModel, ServiceError>
     func getCardQrCode(cardid : Int) -> AnyPublisher<String, ServiceError>
 }
 
 class PayService : PayServiceType {
-    func getPayRecommendCardInfo(userid : Int, storeName : String, storeCategory : String) -> AnyPublisher<PayCardModel, ServiceError> {
+    func getPayRecommendCardInfo(userid : String, storeName : String, storeCategory : String) -> AnyPublisher<PayCardModel, ServiceError> {
         Future { [weak self] promise in
             self?.getPayRecommendCardInfo(userid: userid, storeName: storeName, storeCategory: storeCategory) { result in
                 switch result {
@@ -48,16 +48,17 @@ class PayService : PayServiceType {
 }
 
 extension PayService {
-    private func getPayRecommendCardInfo(userid : Int, storeName : String, storeCategory : String, completion: @escaping (Result<PayCardModel, Error>) -> Void) {
+    private func getPayRecommendCardInfo(userid : String, storeName : String, storeCategory : String, completion: @escaping (Result<PayCardModel, Error>) -> Void) {
         
         AF.request("https://pinforyou.online/userCard/payRecommend",
                    method: .get,
-                   parameters: ["user_id" : userid,
+                   parameters: ["hashed_id" : userid,
                                 "store_name" : storeName,
                                 "category" : storeCategory],
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: PayCardModel.self) { [weak self] response in
+            debugPrint(response)
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(LocationError.APICallFailed))
@@ -98,7 +99,7 @@ extension PayService {
 
 class StubPayService : PayServiceType {
     
-    func getPayRecommendCardInfo(userid : Int, storeName : String, storeCategory : String) -> AnyPublisher<PayCardModel, ServiceError> {
+    func getPayRecommendCardInfo(userid : String, storeName : String, storeCategory : String) -> AnyPublisher<PayCardModel, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
     

@@ -30,7 +30,7 @@ struct HomeView: View {
                     })/*.frame(maxWidth: .infinity, maxHeight: .infinity)*/
                     .environmentObject(kakaoMapViewModel)
                     .sheet(isPresented: $isTapped) {
-                        PlaceInfoView(Place: $TappedPlace, placeInfoViewModel: .init(container: container, userid: 1, storename: TappedPlace.placeName, storecategory: TappedPlace.categoryName))
+                        PlaceInfoView(Place: $TappedPlace, placeInfoViewModel: .init(container: container, storename: TappedPlace.placeName, storecategory: TappedPlace.categoryName))
                             .presentationDetents(
                                 [.medium, .large],
                                 selection: $modalDetent

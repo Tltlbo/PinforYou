@@ -41,5 +41,5 @@ struct CardCell: View {
 }
 
 #Preview {
-    CardCell(cardInfo: .init(userID: 1, cardID: 1, cardName: "나라사랑카드", cardLastNum: "1234", discountPercent: 10, cardColor: "101010"))
+    CardCell(cardInfo: .init(userID: "1", cardID: 1, cardName: "나라사랑카드", cardLastNum: "1234", discountPercent: 10, cardColor: "101010", description: ""))
 }

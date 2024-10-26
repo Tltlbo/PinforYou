@@ -36,5 +36,5 @@ struct QRPayView: View {
 
 
 #Preview {
-    QRPayView(card: .init(userID: 1, cardID: 1, cardName: "나라사랑카드", cardLastNum: "1234", discountPercent: 10, cardColor: "101010"), QRPayViewModel: .init(container: .init(services: StubService()), cardinfo: .init(userID: 1, cardID: 1, cardName: "나라사랑카드", cardLastNum: "1234", discountPercent: 10, cardColor: "101010")))
+    QRPayView(card: .init(userID: "1", cardID: 1, cardName: "나라사랑카드", cardLastNum: "1234", discountPercent: 10, cardColor: "101010", description: ""), QRPayViewModel: .init(container: .init(services: StubService()), cardinfo: .init(userID: "1", cardID: 1, cardName: "나라사랑카드", cardLastNum: "1234", discountPercent: 10, cardColor: "101010", description: "")))
 }
