@@ -46,7 +46,7 @@ struct ChallengeView: View {
         else {
             
             ZStack {
-                Color("backgroundColor")
+                Color("BackgroundColor")
                 
                 ProgressView()
                     .onAppear {

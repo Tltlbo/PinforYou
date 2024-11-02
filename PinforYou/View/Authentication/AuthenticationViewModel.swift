@@ -112,6 +112,7 @@ class AuthenticationViewModel : ObservableObject {
                         if user.result {
                             self?.isLoading = false
                             self?.userId = user.hashedID
+                            UserDefaults.standard.set(user.hashedID, forKey: "hashedID")
                             self?.authenticationState = .authenticated
                         }
                         else {
@@ -126,13 +127,11 @@ class AuthenticationViewModel : ObservableObject {
             }
             
         case .logout:
-            //            container.services.authService.logout().sink { completion in
-            //
-            //            } receiveValue: { [weak self] _ in
-            //                self?.authenticationState = .unauthenticated
-            //                self?.userId = nil
-            //            }.store(in: &subscriptions)
-            print("logout")
+            self.authenticationState = .unauthenticated
+            self.userId = nil
+            if let _ = UserDefaults.standard.string(forKey: "hashedID") {
+                UserDefaults.standard.removeObject(forKey: "hashedID")
+            }
             
         case .signUp:
             container.services.authService.signUp(userName: userName!, gender: gender!, phoneNumber: phoneNumber!, age: age!, interest: interest!, hashedID: self.userId!)

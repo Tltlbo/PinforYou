@@ -27,7 +27,9 @@ class CardListViewModel : ObservableObject {
     }
     
     func send(action : Action, cardid: Int = 1) {
-        guard let userid = UserID.shared.hashedID else {return}
+        guard let userid = UserID.shared.hashedID else {
+            return
+        }
         switch action {
         case .getCardInfo:
             container.services.userService.getCardInfo(id: userid)

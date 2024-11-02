@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MyInfoView: View {
+    @EnvironmentObject var authViewModel : AuthenticationViewModel
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -25,7 +27,7 @@ struct MyInfoView: View {
                     
                     HStack(spacing: 10){
                         Button {
-                            //
+                            authViewModel.send(action: .logout)
                         } label: {
                             Text("로그아웃")
                         }
