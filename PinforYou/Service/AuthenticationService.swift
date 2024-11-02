@@ -28,6 +28,7 @@ protocol AuthenticationServiceType {
     func requestVerifyEmail(email: String) -> AnyPublisher<Bool, ServiceError>
     func logout() /*-> AnyPublisher<Void, ServiceError>*/
     func signUp(userName: String, gender: Gender, phoneNumber: String, age: String, interest: String, hashedID: String) -> AnyPublisher<Bool, ServiceError>
+    func withdraw(userid: String) -> AnyPublisher<Bool, ServiceError>
 }
 
 class AuthenticationService : AuthenticationServiceType {
@@ -119,6 +120,20 @@ class AuthenticationService : AuthenticationServiceType {
     func signUp(userName: String, gender: Gender, phoneNumber: String, age: String, interest: String, hashedID: String) -> AnyPublisher<Bool, ServiceError> {
         Future { [weak self] promise in
             self?.signUp(userName: userName, gender: gender, phoneNumber: phoneNumber, age: age, interest: interest, hashedID: hashedID) { result in
+                switch result {
+                case let .success(result):
+                    promise(.success(result))
+                    
+                case let .failure(error):
+                    promise(.failure(.error(error)))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    func withdraw(userid: String) -> AnyPublisher<Bool, ServiceError> {
+        Future { [weak self] promise in
+            self?.withdraw(userid: userid) { result in
                 switch result {
                 case let .success(result):
                     promise(.success(result))
@@ -285,10 +300,35 @@ extension AuthenticationService {
         .responseDecodable(of: Bool.self) { response in
         }
     }
+    
+    private func withdraw(userid: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        
+        struct Result: Decodable {
+            let result: Bool
+        }
+        
+        AF.request("https://pinforyou.online/user/delete",
+                   method: .delete,
+                   parameters: ["hashed_id" : userid],
+                   encoding: URLEncoding.queryString,
+                   headers: ["Content-Type" : "application/json"])
+        .responseDecodable(of: Result.self) { response in
+            guard case .success(let data) = response.result
+            else {
+                return completion(.failure(AuthenticationError.invaildated))
+            }
+    
+            completion(.success((data.result)))
+        }
+    }
 }
 
 
 class StubAuthenticationService : AuthenticationServiceType {
+    func withdraw(userid: String) -> AnyPublisher<Bool, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
     func checkAuthenticationState() /*-> String?*/ {
         //return nil
     }

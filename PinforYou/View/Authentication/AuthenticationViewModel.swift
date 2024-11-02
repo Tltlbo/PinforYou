@@ -25,6 +25,7 @@ class AuthenticationViewModel : ObservableObject {
         case appleLoginCompletion(Result<ASAuthorization, Error>)
         case signUp
         case logout
+        case withdraw
     }
     
     @Published var authenticationState : AuthenticationState = .unauthenticated
@@ -150,6 +151,23 @@ class AuthenticationViewModel : ObservableObject {
                         self?.authenticationState = .unauthenticated
                     }
                 }.store(in: &subscriptions)
+        case .withdraw:
+            if let id = self.userId {
+                container.services.authService.withdraw(userid: id)
+                    .sink { [weak self] completion in
+                        if case .failure = completion {
+                            self?.isLoading = false
+                        }
+                    } receiveValue: { [weak self] result in
+                        if result {
+                            UserDefaults.standard.removeObject(forKey: "hashedID")
+                            self?.authenticationState = .unauthenticated
+                        }
+                        else {
+                        }
+                    }.store(in: &subscriptions)
+
+            }
         }
     }
 }

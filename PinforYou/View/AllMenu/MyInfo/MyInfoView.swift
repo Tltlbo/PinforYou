@@ -35,7 +35,7 @@ struct MyInfoView: View {
                         Text("|")
                         
                         Button {
-                            //
+                            authViewModel.send(action: .withdraw)
                         } label: {
                             Text("회원탈퇴")
                         }
