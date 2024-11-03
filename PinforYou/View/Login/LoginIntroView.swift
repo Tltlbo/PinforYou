@@ -10,6 +10,7 @@ import SwiftUI
 struct LoginIntroView: View {
     
     @State private var isPresentedLoginOptionView : Bool = false
+    @State private var isPresentedSignUpView : Bool = false
     
     var body: some View {
         NavigationStack {
@@ -39,9 +40,8 @@ struct LoginIntroView: View {
                 }
                 .padding(20)
 
-                
                 Button {
-                    //TODO: register
+                    isPresentedSignUpView = true
                 } label: {
                     RoundedRectangle(cornerRadius: 15)
                         .frame(width: 352,height: 72)
@@ -51,6 +51,9 @@ struct LoginIntroView: View {
                 .padding(.bottom, 200)
                 .navigationDestination(isPresented: $isPresentedLoginOptionView) {
                     LoginOptionView()
+                }
+                .navigationDestination(isPresented: $isPresentedSignUpView) {
+                    SignUpEmailView()
                 }
                 
             }

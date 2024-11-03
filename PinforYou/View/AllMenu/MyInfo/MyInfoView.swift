@@ -13,14 +13,13 @@ struct MyInfoView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                
                 Color("BackgroundColor")
                     .ignoresSafeArea()
                 
                 VStack(spacing: 25) {
-                    NameCell()
-                    EmailCell()
-                    PhoneNumberCell()
+                    NameCell(name: authViewModel.userName)
+                    EmailCell(email: authViewModel.email)
+                    PhoneNumberCell(number: authViewModel.phoneNumber)
                     passwordModifyCell()
                     
                     Spacer()
@@ -49,6 +48,9 @@ struct MyInfoView: View {
                         .ignoresSafeArea()
                 }
             }
+        }
+        .onAppear{
+            //authViewModel.send(action: .getUserInfo)
         }
     }
 }

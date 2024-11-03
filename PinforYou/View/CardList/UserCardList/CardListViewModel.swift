@@ -65,8 +65,8 @@ extension CardListViewModel {
         }
     }
     
-    func inert(cardName: String, cardNum : String) {
-        let card = CardInfo.Carda(cardID: Int.random(in: 0 ... 255), cardName: cardName, cardNum: cardNum)
+    func inert(cardName: String, cardNum : String, url: String) {
+        let card = CardInfo.Carda(cardID: Int.random(in: 0 ... 255), cardName: cardName, cardNum: cardNum, card_image_url: url)
         
         self.CardList.append(card)
     }

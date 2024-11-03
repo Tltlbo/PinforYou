@@ -72,5 +72,5 @@ struct CardDeleteCell: View {
 }
 
 #Preview {
-    CardDeleteCell(card: .init(cardID: 1, cardName: "test", cardNum: "test"))
+    CardDeleteCell(card: .init(cardID: 1, cardName: "test", cardNum: "test", card_image_url: ""))
 }

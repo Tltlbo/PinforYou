@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AllMenuView: View {
     
+    @EnvironmentObject var authViewModel : AuthenticationViewModel
     @EnvironmentObject var container : DIContainer
     
     var body: some View {
@@ -17,7 +18,7 @@ struct AllMenuView: View {
                 
                 HStack {
                     Text("""
-                        박진성님,
+                        \(authViewModel.userName)님,
                         안녕하세요!
                         """)
                     .font(.system(size: 26, weight: .bold))

@@ -20,11 +20,14 @@ struct AuthenticatedView: View {
                 LoginIntroView()
                     .environmentObject(authViewModel)
             case .authenticating:
-                SignUpUserInfoView()
+                SignUpUserInfoView(email: .constant(""), password: .constant(""))
                     .environmentObject(authViewModel)
             case .authenticated:
                 MainTabView()
                     .environmentObject(authViewModel)
+                    .onAppear {
+                        authViewModel.send(action: .getUserInfo)
+                    }
             }
         }
         .onAppear {

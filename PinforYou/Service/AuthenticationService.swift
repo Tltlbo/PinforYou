@@ -29,16 +29,18 @@ protocol AuthenticationServiceType {
     func logout() /*-> AnyPublisher<Void, ServiceError>*/
     func signUp(userName: String, gender: Gender, phoneNumber: String, age: String, interest: String, hashedID: String) -> AnyPublisher<Bool, ServiceError>
     func withdraw(userid: String) -> AnyPublisher<Bool, ServiceError>
+    func getUserInfo(userid: String) -> AnyPublisher<UserInfo, ServiceError>
+    func signUpWithEmail(email: String, password: String, userName: String, gender: Gender, phoneNumber: String, age: String, interest: String) -> AnyPublisher<(hashedid: String, result: Bool), ServiceError>
 }
 
 class AuthenticationService : AuthenticationServiceType {
     
     func checkAuthenticationState() /*-> String?*/ {
-//        if let user = Auth.auth().currentUser {
-//            return user.uid
-//        } else {
-//            return nil
-//        }
+        //        if let user = Auth.auth().currentUser {
+        //            return user.uid
+        //        } else {
+        //            return nil
+        //        }
     }
     
     func signInWithGoogle() -> AnyPublisher<(result: Bool, hashedID: String), ServiceError> {
@@ -93,19 +95,33 @@ class AuthenticationService : AuthenticationServiceType {
     func logout() /*-> AnyPublisher<Void, ServiceError>*/ {
         
         /*Future { promise in
-            do {
-                try Auth.auth().signOut()
-                promise(.success(()))
-            } catch {
-                promise(.failure(.error(error)))
-            }
-        }
-        .eraseToAnyPublisher()*/
+         do {
+         try Auth.auth().signOut()
+         promise(.success(()))
+         } catch {
+         promise(.failure(.error(error)))
+         }
+         }
+         .eraseToAnyPublisher()*/
     }
     
     func requestVerifyEmail(email: String) -> AnyPublisher<Bool, ServiceError> {
         Future { [weak self] promise in
             self?.requestVerifyEmail(email: email) { result in
+                switch result {
+                case let .success(result):
+                    promise(.success(result))
+                    
+                case let .failure(error):
+                    promise(.failure(.error(error)))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    func signUpWithEmail(email: String, password: String, userName: String, gender: Gender, phoneNumber: String, age: String, interest: String) -> AnyPublisher<(hashedid: String, result: Bool), ServiceError> {
+        Future { [weak self] promise in
+            self?.signUpWithEmail(email: email, password: password, userName: userName, gender: gender, phoneNumber: phoneNumber, age: age, interest: interest) { result in
                 switch result {
                 case let .success(result):
                     promise(.success(result))
@@ -134,6 +150,20 @@ class AuthenticationService : AuthenticationServiceType {
     func withdraw(userid: String) -> AnyPublisher<Bool, ServiceError> {
         Future { [weak self] promise in
             self?.withdraw(userid: userid) { result in
+                switch result {
+                case let .success(result):
+                    promise(.success(result))
+                    
+                case let .failure(error):
+                    promise(.failure(.error(error)))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    func getUserInfo(userid: String) -> AnyPublisher<UserInfo, ServiceError> {
+        Future { [weak self] promise in
+            self?.getUserInfo(userid: userid) { result in
                 switch result {
                 case let .success(result):
                     promise(.success(result))
@@ -194,7 +224,7 @@ extension AuthenticationService {
                 else {
                     return completion(.failure(FriendError.FailedfetchFriend))
                 }
-        
+                
                 completion(.success((data.result, data.hashedId)))
             }
         }
@@ -219,7 +249,7 @@ extension AuthenticationService {
             else {
                 return completion(.failure(FriendError.FailedfetchFriend))
             }
-    
+            
             completion(.success((data.result, data.hashedId)))
         }
     }
@@ -239,7 +269,7 @@ extension AuthenticationService {
         struct test : Decodable {
             let hashed_ID: String
             let result: Bool
-        
+            
             enum CodingKeys : String, CodingKey {
                 case hashed_ID = "hashed_id"
                 case result = "result"
@@ -257,11 +287,39 @@ extension AuthenticationService {
             else {
                 return completion(.failure(AuthenticationError.invaildated))
             }
-    
+            
             completion(.success((data.result, data.hashed_ID)))
         }
         
         
+    }
+    
+    private func signUpWithEmail(email: String, password: String, userName: String, gender: Gender, phoneNumber: String, age: String, interest: String, completion: @escaping (Result<(hashedid: String, result: Bool), Error>) -> Void) {
+        struct Result: Decodable {
+            let join: Bool
+            let hashed_id: String
+        }
+        
+        AF.request("https://pinforyou.online/join",
+                   method: .post,
+                   parameters: [ "email" : email,
+                                 "password" : password,
+                                 "username" : userName,
+                                 "sex" : gender.rawValue,
+                                 "tel" : phoneNumber,
+                                 "age" : Int(age)!,
+                                 "interest" : interest],
+                   encoding: URLEncoding.queryString,
+                   headers: ["Content-Type" : "application/json"])
+        .responseDecodable(of: Result.self) { response in
+            debugPrint(response)
+            guard case .success(let data) = response.result
+            else {
+                return completion(.failure(AuthenticationError.invaildated))
+            }
+            
+            completion(.success((data.hashed_id, data.join)))
+        }
     }
     
     private func signUp(userName: String, gender: Gender, phoneNumber: String, age: String, interest: String, hashedID: String, completion: @escaping (Result<Bool, Error>) -> Void) {
@@ -286,7 +344,7 @@ extension AuthenticationService {
             else {
                 return completion(.failure(AuthenticationError.invaildated))
             }
-    
+            
             completion(.success((data.result)))
         }
     }
@@ -317,14 +375,40 @@ extension AuthenticationService {
             else {
                 return completion(.failure(AuthenticationError.invaildated))
             }
-    
+            
             completion(.success((data.result)))
+        }
+    }
+    
+    private func getUserInfo(userid: String, completion: @escaping (Result<UserInfo, Error>) -> Void) {
+        
+        AF.request("https://pinforyou.online/home",
+                   method: .get,
+                   parameters: ["hashed_id" : userid],
+                   encoding: URLEncoding.queryString,
+                   headers: ["Content-Type" : "application/json"])
+        .responseDecodable(of: UserInfo.self) { response in
+            debugPrint(response)
+            guard case .success(let data) = response.result
+            else {
+                return completion(.failure(AuthenticationError.invaildated))
+            }
+            
+            completion(.success((data)))
         }
     }
 }
 
 
 class StubAuthenticationService : AuthenticationServiceType {
+    func signUpWithEmail(email: String, password: String, userName: String, gender: Gender, phoneNumber: String, age: String, interest: String) -> AnyPublisher<(hashedid: String, result: Bool), ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
+    func getUserInfo(userid: String) -> AnyPublisher<UserInfo, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
     func withdraw(userid: String) -> AnyPublisher<Bool, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
@@ -363,9 +447,9 @@ class StubAuthenticationService : AuthenticationServiceType {
 
 struct testID : Decodable {
     
-        var userId : String
-        
-        
+    var userId : String
+    
+    
     
     enum CodingKeys : String, CodingKey {
         case userId = "userId"

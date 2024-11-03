@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EmailCell: View {
+    let email: String
     var body: some View {
         HStack {
             VStack(alignment:.leading) {
@@ -20,7 +21,7 @@ struct EmailCell: View {
                 .padding(.leading, 10)
                 
                 HStack {
-                    Text("js1436kt@gmail.com")
+                    Text(email)
                         .font(.system(size: 20))
                         .foregroundStyle(.white)
                 }
@@ -37,5 +38,5 @@ struct EmailCell: View {
 }
 
 #Preview {
-    EmailCell()
+    EmailCell(email: "")
 }

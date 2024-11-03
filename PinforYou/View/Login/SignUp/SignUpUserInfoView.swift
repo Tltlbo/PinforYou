@@ -15,6 +15,8 @@ enum Gender: String, CaseIterable {
 struct SignUpUserInfoView: View {
     
     @EnvironmentObject var authViewModel : AuthenticationViewModel
+    @Binding var email: String
+    @Binding var password: String
     @State var name: String = ""
     @State var phoneNumber: String = ""
     @State var gender: Gender = .male
@@ -89,7 +91,7 @@ struct SignUpUserInfoView: View {
                     VStack {
                                 LazyVGrid(columns: gridItems) {
                                     ForEach(0..<7) { index in
-                                        GridCellView(isSelected: selectedIndex == index)
+                                        GridCellView(isSelected: selectedIndex == index, category: categoryList[index])
                                             .onTapGesture {
                                                 selectCell(at: index)
                                             }
@@ -102,7 +104,12 @@ struct SignUpUserInfoView: View {
                     
                     Button {
                         if let index = selectedIndex {
-                            authViewModel.send(action: .signUp, userName: name, gender: gender, phoneNumber: phoneNumber, age: age, interest: categoryList[index])
+                            if email.isEmpty {
+                                authViewModel.send(action: .signUp, userName: name, gender: gender, phoneNumber: phoneNumber, age: age, interest: categoryList[index])
+                            }
+                            else {
+                                authViewModel.send(action: .signUpWithEmail, email: email, password: password,userName: name, gender: gender, phoneNumber: phoneNumber, age: age, interest: categoryList[index])
+                            }
                         }
                     } label: {
                         HStack(alignment: .center) {
@@ -138,19 +145,42 @@ struct SignUpUserInfoView: View {
 
 struct GridCellView: View {
     var isSelected: Bool
-    
+    let category: String
     var body: some View {
-        Rectangle()
-            .opacity(isSelected ? 0.0 : 5.0)
-            .frame(width: 110, height: 110)
-            .cornerRadius(10)
-            .overlay(
-                isSelected ? Image(systemName: "checkmark.seal.fill") : Image(systemName: ""),
-                alignment: .center
-            )
+        ZStack(alignment: .center) {
+            Rectangle()
+                .opacity(isSelected ? 0.0 : 5.0)
+                .frame(width: 110, height: 110)
+                .cornerRadius(10)
+                .overlay(
+                    isSelected ? Image(systemName: "checkmark.seal.fill") : Image(systemName: ""),
+                    alignment: .center
+                )
+            Text(convertToCategory(from: category))
+                .foregroundStyle(.black)
+        }
+    }
+    
+    private func convertToCategory(from input: String) -> String {
+        switch input {
+        case "conveniencestore":
+            return "편의점"
+        case "supermarket":
+            return "마트"
+        case "restaurant":
+            return "음식점"
+        case "cafe":
+            return "카페"
+        case "hospital":
+            return "병원"
+        case "pharmacy":
+            return "약국"
+        default:
+            return "기타"
+        }
     }
 }
 
 #Preview {
-    SignUpUserInfoView()
+    SignUpUserInfoView(email: .constant(""), password: .constant("") )
 }

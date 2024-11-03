@@ -87,7 +87,7 @@ struct CardInsertView: View {
                     .alert(isPresented: $isInsert) {
                         Alert(title: Text("등록하시겠습니까?"), message: Text("\(cardInsertViewModel.companyName) \(cardInsertViewModel.cardName)카드가 등록됩니다."), primaryButton: .destructive(Text("등록"), action: {
                             cardInsertViewModel.send(action: .cardAppend, cardNum: self.cardNum, cardName: self.cardName)
-                            cardlistViewModel.inert(cardName: cardName, cardNum: insertDashes(into: self.cardNum))
+                            cardlistViewModel.inert(cardName: cardName, cardNum: insertDashes(into: self.cardNum), url: "")
                             
                             presentationMode.wrappedValue.dismiss()
                             

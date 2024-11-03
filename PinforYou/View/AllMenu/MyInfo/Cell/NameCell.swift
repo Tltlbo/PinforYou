@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct NameCell: View {
+    let name: String
+    
     var body: some View {
         HStack {
             VStack(alignment:.leading) {
@@ -20,7 +22,7 @@ struct NameCell: View {
                 .padding(.leading, 10)
                 
                 HStack {
-                    Text("박진성")
+                    Text(name)
                         .font(.system(size: 20))
                         .foregroundStyle(.white)
                 }
@@ -37,5 +39,5 @@ struct NameCell: View {
 }
 
 #Preview {
-    NameCell()
+    NameCell(name: "HI")
 }

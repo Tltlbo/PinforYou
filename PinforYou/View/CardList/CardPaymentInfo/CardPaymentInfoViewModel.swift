@@ -25,9 +25,10 @@ class CardPaymentInfoViewModel : ObservableObject {
     }
     
     func send(action : Action, cardid : Int = 0) {
+        guard let userid = UserID.shared.hashedID else {return}
         switch action {
         case .getPaymentInfo:
-            container.services.userService.getPaymentInfo(userid: "8a2d0e95dbfc6f17f11672392b870b632377ab3c49582e311913df8fbd3548f2", cardid: cardid, year: 2024, month: 10)
+            container.services.userService.getPaymentInfo(userid: userid, cardid: cardid, year: 2024, month: 10)
                 .sink { [weak self] completion in
                     if case .failure = completion {
                         //

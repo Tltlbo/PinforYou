@@ -24,8 +24,10 @@ class AuthenticationViewModel : ObservableObject {
         case appleLogin(ASAuthorizationAppleIDRequest)
         case appleLoginCompletion(Result<ASAuthorization, Error>)
         case signUp
+        case signUpWithEmail
         case logout
         case withdraw
+        case getUserInfo
     }
     
     @Published var authenticationState : AuthenticationState = .unauthenticated
@@ -34,6 +36,9 @@ class AuthenticationViewModel : ObservableObject {
     @Published var isLoading : Bool = false
     
     var userId : String?
+    @Published var userName: String = ""
+    @Published var email: String = ""
+    @Published var phoneNumber: String = ""
     
     private var currentNonce : String?
     private var container : DIContainer
@@ -43,7 +48,7 @@ class AuthenticationViewModel : ObservableObject {
         self.container = container
     }
     
-    func send(action: Action, email: String? = nil, name: String? = nil, userName: String? = nil, gender: Gender? = nil, phoneNumber: String? = nil, age: String? = nil, interest: String? = nil) {
+    func send(action: Action, email: String? = nil, password: String? = nil, name: String? = nil, userName: String? = nil, gender: Gender? = nil, phoneNumber: String? = nil, age: String? = nil, interest: String? = nil) {
         switch action {
         case .checkAuthenticationState:
             if let id = UserDefaults.standard.string(forKey: "hashedID") {
@@ -151,6 +156,25 @@ class AuthenticationViewModel : ObservableObject {
                         self?.authenticationState = .unauthenticated
                     }
                 }.store(in: &subscriptions)
+            
+        case .signUpWithEmail:
+            container.services.authService.signUpWithEmail(email: email!, password: password!, userName: userName!, gender: gender!, phoneNumber: phoneNumber!, age: age!, interest: interest!)
+                .sink { [weak self] completion in
+                    if case .failure = completion {
+                        self?.isLoading = false
+                    }
+                } receiveValue: { [weak self] result in
+                    if result.result {
+                        self?.userId = result.hashedid
+                        UserDefaults.standard.set(self?.userId, forKey: "hashedID")
+                        self?.authenticationState = .authenticated
+                    }
+                    else {
+                        self?.userId = nil
+                        self?.authenticationState = .unauthenticated
+                    }
+                }.store(in: &subscriptions)
+            
         case .withdraw:
             if let id = self.userId {
                 container.services.authService.withdraw(userid: id)
@@ -166,7 +190,23 @@ class AuthenticationViewModel : ObservableObject {
                         else {
                         }
                     }.store(in: &subscriptions)
-
+            }
+        case .getUserInfo:
+            if let id = self.userId {
+                container.services.authService.getUserInfo(userid: id)
+                    .sink { [weak self] completion in
+                        if case .failure = completion {
+                            self?.isLoading = false
+                        }
+                    } receiveValue: { [weak self] result in
+                        if result.result {
+                            self?.userName = result.name
+                            self?.email = result.email ?? ""
+                            self?.phoneNumber = result.tel
+                        }
+                        else {
+                        }
+                    }.store(in: &subscriptions)
             }
         }
     }

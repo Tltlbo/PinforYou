@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PhoneNumberCell: View {
+    let number: String
     var body: some View {
         HStack {
             VStack(alignment:.leading) {
@@ -20,7 +21,7 @@ struct PhoneNumberCell: View {
                 .padding(.leading, 10)
                 
                 HStack {
-                    Text("010-7450-9304")
+                    Text(number)
                         .font(.system(size: 20))
                         .foregroundStyle(.white)
                 }
@@ -37,5 +38,5 @@ struct PhoneNumberCell: View {
 }
 
 #Preview {
-    PhoneNumberCell()
+    PhoneNumberCell(number: "")
 }

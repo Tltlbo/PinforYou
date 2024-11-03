@@ -13,12 +13,10 @@ struct CardPaymentInfoView: View {
     var cardID : Int
     
     var body: some View {
-        
         if cardPaymentInfoViewModel.isFinished {
             NavigationStack {
                 VStack {
                     ZStack {
-                        
                         Color.gray
                             .frame(height: 100)
                         
