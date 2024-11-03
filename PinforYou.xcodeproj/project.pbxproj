@@ -115,6 +115,7 @@
 		4ED5762F2BFAD8BD0034F7A6 /* QRPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5762E2BFAD8BD0034F7A6 /* QRPayView.swift */; };
 		4ED576322BFAEB6E0034F7A6 /* WithFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576312BFAEB6E0034F7A6 /* WithFriendView.swift */; };
 		4EF28EC62CD7BAAE000EBC96 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF28EC52CD7BAAD000EBC96 /* LoginView.swift */; };
+		4EF28EC82CD7CCBD000EBC96 /* FriendAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF28EC72CD7CCBD000EBC96 /* FriendAddView.swift */; };
 		549FBD632C64B8F50087240E /* MeetingCardPaymentInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549FBD622C64B8F50087240E /* MeetingCardPaymentInfoView.swift */; };
 		549FBD652C64B9170087240E /* MeetingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549FBD642C64B9170087240E /* MeetingListViewModel.swift */; };
 		730C6F69986697778218E709 /* Pods_PinforYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28531306F13EC3B74457DB6F /* Pods_PinforYou.framework */; };
@@ -234,6 +235,7 @@
 		4ED5762E2BFAD8BD0034F7A6 /* QRPayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPayView.swift; sourceTree = "<group>"; };
 		4ED576312BFAEB6E0034F7A6 /* WithFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithFriendView.swift; sourceTree = "<group>"; };
 		4EF28EC52CD7BAAD000EBC96 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		4EF28EC72CD7CCBD000EBC96 /* FriendAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendAddView.swift; sourceTree = "<group>"; };
 		549FBD622C64B8F50087240E /* MeetingCardPaymentInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCardPaymentInfoView.swift; sourceTree = "<group>"; };
 		549FBD642C64B9170087240E /* MeetingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingListViewModel.swift; sourceTree = "<group>"; };
 		5F528BB8266D3D3FCBADB28D /* Pods-PinforYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinforYou.debug.xcconfig"; path = "Target Support Files/Pods-PinforYou/Pods-PinforYou.debug.xcconfig"; sourceTree = "<group>"; };
@@ -597,6 +599,7 @@
 				4EC90CFE2C0963AD00A0B5B5 /* FriendListView.swift */,
 				4E28388D2C5FA9D10037AE55 /* FriendListViewModel.swift */,
 				4E7CDB882C721FA50023D12C /* FriendModifyView.swift */,
+				4EF28EC72CD7CCBD000EBC96 /* FriendAddView.swift */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -876,6 +879,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EF28EC82CD7CCBD000EBC96 /* FriendAddView.swift in Sources */,
 				4E3E98F62CBBB39100743FBD /* SignupViewModel.swift in Sources */,
 				4E2497912C1A70B700851D9D /* PointShopView.swift in Sources */,
 				4EA35AFB2BE326A40001508B /* DBError.swift in Sources */,

@@ -8,12 +8,12 @@
 import Foundation
 
 struct Friend : Hashable, Decodable, Identifiable {
-    var id: Int {friendID}
-    let friendID : Int
+    var id = UUID()
+    let friendID : String
     let name : String
     
     enum CodingKeys : String, CodingKey {
-        case friendID = "friend_id"
+        case friendID = "friend_hashed_id"
         case name = "name"
     }
 }

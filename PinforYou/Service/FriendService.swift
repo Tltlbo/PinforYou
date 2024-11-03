@@ -16,8 +16,9 @@ enum FriendError : Error {
 protocol FriendServiceType {
     func getFriendInfo(userid : String) -> AnyPublisher<Friends, ServiceError>
     func getRequestFriendInfo(userid : String) -> AnyPublisher<RequestFriend, ServiceError>
-    func deleteFriendInfo(userid: String, friendid: Int) -> AnyPublisher<Bool, ServiceError>
-    func acceptRequestFriend(userid: String, friendid: Int) -> AnyPublisher<Bool, ServiceError>
+    func deleteFriendInfo(userid: String, friendid: String) -> AnyPublisher<Bool, ServiceError>
+    func acceptRequestFriend(userid: String, friendid: String) -> AnyPublisher<Bool, ServiceError>
+    func requestFriend(userid: String, name: String, tel: String) -> AnyPublisher<Bool, ServiceError>
 }
 
 class FriendService : FriendServiceType {
@@ -50,7 +51,7 @@ class FriendService : FriendServiceType {
         }.eraseToAnyPublisher()
     }
     
-    func deleteFriendInfo(userid : String, friendid: Int) -> AnyPublisher<Bool, ServiceError> {
+    func deleteFriendInfo(userid : String, friendid: String) -> AnyPublisher<Bool, ServiceError> {
         Future { [weak self] promise in
             self?.deleteFriendInfo(userid: userid, friendid: friendid) { result in
                 switch result {
@@ -64,9 +65,23 @@ class FriendService : FriendServiceType {
         }.eraseToAnyPublisher()
     }
     
-    func acceptRequestFriend(userid: String, friendid: Int) -> AnyPublisher<Bool, ServiceError> {
+    func acceptRequestFriend(userid: String, friendid: String) -> AnyPublisher<Bool, ServiceError> {
         Future { [weak self] promise in
             self?.acceptRequestFriend(userid: userid, friendid: friendid) { result in
+                switch result {
+                case let .success(result):
+                    promise(.success(result))
+                    
+                case let .failure(error):
+                    promise(.failure(.error(error)))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    func requestFriend(userid: String, name: String, tel: String) -> AnyPublisher<Bool, ServiceError> {
+        Future { [weak self] promise in
+            self?.requestFriend(userid: userid, name: name, tel: tel) { result in
                 switch result {
                 case let .success(result):
                     promise(.success(result))
@@ -84,7 +99,7 @@ extension FriendService {
     private func getFriendInfo(userid : String, completion: @escaping (Result<Friends, Error>) -> Void)  {
         AF.request("https://pinforyou.online/friend",
                    method: .get,
-                   parameters: ["user_id" : userid],
+                   parameters: ["hashed_id" : userid],
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: Friends.self) { [weak self] response in
@@ -94,7 +109,7 @@ extension FriendService {
             else {
                 return completion(.failure(FriendError.FailedfetchFriend))
             }
-    
+            
             completion(.success(data))
         }
     }
@@ -102,7 +117,7 @@ extension FriendService {
     private func getRequestFriendInfo(userid : String, completion: @escaping (Result<RequestFriend, Error>) -> Void) {
         AF.request("https://pinforyou.online/friend/request",
                    method: .get,
-                   parameters: ["user_id" : userid],
+                   parameters: ["hashed_id" : userid],
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: RequestFriend.self) { [weak self] response in
@@ -110,12 +125,12 @@ extension FriendService {
             else {
                 return completion(.failure(FriendError.FailedfetchFriend))
             }
-    
+            
             completion(.success(data))
         }
     }
     
-    private func deleteFriendInfo(userid: String, friendid: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
+    private func deleteFriendInfo(userid: String, friendid: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         
         struct Result: Decodable {
             let result: Bool
@@ -138,12 +153,12 @@ extension FriendService {
             else {
                 return completion(.failure(FriendError.FailedfetchFriend))
             }
-    
+            
             completion(.success(data.result))
         }
     }
     
-    private func acceptRequestFriend(userid: String, friendid: Int, completion: @escaping (Result<Bool, Error>) -> Void) {
+    private func acceptRequestFriend(userid: String, friendid: String, completion: @escaping (Result<Bool, Error>) -> Void) {
         
         struct Result: Decodable {
             let result: Bool
@@ -166,13 +181,39 @@ extension FriendService {
             else {
                 return completion(.failure(FriendError.FailedfetchFriend))
             }
+            
+            completion(.success(data.result))
+        }
+    }
     
+    private func requestFriend(userid: String, name: String, tel: String,  completion: @escaping (Result<Bool, Error>) -> Void) {
+        struct Result: Decodable {
+            let result: Bool
+        }
+        AF.request("https://pinforyou.online/friend/add",
+                   method: .post,
+                   parameters: ["hashed_id" : userid,
+                                "username" : name,
+                                "tel" : tel],
+                   encoding: URLEncoding.queryString,
+                   headers: ["Content-Type" : "application/json"])
+        .responseDecodable(of: Result.self) { [weak self] response in
+            debugPrint(response)
+            guard case .success(let data) = response.result
+            else {
+                return completion(.failure(FriendError.FailedfetchFriend))
+            }
+            
             completion(.success(data.result))
         }
     }
 }
 
 class StubFriendService : FriendServiceType {
+    func requestFriend(userid: String, name: String, tel: String) -> AnyPublisher<Bool, ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
     func getRequestFriendInfo(userid: String) -> AnyPublisher<RequestFriend, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
@@ -181,11 +222,11 @@ class StubFriendService : FriendServiceType {
         Empty().eraseToAnyPublisher()
     }
     
-    func deleteFriendInfo(userid: String, friendid: Int) -> AnyPublisher<Bool, ServiceError> {
+    func deleteFriendInfo(userid: String, friendid: String) -> AnyPublisher<Bool, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
     
-    func acceptRequestFriend(userid: String, friendid: Int) -> AnyPublisher<Bool, ServiceError> {
+    func acceptRequestFriend(userid: String, friendid: String) -> AnyPublisher<Bool, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
 }

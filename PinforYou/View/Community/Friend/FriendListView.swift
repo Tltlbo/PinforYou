@@ -11,6 +11,7 @@ struct FriendListView: View {
     
     @StateObject var friendListViewModel : FriendListViewModel
     @State var modifyTouched : Bool = false
+    @State var addTouched: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -18,12 +19,16 @@ struct FriendListView: View {
                 HStack {
                     Spacer()
                     Button {
-                        //
+                        addTouched = true
                     } label: {
                         Text("추가")
                             .font(.system(size: 15))
                     }
                     .padding(.trailing, 5)
+                    .fullScreenCover(isPresented: $addTouched) {
+                        FriendAddView()
+                            .environmentObject(friendListViewModel)
+                    }
                     
                     Button {
                         modifyTouched = true

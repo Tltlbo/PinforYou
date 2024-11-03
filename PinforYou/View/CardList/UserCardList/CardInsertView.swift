@@ -13,6 +13,7 @@ struct CardInsertView: View {
     @StateObject var cardInsertViewModel: CardInsertViewModel
     @EnvironmentObject var container : DIContainer
     @Environment(\.presentationMode) var presentationMode
+    @Binding var isChange: Bool
     
     @State var isInsert : Bool = false
     @State var cardName : String = ""
@@ -87,8 +88,7 @@ struct CardInsertView: View {
                     .alert(isPresented: $isInsert) {
                         Alert(title: Text("등록하시겠습니까?"), message: Text("\(cardInsertViewModel.companyName) \(cardInsertViewModel.cardName)카드가 등록됩니다."), primaryButton: .destructive(Text("등록"), action: {
                             cardInsertViewModel.send(action: .cardAppend, cardNum: self.cardNum, cardName: self.cardName)
-                            cardlistViewModel.inert(cardName: cardName, cardNum: insertDashes(into: self.cardNum), url: "")
-                            
+                            isChange = true
                             presentationMode.wrappedValue.dismiss()
                             
                         }), secondaryButton: .cancel(Text("취소"), action: {
@@ -112,5 +112,5 @@ struct CardInsertView: View {
 }
 
 #Preview {
-    CardInsertView( cardInsertViewModel: .init(container: .init(services: StubService())))
+    CardInsertView( cardInsertViewModel: .init(container: .init(services: StubService())), isChange: .constant(false))
 }

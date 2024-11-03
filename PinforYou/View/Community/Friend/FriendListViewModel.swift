@@ -15,6 +15,7 @@ class FriendListViewModel : ObservableObject {
         case getRequestFriendInfo
         case deleteFriendInfo
         case acceptRequestFriend
+        case requestFriend
     }
     
     @Published var isFinished : Bool = false
@@ -30,7 +31,7 @@ class FriendListViewModel : ObservableObject {
         self.container = container
     }
     
-    func send(action : Action, friendid: Int?) {
+    func send(action : Action, friendid: String?, name: String? = nil, tel: String? = nil) {
         guard let userid = UserID.shared.hashedID else {return}
         switch action {
         case .getFriendInfo:
@@ -72,6 +73,18 @@ class FriendListViewModel : ObservableObject {
             
         case .acceptRequestFriend:
             container.services.friendService.acceptRequestFriend(userid: userid, friendid: friendid!)
+                .sink { [weak self] completion in
+                    if case .failure = completion {
+                        //
+                    }
+                } receiveValue: { [weak self] result in
+                    if result {
+                        self?.isAccept = true
+                    }
+                }
+                .store(in: &subscriptions)
+        case .requestFriend:
+            container.services.friendService.requestFriend(userid: userid, name: name!, tel: tel!)
                 .sink { [weak self] completion in
                     if case .failure = completion {
                         //
