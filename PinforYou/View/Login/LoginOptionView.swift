@@ -48,17 +48,17 @@ struct LoginOptionView: View {
                 }
                 
                 HStack(spacing:90) {
-                
-                SignInWithAppleButton { request in
-                    authViewModel.send(action: .appleLogin(request))
-                } onCompletion: { result in
-                    authViewModel.send(action: .appleLoginCompletion(result))
-                }
-                .frame(height: 20)
-
                     
-                    Button {
-                        //TODO: 소셜
+                    SignInWithAppleButton { request in
+                        authViewModel.send(action: .appleLogin(request))
+                    } onCompletion: { result in
+                        authViewModel.send(action: .appleLoginCompletion(result))
+                    }
+                    .frame(height: 20)
+                    
+                    
+                    NavigationLink {
+                        LoginView()
                     } label: {
                         Circle()
                             .frame(width: 80,height: 80)

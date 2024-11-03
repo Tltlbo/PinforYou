@@ -114,6 +114,7 @@
 		4ED5762C2BFA488D0034F7A6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5762B2BFA488D0034F7A6 /* Card.swift */; };
 		4ED5762F2BFAD8BD0034F7A6 /* QRPayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED5762E2BFAD8BD0034F7A6 /* QRPayView.swift */; };
 		4ED576322BFAEB6E0034F7A6 /* WithFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED576312BFAEB6E0034F7A6 /* WithFriendView.swift */; };
+		4EF28EC62CD7BAAE000EBC96 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF28EC52CD7BAAD000EBC96 /* LoginView.swift */; };
 		549FBD632C64B8F50087240E /* MeetingCardPaymentInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549FBD622C64B8F50087240E /* MeetingCardPaymentInfoView.swift */; };
 		549FBD652C64B9170087240E /* MeetingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 549FBD642C64B9170087240E /* MeetingListViewModel.swift */; };
 		730C6F69986697778218E709 /* Pods_PinforYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28531306F13EC3B74457DB6F /* Pods_PinforYou.framework */; };
@@ -232,6 +233,7 @@
 		4ED5762B2BFA488D0034F7A6 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		4ED5762E2BFAD8BD0034F7A6 /* QRPayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRPayView.swift; sourceTree = "<group>"; };
 		4ED576312BFAEB6E0034F7A6 /* WithFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithFriendView.swift; sourceTree = "<group>"; };
+		4EF28EC52CD7BAAD000EBC96 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		549FBD622C64B8F50087240E /* MeetingCardPaymentInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingCardPaymentInfoView.swift; sourceTree = "<group>"; };
 		549FBD642C64B9170087240E /* MeetingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingListViewModel.swift; sourceTree = "<group>"; };
 		5F528BB8266D3D3FCBADB28D /* Pods-PinforYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinforYou.debug.xcconfig"; path = "Target Support Files/Pods-PinforYou/Pods-PinforYou.debug.xcconfig"; sourceTree = "<group>"; };
@@ -541,6 +543,7 @@
 				4EA35ADE2BCD19280001508B /* LoginOptionView.swift */,
 				4EA35B1C2BE6302F0001508B /* LoginIntroView.swift */,
 				4EA35AE42BE231C00001508B /* LoginButton */,
+				4EF28EC52CD7BAAD000EBC96 /* LoginView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -951,6 +954,7 @@
 				4E2497A52C22657A00851D9D /* ScannerViewModel.swift in Sources */,
 				4E2497932C1A758000851D9D /* PurchaseView.swift in Sources */,
 				4EC90D012C09687F00A0B5B5 /* MeetingListView.swift in Sources */,
+				4EF28EC62CD7BAAE000EBC96 /* LoginView.swift in Sources */,
 				4E2838882C5F641F0037AE55 /* PurchaseViewModel.swift in Sources */,
 				4EA35AE62BE232140001508B /* KakaoLoginBtn.swift in Sources */,
 				549FBD652C64B9170087240E /* MeetingListViewModel.swift in Sources */,

@@ -19,6 +19,7 @@ class AuthenticationViewModel : ObservableObject {
     
     enum Action {
         case checkAuthenticationState
+        case login
         case googleLogin
         case kakaoLogin
         case appleLogin(ASAuthorizationAppleIDRequest)
@@ -56,6 +57,24 @@ class AuthenticationViewModel : ObservableObject {
                 self.authenticationState = .authenticated
             }
             
+        case .login:
+            container.services.authService.login(email: email!, password: password!)
+                .sink { [weak self] completion in
+                    if case .failure = completion {
+                        self?.isLoading = false
+                    }
+                } receiveValue: { [weak self] user in
+                    if user.result {
+                        self?.isLoading = false
+                        self?.userId = user.hashedid
+                        UserDefaults.standard.set(user.hashedid, forKey: "hashedID")
+                        self?.authenticationState = .authenticated
+                    }
+                    else {
+                        self?.isLoading = false
+                    }
+                    
+                }.store(in: &subscriptions)
         case .kakaoLogin:
             isLoading = true
             container.services.authService.signInWithKakao(email: email!, name: name!)
@@ -67,6 +86,7 @@ class AuthenticationViewModel : ObservableObject {
                     if user.result {
                         self?.isLoading = false
                         self?.userId = user.hashedID
+                        UserDefaults.standard.set(user.hashedID, forKey: "hashedID")
                         self?.authenticationState = .authenticated
                     }
                     else {
@@ -90,6 +110,7 @@ class AuthenticationViewModel : ObservableObject {
                     if user.result {
                         self?.isLoading = false
                         self?.userId = user.hashedID
+                        UserDefaults.standard.set(user.hashedID, forKey: "hashedID")
                         self?.authenticationState = .authenticated
                     }
                     else {

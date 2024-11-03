@@ -31,6 +31,7 @@ protocol AuthenticationServiceType {
     func withdraw(userid: String) -> AnyPublisher<Bool, ServiceError>
     func getUserInfo(userid: String) -> AnyPublisher<UserInfo, ServiceError>
     func signUpWithEmail(email: String, password: String, userName: String, gender: Gender, phoneNumber: String, age: String, interest: String) -> AnyPublisher<(hashedid: String, result: Bool), ServiceError>
+    func login(email: String, password: String) -> AnyPublisher<(result: Bool, hashedid: String), ServiceError>
 }
 
 class AuthenticationService : AuthenticationServiceType {
@@ -164,6 +165,20 @@ class AuthenticationService : AuthenticationServiceType {
     func getUserInfo(userid: String) -> AnyPublisher<UserInfo, ServiceError> {
         Future { [weak self] promise in
             self?.getUserInfo(userid: userid) { result in
+                switch result {
+                case let .success(result):
+                    promise(.success(result))
+                    
+                case let .failure(error):
+                    promise(.failure(.error(error)))
+                }
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    func login(email: String, password: String) -> AnyPublisher<(result: Bool, hashedid: String), ServiceError> {
+        Future { [weak self] promise in
+            self?.login(email: email, password: password) { result in
                 switch result {
                 case let .success(result):
                     promise(.success(result))
@@ -397,10 +412,47 @@ extension AuthenticationService {
             completion(.success((data)))
         }
     }
+    
+    private func login(email: String, password: String, completion: @escaping (Result<(result: Bool, hashedid: String), Error>) -> Void) {
+        struct Result: Decodable {
+            let login_info: [LoginInfo]
+            let user_info: [UserInfo]
+            
+            struct LoginInfo: Decodable {
+                let login: Bool
+                let message: String
+            }
+            
+            struct UserInfo: Decodable {
+                let hashed_id: String
+                let user_name: String
+                let user_email: String
+            }
+        }
+        AF.request("https://pinforyou.online/login",
+                   method: .post,
+                   parameters: ["email" : email,
+                                "password" : password],
+                   encoding: URLEncoding.queryString,
+                   headers: ["Content-Type" : "application/json"])
+        .responseDecodable(of: Result.self) { response in
+            debugPrint(response)
+            guard case .success(let data) = response.result
+            else {
+                return completion(.failure(AuthenticationError.invaildated))
+            }
+            
+            completion(.success((data.login_info.first!.login, data.user_info.first!.hashed_id)))
+        }
+    }
 }
 
 
 class StubAuthenticationService : AuthenticationServiceType {
+    func login(email: String, password: String) -> AnyPublisher<(result: Bool, hashedid: String), ServiceError> {
+        Empty().eraseToAnyPublisher()
+    }
+    
     func signUpWithEmail(email: String, password: String, userName: String, gender: Gender, phoneNumber: String, age: String, interest: String) -> AnyPublisher<(hashedid: String, result: Bool), ServiceError> {
         Empty().eraseToAnyPublisher()
     }
