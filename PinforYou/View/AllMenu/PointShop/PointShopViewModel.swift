@@ -1,21 +1,14 @@
-//
-//  MeetingListViewModel.swift
-//  PinforYou
-//
-//  Created by 김성훈 on 7/15/24.
-//
-
 import Foundation
 import Combine
 
-class MeetingListViewModel : ObservableObject {
+class PointShopViewModel : ObservableObject {
     
     enum Action {
-        case getCardInfo
+        case getUserPointInfo
     }
     
     @Published var isFinished : Bool = false
-    var CardList : [CardInfo.Carda] = []
+    @Published var point: Int = 0
     
     private var container : DIContainer
     private var subscriptions = Set<AnyCancellable>()
@@ -24,20 +17,21 @@ class MeetingListViewModel : ObservableObject {
         self.container = container
     }
     
-    func send(action : Action) {
+    func send(action : Action, userid: Int) {
         switch action {
-        case .getCardInfo:
-            container.services.userService.getCardInfo(id: "8a2d0e95dbfc6f17f11672392b870b632377ab3c49582e311913df8fbd3548f2")
+        case .getUserPointInfo:
+            container.services.pointShopService.getUserPointInfo(userid: userid)
                 .sink { [weak self] completion in
                     if case .failure = completion {
                         //
                     }
+                } receiveValue: { [weak self] point in
+                    self?.point = point
                     self?.isFinished = true
-                } receiveValue: { [weak self] card in
-                    self?.CardList = card.CardList
                 }
                 .store(in: &subscriptions)
 
         }
     }
 }
+

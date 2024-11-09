@@ -45,12 +45,10 @@ extension EventService {
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: Event.self) { [weak self] response in
             
-            debugPrint(response)
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(FriendError.FailedfetchFriend))
             }
-            
             
             completion(.success(data))
         }

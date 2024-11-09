@@ -24,7 +24,8 @@ class ChallengeViewModel : ObservableObject {
         self.container = container
     }
     
-    func send(action : Action, userid: Int = 1) {
+    func send(action : Action) {
+        guard let userid = UserID.shared.hashedID else {return}
         switch action {
         case .getChallengeInfo:
             container.services.challengeService.getChallengeInfo(userid: userid)
@@ -33,9 +34,7 @@ class ChallengeViewModel : ObservableObject {
                         //
                     }
                 } receiveValue: { [weak self] challenge in
-                    for i in challenge {
-                        self?.ChallengeList.append(i)
-                    }
+                    self?.ChallengeList = challenge.challenges
                     self?.isFinished = true
                 }
                 .store(in: &subscriptions)

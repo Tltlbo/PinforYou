@@ -19,7 +19,7 @@ struct EventView: View {
                 TabView {
                     ForEach(eventViewModel.issuanceEventList, id: \.self) {
                         event in
-                        KFImage(URL(string: event))
+                        KFImage(URL(string: event.card_event_image))
                             .resizable()
                             .frame(width: UIScreen.main.bounds.width, height:  200)
                     }
@@ -28,12 +28,11 @@ struct EventView: View {
                 .frame(height: 200)
             }
             
-            
             Section(header: Text("결제 이벤트").font(.title)) {
                 TabView {
                     ForEach(eventViewModel.paymentEventList, id: \.self) {
                         event in
-                        KFImage(URL(string: event))
+                        KFImage(URL(string: event.pay_event_image))
                             .resizable()
                             .frame(width: UIScreen.main.bounds.width, height:  200)
                     }

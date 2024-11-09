@@ -49,7 +49,7 @@ struct CardDeleteCell: View {
                     .alert(isPresented: $isDelete) {
                         Alert(title: Text("삭제하시겠습니까?"), message: Text("\(card.cardName)이 삭제됩니다."), primaryButton: .destructive(Text("삭제"), action: {
                             cardlistViewModel.cardDelete(card: card)
-                            cardlistViewModel.send(action: .deleteCard, userid: 1, cardid: card.cardID)
+                            cardlistViewModel.send(action: .deleteCard, cardid: card.cardID)
                         }), secondaryButton: .cancel(Text("취소"), action: {
                             //
                         }))
@@ -72,5 +72,5 @@ struct CardDeleteCell: View {
 }
 
 #Preview {
-    CardDeleteCell(card: .init(cardID: 1, cardName: "test", cardNum: "test"))
+    CardDeleteCell(card: .init(cardID: 1, cardName: "test", cardNum: "test", card_image_url: ""))
 }

@@ -8,21 +8,27 @@
 import SwiftUI
 
 struct RouletteView: View {
-    let names = ["김성훈", "노지인", "정수열", "박진성", "송재민"]  // 돌림판에 들어갈 이름
-    let colors: [Color] = [.red, .green, .blue, .yellow, .purple]  // 섹터별 다른 색상 배열
-    @State private var selectedName = ""
+    @State private var selectedIndex: Int?
     @State private var degrees = 0.0
     @State private var spinning = false
     @State private var navigateToCardInfo = false  // 네비게이션 트리거
+    @EnvironmentObject var roulleteViewModel: GameViewModel
+    @EnvironmentObject var authViewModel : AuthenticationViewModel
+    @EnvironmentObject var container: DIContainer
+    var StoreName : String
+    var StoreCategory : String
 
     var body: some View {
         NavigationStack {
             VStack {
                 ZStack {
-                    ForEach(0..<names.count) { index in
-                        RouletteSegment(sliceCount: names.count, index: index, name: names[index], wheelSize: 320, color: colors[index % colors.count])
+                    ForEach(roulleteViewModel.selecedFriends, id: \.self) { friend in
+                        if let index = roulleteViewModel.selecedFriends.firstIndex(of: friend)  {
+                            RouletteSegment(sliceCount: roulleteViewModel.selecedFriends.count, index: index, name: roulleteViewModel.selecedFriends[index].name, wheelSize: 320, color: roulleteViewModel.colors[index % roulleteViewModel.colors.count])
+                                .rotationEffect(.degrees(degrees))
+                        }
                     }
-                    .rotationEffect(.degrees(degrees))
+                    
 
                     Triangle()
                         .fill(Color.red)
@@ -40,14 +46,25 @@ struct RouletteView: View {
                 .foregroundColor(.white)
                 .clipShape(Capsule())
                 .shadow(radius: 5)
-
-                NavigationLink("", destination: CardInfoView(selectedName: selectedName), isActive: $navigateToCardInfo)
+                
+                if let selectedIndex {
+                    NavigationLink("", destination: CardInfoView(selectedFriend: roulleteViewModel.selecedFriends[selectedIndex], StoreName: StoreName, StoreCategory: StoreCategory, cardInfoViewModel: .init(container: container)), isActive: $navigateToCardInfo)
+                }
+            }
+            .navigationBarBackButtonHidden()
+        }
+        .onAppear {
+            roulleteViewModel.selecedFriends.append(Friend(friendID: UserID.shared.hashedID ?? "", name: authViewModel.userName))
+            roulleteViewModel.colors.append(Color(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1)))
+        }
+        .onChange(of: selectedIndex) { newValue in
+            if newValue != nil {
+                navigateToCardInfo = true
             }
         }
     }
 
     func spinWheel() {
-        selectedName = ""
         spinning = true
         let randomSpin = Double.random(in: 720...1440)  // 무작위 회전 각도
 
@@ -58,12 +75,13 @@ struct RouletteView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
             spinning = false
             let normalizedDegrees = degrees.truncatingRemainder(dividingBy: 360)
-            let segmentAngle = 360 / Double(names.count)
-            let arrowTipAngle = (normalizedDegrees + 180).truncatingRemainder(dividingBy: 360)
-            let index = Int(arrowTipAngle / segmentAngle) % names.count
-            selectedName = names[(names.count - index) % names.count]  // 섹터가 반시계 방향이므로 배열을 반전
+            let segmentAngle = 360 / Double(roulleteViewModel.selecedFriends.count)
+            let arrowTipAngle = (normalizedDegrees).truncatingRemainder(dividingBy: 360)
+            let index = Int(arrowTipAngle / segmentAngle) % roulleteViewModel.selecedFriends.count
             degrees = normalizedDegrees  // 각도 정규화
-            navigateToCardInfo = true  // 선택 후 네비게이션 활성화
+            selectedIndex = roulleteViewModel.selecedFriends.firstIndex(of: roulleteViewModel.selecedFriends[(roulleteViewModel.selecedFriends.count - index) % roulleteViewModel.selecedFriends.count]) ?? 0  // 섹터가 반시계 방향이므로 배열을 반전
+            
+            
         }
     }
 }
@@ -108,8 +126,3 @@ struct RouletteSegment: View {
     }
 }
 
-struct RouletteView_Previews: PreviewProvider {
-    static var previews: some View {
-        RouletteView()
-    }
-}

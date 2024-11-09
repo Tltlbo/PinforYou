@@ -9,10 +9,11 @@ import SwiftUI
 
 struct MyGifticonView: View {
     @State private var isScreenFullDetailView : Bool = false
+    @State private var selectedGifticon: Usergifticon.gifticon?
     @StateObject var mygifticonViewModel : MyGifticonViewModel
     
     var body: some View {
-    
+        
         NavigationStack {
             ZStack {
                 Color("BackgroundColor")
@@ -22,16 +23,18 @@ struct MyGifticonView: View {
                     ScrollView(.vertical) {
                         VStack {
                             ForEach(mygifticonViewModel.gifticonList, id: \.self) { gifticon in
-                        
+                                
                                 Button {
-                                    isScreenFullDetailView = true
+                                    selectedGifticon = gifticon
                                 } label: {
                                     MygifticonCell(gifticon: gifticon)
                                 }
-                                .fullScreenCover(isPresented: $isScreenFullDetailView) {
-                                    MyGifticonDetailView(isScreenFullDetailView: $isScreenFullDetailView)
+                                .fullScreenCover(item: $selectedGifticon) { gifticon in
+                                    MyGifticonDetailView(gifticon: gifticon)
+                                        .environmentObject(mygifticonViewModel)
+                                    
                                 }
-
+                                
                             }
                         }
                     }
@@ -40,7 +43,7 @@ struct MyGifticonView: View {
             
         }
         .onAppear {
-            mygifticonViewModel.send(action: .getGifticonInfo, userid: 1)
+            mygifticonViewModel.send(action: .getGifticonInfo, userid: 1, itemid: nil)
         }
     }
 }

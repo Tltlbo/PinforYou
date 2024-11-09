@@ -13,9 +13,14 @@ class FriendListViewModel : ObservableObject {
     enum Action {
         case getFriendInfo
         case getRequestFriendInfo
+        case deleteFriendInfo
+        case acceptRequestFriend
+        case requestFriend
     }
     
     @Published var isFinished : Bool = false
+    @Published var isDelete: Bool = false
+    @Published var isAccept: Bool = false
     @Published var FriendList : [Friend] = []
     @Published var RequestFriendList : [Friend] = []
     
@@ -26,7 +31,8 @@ class FriendListViewModel : ObservableObject {
         self.container = container
     }
     
-    func send(action : Action, userid: Int = 1) {
+    func send(action : Action, friendid: String?, name: String? = nil, tel: String? = nil) {
+        guard let userid = UserID.shared.hashedID else {return}
         switch action {
         case .getFriendInfo:
             container.services.friendService.getFriendInfo(userid: userid)
@@ -49,6 +55,44 @@ class FriendListViewModel : ObservableObject {
                 } receiveValue: { [weak self] Friend in
                     self?.RequestFriendList = Friend.requestfriendList
                     self?.isFinished = true
+                }
+                .store(in: &subscriptions)
+            
+        case .deleteFriendInfo:
+            container.services.friendService.deleteFriendInfo(userid: userid, friendid: friendid!)
+                .sink { [weak self] completion in
+                    if case .failure = completion {
+                        //
+                    }
+                } receiveValue: { [weak self] result in
+                    if result {
+                        self?.isDelete = true
+                    }
+                }
+                .store(in: &subscriptions)
+            
+        case .acceptRequestFriend:
+            container.services.friendService.acceptRequestFriend(userid: userid, friendid: friendid!)
+                .sink { [weak self] completion in
+                    if case .failure = completion {
+                        //
+                    }
+                } receiveValue: { [weak self] result in
+                    if result {
+                        self?.isAccept = true
+                    }
+                }
+                .store(in: &subscriptions)
+        case .requestFriend:
+            container.services.friendService.requestFriend(userid: userid, name: name!, tel: tel!)
+                .sink { [weak self] completion in
+                    if case .failure = completion {
+                        //
+                    }
+                } receiveValue: { [weak self] result in
+                    if result {
+                        self?.isAccept = true
+                    }
                 }
                 .store(in: &subscriptions)
         }

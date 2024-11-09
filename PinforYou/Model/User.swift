@@ -15,6 +15,13 @@ struct User {
     var description : String?
 }
 
+struct UserInfo: Decodable {
+    let result: Bool
+    let name: String
+    let tel: String
+    let email: String?
+}
+
 extension User {
     func toObject() -> UserObject {
         .init(

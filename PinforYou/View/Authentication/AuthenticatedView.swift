@@ -19,14 +19,19 @@ struct AuthenticatedView: View {
             case .unauthenticated:
                 LoginIntroView()
                     .environmentObject(authViewModel)
-                
+            case .authenticating:
+                SignUpUserInfoView(email: .constant(""), password: .constant(""))
+                    .environmentObject(authViewModel)
             case .authenticated:
                 MainTabView()
                     .environmentObject(authViewModel)
+                    .onAppear {
+                        authViewModel.send(action: .getUserInfo)
+                    }
             }
         }
         .onAppear {
-            authViewModel.send(action: .checkAuthenticationState)
+            authViewModel.send(action: .checkAuthenticationState, email: nil, name: nil)
         }
         
         

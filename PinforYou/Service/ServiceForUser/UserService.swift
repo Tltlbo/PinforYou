@@ -10,19 +10,19 @@ import Combine
 import Alamofire
 
 protocol UserServiceType {
-    func getCardInfo() -> AnyPublisher<CardInfo, ServiceError>
-    func getPaymentInfo(cardid : Int) -> AnyPublisher<PaymentInfo, ServiceError>
-    func getRecommendCardInfo(userid : Int) -> AnyPublisher<RecommendCardInfo, ServiceError>
+    func getCardInfo(id: String) -> AnyPublisher<CardInfo, ServiceError>
+    func getPaymentInfo(userid: String, cardid : Int, year: Int, month: Int) -> AnyPublisher<PaymentInfo, ServiceError>
+    func getRecommendCardInfo(userid : String) -> AnyPublisher<RecommendCardInfo, ServiceError>
     func cardValidation(cardNum: String) -> AnyPublisher<ValidityCard, ServiceError>
-    func cardAppend(userid: Int, cardNum:String, cardName: String) -> AnyPublisher<Bool, ServiceError>
-    func cardDelete(userid: Int, cardid: Int) -> AnyPublisher<Bool, ServiceError>
+    func cardAppend(userid: String, cardNum:String, cardName: String) -> AnyPublisher<Bool, ServiceError>
+    func cardDelete(userid: String, cardid: Int) -> AnyPublisher<Bool, ServiceError>
 }
 
 class UserService : UserServiceType {
     
-    func getCardInfo() -> AnyPublisher<CardInfo, ServiceError> {
+    func getCardInfo(id: String) -> AnyPublisher<CardInfo, ServiceError> {
         Future { [weak self] promise in
-            self?.getCardInfo { result in
+            self?.getCardInfo(id: id) { result in
                 switch result {
                 case let .success(CardInfo):
                     promise(.success(CardInfo))
@@ -35,9 +35,9 @@ class UserService : UserServiceType {
         }.eraseToAnyPublisher()
     }
     
-    func getPaymentInfo(cardid : Int) -> AnyPublisher<PaymentInfo, ServiceError> {
+    func getPaymentInfo(userid: String, cardid: Int, year: Int, month: Int) -> AnyPublisher<PaymentInfo, ServiceError> {
         Future { [weak self] promise in
-            self?.getPaymentInfo(cardid: cardid) { result in
+            self?.getPaymentInfo(userid: userid, cardid: cardid, year: year, month: month) { result in
                 switch result {
                 case let .success(PaymentInfo):
                     promise(.success(PaymentInfo))
@@ -50,7 +50,7 @@ class UserService : UserServiceType {
         }.eraseToAnyPublisher()
     }
     
-    func getRecommendCardInfo(userid: Int) -> AnyPublisher<RecommendCardInfo, ServiceError> {
+    func getRecommendCardInfo(userid: String) -> AnyPublisher<RecommendCardInfo, ServiceError> {
         Future { [weak self] promise in
             self?.getRecommendCardInfo(userid: userid) { result in
                 switch result {
@@ -84,14 +84,13 @@ class UserService : UserServiceType {
 
 extension UserService {
     
-    private func getCardInfo(completion: @escaping (Result<CardInfo, Error>) -> Void) {
+    private func getCardInfo(id: String, completion: @escaping (Result<CardInfo, Error>) -> Void) {
         AF.request("https://pinforyou.online/userCard",
                    method: .get,
-                   parameters: ["user_id" : 1],
+                   parameters: ["hashed_id" : id],
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: CardInfo.self) { [weak self] response in
-            
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(LocationError.APICallFailed))
@@ -101,15 +100,16 @@ extension UserService {
         }
     }
     
-    private func getPaymentInfo(cardid: Int, completion: @escaping (Result<PaymentInfo, Error>) -> Void) {
+    private func getPaymentInfo(userid: String, cardid: Int, year: Int, month: Int, completion: @escaping (Result<PaymentInfo, Error>) -> Void) {
         AF.request("https://pinforyou.online/paymentHistory",
                    method: .get,
-                   parameters: ["user_id" : 1,
-                                "card_id" : cardid],
+                   parameters: ["hashed_id" : userid,
+                                "card_id" : cardid,
+                                "year" : year,
+                                "month" : month],
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: PaymentInfo.self) { [weak self] response in
-            
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(LocationError.APICallFailed))
@@ -120,15 +120,14 @@ extension UserService {
         }
     }
     
-    private func getRecommendCardInfo(userid: Int, completion: @escaping (Result<RecommendCardInfo, Error>) -> Void) {
+    private func getRecommendCardInfo(userid: String, completion: @escaping (Result<RecommendCardInfo, Error>) -> Void) {
         AF.request("https://pinforyou.online/userCard/newCardRecommend",
                    method: .get,
-                   parameters: ["user_id" : userid],
+                   parameters: ["hashed_id" : userid],
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: RecommendCardInfo.self) { [weak self] response in
             
-            debugPrint(response)
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(LocationError.APICallFailed))
@@ -145,7 +144,6 @@ extension UserService {
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: ValidityCard.self) { [weak self] response in
-            debugPrint(response)
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(LocationError.APICallFailed))
@@ -157,16 +155,15 @@ extension UserService {
 }
 
 class StubUserService : UserServiceType {
-    
-    func getCardInfo() -> AnyPublisher<CardInfo, ServiceError> {
+    func getCardInfo(id: String) -> AnyPublisher<CardInfo, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
     
-    func getPaymentInfo(cardid : Int) -> AnyPublisher<PaymentInfo, ServiceError> {
+    func getPaymentInfo(userid: String, cardid: Int, year: Int, month: Int) -> AnyPublisher<PaymentInfo, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
     
-    func getRecommendCardInfo(userid: Int) -> AnyPublisher<RecommendCardInfo, ServiceError> {
+    func getRecommendCardInfo(userid: String) -> AnyPublisher<RecommendCardInfo, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
     

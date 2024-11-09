@@ -19,22 +19,21 @@ class PlaceInfoViewModel : ObservableObject {
     var CardList : [PayCardModel.PayCard] = []
     
     private var container : DIContainer
-    private var userID : Int
-    private var StoreName : String
-    private var StoreCategory : String
+    var StoreName : String
+    var StoreCategory : String
     private var subscriptions = Set<AnyCancellable>()
     
-    init(container: DIContainer, userid : Int, storename : String, storecategory : String) {
+    init(container: DIContainer, storename : String, storecategory : String) {
         self.container = container
-        self.userID = userid
         self.StoreName = storename
-        self.StoreCategory = storecategory
+        self.StoreCategory = PlaceInfoViewModel.convertToCategory(from: storecategory)
     }
     
     func send(action : Action) {
+        guard let userid = UserID.shared.hashedID else {return}
         switch action {
         case .getRecommendPayCardInfo:
-            container.services.payService.getPayRecommendCardInfo(userid: userID, storeName: StoreName, storeCategory: StoreCategory)
+            container.services.payService.getPayRecommendCardInfo(userid: userid, storeName: StoreName, storeCategory: StoreCategory)
                 .sink { [weak self] completion in
                     if case .failure = completion {
                         //
@@ -43,7 +42,25 @@ class PlaceInfoViewModel : ObservableObject {
                     self?.isFinished = true
                     self?.CardList = card.CardList
                 }.store(in: &subscriptions)
-
+        }
+    }
+    
+    static private func convertToCategory(from input: String) -> String {
+        switch input {
+        case "편의점":
+            return "conveniencestore"
+        case "마트":
+            return "supermarket"
+        case "음식점":
+            return "restaurant"
+        case "카페":
+            return "cafe"
+        case "병원":
+            return "hospital"
+        case "약국":
+            return "pharmacy"
+        default:
+            return "other"
         }
     }
 }

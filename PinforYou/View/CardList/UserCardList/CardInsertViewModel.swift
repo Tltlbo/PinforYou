@@ -27,9 +27,9 @@ class CardInsertViewModel : ObservableObject {
         self.container = container
     }
     
-    func send(action: Action, userid: Int, cardNum: String = "", cardName: String = "") {
+    func send(action: Action, cardNum: String = "", cardName: String = "") {
+        guard let userid = UserID.shared.hashedID else {return}
         switch action {
-            
         case .cardValidate:
             container.services.userService.cardValidation(cardNum: cardNum)
                 .sink { [weak self] completion in

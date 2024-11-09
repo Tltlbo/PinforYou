@@ -19,7 +19,7 @@ class QRPayViewModel : ObservableObject {
     private var container : DIContainer
     private var subscriptions = Set<AnyCancellable>()
     
-    @Published var QRImageView : UIImageView? = nil
+    @Published var QRImage_url : String? = nil
     
     @Published var isFinshed : Bool = false
     
@@ -29,16 +29,17 @@ class QRPayViewModel : ObservableObject {
     }
     
     func send(action : Action) {
+        guard let userid = UserID.shared.hashedID else {return}
         switch action {
         case .getQrCode:
-            container.services.payService.getCardQrCode(cardid: cardInfo.cardID)
+            container.services.payService.getCardQrCode(userid: userid, cardid: cardInfo.cardID)
                 .sink { [weak self] completion in
                     if case .failure = completion {
                         //
                     }
                     self?.isFinshed = true
-                } receiveValue: { [weak self] image in
-                    self?.QRImageView = image
+                } receiveValue: { [weak self] url in
+                    self?.QRImage_url = url
                 }.store(in: &subscriptions)
 
         }

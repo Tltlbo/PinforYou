@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct MyCardCell: View {
     
@@ -13,24 +14,24 @@ struct MyCardCell: View {
     
     var body: some View {
         HStack {
-            Image(systemName: "creditcard")
+            KFImage(URL(string: card.card_image_url))
                 .resizable()
                 .scaledToFit()
-                .frame(width: 100)
-                .padding(.horizontal, 10)
+                .frame(width: 60, height: 100)
+                .padding(.horizontal, 30)
+                .rotationEffect(.degrees(-90.0))
                 
-            
             VStack(alignment:.leading) {
                 HStack {
                     Text(card.cardName)
                         .font(.system(size: 20))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.black)
                 }
-                .padding(.bottom, 30)
+                .padding(.bottom, 20)
                 
                 Text(card.cardNum)
                     .font(.system(size: 20))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.black)
             }
             Spacer()
         }
@@ -44,5 +45,5 @@ struct MyCardCell: View {
 }
 
 #Preview {
-    MyCardCell(card: .init(cardID: 1, cardName: "test", cardNum: "teset"))
+    MyCardCell(card: .init(cardID: 1, cardName: "test", cardNum: "teset", card_image_url: ""))
 }

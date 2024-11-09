@@ -42,7 +42,7 @@ extension OwnerPayService {
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: String.self) { [weak self] response in
             
-            debugPrint(response)
+            
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(LocationError.APICallFailed))

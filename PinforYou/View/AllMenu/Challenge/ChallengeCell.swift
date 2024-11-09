@@ -6,20 +6,18 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ChallengeCell: View {
-    let challengeName : String
-    let goal : Int
-    let achiveNumber : Int
-    let point : Int
+    let challenge: Challenge
     
     var body: some View {
         HStack {
             VStack(alignment:.leading) {
                 HStack {
-                    Text(challengeName)
+                    Text(challenge.challengeName)
                         .font(.system(size: 17))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.black)
                 }
                 .padding(.bottom, 10)
                 
@@ -27,24 +25,24 @@ struct ChallengeCell: View {
                     ZStack(alignment: .leading) {
                         Rectangle()
                             .frame(width: 230, height: 2)
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                         
                         Rectangle()
-                            .frame(width: (Double(achiveNumber)/100) * 230, height: 2)
+                            .frame(width: (Double(challenge.percent)/100) * 230, height: 2)
                             .foregroundStyle(Color.blue)
                     }
                     
-                    Text("\(Int((Double(achiveNumber)/100) * 20)) / \(goal)")
-                        .foregroundColor(.white)
+                    Text("\(Int((Double(challenge.percent)/100) * 20)) / \(challenge.goal)")
+                        .foregroundColor(.black)
                     
-                    Text("\(point)P")
-                        .foregroundColor(.white)
+                    Text("\(challenge.point)P")
+                        .foregroundColor(.black)
                 }
             }
             .padding(.leading, 15)
             Spacer()
             
-            Image(systemName: "creditcard")
+            KFImage(URL(string: challenge.imageUrl))
                 .resizable()
                 .scaledToFit()
                 .frame(width: 70, height: 70)
@@ -62,6 +60,3 @@ struct ChallengeCell: View {
     }
 }
 
-#Preview {
-    ChallengeCell(challengeName: "미션", goal: 20, achiveNumber: 20, point: 2000)
-}

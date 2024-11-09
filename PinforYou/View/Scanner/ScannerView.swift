@@ -563,7 +563,6 @@ struct ScannerMainView : View {
                 .onReceive(scannedDataNotification.zip(scannedCardidNotification)) { (Data, cardID) in
                     scannedData = Data.object as? String ?? ""
                     cardid = cardID.object as? Int ?? 0
-                    print(cardid)
     
                     scannerViewModel.send(action: .storePayment, amount: Int(scannedData)!, cardid: cardid)
                 }

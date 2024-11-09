@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct MyGifticonDetailView: View {
-    
-    @Binding var isScreenFullDetailView : Bool
+    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var mygifticonViewModel : MyGifticonViewModel
+    let gifticon : Usergifticon.gifticon
+    @State var isDelete: Bool = false
     
     var body: some View {
         NavigationView {
@@ -18,18 +21,18 @@ struct MyGifticonDetailView: View {
                     .ignoresSafeArea()
                 
                 VStack(alignment: .leading) {
-                    Image(systemName: "creditcard")
+                    KFImage(URL(string: gifticon.imageURL))
                         .resizable()
                         .frame(width: UIScreen.main.bounds.width, height: 300)
                     
                     VStack(alignment: .leading) {
-                        Text("투썸플레이스")
+                        Text(gifticon.place)
                             .foregroundColor(.secondary)
-                        Text("투썸플레이스 3만원권")
+                        Text(gifticon.giftName)
                     }
                     .padding(.vertical, 25)
                     
-                    Image(systemName: "creditcard")
+                    KFImage(URL(string: gifticon.barcodeURL))
                         .resizable()
                         .frame(width: UIScreen.main.bounds.width, height: 100)
                     
@@ -47,15 +50,33 @@ struct MyGifticonDetailView: View {
                                 .foregroundColor(.white)
                         }
                     }
-
+                    
                 }
             }
             .navigationBarItems(leading: Button(action: {
-                isScreenFullDetailView = false
+                dismiss()
             }, label: {
                 Image(systemName: "arrow.backward")
-                    .foregroundColor(.white)
-            }))
+                    .foregroundColor(.black)
+            }), trailing: Button(action: {
+                isDelete = true
+            }, label: {
+                Image(systemName: "trash")
+            })
+                .alert(isPresented: $isDelete) {
+                    Alert(title: Text("삭제하시겠습니까?"), message: Text("\(gifticon.giftName)이 삭제됩니다."), primaryButton: .destructive(Text("삭제"), action: {
+                        mygifticonViewModel.send(action: .deleteGifticon, userid: nil, itemid: gifticon.list_id)
+                    }), secondaryButton: .cancel(Text("취소"), action: {
+                        //
+                    }))
+                }
+            )
+        }
+        .onChange(of: mygifticonViewModel.isDelete) { isDelete in
+            if isDelete {
+                mygifticonViewModel.isDelete = false
+                dismiss()
+            }
         }
     }
 }

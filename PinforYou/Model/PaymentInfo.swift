@@ -9,11 +9,12 @@ import Foundation
 
 struct PaymentInfo : Decodable {
     
-    var userID : Int
+    var userID : String
     var cardID : Int
     var cardName : String
     var cardNum : String
     var cardColor : String
+    var card_image_url : String
     var Payments : [Payment] = []
     
     
@@ -33,12 +34,13 @@ struct PaymentInfo : Decodable {
     }
     
     enum CodingKeys : String, CodingKey {
-        case userID = "user_id"
+        case userID = "hashed_id"
         case cardID = "card_id"
         case cardName = "card_name"
         case cardNum = "card_num"
         case cardColor = "card_color"
         case Payments = "payments"
+        case card_image_url
     }
 }
 

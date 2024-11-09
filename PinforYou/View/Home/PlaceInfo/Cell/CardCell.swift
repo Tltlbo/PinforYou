@@ -30,7 +30,7 @@ struct CardCell: View {
             .frame(height: 20)
             .padding(.bottom, 30)
             
-            Text("\(cardInfo.discountPercent)% 할인")
+            Text("\(String(format: "%.1f", cardInfo.discountPercent))% 할인")
                 .font(.system(size: 30))
                 .foregroundStyle(.white)
         }
@@ -40,6 +40,3 @@ struct CardCell: View {
     }
 }
 
-#Preview {
-    CardCell(cardInfo: .init(userID: 1, cardID: 1, cardName: "나라사랑카드", cardLastNum: "1234", discountPercent: 10, cardColor: "101010"))
-}

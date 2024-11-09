@@ -16,17 +16,11 @@ struct QRPayView: View {
     
     var body: some View {
         
-        if QRPayViewModel.isFinshed && QRPayViewModel.QRImageView != nil {
-            Text(card.cardName)
-            
-            if let image = QRPayViewModel.QRImageView?.image {
-                Image(uiImage: (image))
-                    .onDisappear {
-                        ImageCache.default.removeImage(forKey: "QR")
-                    }
+        if QRPayViewModel.isFinshed {
+            if let url = QRPayViewModel.QRImage_url {
+                Text(card.cardName)
+                KFImage(URL(string: url))
             }
-            
-            
         }
         else {
             ProgressView()
@@ -41,6 +35,3 @@ struct QRPayView: View {
 
 
 
-#Preview {
-    QRPayView(card: .init(userID: 1, cardID: 1, cardName: "나라사랑카드", cardLastNum: "1234", discountPercent: 10, cardColor: "101010"), QRPayViewModel: .init(container: .init(services: StubService()), cardinfo: .init(userID: 1, cardID: 1, cardName: "나라사랑카드", cardLastNum: "1234", discountPercent: 10, cardColor: "101010")))
-}

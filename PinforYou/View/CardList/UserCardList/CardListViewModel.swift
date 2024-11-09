@@ -26,10 +26,13 @@ class CardListViewModel : ObservableObject {
         self.container = container
     }
     
-    func send(action : Action, userid: Int = 1, cardid: Int = 1) {
+    func send(action : Action, cardid: Int = 1) {
+        guard let userid = UserID.shared.hashedID else {
+            return
+        }
         switch action {
         case .getCardInfo:
-            container.services.userService.getCardInfo()
+            container.services.userService.getCardInfo(id: userid)
                 .sink { [weak self] completion in
                     if case .failure = completion {
                         //
@@ -62,8 +65,8 @@ extension CardListViewModel {
         }
     }
     
-    func inert(cardName: String, cardNum : String) {
-        let card = CardInfo.Carda(cardID: Int.random(in: 0 ... 255), cardName: cardName, cardNum: cardNum)
+    func inert(cardName: String, cardNum : String, url: String) {
+        let card = CardInfo.Carda(cardID: Int.random(in: 0 ... 255), cardName: cardName, cardNum: cardNum, card_image_url: url)
         
         self.CardList.append(card)
     }

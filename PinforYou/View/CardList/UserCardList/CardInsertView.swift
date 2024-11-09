@@ -13,6 +13,7 @@ struct CardInsertView: View {
     @StateObject var cardInsertViewModel: CardInsertViewModel
     @EnvironmentObject var container : DIContainer
     @Environment(\.presentationMode) var presentationMode
+    @Binding var isChange: Bool
     
     @State var isInsert : Bool = false
     @State var cardName : String = ""
@@ -35,9 +36,9 @@ struct CardInsertView: View {
                             Image(systemName: "chevron.left")
                                 .foregroundColor(.white)
                                 .font(.system(size: 25))
-                                
+                            
                         }
-
+                        
                     }
                     
                     HStack {
@@ -57,8 +58,7 @@ struct CardInsertView: View {
                     
                     TextField("카드 번호를 입력해주세요",  text: $cardNum)
                         .onChange(of: cardNum) { num in
-                            print(num)
-                            cardInsertViewModel.send(action: .cardValidate, userid: 1, cardNum: num)
+                            cardInsertViewModel.send(action: .cardValidate, cardNum: num)
                         }
                     Rectangle()
                         .frame(height: 1)
@@ -87,27 +87,30 @@ struct CardInsertView: View {
                     }
                     .alert(isPresented: $isInsert) {
                         Alert(title: Text("등록하시겠습니까?"), message: Text("\(cardInsertViewModel.companyName) \(cardInsertViewModel.cardName)카드가 등록됩니다."), primaryButton: .destructive(Text("등록"), action: {
-                            cardInsertViewModel.send(action: .cardAppend, userid: 1, cardNum: self.cardNum, cardName: self.cardName)
-                            cardlistViewModel.inert(cardName: cardName, cardNum: cardNum)
-                            
+                            cardInsertViewModel.send(action: .cardAppend, cardNum: self.cardNum, cardName: self.cardName)
+                            isChange = true
                             presentationMode.wrappedValue.dismiss()
                             
                         }), secondaryButton: .cancel(Text("취소"), action: {
                             //
                         }))
                     }
-
-
+                    
+                    
                     
                 }
                 .padding(.leading, 10)
             }
-            }
-            
-            
+        }
     }
+    
+    func insertDashes(into text: String) -> String {
+            return text.enumerated().map { index, character in
+                return (index > 0 && index % 4 == 0) ? "-\(character)" : "\(character)"
+            }.joined()
+        }
 }
 
 #Preview {
-    CardInsertView( cardInsertViewModel: .init(container: .init(services: StubService())))
+    CardInsertView( cardInsertViewModel: .init(container: .init(services: StubService())), isChange: .constant(false))
 }

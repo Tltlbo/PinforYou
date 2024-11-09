@@ -15,8 +15,8 @@ class EventViewModel : ObservableObject {
     }
     
     @Published var isFinished : Bool = false
-    @Published var paymentEventList : [String] = []
-    @Published var issuanceEventList : [String] = []
+    @Published var paymentEventList : [Event.Payment] = []
+    @Published var issuanceEventList : [Event.Issuance] = []
     
     private var container : DIContainer
     private var subscriptions = Set<AnyCancellable>()

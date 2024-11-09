@@ -13,6 +13,7 @@ struct CardListView: View {
     @EnvironmentObject var container : DIContainer
     
     @State var isTouched : Bool = false
+    @State var isChange: Bool = false
     
     
     var testCardList : [Card] = [Card.cardStub1, Card.cardStub2, Card.cardStub3, Card.cardStub4]
@@ -33,7 +34,7 @@ struct CardListView: View {
                         }
                         .padding(.trailing, 5)
                         .fullScreenCover(isPresented: $isTouched) {
-                            CardInsertView(cardInsertViewModel: .init(container: container))
+                            CardInsertView(cardInsertViewModel: .init(container: container), isChange: $isChange)
                                 .environmentObject(cardlistViewModel)
                         }
 
@@ -70,7 +71,14 @@ struct CardListView: View {
                         .ignoresSafeArea()
                 }
             }
-            
+            .onChange(of: isChange) { newValue in
+                if newValue {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        cardlistViewModel.send(action: .getCardInfo)
+                        isChange = false
+                    }
+                }
+            }
         }
         else {
             ProgressView()

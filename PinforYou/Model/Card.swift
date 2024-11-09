@@ -24,12 +24,14 @@ struct CardInfo : Decodable {
         var cardID : Int
         var cardName : String
         var cardNum : String
+        var card_image_url: String
         var ID = UUID()
         
         enum CodingKeys : String, CodingKey {
             case cardID = "card_id"
             case cardName = "card_name"
             case cardNum = "card_num"
+            case card_image_url
         }
     }
     

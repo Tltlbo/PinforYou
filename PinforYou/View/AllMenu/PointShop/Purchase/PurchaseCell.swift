@@ -10,7 +10,7 @@ import Kingfisher
 
 struct PurchaseCell: View {
     
-    let gifticon : PointShopGifticon
+    let gifticon : PointShopGifticon.Gifticon
     
     var body: some View {
         HStack {
@@ -26,7 +26,7 @@ struct PurchaseCell: View {
                 HStack {
                     Text(gifticon.place)
                         .font(.system(size: 17))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.black)
                 }
                 .padding(.top, 10)
                 

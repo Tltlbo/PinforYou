@@ -8,24 +8,24 @@
 import SwiftUI
 
 struct MyInfoView: View {
+    @EnvironmentObject var authViewModel : AuthenticationViewModel
+    
     var body: some View {
         NavigationStack {
             ZStack {
-                
                 Color("BackgroundColor")
                     .ignoresSafeArea()
                 
                 VStack(spacing: 25) {
-                    NameCell()
-                    EmailCell()
-                    PhoneNumberCell()
-                    passwordModifyCell()
+                    NameCell(name: authViewModel.userName)
+                    EmailCell(email: authViewModel.email)
+                    PhoneNumberCell(number: authViewModel.phoneNumber)
                     
                     Spacer()
                     
                     HStack(spacing: 10){
                         Button {
-                            //
+                            authViewModel.send(action: .logout)
                         } label: {
                             Text("로그아웃")
                         }
@@ -33,7 +33,7 @@ struct MyInfoView: View {
                         Text("|")
                         
                         Button {
-                            //
+                            authViewModel.send(action: .withdraw)
                         } label: {
                             Text("회원탈퇴")
                         }
@@ -47,6 +47,9 @@ struct MyInfoView: View {
                         .ignoresSafeArea()
                 }
             }
+        }
+        .onAppear{
+            //authViewModel.send(action: .getUserInfo)
         }
     }
 }
