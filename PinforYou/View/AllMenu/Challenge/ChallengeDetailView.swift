@@ -36,7 +36,7 @@ struct ChallengeDetailView: View {
                                         .foregroundStyle(Color.blue)
                                 }
                                 
-                                Text("\(Int((Double(challenge.percent)/100) * 20)) / \(challenge.goal)")
+                                Text("\(challenge.percent) / \(challenge.goal)")
                                 
                                 Text("\(challenge.point)P")
                             }

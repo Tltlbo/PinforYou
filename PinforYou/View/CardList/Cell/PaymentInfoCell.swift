@@ -13,9 +13,6 @@ struct PaymentInfoCell: View {
     
     var body: some View {
         HStack {
-            Image(systemName: "person")
-                .resizable()
-                .scaledToFit()
             VStack(alignment:.leading) {
                 HStack {
                     Text("\(Info.StoreName)")

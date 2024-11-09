@@ -10,13 +10,13 @@ import Combine
 import Alamofire
 
 protocol OwnerPayServiceType {
-    func storePaymentInfo(cardid: Int, amount : Int) -> AnyPublisher<String, ServiceError>
+    func storePaymentInfo(cardid: Int, amount : Int, userid: String, category: String, storeName: String) -> AnyPublisher<String, ServiceError>
 }
 
 class OwnerPayService : OwnerPayServiceType {
-    func storePaymentInfo(cardid: Int, amount : Int) -> AnyPublisher<String, ServiceError> {
+    func storePaymentInfo(cardid: Int, amount : Int, userid: String, category: String, storeName: String) -> AnyPublisher<String, ServiceError> {
         Future { [weak self] promise in
-            self?.storePaymentInfo(cardid: cardid, amount: amount) { result in
+            self?.storePaymentInfo(cardid: cardid, amount: amount, user_id: userid, store_name: storeName, category: category) { result in
                 switch result {
                 case let .success(String):
                     promise(.success(String))
@@ -30,18 +30,18 @@ class OwnerPayService : OwnerPayServiceType {
 }
 
 extension OwnerPayService {
-    private func storePaymentInfo(cardid: Int, amount: Int, completion: @escaping (Result<String, Error>) -> Void) {
+    private func storePaymentInfo(cardid: Int, amount: Int, user_id: String, store_name: String, category: String, completion: @escaping (Result<String, Error>) -> Void) {
         AF.request("https://pinforyou.online/paymentHistory",
                    method: .post,
-                   parameters: ["user_id" : 1,
+                   parameters: ["hashed_id" : user_id,
                                 "card_id" : cardid,
                                 "pay_amount" : amount,
-                                "store_name" : "CU 영남대점",
-                                "category" : "편의점"],
+                                "store_name" : store_name,
+                                "category" : category],
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: String.self) { [weak self] response in
-            
+            debugPrint(response)
             
             guard case .success(let data) = response.result
             else {
@@ -55,7 +55,7 @@ extension OwnerPayService {
 }
 
 class StubOwnerPayService : OwnerPayServiceType {
-    func storePaymentInfo(cardid: Int, amount : Int) -> AnyPublisher<String, ServiceError> {
+    func storePaymentInfo(cardid: Int, amount: Int, userid: String, category: String, storeName: String) -> AnyPublisher<String, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
 }

@@ -45,7 +45,7 @@ struct CardPaymentInfoView: View {
                             .padding(.leading, 10)
                         Text("요일")
                         Spacer()
-                        Text("일일 누적 금액")
+                        Text("금액")
                             .padding(.trailing, 10)
                     }
                     Rectangle()
