@@ -14,7 +14,7 @@ struct passwordModifyCell: View {
                 HStack {
                     Text("비밀번호 변경")
                         .font(.system(size: 20))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.black)
                 }
                 .padding(.bottom, 5)
                 .padding(.leading, 10)

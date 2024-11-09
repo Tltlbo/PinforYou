@@ -29,9 +29,10 @@ class QRPayViewModel : ObservableObject {
     }
     
     func send(action : Action) {
+        guard let userid = UserID.shared.hashedID else {return}
         switch action {
         case .getQrCode:
-            container.services.payService.getCardQrCode(cardid: cardInfo.cardID)
+            container.services.payService.getCardQrCode(userid: userid, cardid: cardInfo.cardID)
                 .sink { [weak self] completion in
                     if case .failure = completion {
                         //

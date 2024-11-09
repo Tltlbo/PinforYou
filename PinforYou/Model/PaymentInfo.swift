@@ -14,6 +14,7 @@ struct PaymentInfo : Decodable {
     var cardName : String
     var cardNum : String
     var cardColor : String
+    var card_image_url : String
     var Payments : [Payment] = []
     
     
@@ -39,6 +40,7 @@ struct PaymentInfo : Decodable {
         case cardNum = "card_num"
         case cardColor = "card_color"
         case Payments = "payments"
+        case card_image_url
     }
 }
 

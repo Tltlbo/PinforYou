@@ -36,7 +36,7 @@ struct AllMenuView: View {
                         .font(.system(size: 26))
                         .padding(.leading, 20)
                         .padding(.bottom, 58)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.black)
                 }
                 .buttonStyle(PlainButtonStyle())
                 

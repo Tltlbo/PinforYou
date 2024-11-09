@@ -19,8 +19,8 @@ class PlaceInfoViewModel : ObservableObject {
     var CardList : [PayCardModel.PayCard] = []
     
     private var container : DIContainer
-    private var StoreName : String
-    private var StoreCategory : String
+    var StoreName : String
+    var StoreCategory : String
     private var subscriptions = Set<AnyCancellable>()
     
     init(container: DIContainer, storename : String, storecategory : String) {

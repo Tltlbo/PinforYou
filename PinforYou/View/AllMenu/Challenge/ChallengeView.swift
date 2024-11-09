@@ -27,9 +27,9 @@ struct ChallengeView: View {
                             VStack(spacing: 10) {
                                 ForEach(challengeViewModel.ChallengeList, id: \.self) { challenge in
                                     NavigationLink {
-                                        ChallengeDetailView()
+                                        ChallengeDetailView(challenge: challenge)
                                     } label: {
-                                        ChallengeCell(challengeName: challenge.challengeName, goal: challenge.goal, achiveNumber: challenge.percent, point: challenge.point)
+                                        ChallengeCell( challenge: challenge)
                                     }
                                 }
                                 

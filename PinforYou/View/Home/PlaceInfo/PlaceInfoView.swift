@@ -60,9 +60,11 @@ struct PlaceInfoView: View {
                     HStack {
                         withBtn(option: .with)
                             .padding(.leading , 10)
+                            .environmentObject(placeInfoViewModel)
                         Spacer()
                         withBtn(option: .game)
                             .padding(.trailing, 10)
+                            .environmentObject(placeInfoViewModel)
                     }
                 }
                 .tint(.black)
@@ -76,18 +78,19 @@ struct PlaceInfoView: View {
 }
 
 struct withBtn : View {
-    
     enum selectOption {
         case game
         case with
     }
     
     var option : selectOption = .game
+    @EnvironmentObject var container : DIContainer
+    @EnvironmentObject var placeInfoViewModel: PlaceInfoViewModel
     
     var body: some View {
         NavigationLink {
             //바인딩 값에 따라 변경
-            WithFriendView()
+            WithFriendView(StoreName:placeInfoViewModel.StoreName,StoreCategory: placeInfoViewModel.StoreCategory , gameViewModel: .init(container: container))
         } label: {
             ZStack {
                 Rectangle()

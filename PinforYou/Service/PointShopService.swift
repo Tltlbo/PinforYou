@@ -230,7 +230,7 @@ extension PointShopService {
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: result.self) { [weak self] response in
-            debugPrint(response)
+            
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(PointShopError.FailedfetchUserGifticon))

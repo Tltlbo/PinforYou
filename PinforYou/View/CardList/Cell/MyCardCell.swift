@@ -25,13 +25,13 @@ struct MyCardCell: View {
                 HStack {
                     Text(card.cardName)
                         .font(.system(size: 20))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.black)
                 }
                 .padding(.bottom, 20)
                 
                 Text(card.cardNum)
                     .font(.system(size: 20))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.black)
             }
             Spacer()
         }

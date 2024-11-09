@@ -234,7 +234,6 @@ extension AuthenticationService {
                        encoding: URLEncoding.queryString,
                        headers: ["Content-Type" : "application/json"])
             .responseDecodable(of:test.self) { response in
-                debugPrint(response)
                 guard case .success(let data) = response.result
                 else {
                     return completion(.failure(FriendError.FailedfetchFriend))
@@ -259,7 +258,7 @@ extension AuthenticationService {
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of:test.self) { response in
-            debugPrint(response)
+            
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(FriendError.FailedfetchFriend))
@@ -297,7 +296,7 @@ extension AuthenticationService {
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/x-www-form-urlencoded"])
         .responseDecodable(of:test.self) { response in
-            debugPrint(response)
+            
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(AuthenticationError.invaildated))
@@ -327,7 +326,7 @@ extension AuthenticationService {
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: Result.self) { response in
-            debugPrint(response)
+            
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(AuthenticationError.invaildated))
@@ -354,7 +353,7 @@ extension AuthenticationService {
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: Result.self) { response in
-            debugPrint(response)
+            
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(AuthenticationError.invaildated))
@@ -403,7 +402,7 @@ extension AuthenticationService {
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: UserInfo.self) { response in
-            debugPrint(response)
+            
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(AuthenticationError.invaildated))
@@ -436,7 +435,7 @@ extension AuthenticationService {
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: Result.self) { response in
-            debugPrint(response)
+            
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(AuthenticationError.invaildated))

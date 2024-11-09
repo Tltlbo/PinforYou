@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CardPaymentInfoView: View {
     
     @StateObject var cardPaymentInfoViewModel : CardPaymentInfoViewModel
     var cardID : Int
+    @State private var isSheetPresented = false
+    @State private var selectedMonth = Calendar.current.component(.month, from: Date())
     
     var body: some View {
         if cardPaymentInfoViewModel.isFinished {
@@ -27,9 +30,10 @@ struct CardPaymentInfoView: View {
                             }
                             .padding(.trailing, 60)
                             
-                            Image(systemName: "creditcard")
+                            KFImage(URL(string: cardPaymentInfoViewModel.paymentInfo?.card_image_url ?? ""))
                                 .resizable()
                                 .scaledToFit()
+                                .rotationEffect(.degrees(-90.0))
                         }
                         .frame(width: UIScreen.main.bounds.width ,height: 100)
                     }
@@ -62,9 +66,27 @@ struct CardPaymentInfoView: View {
                         Text("결제내역이 존재하지 않습니다.")
                     }
                     
+                    
                     Spacer()
                 }
-                .navigationTitle("6월")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            isSheetPresented = true
+                        } label: {
+                            Image(systemName: "calendar")
+                        }
+
+                    }
+                }
+                .navigationTitle("\(cardPaymentInfoViewModel.month)월")
+                .sheet(isPresented: $isSheetPresented) {
+                    MonthPicker(selectedMonth: $selectedMonth)  // 선택된 월을 바인딩으로 전달
+                }
+                .onChange(of: selectedMonth) { newValue in
+                    cardPaymentInfoViewModel.month = newValue
+                    cardPaymentInfoViewModel.send(action: .getPaymentInfo, cardid: cardID)
+                }
             }
         }
         else {
@@ -74,6 +96,28 @@ struct CardPaymentInfoView: View {
                 }
         }
         
+    }
+}
+
+struct MonthPicker: View {
+    @Environment(\.dismiss) var dismiss
+    @Binding var selectedMonth: Int
+
+    var body: some View {
+        VStack {
+            Picker("Select Month", selection: $selectedMonth) {
+                ForEach(1..<13) { month in
+                    Text("\(month)월").tag(month)
+                }
+            }
+            .pickerStyle(WheelPickerStyle()) // 휠 스타일을 사용하여 선택
+
+            Button("Done") {
+                dismiss()  // 선택 후 시트 닫기
+            }
+            .padding()
+        }
+        .padding()
     }
 }
 

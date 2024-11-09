@@ -13,7 +13,7 @@ import Kingfisher
 
 protocol PayServiceType {
     func getPayRecommendCardInfo(userid : String, storeName : String, storeCategory : String) -> AnyPublisher<PayCardModel, ServiceError>
-    func getCardQrCode(cardid : Int) -> AnyPublisher<String, ServiceError>
+    func getCardQrCode(userid: String, cardid : Int) -> AnyPublisher<String, ServiceError>
 }
 
 class PayService : PayServiceType {
@@ -31,9 +31,9 @@ class PayService : PayServiceType {
         }.eraseToAnyPublisher()
     }
     
-    func getCardQrCode(cardid: Int) -> AnyPublisher<String, ServiceError> {
+    func getCardQrCode(userid: String, cardid: Int) -> AnyPublisher<String, ServiceError> {
         Future { [weak self] promise in
-            self?.getCardQrCode(cardid: cardid){ result in
+            self?.getCardQrCode(userid: userid, cardid: cardid){ result in
                 switch result {
                 case let .success(image_url):
                     promise(.success(image_url))
@@ -58,7 +58,7 @@ extension PayService {
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: PayCardModel.self) { [weak self] response in
-            debugPrint(response)
+            
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(LocationError.APICallFailed))
@@ -70,7 +70,7 @@ extension PayService {
         }
     }
     
-    private func getCardQrCode(cardid: Int, completion: @escaping (Result<String, Error>) -> Void) {
+    private func getCardQrCode(userid: String, cardid: Int, completion: @escaping (Result<String, Error>) -> Void) {
         
         class Data : Decodable  {
             let result: Bool
@@ -79,7 +79,7 @@ extension PayService {
         
         AF.request("https://pinforyou.online/userCard/pay",
                    method: .get,
-                   parameters: ["user_id" : 1,
+                   parameters: ["hashed_id" : userid,
                                 "card_id" : cardid],
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
@@ -103,7 +103,7 @@ class StubPayService : PayServiceType {
         Empty().eraseToAnyPublisher()
     }
     
-    func getCardQrCode(cardid: Int) -> AnyPublisher<String, ServiceError> {
+    func getCardQrCode(userid: String, cardid: Int) -> AnyPublisher<String, ServiceError> {
         Empty().eraseToAnyPublisher()
     }
 }

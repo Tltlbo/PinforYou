@@ -15,7 +15,7 @@ struct EmailCell: View {
                 HStack {
                     Text("이메일")
                         .font(.system(size: 20))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.black)
                 }
                 .padding(.bottom, 5)
                 .padding(.leading, 10)
@@ -23,7 +23,7 @@ struct EmailCell: View {
                 HStack {
                     Text(email)
                         .font(.system(size: 20))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.black)
                 }
                 .padding(.leading, 10)
             }

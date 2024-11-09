@@ -16,10 +16,11 @@ struct PayCardModel : Decodable {
         var cardID : Int
         var cardName : String
         var cardLastNum : String
-        var discountPercent : Int
+        var discountPercent : Double
         var cardColor : String
         var description: String
         var uuid = UUID()
+        var card_image_url: String
         
         enum CodingKeys : String, CodingKey {
             case userID = "hashed_id"
@@ -29,6 +30,7 @@ struct PayCardModel : Decodable {
             case discountPercent = "discount_percentage"
             case cardColor = "card_color"
             case description = "description"
+            case card_image_url
         }
     }
     

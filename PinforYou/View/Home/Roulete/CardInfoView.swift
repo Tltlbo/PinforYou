@@ -6,49 +6,59 @@
 //
 
 import SwiftUI
+import Combine
+import Kingfisher
 
 struct CardInfoView: View {
-    var selectedName: String  // RouletteView에서 전달 받은 이름
-
+    var selectedFriend: Friend  // RouletteView에서 전달 받은 이름
+    var StoreName : String
+    var StoreCategory : String
+    @EnvironmentObject var container: DIContainer
+    @StateObject var cardInfoViewModel: CardInfoViewModel
+    
+    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
-                    Text("\(selectedName)님이 등록한 카드 중 이 카드로 결제하는 게 가장 좋아요!")
-                        .font(.title)
-                        .padding()
-
-                    Image(systemName: "creditcard")  // 사용할 이미지 파일명을 정확히 지정해야 합니다.
+                    Text("""
+                             \(selectedFriend.name)님이 등록한 카드 중
+                             이 카드로 결제하는 게
+                             가장 좋아요!
+                             
+                             """
+                    )
+                    .font(.title)
+                    .padding()
+                    
+                    KFImage(URL(string: cardInfoViewModel.cards.first?.card_image_url ?? ""))
                         .resizable()
                         .scaledToFit()
-                        .frame(height: 200)
-                        .cornerRadius(10)
+                        .frame(width:300, height: 200)
+                        .rotationEffect(.degrees(-90.0))
                         .padding()
-
-                    Text("노리2 체크카드 (KB Pay)")
+                    
+                    
+                    Text(cardInfoViewModel.cards.first?.cardName ?? "")
                         .font(.title2)
                         .padding(.bottom, 1)
-
+                    
                     VStack(alignment: .leading) {
-                        Text("• 포인트, 현금화 5% 할인")
-                        Text("• KB Pay 2% 추가 할인")
+                        Text("• \(String(format: "%.1f", cardInfoViewModel.cards.first?.discountPercent ?? 0)) % 할인")
                     }
                     .font(.headline)
                     .padding(.horizontal)
                     .padding(.bottom, 20)
-
+                    
                     Spacer()
                 }
+                .navigationBarBackButtonHidden()
             }
-            .navigationTitle("")
-            .navigationBarTitleDisplayMode(.inline)
             .padding()
+        }
+        .onAppear {
+            cardInfoViewModel.send(action: .getCard, id: selectedFriend.friendID, storeName: StoreName, storeCategory: StoreCategory)
         }
     }
 }
 
-struct CardInfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        CardInfoView(selectedName: "김성훈")
-    }
-}

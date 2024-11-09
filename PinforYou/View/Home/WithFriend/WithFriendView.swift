@@ -15,7 +15,10 @@ struct WithFriendView: View {
     }
     
     var checkOption : friendOption = .withRecommend
-    
+    let StoreName: String
+    let StoreCategory: String
+    @EnvironmentObject var container : DIContainer
+    @StateObject var gameViewModel: GameViewModel
     
     var body: some View {
         NavigationStack {
@@ -44,11 +47,13 @@ struct WithFriendView: View {
                 }
                 
                 FriendGridView()
+                    .environmentObject(gameViewModel)
                     .padding(.horizontal, 15)
             }
             
             NavigationLink {
-                RouletteView()
+                RouletteView(StoreName: StoreName, StoreCategory: StoreCategory)
+                    .environmentObject(gameViewModel)
             } label: {
                 ZStack(alignment: .center) {
                     Rectangle()
@@ -71,6 +76,9 @@ struct WithFriendView: View {
                 }
             }
         }
+        .onAppear {
+            gameViewModel.send(action: .getFriendInfo)
+        }
     }
 }
 
@@ -82,43 +90,47 @@ struct testCheck : Hashable {
 struct FriendGridView : View {
     
     var columns : [GridItem] = Array(repeating: .init(.flexible()), count: 3)
-    
-    @State var test : [testCheck] = [
-        .init(),
-        .init(),
-        .init()
-    ]
+    @EnvironmentObject var gameViewModel: GameViewModel
     
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns) {
-                ForEach($test, id: \.self) { $test in
+                ForEach(gameViewModel.friends, id: \.self) { friend in
                     
                     
                     ZStack {
-                        if !test.check {
-                            
+                        if !gameViewModel.selecedFriends.contains(where: { selectedfriend in
+                            selectedfriend == friend
+                        }) {
                             Button {
-                                test.check = true
+                                gameViewModel.selecedFriends.append(friend)
                             } label: {
-                                Color(.blue)
-                                    .cornerRadius(15)
-                                    .frame(width: 110, height: 110)
-                                    .padding()
+                                VStack {
+                                    Color(.blue)
+                                        .cornerRadius(15)
+                                        .frame(width: 100, height: 100)
+                                        .padding()
+                                    Text(friend.name)
+                                        .foregroundStyle(.black)
+                                }
                             }
-                            
-                            
                         }
                         else {
                             
                             Button {
-                                test.check = false
+                                gameViewModel.selecedFriends.remove(at: gameViewModel.selecedFriends.firstIndex(where: { selectedfriend in
+                                    selectedfriend == friend
+                                }) ?? 0)
                             } label: {
-                                Color(.blue)
-                                    .cornerRadius(15)
-                                    .frame(width: 110, height: 110)
-                                    .blur(radius: 2)
-                                    .padding()
+                                VStack {
+                                    Color(.blue)
+                                        .cornerRadius(15)
+                                        .frame(width: 100, height: 100)
+                                        .blur(radius: 2)
+                                        .padding()
+                                    Text(friend.name)
+                                        .foregroundStyle(.black)
+                                }
                             }
                             
                             Image(systemName: "checkmark.seal.fill")
@@ -133,8 +145,4 @@ struct FriendGridView : View {
             }
         }
     }
-}
-
-#Preview {
-    WithFriendView()
 }

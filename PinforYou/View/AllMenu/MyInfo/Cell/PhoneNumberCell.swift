@@ -15,7 +15,7 @@ struct PhoneNumberCell: View {
                 HStack {
                     Text("휴대폰 번호")
                         .font(.system(size: 20))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.black)
                 }
                 .padding(.bottom, 5)
                 .padding(.leading, 10)
@@ -23,7 +23,7 @@ struct PhoneNumberCell: View {
                 HStack {
                     Text(number)
                         .font(.system(size: 20))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.black)
                 }
                 .padding(.leading, 10)
             }

@@ -20,7 +20,6 @@ struct MyInfoView: View {
                     NameCell(name: authViewModel.userName)
                     EmailCell(email: authViewModel.email)
                     PhoneNumberCell(number: authViewModel.phoneNumber)
-                    passwordModifyCell()
                     
                     Spacer()
                     

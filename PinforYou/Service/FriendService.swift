@@ -104,7 +104,7 @@ extension FriendService {
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: Friends.self) { [weak self] response in
             
-            debugPrint(response)
+            
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(FriendError.FailedfetchFriend))
@@ -121,6 +121,7 @@ extension FriendService {
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: RequestFriend.self) { [weak self] response in
+            
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(FriendError.FailedfetchFriend))
@@ -142,13 +143,13 @@ extension FriendService {
             }
         }
         AF.request("https://pinforyou.online/friend/delete",
-                   method: .get,
+                   method: .post,
                    parameters: ["user_hashedId" : userid,
                                 "friend_hashedId" : friendid],
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: Result.self) { [weak self] response in
-            debugPrint(response)
+            
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(FriendError.FailedfetchFriend))
@@ -170,13 +171,13 @@ extension FriendService {
             }
         }
         AF.request("https://pinforyou.online/friend/requestList/accept",
-                   method: .get,
+                   method: .post,
                    parameters: ["user_hashedId" : userid,
                                 "friend_hashedId" : friendid],
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: Result.self) { [weak self] response in
-            debugPrint(response)
+            
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(FriendError.FailedfetchFriend))
@@ -198,7 +199,7 @@ extension FriendService {
                    encoding: URLEncoding.queryString,
                    headers: ["Content-Type" : "application/json"])
         .responseDecodable(of: Result.self) { [weak self] response in
-            debugPrint(response)
+            
             guard case .success(let data) = response.result
             else {
                 return completion(.failure(FriendError.FailedfetchFriend))

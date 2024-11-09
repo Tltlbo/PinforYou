@@ -16,7 +16,7 @@ struct NameCell: View {
                 HStack {
                     Text("이름")
                         .font(.system(size: 20))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.black)
                 }
                 .padding(.bottom, 5)
                 .padding(.leading, 10)
@@ -24,7 +24,7 @@ struct NameCell: View {
                 HStack {
                     Text(name)
                         .font(.system(size: 20))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.black)
                 }
                 .padding(.leading, 10)
             }
