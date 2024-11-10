@@ -61,6 +61,7 @@
 		4E8244852C5E66CC00A40BFF /* ChallengeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8244842C5E66CC00A40BFF /* ChallengeService.swift */; };
 		4E8904492CDBA78700D5B547 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8904482CDBA78700D5B547 /* GameViewModel.swift */; };
 		4E89044B2CDBC0EB00D5B547 /* CardInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E89044A2CDBC0EB00D5B547 /* CardInfoViewModel.swift */; };
+		4E89048E2CE092D600D5B547 /* newRoulleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E89048D2CE092D600D5B547 /* newRoulleteView.swift */; };
 		4E93D2C82CA03DDA0091464D /* PointShopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E93D2C72CA03DD10091464D /* PointShopViewModel.swift */; };
 		4E9785FC2C26C9AA000F61BB /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9785FB2C26C9AA000F61BB /* ColorExtension.swift */; };
 		4E9785FF2C27CFC3000F61BB /* CardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9785FE2C27CFC3000F61BB /* CardListViewModel.swift */; };
@@ -180,6 +181,7 @@
 		4E8244842C5E66CC00A40BFF /* ChallengeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeService.swift; sourceTree = "<group>"; };
 		4E8904482CDBA78700D5B547 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		4E89044A2CDBC0EB00D5B547 /* CardInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoViewModel.swift; sourceTree = "<group>"; };
+		4E89048D2CE092D600D5B547 /* newRoulleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newRoulleteView.swift; sourceTree = "<group>"; };
 		4E93D2C72CA03DD10091464D /* PointShopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointShopViewModel.swift; sourceTree = "<group>"; };
 		4E9785FB2C26C9AA000F61BB /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		4E9785FE2C27CFC3000F61BB /* CardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewModel.swift; sourceTree = "<group>"; };
@@ -654,6 +656,7 @@
 				4ECD55F52C8DF78B00F09157 /* CardInfoView.swift */,
 				4E8904482CDBA78700D5B547 /* GameViewModel.swift */,
 				4E89044A2CDBC0EB00D5B547 /* CardInfoViewModel.swift */,
+				4E89048D2CE092D600D5B547 /* newRoulleteView.swift */,
 			);
 			path = Roulete;
 			sourceTree = "<group>";
@@ -987,6 +990,7 @@
 				4ED5761B2BEAFEC10034F7A6 /* KakaoMapViewModel.swift in Sources */,
 				4ED5760B2BE77D170034F7A6 /* MainTabType.swift in Sources */,
 				4E8244852C5E66CC00A40BFF /* ChallengeService.swift in Sources */,
+				4E89048E2CE092D600D5B547 /* newRoulleteView.swift in Sources */,
 				4E24978C2C19252600851D9D /* ChallengeCell.swift in Sources */,
 				4EA35AEF2BE324990001508B /* AuthenticationService.swift in Sources */,
 				4E9785FF2C27CFC3000F61BB /* CardListViewModel.swift in Sources */,

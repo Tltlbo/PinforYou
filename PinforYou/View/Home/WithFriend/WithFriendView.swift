@@ -52,7 +52,7 @@ struct WithFriendView: View {
             }
             
             NavigationLink {
-                RouletteView(StoreName: StoreName, StoreCategory: StoreCategory)
+                newRoulleteView(StoreName: StoreName, StoreCategory: StoreCategory)
                     .environmentObject(gameViewModel)
             } label: {
                 ZStack(alignment: .center) {

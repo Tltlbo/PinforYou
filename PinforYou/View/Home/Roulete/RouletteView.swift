@@ -76,11 +76,20 @@ struct RouletteView: View {
             spinning = false
             let normalizedDegrees = degrees.truncatingRemainder(dividingBy: 360)
             let segmentAngle = 360 / Double(roulleteViewModel.selecedFriends.count)
-            let arrowTipAngle = (normalizedDegrees).truncatingRemainder(dividingBy: 360)
+            let arrowTipAngle = (360 - normalizedDegrees).truncatingRemainder(dividingBy: 360)
             let index = Int(arrowTipAngle / segmentAngle) % roulleteViewModel.selecedFriends.count
+            print("hello\(normalizedDegrees / segmentAngle)")
+            print("degrees \(degrees)")
+            //selectedIndex = Int(normalizedDegrees / segmentAngle)
+            //이거 그냥 낙장불입으로 바로 랜덤뽑기해서 이름 튀어나오게 하고 바로 다음화면으로 넘겨버리자
             degrees = normalizedDegrees  // 각도 정규화
-            selectedIndex = roulleteViewModel.selecedFriends.firstIndex(of: roulleteViewModel.selecedFriends[(roulleteViewModel.selecedFriends.count - index) % roulleteViewModel.selecedFriends.count]) ?? 0  // 섹터가 반시계 방향이므로 배열을 반전
-            
+            selectedIndex = index
+            /*selectedIndex = roulleteViewModel.selecedFriends.firstIndex(of: roulleteViewModel.selecedFriends[(roulleteViewModel.selecedFriends.count + index) % (roulleteViewModel.selecedFriends.count)]) ?? 0*/  // 섹터가 반시계 방향이므로 배열을 반전
+            print("normalized: \(normalizedDegrees)")
+            print("segment: \(segmentAngle)")
+            print("arrow: \(arrowTipAngle)")
+            print("index \(index)")
+            print("select \(selectedIndex)")
             
         }
     }

@@ -29,11 +29,11 @@ class PlaceInfoViewModel : ObservableObject {
         self.StoreCategory = PlaceInfoViewModel.convertToCategory(from: storecategory)
     }
     
-    func send(action : Action) {
+    func send(action : Action, storeName: String, storeCategory: String) {
         guard let userid = UserID.shared.hashedID else {return}
         switch action {
         case .getRecommendPayCardInfo:
-            container.services.payService.getPayRecommendCardInfo(userid: userid, storeName: StoreName, storeCategory: StoreCategory)
+            container.services.payService.getPayRecommendCardInfo(userid: userid, storeName: storeName, storeCategory: storeCategory)
                 .sink { [weak self] completion in
                     if case .failure = completion {
                         //

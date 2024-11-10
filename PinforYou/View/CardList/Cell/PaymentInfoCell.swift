@@ -22,12 +22,31 @@ struct PaymentInfoCell: View {
                 .padding(.bottom, 5)
                 
                 HStack {
-                    Text("\(Info.category) |")
+                    Text("\(convertToCategory(from: Info.category)) |")
                     Text("\(Info.Date)")
                 }
             }
         }
         .frame(height: 60)
+    }
+    
+    private func convertToCategory(from input: String) -> String {
+        switch input {
+        case "conveniencestore":
+            return "편의점"
+        case "supermarket":
+            return "마트"
+        case "restaurant":
+            return "음식점"
+        case "cafe":
+            return "카페"
+        case "hospital":
+            return "병원"
+        case "pharmacy":
+            return "약국"
+        default:
+            return "기타"
+        }
     }
 }
 
