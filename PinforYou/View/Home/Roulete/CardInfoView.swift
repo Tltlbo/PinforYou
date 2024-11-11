@@ -22,10 +22,10 @@ struct CardInfoView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 20) {
                     Text("""
-                             \(selectedFriend.name)님이 등록한 카드 중
+                             \(selectedFriend.name)님이 
+                             등록한 카드 중
                              이 카드로 결제하는 게
                              가장 좋아요!
-                             
                              """
                     )
                     .font(.title)
@@ -44,6 +44,8 @@ struct CardInfoView: View {
                         .padding(.bottom, 1)
                     
                     VStack(alignment: .leading) {
+                        Text(cardInfoViewModel.cards.first?.description ?? "")
+                            .padding(.bottom, 5)
                         Text("• \(String(format: "%.1f", cardInfoViewModel.cards.first?.discountPercent ?? 0)) % 할인")
                     }
                     .font(.headline)

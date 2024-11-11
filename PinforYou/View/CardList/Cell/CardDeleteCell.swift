@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CardDeleteCell: View {
     
@@ -18,23 +19,24 @@ struct CardDeleteCell: View {
     
     var body: some View {
         HStack {
-            Image(systemName: "creditcard")
+            
+            KFImage(URL(string: card.card_image_url))
                 .resizable()
                 .scaledToFit()
-                .frame(width: 100)
-                .padding(.horizontal, 10)
-                
+                .frame(width: 60, height: 100)
+                .padding(.horizontal, 30)
+                .rotationEffect(.degrees(-90.0))
             
             VStack(alignment:.leading) {
                 HStack {
                     VStack(alignment:.leading) {
                         Text(card.cardName)
                             .font(.system(size: 20))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(.black)
                             .padding(.bottom, 25)
                         Text(card.cardNum)
                             .font(.system(size: 15))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(.black)
                     }
                     
                     Spacer()

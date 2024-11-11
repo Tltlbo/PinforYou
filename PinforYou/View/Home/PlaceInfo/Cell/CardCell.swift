@@ -30,6 +30,10 @@ struct CardCell: View {
             .frame(height: 20)
             .padding(.bottom, 30)
             
+            Text(cardInfo.description)
+                .font(.system(size: 15))
+                .foregroundStyle(.white)
+            
             Text("\(String(format: "%.1f", cardInfo.discountPercent))% 할인")
                 .font(.system(size: 30))
                 .foregroundStyle(.white)

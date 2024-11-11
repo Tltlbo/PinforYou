@@ -34,7 +34,7 @@ struct CardInsertView: View {
                             presentationMode.wrappedValue.dismiss()
                         } label: {
                             Image(systemName: "chevron.left")
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .font(.system(size: 25))
                             
                         }

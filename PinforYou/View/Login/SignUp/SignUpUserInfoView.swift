@@ -152,9 +152,14 @@ struct GridCellView: View {
                 .opacity(isSelected ? 0.0 : 5.0)
                 .frame(width: 110, height: 110)
                 .cornerRadius(10)
+                .foregroundStyle(.white)
                 .overlay(
-                    isSelected ? Image(systemName: "checkmark.seal.fill") : Image(systemName: ""),
-                    alignment: .center
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.black, lineWidth: 1)
+                        isSelected ? Image(systemName: "checkmark.seal.fill") : Image(systemName: "")
+                        
+                    }
                 )
             Text(convertToCategory(from: category))
                 .foregroundStyle(.black)

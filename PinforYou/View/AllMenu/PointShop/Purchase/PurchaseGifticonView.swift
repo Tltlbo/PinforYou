@@ -61,7 +61,7 @@ struct PurchaseGifticonView: View {
                 dismiss()
             }, label: {
                 Image(systemName: "arrow.backward")
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
             }))
             .onChange(of: purchaseViewModel.isPurchase) { _ in
                 if purchaseViewModel.isPurchase {

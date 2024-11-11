@@ -14,7 +14,7 @@ enum ShopOption {
 
 struct PointShopView: View {
     
-    @State var selectOption : ShopOption = .MyGifticon
+    @State var selectOption : ShopOption = .PointShop
     @EnvironmentObject var container : DIContainer
     @StateObject var pointshopViewModel : PointShopViewModel
     

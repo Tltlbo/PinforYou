@@ -53,6 +53,7 @@ struct newRoulleteView: View {
                     navigateToCardInfo = true
                 }
             }
+            .navigationBarBackButtonHidden()
         }
     }
     
