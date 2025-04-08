@@ -3,7 +3,7 @@
 
 > 간단한 한 줄 소개:  최선의 개인 맞춤형 서비스 편리한 결제 플랫폼
 
-[WIKI](https://github.com/Tltlbo/PinforYou/wiki)
+wiki: [WIKI](https://github.com/Tltlbo/PinforYou/wiki)
 ---
 
 ## ✨ 주요 기능 (Features)
