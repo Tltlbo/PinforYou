@@ -34,9 +34,9 @@ wiki: [WIKI](https://github.com/Tltlbo/PinforYou/wiki)
 
 ## 🚀 기술 스택 (Tech Stack)
 
-- **iOS**: Swift, SwiftUI / UIKit
-- **Architecture**: MVVM / Clean Architecture
-- **Tools**: Xcode, Git, Figma
-- **ETC**: Alamofire, Kingfisher, Combine
+- **iOS**: ![Swift](https://img.shields.io/badge/Swift-FA7343?style=flat&logo=swift&logoColor=white) ![SwiftUI](https://img.shields.io/badge/SwiftUI-003366?style=flat&logo=swift&logoColor=white) ![UIKit](https://img.shields.io/badge/UIKit-000000?style=flat&logo=apple&logoColor=white)
+- **Architecture**: ![MVVM](https://img.shields.io/badge/Architecture-MVVM-blue)  ![Clean Architecture](https://img.shields.io/badge/Clean_Architecture-3776AB?style=flat)
+- **Tools**: ![Xcode](https://img.shields.io/badge/Xcode-1575F9?style=flat&logo=xcode&logoColor=white) ![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white) ![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=figma&logoColor=white)
+- **ETC**: ![Alamofire](https://img.shields.io/badge/Alamofire-DD0031?style=flat&logo=swift&logoColor=white) ![Kingfisher](https://img.shields.io/badge/Kingfisher-0099FF?style=flat&logo=swift&logoColor=white) ![Combine](https://img.shields.io/badge/Combine-4B4453?style=flat&logo=swift&logoColor=white)
 
 ---
